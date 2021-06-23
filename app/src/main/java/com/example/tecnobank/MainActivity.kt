@@ -1,5 +1,6 @@
 package com.example.tecnobank
 
+<<<<<<< HEAD
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -23,5 +24,18 @@ class MainActivity : AppCompatActivity() {
 //        }
 
 
+=======
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+
+class MainActivity : AppCompatActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        Thread.sleep(3000)
+        setTheme(R.style.Theme_Tecnobank)
+
+        setContentView(R.layout.activity_main)
+>>>>>>> db970d3 (Feature - Implementação da função do splash)
     }
 }
