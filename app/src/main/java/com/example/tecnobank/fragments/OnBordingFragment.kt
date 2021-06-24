@@ -11,10 +11,10 @@ import com.example.tecnobank.viewmodel.LoginViewModel
 
 
 class OnBordingFragment : Fragment(){
-    //private lateinit var viewModel: LoginViewModel
-    //private val controlador by lazy {
-    //    findNavController()
-    //}
+    private lateinit var viewModel: LoginViewModel
+    private val controlador by lazy {
+        findNavController()
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -27,16 +27,16 @@ class OnBordingFragment : Fragment(){
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        //this.login_comecar.setOnClickListener {
-        //   viewModel.primeiraVez()
-        //}
+       /* this.login_comecar.setOnClickListener {
+           viewModel.primeiraVez()
+        }
 
-        //this.login_comecar.setOnClickListener {
-        //    val direcao = OnBordingFragmentDirections
-        //    .acao_onbordingfragment_para_teste
-        //    controlador.navigate(direcao)
-        //}
-
+        this.login_comecar.setOnClickListener {
+            val direcao = OnBordingFragmentDirections
+            .acao_onbordingfragment_para_teste
+            controlador.navigate(direcao)
+        }
+*/
     }
 
 }
