@@ -5,13 +5,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.tecnobank.R
-import com.example.tecnobank.viewmodel.LoginViewModel
+import com.example.tecnobank.viewmodel.OnBoardingViewModel
 
 
 class OnBordingFragment : Fragment(){
-    private lateinit var viewModel: LoginViewModel
+    private lateinit var viewModel: OnBoardingViewModel
+
     private val controlador by lazy {
         findNavController()
     }
@@ -27,16 +29,17 @@ class OnBordingFragment : Fragment(){
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-       /* this.login_comecar.setOnClickListener {
-           viewModel.primeiraVez()
-        }
+        viewModel = ViewModelProvider(this).get(OnBoardingViewModel::class.java)
 
-        this.login_comecar.setOnClickListener {
-            val direcao = OnBordingFragmentDirections
-            .acao_onbordingfragment_para_teste
-            controlador.navigate(direcao)
-        }
-*/
+//        if(viewmodel.vezesSubsequentes()){
+//            controlador.navigate(R.id.acao_onbordingfragment_para_teste)
+//        }
+//
+//        view.findViewById<Button>(R.id.login_comecar).setOnClickListener {
+//            viewmodel.primeiraVez()
+//            controlador.navigate(R.id.acao_onbordingfragment_para_teste)
+//        }
+
     }
 
 }
