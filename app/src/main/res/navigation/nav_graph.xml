@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/onbordingfragment">
+
+    <fragment
+        android:id="@+id/onbordingfragment"
+        android:name="com.example.tecnobank.fragments.OnBordingFragment"
+        android:label="onbording"
+        tools:layout="@layout/onboarding">
+        <action
+            android:id="@+id/acao_onbordingfragment_para_teste"
+            app:destination="@id/testefragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/testefragment"
+        android:name="com.example.tecnobank.fragments.testefragment"
+        android:label="teste"
+        tools:layout="@layout/teste"/>
+</navigation>

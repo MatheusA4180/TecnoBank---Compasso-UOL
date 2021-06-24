@@ -53,7 +53,7 @@
         app:layout_constraintVertical_bias="0.07999998" />
 
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-        android:id="@+id/button3"
+        android:id="@+id/login_comecar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="60dp"
@@ -85,7 +85,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button3"
+        app:layout_constraintTop_toBottomOf="@+id/login_comecar"
         app:layout_constraintVertical_bias="0.120000005" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
