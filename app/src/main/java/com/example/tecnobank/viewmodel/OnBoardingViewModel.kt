@@ -5,7 +5,7 @@ import com.example.tecnobank.repository.OnBoardingRepository
 
 class OnBoardingViewModel() : ViewModel(){
 
-    private val repository = OnBoardingRepository()
+//    private val repository = OnBoardingRepository()
 
 //    fun primeiraVez(){
 //        repository.entrou()
