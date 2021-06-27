@@ -1,29 +1,23 @@
 package com.example.tecnobank
 
+import android.content.Context
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+
+
 
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        Thread.sleep(3000)
-        setTheme(R.style.Theme_Tecnobank)
+        val preferences:SharedPreferences =
+            this.getSharedPreferences(getString(R.string.preference_file_key),Context.MODE_PRIVATE)
+
 
         setContentView(R.layout.main_activity)
         supportActionBar?.hide()
-
-//        val preferences: SharedPreferences =
-//            getSharedPreferences("user_preferences", MODE_PRIVATE)
-//        preferences.edit {
-//            putBoolean("Passou",true)
-//        }
-//        if(preferences.getBoolean("passou", false)){
-//            //vai para a tela
-//        }
-
-
 
     }
 }

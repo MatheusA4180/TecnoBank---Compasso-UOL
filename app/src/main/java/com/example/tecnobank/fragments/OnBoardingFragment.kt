@@ -1,5 +1,7 @@
 package com.example.tecnobank.fragments
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,7 +14,7 @@ import com.example.tecnobank.R
 import com.example.tecnobank.viewmodel.OnBoardingViewModel
 
 
-class OnBordingFragment : Fragment(){
+class OnBoardingFragment : Fragment(){
     private lateinit var viewModel: OnBoardingViewModel
 
     private val controlador by lazy {
@@ -32,12 +34,12 @@ class OnBordingFragment : Fragment(){
 
         viewModel = ViewModelProvider(this).get(OnBoardingViewModel::class.java)
 
-//        if(viewmodel.vezesSubsequentes()){
-//            controlador.navigate(R.id.acao_onbordingfragment_para_teste)
-//        }
+        if(viewModel.vezesSubsequentes()){
+            controlador.navigate(R.id.acao_onbordingfragment_para_teste)
+        }
 
         view.findViewById<Button>(R.id.login_comecar).setOnClickListener {
-            //viewmodel.primeiraVez()
+            viewModel.primeiraVez()
             controlador.navigate(R.id.acao_onbordingfragment_para_teste)
         }
 
