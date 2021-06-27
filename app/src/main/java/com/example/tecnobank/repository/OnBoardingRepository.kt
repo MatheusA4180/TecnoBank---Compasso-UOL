@@ -1,12 +1,17 @@
 package com.example.tecnobank.repository
 
+import android.content.Context
 import android.content.SharedPreferences
 import androidx.core.content.edit
+import com.example.tecnobank.R
 
 
 private const val CHAVE_PASS = "Passou"
 
-class OnBoardingRepository(private val preferences:SharedPreferences) {
+class OnBoardingRepository(private val context: Context) {
+
+    private val preferences :SharedPreferences = context.getSharedPreferences(
+    R.string.preference_file_key.toString(), Context.MODE_PRIVATE)
 
     fun entrou() {
         preferences.edit {

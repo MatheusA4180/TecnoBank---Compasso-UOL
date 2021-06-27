@@ -39,7 +39,7 @@ class OnBoardingFragment : Fragment(){
         }
 
         view.findViewById<Button>(R.id.login_comecar).setOnClickListener {
-            viewModel.primeiraVez()
+            //viewModel.primeiraVez()
             controlador.navigate(R.id.acao_onbordingfragment_para_teste)
         }
 
