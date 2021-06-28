@@ -8,10 +8,7 @@ import com.example.tecnobank.R
 
 private const val CHAVE_PASS = "Passou"
 
-class OnBoardingRepository(private val context: Context) {
-
-    private val preferences :SharedPreferences = context.getSharedPreferences(
-    R.string.preference_file_key.toString(), Context.MODE_PRIVATE)
+class OnBoardingRepository(private val preferences: SharedPreferences) {
 
     fun entrou() {
         preferences.edit {

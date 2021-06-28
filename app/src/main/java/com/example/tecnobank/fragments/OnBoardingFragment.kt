@@ -1,7 +1,5 @@
 package com.example.tecnobank.fragments
 
-import android.content.Context
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -39,7 +37,7 @@ class OnBoardingFragment : Fragment(){
         }
 
         view.findViewById<Button>(R.id.login_comecar).setOnClickListener {
-            //viewModel.primeiraVez()
+            viewModel.primeiraVez()
             controlador.navigate(R.id.acao_onbordingfragment_para_teste)
         }
 

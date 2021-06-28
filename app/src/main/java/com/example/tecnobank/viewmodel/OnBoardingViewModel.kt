@@ -1,19 +1,20 @@
 package com.example.tecnobank.viewmodel
 
-import android.app.Activity
+
 import android.content.Context
 import android.content.SharedPreferences
-import android.view.View
 import androidx.lifecycle.ViewModel
-import com.example.tecnobank.MainActivity
 import com.example.tecnobank.R
 import com.example.tecnobank.repository.OnBoardingRepository
 
 
 class OnBoardingViewModel(context: Context) : ViewModel(){
 
+    private val preferences : SharedPreferences = context.getSharedPreferences(
+        R.string.preference_file_key.toString(), Context.MODE_PRIVATE)
+
     private val repository by lazy{
-        OnBoardingRepository(context)
+        OnBoardingRepository(preferences)
     }
 
     fun primeiraVez(){
