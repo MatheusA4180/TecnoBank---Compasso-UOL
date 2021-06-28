@@ -7,13 +7,13 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.tecnobank.R
 
-class testefragment : Fragment() {
+class loginfragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.teste, container, false)
+        return inflater.inflate(R.layout.login, container, false)
     }
 }

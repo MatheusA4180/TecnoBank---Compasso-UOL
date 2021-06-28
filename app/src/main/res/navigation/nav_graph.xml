@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/onbordingfragment">
+    app:startDestination="@id/splashfragment">
 
     <fragment
         android:id="@+id/onbordingfragment"
@@ -12,11 +12,20 @@
         tools:layout="@layout/onboarding">
         <action
             android:id="@+id/acao_onbordingfragment_para_teste"
-            app:destination="@id/testefragment" />
+            app:destination="@id/loginfragment" />
     </fragment>
     <fragment
-        android:id="@+id/testefragment"
-        android:name="com.example.tecnobank.fragments.testefragment"
-        android:label="teste"
-        tools:layout="@layout/teste"/>
+        android:id="@+id/loginfragment"
+        android:name="com.example.tecnobank.fragments.loginfragment"
+        android:label="login"
+        tools:layout="@layout/login" />
+    <fragment
+        android:id="@+id/splashfragment"
+        android:name="com.example.tecnobank.fragments.SplashFragment"
+        android:label="splash"
+        tools:layout="@layout/splash">
+        <action
+            android:id="@+id/acao_splashfragment_para_onbordingfragment"
+            app:destination="@id/onbordingfragment" />
+    </fragment>
 </navigation>
