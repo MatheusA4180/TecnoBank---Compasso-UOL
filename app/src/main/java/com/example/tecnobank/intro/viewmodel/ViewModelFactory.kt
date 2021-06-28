@@ -1,22 +1,22 @@
-package com.example.tecnobank.viewmodel
+package com.example.tecnobank.intro.viewmodel
 
 import android.content.Context
 import android.content.SharedPreferences
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.tecnobank.R
-import com.example.tecnobank.repository.OnBoardingRepository
+import com.example.tecnobank.intro.repository.OnBoardingRepository
 import java.lang.Exception
 
 class ViewModelFactory(private val context: Context): ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        if(modelClass==OnBoardingViewModel::class.java){
+        if(modelClass== OnBoardingViewModel::class.java){
             return providerOnBoardingViewModel() as T
         }
         throw Exception("ViewModel não encotrado")
     }
 
-    private fun providerOnBoardingViewModel():OnBoardingViewModel{
+    private fun providerOnBoardingViewModel(): OnBoardingViewModel {
         return OnBoardingViewModel(OnBoardingRepository(providerSharedPreference()))
     }
 

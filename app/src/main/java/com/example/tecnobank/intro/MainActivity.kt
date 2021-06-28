@@ -1,10 +1,8 @@
-package com.example.tecnobank
+package com.example.tecnobank.intro
 
-import android.content.Context
-import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-
+import com.example.tecnobank.R
 
 
 class MainActivity : AppCompatActivity() {

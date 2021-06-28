@@ -1,11 +1,10 @@
-package com.example.tecnobank.fragments
+package com.example.tecnobank.intro.fragments
 
 import android.os.Bundle
 import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.os.HandlerCompat.postDelayed
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.tecnobank.R
@@ -25,7 +24,9 @@ class SplashFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        Handler().postDelayed(Runnable { controlador.navigate(R.id.acao_splashfragment_para_onbordingfragment) }, 2000)
+        Handler().postDelayed(Runnable {
+            controlador.navigate(R.id.acao_splashfragment_para_onbordingfragment) },
+            3000)
     }
 
 }

@@ -1,4 +1,4 @@
-package com.example.tecnobank.repository
+package com.example.tecnobank.intro.repository
 
 import android.content.SharedPreferences
 import androidx.core.content.edit

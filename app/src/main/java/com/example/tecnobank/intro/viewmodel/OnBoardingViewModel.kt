@@ -1,12 +1,8 @@
-package com.example.tecnobank.viewmodel
+package com.example.tecnobank.intro.viewmodel
 
 
-import android.content.Context
-import android.content.SharedPreferences
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
-import com.example.tecnobank.R
-import com.example.tecnobank.repository.OnBoardingRepository
+import com.example.tecnobank.intro.repository.OnBoardingRepository
 
 
 class OnBoardingViewModel(private val repository: OnBoardingRepository) : ViewModel(){
