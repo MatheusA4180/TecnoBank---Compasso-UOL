@@ -10,7 +10,6 @@
         android:id="@+id/login_email"
         android:layout_width="340dp"
         android:layout_height="47dp"
-
         android:hint="E-mail"
         android:importantForAutofill="no"
         android:inputType="textCapWords"
