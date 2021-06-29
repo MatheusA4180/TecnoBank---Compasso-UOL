@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/loginfragment"
-        android:name="com.example.tecnobank.intro.fragments.loginfragment"
+        android:name="com.example.tecnobank.intro.fragments.loginFragment"
         android:label="login"
         tools:layout="@layout/login_fragment" >
         <action
