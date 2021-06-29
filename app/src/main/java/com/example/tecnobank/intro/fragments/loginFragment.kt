@@ -7,32 +7,24 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.EditText
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.example.tecnobank.R
 import com.example.tecnobank.databinding.LoginFragmentBinding
-import com.example.tecnobank.intro.model.Cliente
 import com.example.tecnobank.intro.viewmodel.LoginViewModel
-import java.util.zip.Inflater
 
-class loginfragment : Fragment() {
+class loginFragment : Fragment() {
 
     private var _binding: LoginFragmentBinding? = null
     private val binding: LoginFragmentBinding get() = _binding!!
     private lateinit var viewModel: LoginViewModel
 
-    //private var campoEmail: EditText? = null
-    //var campoSenha: EditText? = view.findViewById(R.id.login_senha)
-    //var cliente = Cliente();
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
-        _binding = LoginFragmentBinding.inflate(inflater,container,false)
+        _binding = LoginFragmentBinding.inflate(inflater, container, false)
         return _binding!!.root
     }
 
@@ -40,8 +32,6 @@ class loginfragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
-        binding.loginEmail
-        //campoEmail = view.findViewById(R.id.login_email)
 
 //        view.findViewById<Button>(R.id.login_entrar).setOnClickListener {
 //            val user = view.findViewById<EditText>(R.id.login_email).text.toString()
@@ -73,11 +63,7 @@ class loginfragment : Fragment() {
     fun preencher() {
         val email: String = binding.loginEmail.text.toString() //campoEmail?.text.toString()
         val senha: String = binding.loginSenha.text.toString()
-
         validar(email, senha)
-
-        //cliente.setNome(email)
-        //cliente.setsenha(senha)
     }
 
     fun isCampoVazio(valor: String): Boolean {
@@ -85,24 +71,20 @@ class loginfragment : Fragment() {
     }
 
     fun validar(email: String, senha: String) {
-
         if (!isCampoVazio(email)) {
-            binding.loginEmail?.error = "CPF, CNPJ ou Email não preenchido!";
-            binding.loginEmail?.requestFocus();
+            binding.loginEmail.error = "CPF, CNPJ ou Email não preenchido!";
+            binding.loginEmail.requestFocus();
         }
-
         if (!isCampoVazio(senha)) {
-            binding.loginSenha?.error = "Senha não preenchida!";
-            binding.loginSenha?.requestFocus();
+            binding.loginSenha.error = "Senha não preenchida!";
+            binding.loginSenha.requestFocus();
         }
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-
     }
-
 }
 
 

@@ -4,19 +4,20 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.tecnobank.R
+import com.example.tecnobank.databinding.OnboardingFragmentBinding
 import com.example.tecnobank.intro.viewmodel.OnBoardingViewModel
 import com.example.tecnobank.intro.viewmodel.ViewModelFactory
 
 
 class OnBoardingFragment : Fragment(){
-    private lateinit var viewModel: OnBoardingViewModel
-    //private val viewModel: OnBoardingViewModel by viewModels()
 
+    private lateinit var viewModel: OnBoardingViewModel
+    private var _binding: OnboardingFragmentBinding? = null
+    private val binding: OnboardingFragmentBinding get() = _binding!!
     private val controlador by lazy {
         findNavController()
     }
@@ -26,7 +27,8 @@ class OnBoardingFragment : Fragment(){
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.onboarding, container, false)
+        _binding = OnboardingFragmentBinding.inflate(inflater, container, false)
+        return _binding!!.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -36,14 +38,19 @@ class OnBoardingFragment : Fragment(){
             OnBoardingViewModel::class.java)
 
         if(viewModel.vezesSubsequentes()){
-            controlador.navigate(R.id.acao_onbordingfragment_para_teste)
+            controlador.navigate(R.id.acao_onbordingfragment_para_loginfragment)
         }
 
-        view.findViewById<Button>(R.id.login_comecar).setOnClickListener {
+        binding.loginComecar.setOnClickListener {
             viewModel.primeiraVez()
-            controlador.navigate(R.id.acao_onbordingfragment_para_teste)
+            controlador.navigate(R.id.acao_onbordingfragment_para_loginfragment)
         }
 
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
 }
