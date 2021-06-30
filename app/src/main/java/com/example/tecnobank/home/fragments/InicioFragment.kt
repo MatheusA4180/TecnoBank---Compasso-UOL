@@ -2,6 +2,7 @@ package com.example.tecnobank.home.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
@@ -11,6 +12,7 @@ import com.example.tecnobank.R
 import com.example.tecnobank.databinding.InicioFragmentBinding
 import com.example.tecnobank.databinding.OnboardingFragmentBinding
 import com.example.tecnobank.home.recyclerview.ListaVantagensAdapter
+import com.example.tecnobank.home.recyclerview.PagerDecorator
 
 class InicioFragment:Fragment() {
     private var _binding: InicioFragmentBinding? = null
@@ -28,6 +30,21 @@ class InicioFragment:Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding.listaVantagens.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL, false)
         binding.listaVantagens.adapter = ListaVantagensAdapter()
+
+        val decor = PagerDecorator()
+        binding.listaVantagens.addItemDecoration(decor)
+
+        binding.listaVantagens.addOnItemTouchListener(object: RecyclerView.OnItemTouchListener {
+            override fun onTouchEvent(rv: RecyclerView, e: MotionEvent) {
+            }
+
+            override fun onInterceptTouchEvent(rv: RecyclerView, motionEvent: MotionEvent): Boolean {
+                return decor.isIndicatorPressing(motionEvent, rv)
+            }
+
+            override fun onRequestDisallowInterceptTouchEvent(disallowIntercept: Boolean) {
+            }
+        })
 
     }
 

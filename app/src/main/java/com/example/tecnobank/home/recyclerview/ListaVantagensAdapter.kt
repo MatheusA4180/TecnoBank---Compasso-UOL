@@ -12,7 +12,7 @@ import com.example.tecnobank.R
 
 class ListaVantagensAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    val listadecores:List<String> = listOf("#000000","#000000","#000000","#000000","#000000","#000000")
+    val listadecores:List<String> = listOf("#ff0000","#00ff00","#0000ff","#00f0f0","#f0f000","#f000f0")
     val listadetitulos:List<String> =
         listOf("Maquininhas PagSeguro","Titulo 2","Titulo 3","Titulo 4","Titulo 5","Titulo 6")
     val listadedescricoes:List<String> =
