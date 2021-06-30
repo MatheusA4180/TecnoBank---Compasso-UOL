@@ -11,6 +11,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.tecnobank.databinding.LoginFragmentBinding
 import com.example.tecnobank.intro.viewmodel.LoginViewModel
+import com.example.tecnobank.intro.viewmodel.OnBoardingViewModel
+import com.example.tecnobank.intro.viewmodel.ViewModelFactory
 
 class loginFragment : Fragment() {
 
@@ -31,15 +33,16 @@ class loginFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
+        viewModel = ViewModelProvider(this,ViewModelFactory(requireContext())).get(
+            LoginViewModel::class.java)
 
-//        view.findViewById<Button>(R.id.login_entrar).setOnClickListener {
-//            val user = view.findViewById<EditText>(R.id.login_email).text.toString()
-//            val password = view.findViewById<EditText>(R.id.login_senha).text.toString()
-//
-//            if(true){
-//                mostraErro("Erro","Descrição do erro")
-//            }
+        binding.loginEntrar.setOnClickListener {
+            viewModel.onLoginClicked(binding.loginEmail.text.toString(),binding.loginSenha.text.toString())
+        }
+
+//        if (true) {
+//            mostraErro("Erro", "Descrição do erro")
+//        }
 
         prepararEntrarNaConta()
 

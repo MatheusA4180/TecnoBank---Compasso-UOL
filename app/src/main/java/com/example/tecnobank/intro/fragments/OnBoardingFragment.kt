@@ -15,9 +15,9 @@ import com.example.tecnobank.intro.viewmodel.ViewModelFactory
 
 class OnBoardingFragment : Fragment(){
 
-    private lateinit var viewModel: OnBoardingViewModel
     private var _binding: OnboardingFragmentBinding? = null
     private val binding: OnboardingFragmentBinding get() = _binding!!
+    private lateinit var viewModel: OnBoardingViewModel
     private val controlador by lazy {
         findNavController()
     }
