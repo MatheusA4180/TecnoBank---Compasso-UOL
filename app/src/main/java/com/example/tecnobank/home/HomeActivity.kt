@@ -30,18 +30,7 @@ class HomeActivity : AppCompatActivity() {
 
         bottomNavigationView.setupWithNavController(navController)
 
-//        val mResources = intArrayOf(
-//            R.drawable.first,
-//            R.drawable.second,
-//            R.drawable.third,
-//            R.drawable.fourth,
-//            R.drawable.fifth,
-//            R.drawable.sixth
-//        )
 
-        //val mCustomPagerAdapter = CustomPagerAdapter(this, mResources)
-
-        //binding.Pager.setAdapter(mCustomPagerAdapter)
 
     }
 
