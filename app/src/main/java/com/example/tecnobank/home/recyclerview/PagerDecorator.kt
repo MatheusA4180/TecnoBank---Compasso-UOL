@@ -16,7 +16,7 @@ class PagerDecorator: RecyclerView.ItemDecoration() {
 
     private val paintFill = Paint().apply {
         style = Paint.Style.FILL
-        color = Color.GRAY
+        color = Color.parseColor("#5cbd4c")
     }
 
     // save the center coordinates of all indicators
