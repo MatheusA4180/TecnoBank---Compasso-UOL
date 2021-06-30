@@ -4,6 +4,7 @@ import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
@@ -44,7 +45,7 @@ class ListaVantagensAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>() 
 
     class PostViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val banner: View = itemView.findViewById(R.id.banner_colorido)
-        val imagem: TextView = itemView.findViewById(R.id.imagem_vantagens)
+        val imagem: ImageView = itemView.findViewById(R.id.imagem_vantagens)
         val titulo: TextView = itemView.findViewById(R.id.titulo_vantagens)
         val descricao: TextView = itemView.findViewById(R.id.descricao_vantagens)
     }
