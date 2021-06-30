@@ -28,7 +28,6 @@ class loginFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
         _binding = LoginFragmentBinding.inflate(inflater, container, false)
         return _binding!!.root
     }

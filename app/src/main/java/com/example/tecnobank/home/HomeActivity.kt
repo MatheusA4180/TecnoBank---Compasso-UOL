@@ -1,21 +1,25 @@
 package com.example.tecnobank.home
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.Menu
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.example.tecnobank.R
+import com.example.tecnobank.databinding.HomeActivityBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
+
 
 class HomeActivity : AppCompatActivity() {
 
+    private var _binding: HomeActivityBinding? = null
+    private val binding: HomeActivityBinding get() = _binding!!
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.home_activity)
-
+        _binding = HomeActivityBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
         supportActionBar?.hide()
-        //setSupportActionBar(findViewById(R.id.toolbar))
 
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.navHostFragment) as NavHostFragment
@@ -26,10 +30,23 @@ class HomeActivity : AppCompatActivity() {
 
         bottomNavigationView.setupWithNavController(navController)
 
+//        val mResources = intArrayOf(
+//            R.drawable.first,
+//            R.drawable.second,
+//            R.drawable.third,
+//            R.drawable.fourth,
+//            R.drawable.fifth,
+//            R.drawable.sixth
+//        )
+
+        //val mCustomPagerAdapter = CustomPagerAdapter(this, mResources)
+
+        //binding.Pager.setAdapter(mCustomPagerAdapter)
+
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.appbar_menu, menu)
-        return true
-    }
+//    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+//        menuInflater.inflate(R.menu.appbar_menu, menu)
+//        return true
+//    }
 }
