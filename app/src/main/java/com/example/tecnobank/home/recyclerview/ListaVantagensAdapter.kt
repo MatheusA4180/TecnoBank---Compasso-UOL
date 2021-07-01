@@ -12,20 +12,18 @@ import com.example.tecnobank.R
 
 class ListaVantagensAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    val listadecores:List<String> = listOf("#ff0000","#00ff00","#0000ff","#00f0f0","#f0f000","#f000f0")
+    val listadecores:List<String> = listOf("#ff0000","#00ff00","#0000ff","#00f0f0")
     val listadetitulos:List<String> =
-        listOf("Maquininhas PagSeguro","Titulo 2","Titulo 3","Titulo 4","Titulo 5","Titulo 6")
+        listOf("Maquininhas PagSeguro","Titulo 2","Titulo 3","Titulo 4")
     val listadedescricoes:List<String> =
         listOf("Venda muito mais em até 18x e receba tudo na hora.Só no PagSeguro TecnoBank!",
             "Descrição da vantagem 2",
             "Descrição da vantagem 3",
-            "Descrição da vantagem 4",
-            "Descrição da vantagem 5",
-            "Descrição da vantagem 6")
+            "Descrição da vantagem 4")
 
 
     override fun getItemCount(): Int {
-        return 6
+        return 4
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {

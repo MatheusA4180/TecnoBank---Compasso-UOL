@@ -44,8 +44,6 @@ class PagerDecorator: RecyclerView.ItemDecoration() {
                 drawCircle(indicators[1].first, indicators[1].second)
                 drawCircle(indicators[2].first, indicators[2].second)
                 drawCircle(indicators[3].first, indicators[3].second)
-                drawCircle(indicators[4].first, indicators[4].second)
-                drawCircle(indicators[5].first, indicators[5].second)
             }
 
             val visibleItem = (parent.layoutManager as LinearLayoutManager)
@@ -61,8 +59,6 @@ class PagerDecorator: RecyclerView.ItemDecoration() {
                 1 -> canvas.drawCircle(indicators[1].first, indicators[1].second, true)
                 2 -> canvas.drawCircle(indicators[2].first, indicators[2].second, true)
                 3 -> canvas.drawCircle(indicators[3].first, indicators[3].second, true)
-                4 -> canvas.drawCircle(indicators[4].first, indicators[4].second, true)
-                5 -> canvas.drawCircle(indicators[5].first, indicators[5].second, true)
             }
         }
     }
@@ -75,15 +71,13 @@ class PagerDecorator: RecyclerView.ItemDecoration() {
         isInitialized = true
 
         val indicatorTotalWidth = indicatorRadius * 6 + indicatorPadding
-        val indicatorPosX = ((recyclerView.width - indicatorTotalWidth) / 2f) - 20f
+        val indicatorPosX = (((recyclerView.width - indicatorTotalWidth)) + 120f) / 2f
         val indicatorPosY = recyclerView.height - (indicatorRadius * 6 / 2f)
 
         indicators.add(indicatorPosX to indicatorPosY)
         indicators.add((indicatorPosX + indicatorRadius * 3) to indicatorPosY)
         indicators.add((indicatorPosX + indicatorRadius * 6) to indicatorPosY)
         indicators.add((indicatorPosX + indicatorRadius * 9) to indicatorPosY)
-        indicators.add((indicatorPosX + indicatorRadius * 12) to indicatorPosY)
-        indicators.add((indicatorPosX + indicatorRadius * 15) to indicatorPosY)
     }
 
     private fun checkIfIndicatorPressing(touchX: Float, touchY: Float): Int?{
