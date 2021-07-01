@@ -36,6 +36,11 @@ class loginFragment : Fragment() {
         viewModel = ViewModelProvider(this,ViewModelFactory(requireContext())).get(
             LoginViewModel::class.java)
 
+
+        viewModel.teste.observe(viewLifecycleOwner,{
+
+        })
+
         binding.loginEntrar.setOnClickListener {
             viewModel.onLoginClicked(binding.loginEmail.text.toString(),binding.loginSenha.text.toString())
         }
