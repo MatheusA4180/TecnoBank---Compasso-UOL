@@ -11,7 +11,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.tecnobank.databinding.LoginFragmentBinding
 import com.example.tecnobank.intro.viewmodel.LoginViewModel
-import com.example.tecnobank.intro.viewmodel.OnBoardingViewModel
 import com.example.tecnobank.intro.viewmodel.ViewModelFactory
 
 class loginFragment : Fragment() {
@@ -33,31 +32,35 @@ class loginFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = ViewModelProvider(this,ViewModelFactory(requireContext())).get(
-            LoginViewModel::class.java)
+        viewModel = ViewModelProvider(this, ViewModelFactory(requireContext())).get(
+            LoginViewModel::class.java
+        )
 
+        viewModel.sucesso.observe(viewLifecycleOwner, {
+            mostraInfo("Login efetuado com sucesso!")
 
-        viewModel.teste.observe(viewLifecycleOwner,{
+        })
+
+        viewModel.erro.observe(viewLifecycleOwner, {
+            mostraInfo(it)
 
         })
 
         binding.loginEntrar.setOnClickListener {
-            viewModel.onLoginClicked(binding.loginEmail.text.toString(),binding.loginSenha.text.toString())
+
+            viewModel.onLoginClicked(
+                binding.loginEmail.text.toString(),
+                binding.loginSenha.text.toString()
+            )
         }
 
-//        if (true) {
-//            mostraErro("Erro", "Descrição do erro")
-//        }
-
-        prepararEntrarNaConta()
-
+        //prepararEntrarNaConta()
     }
 
-    fun mostraErro(titulo: String?, mensagem: String?) {
+    fun mostraInfo(titulo: String?) {
         val builder: AlertDialog.Builder = AlertDialog.Builder(requireContext())
         builder.setCancelable(true)
         builder.setTitle(titulo)
-        builder.setMessage(mensagem)
         builder.show()
     }
 

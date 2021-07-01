@@ -14,8 +14,8 @@ class LoginRepository(val endPoint: EndPoint) {
         {
             return response.body()!!
         }
-        else if(response.code()==401)
-        {
+        else if(response.code()==401)        {
+
             throw Exception("E-mail ou senha inválida.")
         }
         else if(response.code()==404)

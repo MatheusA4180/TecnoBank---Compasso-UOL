@@ -6,23 +6,27 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.tecnobank.intro.data.remote.model.login.LoginResponse
 import com.example.tecnobank.intro.repository.LoginRepository
 import kotlinx.coroutines.launch
 
 class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel() {
 
-    private val _teste = MutableLiveData<Int>()
-    val teste: LiveData<Int> = _teste
+    private val _sucesso = MutableLiveData<LoginResponse>()
+    val sucesso: LiveData<LoginResponse> = _sucesso
+
+    private val _erro = MutableLiveData<String>()
+    val erro:LiveData<String> = _erro
 
     fun onLoginClicked(email:String,senha:String){
         viewModelScope.launch {
             try{
                 val loginResponse = loginRepository.login(email, senha)
-                _teste.postValue(1)
-                //Tratar fluxo sucesso!
+                _sucesso.postValue(loginResponse)
+
             }
             catch (e:Exception){
-                //tratar fluxo de erro!
+                _erro.postValue(e.message)
             }
         }
     }
