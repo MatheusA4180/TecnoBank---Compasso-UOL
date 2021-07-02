@@ -9,6 +9,8 @@ import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
+import com.example.tecnobank.R
 import com.example.tecnobank.databinding.LoginFragmentBinding
 import com.example.tecnobank.intro.viewmodel.LoginViewModel
 import com.example.tecnobank.intro.viewmodel.SaveUserViewModel
@@ -53,6 +55,8 @@ class loginFragment : Fragment() {
 
         viewModel.sucesso.observe(viewLifecycleOwner, {
             mostraInfo("Login efetuado com sucesso!")
+            findNavController().navigate(R.id.acao_loginfragment_to_homeactivity)
+            it.tokenAuthentication//levar ele para a InicialFragment
         })
 
         viewModel.erro.observe(viewLifecycleOwner, {

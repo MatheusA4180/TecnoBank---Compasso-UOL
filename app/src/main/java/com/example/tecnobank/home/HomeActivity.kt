@@ -17,8 +17,7 @@ class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         _binding = HomeActivityBinding.inflate(layoutInflater)
-        val view = binding.root
-        setContentView(view)
+        setContentView(binding.root)
         supportActionBar?.hide()
 
         val navHostFragment =
@@ -30,12 +29,6 @@ class HomeActivity : AppCompatActivity() {
 
         bottomNavigationView.setupWithNavController(navController)
 
-
-
     }
 
-//    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-//        menuInflater.inflate(R.menu.appbar_menu, menu)
-//        return true
-//    }
 }
