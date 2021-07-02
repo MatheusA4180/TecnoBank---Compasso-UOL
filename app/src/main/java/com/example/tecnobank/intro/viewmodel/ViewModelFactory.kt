@@ -8,10 +8,14 @@ import com.example.tecnobank.R
 import com.example.tecnobank.intro.data.remote.EndPoint
 import com.example.tecnobank.intro.repository.LoginRepository
 import com.example.tecnobank.intro.repository.OnBoardingRepository
+import com.example.tecnobank.intro.repository.SplashRepository
 import java.lang.Exception
 
 class ViewModelFactory(private val context: Context): ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+        if(modelClass== SplashViewModel::class.java){
+            return providerSplashViewModel() as T
+        }
         if(modelClass== OnBoardingViewModel::class.java){
             return providerOnBoardingViewModel() as T
         }
@@ -19,6 +23,10 @@ class ViewModelFactory(private val context: Context): ViewModelProvider.Factory 
             return providerLoginViewModel() as T
         }
         throw Exception("ViewModel não encotrado")
+    }
+
+    private fun providerSplashViewModel(): SplashViewModel {
+        return SplashViewModel(SplashRepository(providerSharedPreference()))
     }
 
     private fun providerOnBoardingViewModel(): OnBoardingViewModel {

@@ -27,5 +27,8 @@
         <action
             android:id="@+id/acao_splashfragment_para_onbordingfragment"
             app:destination="@id/onbordingfragment" />
+        <action
+            android:id="@+id/acao_splashfragment_para_loginfragment"
+            app:destination="@id/loginfragment" />
     </fragment>
 </navigation>

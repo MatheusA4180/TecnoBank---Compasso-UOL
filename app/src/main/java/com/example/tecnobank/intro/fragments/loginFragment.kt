@@ -38,7 +38,6 @@ class loginFragment : Fragment() {
 
         viewModel.sucesso.observe(viewLifecycleOwner, {
             mostraInfo("Login efetuado com sucesso!")
-
         })
 
         viewModel.erro.observe(viewLifecycleOwner, {
@@ -47,49 +46,19 @@ class loginFragment : Fragment() {
         })
 
         binding.loginEntrar.setOnClickListener {
-
             viewModel.onLoginClicked(
                 binding.loginEmail.text.toString(),
                 binding.loginSenha.text.toString()
             )
         }
-
-        //prepararEntrarNaConta()
     }
 
     fun mostraInfo(titulo: String?) {
-        val builder: AlertDialog.Builder = AlertDialog.Builder(requireContext())
-        builder.setCancelable(true)
-        builder.setTitle(titulo)
-        builder.show()
-    }
-
-    fun prepararEntrarNaConta() {
-        val button: Button = binding.loginEntrar
-        button.setOnClickListener {
-            preencher()
-        }
-    }
-
-    fun preencher() {
-        val email: String = binding.loginEmail.text.toString() //campoEmail?.text.toString()
-        val senha: String = binding.loginSenha.text.toString()
-        validar(email, senha)
-    }
-
-    fun isCampoVazio(valor: String): Boolean {
-        return !(TextUtils.isEmpty(valor))
-    }
-
-    fun validar(email: String, senha: String) {
-        if (!isCampoVazio(email)) {
-            binding.loginEmail.error = "CPF, CNPJ ou Email não preenchido!";
-            binding.loginEmail.requestFocus();
-        }
-        if (!isCampoVazio(senha)) {
-            binding.loginSenha.error = "Senha não preenchida!";
-            binding.loginSenha.requestFocus();
-        }
+        AlertDialog.Builder(requireContext())
+            .setCancelable(true)
+            .setTitle(titulo)
+            .setMessage("")
+            .show()
     }
 
     override fun onDestroyView() {
