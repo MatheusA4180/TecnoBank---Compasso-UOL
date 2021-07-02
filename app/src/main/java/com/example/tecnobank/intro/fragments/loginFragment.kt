@@ -19,7 +19,7 @@ class loginFragment : Fragment() {
     private var _binding: LoginFragmentBinding? = null
     private val binding: LoginFragmentBinding get() = _binding!!
     private lateinit var viewModel: LoginViewModel
-    private lateinit var viewModel2: SaveUserViewModel
+    private lateinit var viewModelSave: SaveUserViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -37,14 +37,17 @@ class loginFragment : Fragment() {
         viewModel = ViewModelProvider(this, ViewModelFactory(requireContext())).get(
             LoginViewModel::class.java
         )
-        viewModel2 = ViewModelProvider(this, ViewModelFactory(requireContext())).get(
+        viewModelSave = ViewModelProvider(this, ViewModelFactory(requireContext())).get(
             SaveUserViewModel::class.java
         )
 
         var openloginscreen = true
         if(openloginscreen){
-            binding.loginEmail.setText(viewModel2.getEmail())
-            binding.loginSenha.setText(viewModel2.getPassword())
+            binding.loginEmail.setText(viewModelSave.getEmail())
+            binding.loginSenha.setText(viewModelSave.getPassword())
+            if((binding.loginEmail.text.toString() != "")||(binding.loginSenha.text.toString()!="")){
+                binding.remeberLogin.toggle()
+            }
             openloginscreen = false
         }
 
@@ -58,10 +61,10 @@ class loginFragment : Fragment() {
         
         binding.remeberLogin.setOnCheckedChangeListener { _ , isChecked ->
             if(isChecked){
-                viewModel2.saveLogin(binding.loginEmail.text.toString(),
+                viewModelSave.saveLogin(binding.loginEmail.text.toString(),
                     binding.loginSenha.text.toString())
             }else{
-                viewModel2.deleteLogin()
+                viewModelSave.deleteLogin()
             }
         }
         
