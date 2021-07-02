@@ -93,6 +93,3 @@ class loginFragment : Fragment() {
         _binding = null
     }
 }
-
-
-

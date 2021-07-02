@@ -7,11 +7,13 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.Body
 import retrofit2.http.GET
+import retrofit2.http.Header
+import retrofit2.http.Headers
 
 interface EndPointHome {
     @GET("home")
     //falta headers
-    suspend fun saldoeBeneficios(@Body token:TokenAuthentication): Response<BalanceBenefits>
+    suspend fun saldoeBeneficios(@Header("token") token:TokenAuthentication): Response<BalanceBenefits>
 
     companion object {
 

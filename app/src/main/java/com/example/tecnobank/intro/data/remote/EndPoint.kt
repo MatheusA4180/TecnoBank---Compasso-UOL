@@ -21,5 +21,4 @@ interface EndPoint {
                 .build().create(EndPoint::class.java)
         }
     }
-
 }
