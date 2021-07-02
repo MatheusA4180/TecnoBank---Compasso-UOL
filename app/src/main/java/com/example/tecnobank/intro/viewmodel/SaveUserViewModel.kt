@@ -10,7 +10,12 @@ class SaveUserViewModel(private val repository: SaveUserRepository):ViewModel() 
         repository.saveUserLogin(email,senha)
     }
 
+    fun deleteLogin() {
+        repository.deleteUserLogin()
+    }
+
     fun getEmail():String = repository.getUserEmail().toString()
 
     fun getPassword():String = repository.getUserPassword().toString()
+
 }

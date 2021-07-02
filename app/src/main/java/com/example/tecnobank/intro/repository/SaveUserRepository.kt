@@ -1,7 +1,6 @@
 package com.example.tecnobank.intro.repository
 
 import android.content.SharedPreferences
-import android.provider.Telephony.Carriers.PASSWORD
 import androidx.core.content.edit
 
 class SaveUserRepository(private val preferences: SharedPreferences) {
@@ -19,9 +18,15 @@ class SaveUserRepository(private val preferences: SharedPreferences) {
         }
     }
 
+    fun deleteUserLogin() {
+        preferences.edit {
+            putString(SaveUserRepository.USER, "")
+            putString(SaveUserRepository.PASSWORD, "")
+        }
+    }
+
     fun getUserEmail():String? = preferences.getString(SaveUserRepository.USER, "")
 
     fun getUserPassword():String? = preferences.getString(SaveUserRepository.USER, "")
-
 
 }

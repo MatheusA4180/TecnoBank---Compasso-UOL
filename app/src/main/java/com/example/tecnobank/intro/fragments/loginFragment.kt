@@ -54,13 +54,14 @@ class loginFragment : Fragment() {
 
         viewModel.erro.observe(viewLifecycleOwner, {
             mostraInfo(it)
-
         })
         
         binding.remeberLogin.setOnCheckedChangeListener { _ , isChecked ->
             if(isChecked){
                 viewModel2.saveLogin(binding.loginEmail.text.toString(),
                     binding.loginSenha.text.toString())
+            }else{
+                viewModel2.deleteLogin()
             }
         }
         
