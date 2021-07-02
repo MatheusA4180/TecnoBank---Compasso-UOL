@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.tecnobank.databinding.LoginFragmentBinding
 import com.example.tecnobank.intro.viewmodel.LoginViewModel
+import com.example.tecnobank.intro.viewmodel.SaveUserViewModel
 import com.example.tecnobank.intro.viewmodel.ViewModelFactory
 
 class loginFragment : Fragment() {
@@ -18,6 +19,7 @@ class loginFragment : Fragment() {
     private var _binding: LoginFragmentBinding? = null
     private val binding: LoginFragmentBinding get() = _binding!!
     private lateinit var viewModel: LoginViewModel
+    private lateinit var viewModel2: SaveUserViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -35,6 +37,16 @@ class loginFragment : Fragment() {
         viewModel = ViewModelProvider(this, ViewModelFactory(requireContext())).get(
             LoginViewModel::class.java
         )
+        viewModel2 = ViewModelProvider(this, ViewModelFactory(requireContext())).get(
+            SaveUserViewModel::class.java
+        )
+
+        var openloginscreen = true
+        if(openloginscreen){
+            binding.loginEmail.setText(viewModel2.getEmail())
+            binding.loginSenha.setText(viewModel2.getPassword())
+            openloginscreen = false
+        }
 
         viewModel.sucesso.observe(viewLifecycleOwner, {
             mostraInfo("Login efetuado com sucesso!")
@@ -44,7 +56,14 @@ class loginFragment : Fragment() {
             mostraInfo(it)
 
         })
-
+        
+        binding.remeberLogin.setOnCheckedChangeListener { _ , isChecked ->
+            if(isChecked){
+                viewModel2.saveLogin(binding.loginEmail.text.toString(),
+                    binding.loginSenha.text.toString())
+            }
+        }
+        
         binding.loginEntrar.setOnClickListener {
             viewModel.onLoginClicked(
                 binding.loginEmail.text.toString(),
