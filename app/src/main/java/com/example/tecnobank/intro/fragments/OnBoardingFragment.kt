@@ -13,7 +13,7 @@ import com.example.tecnobank.intro.viewmodel.OnBoardingViewModel
 import com.example.tecnobank.intro.viewmodel.ViewModelFactory
 
 
-class OnBoardingFragment : Fragment(){
+class OnBoardingFragment : Fragment() {
 
     private var _binding: OnboardingFragmentBinding? = null
     private val binding: OnboardingFragmentBinding get() = _binding!!
@@ -23,7 +23,7 @@ class OnBoardingFragment : Fragment(){
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = OnboardingFragmentBinding.inflate(inflater, container, false)
         return _binding!!.root
     }
@@ -32,16 +32,15 @@ class OnBoardingFragment : Fragment(){
         super.onViewCreated(view, savedInstanceState)
 
         viewModel = ViewModelProvider(this, ViewModelFactory(requireContext())).get(
-            OnBoardingViewModel::class.java)
+            OnBoardingViewModel::class.java
+        )
 
         binding.loginComecar.setOnClickListener {
-            viewModel.firstTime()
+            viewModel.onClickedOnBording()
         }
 
-        viewModel.firsttime.observe(viewLifecycleOwner,{
-            if(it){
-                findNavController().navigate(R.id.acao_onbordingfragment_para_loginfragment)
-            }
+        viewModel.goToLogin.observe(viewLifecycleOwner, {
+            findNavController().navigate(R.id.acao_onbordingfragment_para_loginfragment)
         })
     }
 
@@ -49,5 +48,4 @@ class OnBoardingFragment : Fragment(){
         super.onDestroyView()
         _binding = null
     }
-
 }

@@ -10,16 +10,15 @@ import com.example.tecnobank.intro.repository.OnBoardingRepository
 import kotlinx.coroutines.launch
 
 
-class OnBoardingViewModel(private val repository: OnBoardingRepository) : ViewModel(){
-    private val _firsttime = MutableLiveData<Boolean>()
-    val firsttime: LiveData<Boolean> = _firsttime
+class OnBoardingViewModel(private val repository: OnBoardingRepository) : ViewModel() {
+    private val _goToLogin = MutableLiveData<Unit>()
+    val goToLogin: LiveData<Unit> = _goToLogin
 
-    fun firstTime(){
+    fun onClickedOnBording() {
         viewModelScope.launch {
-            val response = repository.saveUserPassOnboarding()
-            _firsttime.postValue(response)
+            repository.saveUserPassOnboarding()
+            val retorno = Unit
+            _goToLogin.postValue(retorno)
         }
     }
-
-
 }

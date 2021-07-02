@@ -2,16 +2,13 @@ package com.example.tecnobank.intro.fragments
 
 import android.app.AlertDialog
 import android.os.Bundle
-import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.tecnobank.databinding.LoginFragmentBinding
 import com.example.tecnobank.intro.viewmodel.LoginViewModel
-import com.example.tecnobank.intro.viewmodel.SaveUserViewModel
 import com.example.tecnobank.intro.viewmodel.ViewModelFactory
 
 class loginFragment : Fragment() {
@@ -19,7 +16,6 @@ class loginFragment : Fragment() {
     private var _binding: LoginFragmentBinding? = null
     private val binding: LoginFragmentBinding get() = _binding!!
     private lateinit var viewModel: LoginViewModel
-    private lateinit var viewModelSave: SaveUserViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -31,25 +27,21 @@ class loginFragment : Fragment() {
         return _binding!!.root
     }
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this, ViewModelFactory(requireContext())).get(
             LoginViewModel::class.java
         )
-        viewModelSave = ViewModelProvider(this, ViewModelFactory(requireContext())).get(
-            SaveUserViewModel::class.java
-        )
 
-        var openloginscreen = true
-        if(openloginscreen){
-            binding.loginEmail.setText(viewModelSave.getEmail())
-            binding.loginSenha.setText(viewModelSave.getPassword())
-            if((binding.loginEmail.text.toString() != "")||(binding.loginSenha.text.toString()!="")){
-                binding.remeberLogin.toggle()
-            }
-            openloginscreen = false
-        }
+        binding.loginEmail.setText(viewModel.getEmail())
+        binding.loginSenha.setText(viewModel.getPassword())
+
+        viewModel.initEmptyFields(binding.loginEmail.text.toString(),
+            binding.loginSenha.text.toString())
+
+        viewModel.emptyFields.observe(viewLifecycleOwner, {
+            binding.remeberLogin.toggle()
+        })
 
         viewModel.sucesso.observe(viewLifecycleOwner, {
             mostraInfo("Login efetuado com sucesso!")
@@ -61,10 +53,12 @@ class loginFragment : Fragment() {
         
         binding.remeberLogin.setOnCheckedChangeListener { _ , isChecked ->
             if(isChecked){
-                viewModelSave.saveLogin(binding.loginEmail.text.toString(),
-                    binding.loginSenha.text.toString())
+                viewModel.onSwitchChecked(
+                    binding.loginEmail.text.toString(),
+                    binding.loginSenha.text.toString()
+                )
             }else{
-                viewModelSave.deleteLogin()
+                viewModel.offSwitchChecked()
             }
         }
         
@@ -88,7 +82,5 @@ class loginFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+
 }
-
-
-

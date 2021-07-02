@@ -12,5 +12,3 @@ data class LoginResponse(
         val firstName: String
     )
 }
-
-

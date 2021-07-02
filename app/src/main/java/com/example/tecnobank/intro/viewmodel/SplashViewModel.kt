@@ -1,12 +1,27 @@
 package com.example.tecnobank.intro.viewmodel
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.tecnobank.intro.repository.SplashRepository
 
 class SplashViewModel(private val repository: SplashRepository):ViewModel() {
 
-    fun hasPassed():Boolean{
-        return repository.passed()
+    private val _splashToOnBoarding = MutableLiveData<Unit>()
+    val splashToOnBoarding: LiveData<Unit> = _splashToOnBoarding
+    private val _splashToLogin = MutableLiveData<Unit>()
+    val splashToLogin: LiveData<Unit> = _splashToLogin
+
+
+    fun initSplash() {
+        if (hasPassed()) {
+            _splashToLogin.postValue(Unit)
+        } else {
+            _splashToOnBoarding.postValue(Unit)
+        }
     }
 
+    fun hasPassed(): Boolean {
+        return repository.passed()
+    }
 }

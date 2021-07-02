@@ -19,7 +19,7 @@ class SplashFragment : Fragment() {
 
     private var _binding: SplashFragmentBinding? = null
     private val binding: SplashFragmentBinding get() = _binding!!
-    private lateinit var viewModel:SplashViewModel
+    private lateinit var viewModel: SplashViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -33,16 +33,18 @@ class SplashFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         viewModel = ViewModelProvider(this, ViewModelFactory(requireContext())).get(
-            SplashViewModel::class.java)
+            SplashViewModel::class.java
+        )
 
-        if(viewModel.hasPassed()) {
-            Handler().postDelayed(Runnable {
-                findNavController().navigate(R.id.acao_splashfragment_para_loginfragment) },
-                3000)
-        }else{
-            Handler().postDelayed(Runnable {
-                findNavController().navigate(R.id.acao_splashfragment_para_onbordingfragment) },
-                3000)
-        }
+        viewModel.initSplash()
+
+        Handler().postDelayed(Runnable {
+            viewModel.splashToOnBoarding.observe(viewLifecycleOwner, {
+                findNavController().navigate(R.id.acao_splashfragment_para_onbordingfragment)
+            })
+            viewModel.splashToLogin.observe(viewLifecycleOwner, {
+                findNavController().navigate(R.id.acao_splashfragment_para_loginfragment)
+            })
+        }, 3000)
     }
 }
