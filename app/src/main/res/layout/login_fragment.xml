@@ -33,7 +33,7 @@
         app:layout_constraintTop_toBottomOf="@+id/login_email" />
 
     <Switch
-        android:id="@+id/switch1"
+        android:id="@+id/remeber_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -47,7 +47,7 @@
         android:text="Lembrar minha conta"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="@+id/login_senha"
-        app:layout_constraintTop_toTopOf="@+id/switch1" />
+        app:layout_constraintTop_toTopOf="@+id/remeber_login" />
 
     <TextView
         android:id="@+id/textView2"

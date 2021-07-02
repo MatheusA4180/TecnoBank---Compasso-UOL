@@ -4,16 +4,15 @@ import android.content.SharedPreferences
 import androidx.core.content.edit
 
 class OnBoardingRepository(private val preferences: SharedPreferences) {
-    fun entrou() {
+    fun saveUserPassOnboarding():Boolean {
         preferences.edit {
-            putBoolean(CHAVE_PASS, true)
+            putBoolean(KEY_PASS, true)
         }
+        return true
     }
 
-    fun jaentrou(): Boolean = preferences.getBoolean(CHAVE_PASS, false)
-
     companion object{
-        private const val CHAVE_PASS = "Passou"
+        private const val KEY_PASS = "Passou"
     }
 
 }

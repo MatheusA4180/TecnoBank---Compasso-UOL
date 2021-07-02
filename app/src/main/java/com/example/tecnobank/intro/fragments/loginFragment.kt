@@ -9,25 +9,24 @@ import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
-import com.example.tecnobank.R
 import com.example.tecnobank.databinding.LoginFragmentBinding
 import com.example.tecnobank.intro.viewmodel.LoginViewModel
+import com.example.tecnobank.intro.viewmodel.SaveUserViewModel
+import com.example.tecnobank.intro.viewmodel.ViewModelFactory
 
 class loginFragment : Fragment() {
 
     private var _binding: LoginFragmentBinding? = null
     private val binding: LoginFragmentBinding get() = _binding!!
     private lateinit var viewModel: LoginViewModel
-    private val controlador by lazy {
-        findNavController()
-    }
+    private lateinit var viewModelSave: SaveUserViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+
         _binding = LoginFragmentBinding.inflate(inflater, container, false)
         return _binding!!.root
     }
@@ -35,57 +34,54 @@ class loginFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
+        viewModel = ViewModelProvider(this, ViewModelFactory(requireContext())).get(
+            LoginViewModel::class.java
+        )
+        viewModelSave = ViewModelProvider(this, ViewModelFactory(requireContext())).get(
+            SaveUserViewModel::class.java
+        )
 
+        var openloginscreen = true
+        if(openloginscreen){
+            binding.loginEmail.setText(viewModelSave.getEmail())
+            binding.loginSenha.setText(viewModelSave.getPassword())
+            if((binding.loginEmail.text.toString() != "")||(binding.loginSenha.text.toString()!="")){
+                binding.remeberLogin.toggle()
+            }
+            openloginscreen = false
+        }
+
+        viewModel.sucesso.observe(viewLifecycleOwner, {
+            mostraInfo("Login efetuado com sucesso!")
+        })
+
+        viewModel.erro.observe(viewLifecycleOwner, {
+            mostraInfo(it)
+        })
+        
+        binding.remeberLogin.setOnCheckedChangeListener { _ , isChecked ->
+            if(isChecked){
+                viewModelSave.saveLogin(binding.loginEmail.text.toString(),
+                    binding.loginSenha.text.toString())
+            }else{
+                viewModelSave.deleteLogin()
+            }
+        }
+        
         binding.loginEntrar.setOnClickListener {
-            controlador.navigate(R.id.acao_loginfragment_to_homeactivity)
-        }
-//        view.findViewById<Button>(R.id.login_entrar).setOnClickListener {
-//            val user = view.findViewById<EditText>(R.id.login_email).text.toString()
-//            val password = view.findViewById<EditText>(R.id.login_senha).text.toString()
-//
-//            if(true){
-//                mostraErro("Erro","Descrição do erro")
-//            }
-
-        //prepararEntrarNaConta()
-
-    }
-
-    fun mostraErro(titulo: String?, mensagem: String?) {
-        val builder: AlertDialog.Builder = AlertDialog.Builder(requireContext())
-        builder.setCancelable(true)
-        builder.setTitle(titulo)
-        builder.setMessage(mensagem)
-        builder.show()
-    }
-
-    fun prepararEntrarNaConta() {
-        val button: Button = binding.loginEntrar
-        button.setOnClickListener {
-            preencher()
+            viewModel.onLoginClicked(
+                binding.loginEmail.text.toString(),
+                binding.loginSenha.text.toString()
+            )
         }
     }
 
-    fun preencher() {
-        val email: String = binding.loginEmail.text.toString() //campoEmail?.text.toString()
-        val senha: String = binding.loginSenha.text.toString()
-        validar(email, senha)
-    }
-
-    fun isCampoVazio(valor: String): Boolean {
-        return !(TextUtils.isEmpty(valor))
-    }
-
-    fun validar(email: String, senha: String) {
-        if (!isCampoVazio(email)) {
-            binding.loginEmail.error = "CPF, CNPJ ou Email não preenchido!";
-            binding.loginEmail.requestFocus();
-        }
-        if (!isCampoVazio(senha)) {
-            binding.loginSenha.error = "Senha não preenchida!";
-            binding.loginSenha.requestFocus();
-        }
+    fun mostraInfo(titulo: String?) {
+        AlertDialog.Builder(requireContext())
+            .setCancelable(true)
+            .setTitle(titulo)
+            .setMessage("")
+            .show()
     }
 
     override fun onDestroyView() {

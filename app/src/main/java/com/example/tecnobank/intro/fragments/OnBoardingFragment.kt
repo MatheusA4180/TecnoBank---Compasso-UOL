@@ -15,12 +15,9 @@ import com.example.tecnobank.intro.viewmodel.ViewModelFactory
 
 class OnBoardingFragment : Fragment(){
 
-    private lateinit var viewModel: OnBoardingViewModel
     private var _binding: OnboardingFragmentBinding? = null
     private val binding: OnboardingFragmentBinding get() = _binding!!
-    private val controlador by lazy {
-        findNavController()
-    }
+    private lateinit var viewModel: OnBoardingViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -37,15 +34,15 @@ class OnBoardingFragment : Fragment(){
         viewModel = ViewModelProvider(this, ViewModelFactory(requireContext())).get(
             OnBoardingViewModel::class.java)
 
-        if(viewModel.vezesSubsequentes()){
-            controlador.navigate(R.id.acao_onbordingfragment_para_loginfragment)
-        }
-
         binding.loginComecar.setOnClickListener {
-            viewModel.primeiraVez()
-            controlador.navigate(R.id.acao_onbordingfragment_para_loginfragment)
+            viewModel.firstTime()
         }
 
+        viewModel.firsttime.observe(viewLifecycleOwner,{
+            if(it){
+                findNavController().navigate(R.id.acao_onbordingfragment_para_loginfragment)
+            }
+        })
     }
 
     override fun onDestroyView() {
