@@ -27,6 +27,6 @@ class SaveUserRepository(private val preferences: SharedPreferences) {
 
     fun getUserEmail():String? = preferences.getString(SaveUserRepository.USER, "")
 
-    fun getUserPassword():String? = preferences.getString(SaveUserRepository.USER, "")
+    fun getUserPassword():String? = preferences.getString(SaveUserRepository.PASSWORD, "")
 
 }
