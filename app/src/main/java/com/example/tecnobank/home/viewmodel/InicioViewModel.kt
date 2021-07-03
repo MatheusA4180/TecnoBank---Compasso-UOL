@@ -16,10 +16,10 @@ class InicioViewModel(private val inicioRepository: InicioRepository):ViewModel(
     private val _erro = MutableLiveData<String>()
     val erro:LiveData<String> = _erro
 
-    fun onOpenHome(token:String){
+    fun onOpenHome(){
         viewModelScope.launch {
             try{
-                val Response = inicioRepository.saldoeBeneficios(token)
+                val Response = inicioRepository.saldoeBeneficios(getToken())
                 _sucesso.postValue(Response)
             }
             catch (e:Exception){
@@ -27,5 +27,7 @@ class InicioViewModel(private val inicioRepository: InicioRepository):ViewModel(
             }
         }
     }
+
+    fun getToken(): String = inicioRepository.getTokenAuthentication().toString()
 
 }

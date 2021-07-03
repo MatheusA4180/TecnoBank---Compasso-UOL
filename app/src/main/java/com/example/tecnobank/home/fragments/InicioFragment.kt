@@ -36,17 +36,13 @@ class InicioFragment:Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
-        viewModel = ViewModelProvider(this, ViewModelFactoryHome()).get(InicioViewModel::class.java)
+        viewModel = ViewModelProvider(this, ViewModelFactoryHome(requireContext())).get(InicioViewModel::class.java)
 
-        var aberturaHome = true
-        if(aberturaHome) {
-            viewModel.onOpenHome("")
-            aberturaHome = false
-        }
+        viewModel.onOpenHome()
 
         viewModel.sucesso.observe(viewLifecycleOwner, {
             mostraInfo("Response recebida com sucesso!")
-            binding.valorSaldo.text = it.balance.current_value
+            binding.valorSaldo.text = it.balance.currentValue
             binding.valorVendas.text = it.balance.receivables
         })
 
