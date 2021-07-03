@@ -13,8 +13,7 @@ interface EndPoint {
     suspend fun login(@Body loginPayload: LoginPayload): Response<LoginResponse>
 
     companion object {
-
-        fun getRetrofitInstance() : EndPoint {
+        fun getRetrofitInstance(): EndPoint {
             return Retrofit.Builder()
                 .baseUrl("https://us-central1-programa-de-bolsas---puc-2021.cloudfunctions.net/api/")
                 .addConverterFactory(GsonConverterFactory.create())

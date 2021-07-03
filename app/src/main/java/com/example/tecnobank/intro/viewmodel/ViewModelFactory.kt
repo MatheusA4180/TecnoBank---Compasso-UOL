@@ -5,12 +5,11 @@ import android.content.SharedPreferences
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.tecnobank.R
+import com.example.tecnobank.intro.data.local.SharedPreferenceServices
 import com.example.tecnobank.intro.data.remote.EndPoint
 import com.example.tecnobank.intro.repository.LoginRepository
 import com.example.tecnobank.intro.repository.OnBoardingRepository
-import com.example.tecnobank.intro.repository.SaveUserRepository
 import com.example.tecnobank.intro.repository.SplashRepository
-import java.lang.Exception
 
 class ViewModelFactory(private val context: Context): ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
@@ -23,29 +22,43 @@ class ViewModelFactory(private val context: Context): ViewModelProvider.Factory 
         if(modelClass== LoginViewModel::class.java){
             return providerLoginViewModel() as T
         }
-        if(modelClass== SaveUserViewModel::class.java){
-            return providerSaveUserViewModel() as T
-        }
         throw Exception("ViewModel não encotrado")
     }
 
-    private fun providerSaveUserViewModel(): SaveUserViewModel {
-        return SaveUserViewModel(SaveUserRepository(providerSharedPreference()))
-    }
-
     private fun providerSplashViewModel(): SplashViewModel {
-        return SplashViewModel(SplashRepository(providerSharedPreference()))
+        return SplashViewModel(
+            SplashRepository(
+                providerSharedPreferenceService(
+                    providerSharedPreference()
+                )
+            )
+        )
     }
 
     private fun providerOnBoardingViewModel(): OnBoardingViewModel {
-        return OnBoardingViewModel(OnBoardingRepository(providerSharedPreference()))
+        return OnBoardingViewModel(
+            OnBoardingRepository(
+                providerSharedPreferenceService(
+                    providerSharedPreference()
+                )
+            )
+        )
     }
 
-    private fun providerLoginViewModel(): LoginViewModel{
-        return LoginViewModel(LoginRepository(providerRetrofitInstance()))
+    private fun providerLoginViewModel(): LoginViewModel {
+        return LoginViewModel(
+            LoginRepository(
+                providerRetrofitInstance(),
+                providerSharedPreferenceService(providerSharedPreference())
+            )
+        )
     }
 
-    private fun providerRetrofitInstance():EndPoint {
+    private fun providerSharedPreferenceService(preferences: SharedPreferences): SharedPreferenceServices {
+        return SharedPreferenceServices(preferences)
+    }
+
+    private fun providerRetrofitInstance(): EndPoint {
         return EndPoint.getRetrofitInstance()
     }
 

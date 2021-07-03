@@ -9,9 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.tecnobank.R
-import com.example.tecnobank.databinding.OnboardingFragmentBinding
 import com.example.tecnobank.databinding.SplashFragmentBinding
-import com.example.tecnobank.intro.viewmodel.OnBoardingViewModel
 import com.example.tecnobank.intro.viewmodel.SplashViewModel
 import com.example.tecnobank.intro.viewmodel.ViewModelFactory
 
@@ -19,7 +17,7 @@ class SplashFragment : Fragment() {
 
     private var _binding: SplashFragmentBinding? = null
     private val binding: SplashFragmentBinding get() = _binding!!
-    private lateinit var viewModel:SplashViewModel
+    private lateinit var viewModel: SplashViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -33,16 +31,19 @@ class SplashFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         viewModel = ViewModelProvider(this, ViewModelFactory(requireContext())).get(
-            SplashViewModel::class.java)
+            SplashViewModel::class.java
+        )
 
-        if(viewModel.hasPassed()) {
-            Handler().postDelayed(Runnable {
-                findNavController().navigate(R.id.acao_splashfragment_para_loginfragment) },
-                3000)
-        }else{
-            Handler().postDelayed(Runnable {
-                findNavController().navigate(R.id.acao_splashfragment_para_onbordingfragment) },
-                3000)
-        }
+        Handler().postDelayed(Runnable {
+            viewModel.initSplash()
+        }, 3000)
+
+        viewModel.splashToOnBoarding.observe(viewLifecycleOwner, {
+            findNavController().navigate(R.id.acao_splashfragment_para_onbordingfragment)
+        })
+        viewModel.splashToLogin.observe(viewLifecycleOwner, {
+            findNavController().navigate(R.id.acao_splashfragment_para_loginfragment)
+        })
+
     }
 }

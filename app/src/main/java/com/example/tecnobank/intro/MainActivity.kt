@@ -1,8 +1,7 @@
 package com.example.tecnobank.intro
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.tecnobank.R
+import androidx.appcompat.app.AppCompatActivity
 import com.example.tecnobank.databinding.MainActivityBinding
 
 
