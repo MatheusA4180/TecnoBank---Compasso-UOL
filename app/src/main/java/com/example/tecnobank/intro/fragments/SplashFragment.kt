@@ -9,9 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.tecnobank.R
-import com.example.tecnobank.databinding.OnboardingFragmentBinding
 import com.example.tecnobank.databinding.SplashFragmentBinding
-import com.example.tecnobank.intro.viewmodel.OnBoardingViewModel
 import com.example.tecnobank.intro.viewmodel.SplashViewModel
 import com.example.tecnobank.intro.viewmodel.ViewModelFactory
 
@@ -36,15 +34,16 @@ class SplashFragment : Fragment() {
             SplashViewModel::class.java
         )
 
-        viewModel.initSplash()
-
         Handler().postDelayed(Runnable {
-            viewModel.splashToOnBoarding.observe(viewLifecycleOwner, {
-                findNavController().navigate(R.id.acao_splashfragment_para_onbordingfragment)
-            })
-            viewModel.splashToLogin.observe(viewLifecycleOwner, {
-                findNavController().navigate(R.id.acao_splashfragment_para_loginfragment)
-            })
+            viewModel.initSplash()
         }, 3000)
+
+        viewModel.splashToOnBoarding.observe(viewLifecycleOwner, {
+            findNavController().navigate(R.id.acao_splashfragment_para_onbordingfragment)
+        })
+        viewModel.splashToLogin.observe(viewLifecycleOwner, {
+            findNavController().navigate(R.id.acao_splashfragment_para_loginfragment)
+        })
+
     }
 }

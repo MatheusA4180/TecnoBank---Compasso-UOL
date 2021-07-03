@@ -27,13 +27,23 @@ class SharedPreferenceServices(private val preferences: SharedPreferences) {
         }
     }
 
-    fun getUserEmailServices():String? = preferences.getString(USER, "")
+    fun getUserEmailServices(): String? = preferences.getString(USER, "")
 
-    fun getUserPasswordServices():String? = preferences.getString(PASSWORD, "")
+    fun getUserPasswordServices(): String? = preferences.getString(PASSWORD, "")
+
+    fun saveTokenAuthenticationServices(tokenAuthentication: String) {
+        preferences.edit {
+            putString(TOKEN_AUTHENTICATION, tokenAuthentication)
+        }
+    }
+
+    fun getSaveTokenAuthenticationServices(): String? =
+        preferences.getString(TOKEN_AUTHENTICATION, "")
 
     companion object {
         private const val KEY_PASS = "Passou"
         private const val USER = "Username"
         private const val PASSWORD = "Password"
+        private const val TOKEN_AUTHENTICATION = "TokenAuthentication"
     }
 }

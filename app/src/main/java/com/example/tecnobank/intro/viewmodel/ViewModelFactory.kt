@@ -5,6 +5,7 @@ import android.content.SharedPreferences
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.tecnobank.R
+import com.example.tecnobank.intro.data.local.SharedPreferenceServices
 import com.example.tecnobank.intro.data.remote.EndPoint
 import com.example.tecnobank.intro.repository.LoginRepository
 import com.example.tecnobank.intro.repository.OnBoardingRepository
@@ -25,23 +26,39 @@ class ViewModelFactory(private val context: Context): ViewModelProvider.Factory 
     }
 
     private fun providerSplashViewModel(): SplashViewModel {
-        return SplashViewModel(SplashRepository(providerSharedPreference()))
-    }
-
-    private fun providerOnBoardingViewModel(): OnBoardingViewModel {
-        return OnBoardingViewModel(OnBoardingRepository(providerSharedPreference()))
-    }
-
-    private fun providerLoginViewModel(): LoginViewModel{
-        return LoginViewModel(
-            LoginRepository(
-                providerRetrofitInstance(),
-                providerSharedPreference()
+        return SplashViewModel(
+            SplashRepository(
+                providerSharedPreferenceService(
+                    providerSharedPreference()
+                )
             )
         )
     }
 
-    private fun providerRetrofitInstance():EndPoint {
+    private fun providerOnBoardingViewModel(): OnBoardingViewModel {
+        return OnBoardingViewModel(
+            OnBoardingRepository(
+                providerSharedPreferenceService(
+                    providerSharedPreference()
+                )
+            )
+        )
+    }
+
+    private fun providerLoginViewModel(): LoginViewModel {
+        return LoginViewModel(
+            LoginRepository(
+                providerRetrofitInstance(),
+                providerSharedPreferenceService(providerSharedPreference())
+            )
+        )
+    }
+
+    private fun providerSharedPreferenceService(preferences: SharedPreferences): SharedPreferenceServices {
+        return SharedPreferenceServices(preferences)
+    }
+
+    private fun providerRetrofitInstance(): EndPoint {
         return EndPoint.getRetrofitInstance()
     }
 

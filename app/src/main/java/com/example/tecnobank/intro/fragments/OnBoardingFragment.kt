@@ -35,8 +35,8 @@ class OnBoardingFragment : Fragment() {
             OnBoardingViewModel::class.java
         )
 
-        binding.loginComecar.setOnClickListener {
-            viewModel.onClickedOnBording()
+        binding.loginStart.setOnClickListener {
+            viewModel.onClickedLoginStart()
         }
 
         viewModel.goToLogin.observe(viewLifecycleOwner, {

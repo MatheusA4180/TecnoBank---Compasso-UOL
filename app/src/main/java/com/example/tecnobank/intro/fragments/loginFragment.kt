@@ -34,43 +34,50 @@ class loginFragment : Fragment() {
         )
 
         binding.loginEmail.setText(viewModel.getEmail())
-        binding.loginSenha.setText(viewModel.getPassword())
+        binding.loginPassword.setText(viewModel.getPassword())
 
-        viewModel.initEmptyFields(binding.loginEmail.text.toString(),
-            binding.loginSenha.text.toString())
+        viewModel.thereIsASavedLogin()
 
-        viewModel.emptyFields.observe(viewLifecycleOwner, {
+        viewModel.setSwitchToggle.observe(viewLifecycleOwner, {
             binding.remeberLogin.toggle()
         })
 
-        viewModel.sucesso.observe(viewLifecycleOwner, {
-            mostraInfo("Login efetuado com sucesso!")
+        viewModel.emailErro.observe(viewLifecycleOwner, {
+            showInfo("Email não preenchido")
         })
 
-        viewModel.erro.observe(viewLifecycleOwner, {
-            mostraInfo(it)
+        viewModel.passwordErro.observe(viewLifecycleOwner, {
+            showInfo("senha não preenchida")
         })
-        
-        binding.remeberLogin.setOnCheckedChangeListener { _ , isChecked ->
-            if(isChecked){
+
+        viewModel.goToHome.observe(viewLifecycleOwner, {
+            showInfo("Login efetuado com sucesso!")
+        })
+
+        viewModel.showErro.observe(viewLifecycleOwner, {
+            showInfo(it)
+        })
+
+        binding.remeberLogin.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
                 viewModel.onSwitchChecked(
                     binding.loginEmail.text.toString(),
-                    binding.loginSenha.text.toString()
+                    binding.loginPassword.text.toString()
                 )
-            }else{
+            } else {
                 viewModel.offSwitchChecked()
             }
         }
-        
-        binding.loginEntrar.setOnClickListener {
+
+        binding.loginEnter.setOnClickListener {
             viewModel.onLoginClicked(
                 binding.loginEmail.text.toString(),
-                binding.loginSenha.text.toString()
+                binding.loginPassword.text.toString()
             )
         }
     }
 
-    fun mostraInfo(titulo: String?) {
+    fun showInfo(titulo: String?) {
         AlertDialog.Builder(requireContext())
             .setCancelable(true)
             .setTitle(titulo)

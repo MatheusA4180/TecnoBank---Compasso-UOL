@@ -1,10 +1,9 @@
 package com.example.tecnobank.intro.repository
 
-import android.content.SharedPreferences
 import com.example.tecnobank.intro.data.local.SharedPreferenceServices
 
-class SplashRepository(private val preferences: SharedPreferences) {
+class SplashRepository(private val SPServices: SharedPreferenceServices) {
 
-    fun passed():Boolean = SharedPreferenceServices(preferences).passedServices()
+    fun passed(): Boolean = SPServices.passedServices()
 
 }

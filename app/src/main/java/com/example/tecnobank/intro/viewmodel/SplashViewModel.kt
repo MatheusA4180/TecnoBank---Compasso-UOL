@@ -12,16 +12,12 @@ class SplashViewModel(private val repository: SplashRepository):ViewModel() {
     private val _splashToLogin = MutableLiveData<Unit>()
     val splashToLogin: LiveData<Unit> = _splashToLogin
 
-
     fun initSplash() {
-        if (hasPassed()) {
+        if (repository.passed()) {
             _splashToLogin.postValue(Unit)
         } else {
             _splashToOnBoarding.postValue(Unit)
         }
     }
 
-    fun hasPassed(): Boolean {
-        return repository.passed()
-    }
 }

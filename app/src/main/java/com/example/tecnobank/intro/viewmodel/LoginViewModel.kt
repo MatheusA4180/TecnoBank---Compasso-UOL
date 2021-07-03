@@ -9,26 +9,34 @@ import kotlinx.coroutines.launch
 
 class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel() {
 
-    private val _sucesso = MutableLiveData<Unit>()
-    val sucesso: LiveData<Unit> = _sucesso
+    private val _goToHome = MutableLiveData<Unit>()
+    val goToHome: LiveData<Unit> = _goToHome
 
-    private val _erro = MutableLiveData<String>()
-    val erro: LiveData<String> = _erro
+    private val _showErro = MutableLiveData<String>()
+    val showErro: LiveData<String> = _showErro
 
-    private val _emptyFields = MutableLiveData<Unit>()
-    val emptyFields: LiveData<Unit> = _emptyFields
+    private val _emailErro = MutableLiveData<Unit>()
+    val emailErro: LiveData<Unit> = _emailErro
+
+    private val _passwordErro = MutableLiveData<Unit>()
+    val passwordErro: LiveData<Unit> = _passwordErro
+
+    private val _setSwitchToggle = MutableLiveData<Unit>()
+    val setSwitchToggle: LiveData<Unit> = _setSwitchToggle
 
     fun onLoginClicked(email: String, password: String) {
-        if((email == "")||(password == "")){
-            _erro.postValue("O email ou a senha não estão completos")
-        }else{
+        if (email == "") {
+            _emailErro.postValue(Unit)
+        } else if (password == "") {
+            _passwordErro.postValue(Unit)
+        } else {
             viewModelScope.launch {
                 try {
-                    loginRepository.login(email, password)
-                    _sucesso.postValue(Unit)
-
+                    val response = loginRepository.login(email, password)
+                    loginRepository.saveTokenAuthentication(response.tokenAuthentication)
+                    _goToHome.postValue(Unit)
                 } catch (e: Exception) {
-                    _erro.postValue(e.message)
+                    _showErro.postValue(e.message)
                 }
             }
         }
@@ -42,11 +50,11 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
         deleteLogin()
     }
 
-    fun saveLogin(user: String, password: String) {
+    private fun saveLogin(user: String, password: String) {
         loginRepository.saveUserLogin(user, password)
     }
 
-    fun deleteLogin() {
+    private fun deleteLogin() {
         loginRepository.deleteUserLogin()
     }
 
@@ -54,9 +62,9 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
 
     fun getPassword(): String = loginRepository.getUserPassword().toString()
 
-    fun initEmptyFields(email: String,password: String){
-        if((email != "")||(password != "")){
-            _emptyFields.postValue(Unit)
+    fun thereIsASavedLogin(email: String = getEmail(), password: String = getPassword()) {
+        if ((email != "") || (password != "")) {
+            _setSwitchToggle.postValue(Unit)
         }
     }
 

@@ -21,7 +21,7 @@
         app:layout_constraintVertical_bias="0.39" />
 
     <EditText
-        android:id="@+id/login_senha"
+        android:id="@+id/login_password"
         android:layout_width="340dp"
         android:layout_height="47dp"
         android:layout_marginTop="20dp"
@@ -38,8 +38,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        app:layout_constraintEnd_toEndOf="@+id/login_senha"
-        app:layout_constraintTop_toBottomOf="@+id/login_senha" />
+        app:layout_constraintEnd_toEndOf="@+id/login_password"
+        app:layout_constraintTop_toBottomOf="@+id/login_password" />
 
     <TextView
         android:id="@+id/textView"
@@ -47,7 +47,7 @@
         android:layout_height="wrap_content"
         android:text="Lembrar minha conta"
         android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="@+id/login_senha"
+        app:layout_constraintStart_toStartOf="@+id/login_password"
         app:layout_constraintTop_toTopOf="@+id/remeber_login" />
 
     <TextView
@@ -61,11 +61,11 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/activity_criar"
+        app:layout_constraintTop_toBottomOf="@+id/login_create"
         app:layout_constraintVertical_bias="0.19" />
 
     <Button
-        android:id="@+id/login_entrar"
+        android:id="@+id/login_enter"
         android:layout_width="340dp"
         android:layout_height="71dp"
         android:text="Entrar"
@@ -80,7 +80,7 @@
         app:layout_constraintVertical_bias="0.745" />
 
     <Button
-        android:id="@+id/activity_criar"
+        android:id="@+id/login_create"
         android:layout_width="340dp"
         android:layout_height="71dp"
         android:layout_marginTop="10dp"
@@ -93,7 +93,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.507"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/login_entrar"
+        app:layout_constraintTop_toBottomOf="@+id/login_enter"
         app:layout_constraintVertical_bias="0.0"
         app:strokeColor="#2196F3"
         app:strokeWidth="2dp" />

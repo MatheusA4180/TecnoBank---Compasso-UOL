@@ -1,12 +1,14 @@
 package com.example.tecnobank.intro.repository
 
-import android.content.SharedPreferences
 import com.example.tecnobank.intro.data.local.SharedPreferenceServices
 import com.example.tecnobank.intro.data.remote.EndPoint
 import com.example.tecnobank.intro.data.remote.model.login.LoginPayload
 import com.example.tecnobank.intro.data.remote.model.login.LoginResponse
 
-class LoginRepository(private val endPoint: EndPoint, private val preferences: SharedPreferences) {
+class LoginRepository(
+    private val endPoint: EndPoint,
+    private val SPServices: SharedPreferenceServices
+) {
 
     suspend fun login(email: String, password: String): LoginResponse {
 
@@ -23,12 +25,15 @@ class LoginRepository(private val endPoint: EndPoint, private val preferences: S
     }
 
     fun saveUserLogin(email: String, password: String) =
-        SharedPreferenceServices(preferences).saveUserLoginServices(email, password)
+        SPServices.saveUserLoginServices(email, password)
 
-    fun deleteUserLogin() = SharedPreferenceServices(preferences).deleteUserLoginServices()
+    fun deleteUserLogin() = SPServices.deleteUserLoginServices()
 
-    fun getUserEmail(): String? = SharedPreferenceServices(preferences).getUserEmailServices()
+    fun getUserEmail(): String? = SPServices.getUserEmailServices()
 
-    fun getUserPassword(): String? = SharedPreferenceServices(preferences).getUserPasswordServices()
+    fun getUserPassword(): String? = SPServices.getUserPasswordServices()
+
+    fun saveTokenAuthentication(tokenAuthentication: String) = SPServices
+        .saveTokenAuthenticationServices(tokenAuthentication)
 
 }
