@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.tecnobank.R
 import com.example.tecnobank.databinding.InicioFragmentBinding
 import com.example.tecnobank.home.adapter.ViewPagerAdapter
 import com.example.tecnobank.home.recyclerview.ListaVantagensAdapter
@@ -35,6 +36,8 @@ class InicioFragment:Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
+        //binding.cardView4.setBackgroundResource(R.drawable.card_custon_border);
 
         viewModel = ViewModelProvider(this, ViewModelFactoryHome(requireContext())).get(InicioViewModel::class.java)
 
