@@ -55,7 +55,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:text="Esqueci minha senha"
-        android:textColor="#2196F3"
+        android:textColor="@color/greenTecnoBank"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -69,7 +69,7 @@
         android:layout_height="71dp"
         android:text="Entrar"
         android:textSize="18sp"
-        app:backgroundTint="#249bd7"
+        app:backgroundTint="@color/greenTecnoBank"
         app:cornerRadius="25dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -84,7 +84,7 @@
         android:layout_height="71dp"
         android:layout_marginTop="10dp"
         android:text="Criar Conta"
-        android:textColor="#2196F3"
+        android:textColor="@color/greenTecnoBank"
         android:textSize="18sp"
         app:backgroundTint="#FFFEFE"
         app:cornerRadius="25dp"
@@ -94,7 +94,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/login_enter"
         app:layout_constraintVertical_bias="0.0"
-        app:strokeColor="#2196F3"
+        app:strokeColor="@color/greenTecnoBank"
         app:strokeWidth="2dp" />
 
     <ImageView
@@ -108,6 +108,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.14" />
+        app:layout_constraintVertical_bias="0.100000024" />
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="0dp"
+        android:layout_height="10dp"
+        android:layout_marginStart="140dp"
+        android:layout_marginEnd="10dp"
+        app:cardBackgroundColor="@color/greenTecnoBank"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.28" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

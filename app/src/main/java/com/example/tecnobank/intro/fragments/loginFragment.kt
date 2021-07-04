@@ -53,7 +53,7 @@ class loginFragment : Fragment() {
         })
 
         viewModel.goToHome.observe(viewLifecycleOwner, {
-            showInfo("Login efetuado com sucesso!")
+            //vai para a home da sprint 2
         })
 
         viewModel.showErro.observe(viewLifecycleOwner, {
