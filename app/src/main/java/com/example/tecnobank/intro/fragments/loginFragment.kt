@@ -43,11 +43,13 @@ class loginFragment : Fragment() {
         })
 
         viewModel.emailErro.observe(viewLifecycleOwner, {
-            showInfo("Email não preenchido")
+            binding.loginEmail.error = "CPF, CNPJ ou Email não preenchido!";
+            binding.loginEmail.requestFocus();
         })
 
         viewModel.passwordErro.observe(viewLifecycleOwner, {
-            showInfo("senha não preenchida")
+            binding.loginPassword.error = "Senha não preenchida!";
+            binding.loginPassword.requestFocus();
         })
 
         viewModel.goToHome.observe(viewLifecycleOwner, {
