@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.tecnobank.databinding.LoginFragmentBinding
@@ -33,8 +34,20 @@ class loginFragment : Fragment() {
             LoginViewModel::class.java
         )
 
-        binding.loginEmail.setText(viewModel.getEmail())
-        binding.loginPassword.setText(viewModel.getPassword())
+        binding.loginEmail.setText(with(viewModel){
+            onEmailChange(this.getEmail())
+        })
+        binding.loginPassword.setText(with(viewModel){
+            onPasswordChange(this.getPassword())
+        })
+
+        binding.loginEmail.addTextChangedListener {
+            viewModel.onEmailChange(it.toString())
+        }
+
+        binding.loginPassword.addTextChangedListener {
+            viewModel.onPasswordChange(it.toString())
+        }
 
         viewModel.thereIsASavedLogin()
 
@@ -61,21 +74,11 @@ class loginFragment : Fragment() {
         })
 
         binding.remeberLogin.setOnCheckedChangeListener { _, isChecked ->
-            if (isChecked) {
-                viewModel.onSwitchChecked(
-                    binding.loginEmail.text.toString(),
-                    binding.loginPassword.text.toString()
-                )
-            } else {
-                viewModel.offSwitchChecked()
-            }
+            viewModel.onRememberChecked(isChecked)
         }
 
         binding.loginEnter.setOnClickListener {
-            viewModel.onLoginClicked(
-                binding.loginEmail.text.toString(),
-                binding.loginPassword.text.toString()
-            )
+            viewModel.onLoginClicked()
         }
     }
 
