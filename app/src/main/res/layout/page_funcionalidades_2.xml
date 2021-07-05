@@ -21,45 +21,45 @@
                 android:layout_height="wrap_content">
 
                 <Button
-                    android:id="@+id/bt_transferencias"
+                    android:id="@+id/bt_aplicando_meu_dinheiro"
                     android:layout_width="128dp"
                     android:layout_height="128dp"
                     android:layout_marginStart="5dp"
                     android:layout_marginEnd="8dp"
                     android:backgroundTint="@color/white"
-                    android:text="Transferências"
+                    android:text="Aplicando meu Dinheiro"
                     android:textColor="@color/black"
                     android:textSize="9sp"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@id/bt_cartoes"
+                    app:layout_constraintEnd_toStartOf="@id/bt_meus_investimentos"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
 
                 </Button>
 
                 <Button
-                    android:id="@+id/bt_cartoes"
+                    android:id="@+id/bt_meus_investimentos"
                     android:layout_width="128dp"
                     android:layout_height="128dp"
                     android:layout_marginEnd="8dp"
                     android:backgroundTint="@color/white"
-                    android:text="Cartões"
+                    android:text="Meus Investimentos"
                     android:textColor="@color/black"
                     android:textSize="9sp"
                     app:background="@color/white"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@id/bt_pagar_contas"
+                    app:layout_constraintEnd_toStartOf="@id/bt_shopping"
                     app:layout_constraintTop_toTopOf="parent">
 
                 </Button>
 
                 <Button
-                    android:id="@+id/bt_pagar_contas"
+                    android:id="@+id/bt_shopping"
                     android:layout_width="128dp"
                     android:layout_height="128dp"
                     android:layout_marginEnd="4dp"
                     android:backgroundTint="@color/white"
-                    android:text="Pagar Contas"
+                    android:text="Seguros"
                     android:textColor="@color/black"
                     android:textSize="9sp"
                     app:background="@color/white"
@@ -80,51 +80,25 @@
                 android:layout_height="wrap_content">
 
                 <Button
-                    android:id="@+id/bt_recargas"
+                    android:id="@+id/bt_aprenda_a_investir"
                     android:layout_width="128dp"
                     android:layout_height="128dp"
                     android:layout_marginStart="5dp"
                     android:layout_marginEnd="8dp"
                     android:layout_marginBottom="8dp"
                     android:backgroundTint="@color/white"
-                    android:text="Recargas"
-                    android:textColor="@color/black"
-                    android:textSize="9sp"
-                    app:background="@color/white"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@id/bt_adicionar_dinheiro"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"></Button>
-
-                <Button
-                    android:id="@+id/bt_adicionar_dinheiro"
-                    android:layout_width="128dp"
-                    android:layout_height="128dp"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginBottom="8dp"
-                    android:backgroundTint="@color/white"
-                    android:text="Adicionar dinheiro"
-                    android:textColor="@color/black"
-                    android:textSize="9sp"
-                    app:background="@color/white"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@id/bt_pix_qr_code"
-                    app:layout_constraintTop_toTopOf="parent"></Button>
-
-                <Button
-                    android:id="@+id/bt_pix_qr_code"
-                    android:layout_width="128dp"
-                    android:layout_height="128dp"
-                    android:layout_marginEnd="4dp"
-                    android:layout_marginBottom="8dp"
-                    android:backgroundTint="@color/white"
-                    android:text="Pix/QR Code"
+                    android:text="Aprenda a Investir"
                     android:textColor="@color/black"
                     android:textSize="9sp"
                     app:background="@color/white"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"></Button>
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                </Button>
+
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

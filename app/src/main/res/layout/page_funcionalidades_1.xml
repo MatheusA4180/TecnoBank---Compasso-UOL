@@ -21,7 +21,7 @@
                 android:layout_height="wrap_content">
 
                 <Button
-                    android:id="@+id/bt_transferencias"
+                    android:id="@+id/bt_transacoes"
                     android:layout_width="128dp"
                     android:layout_height="128dp"
                     android:layout_marginStart="5dp"
@@ -94,7 +94,9 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@id/bt_adicionar_dinheiro"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"></Button>
+                    app:layout_constraintTop_toTopOf="parent">
+
+                </Button>
 
                 <Button
                     android:id="@+id/bt_adicionar_dinheiro"
@@ -108,11 +110,13 @@
                     android:textSize="9sp"
                     app:background="@color/white"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@id/bt_pix_qr_code"
-                    app:layout_constraintTop_toTopOf="parent"></Button>
+                    app:layout_constraintEnd_toStartOf="@id/bt_pix_e_qr_code"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                </Button>
 
                 <Button
-                    android:id="@+id/bt_pix_qr_code"
+                    android:id="@+id/bt_pix_e_qr_code"
                     android:layout_width="128dp"
                     android:layout_height="128dp"
                     android:layout_marginEnd="4dp"
@@ -124,7 +128,9 @@
                     app:background="@color/white"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"></Button>
+                    app:layout_constraintTop_toTopOf="parent">
+
+                </Button>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
