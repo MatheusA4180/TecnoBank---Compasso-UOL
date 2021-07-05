@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tecnobank.databinding.InicioFragmentBinding
 import com.example.tecnobank.home.adapter.ViewPagerAdapter
+import com.example.tecnobank.home.model.BalanceBenefits
 import com.example.tecnobank.home.recyclerview.ListaVantagensAdapter
 import com.example.tecnobank.home.recyclerview.PagerDecorator
 import com.example.tecnobank.home.viewmodel.InicioViewModel
@@ -44,9 +45,10 @@ class InicioFragment:Fragment() {
         viewModel.onOpenHome()
 
         viewModel.response.observe(viewLifecycleOwner, {
-            showInfo("Response recebida com sucesso!")
-            binding.valorSaldo.text = it.balance.currentValue
-            binding.valorVendas.text = it.balance.receivables
+            binding.valorSaldo.text = it.balance.currentValue.replace(".", ",")
+            binding.valorVendas.text = (it.balance.receivables + ".00")
+                .replace(".", ",")
+            recyclerViewConfig(it.benefits)
         })
 
         viewModel.responseErro.observe(viewLifecycleOwner, {
@@ -69,8 +71,6 @@ class InicioFragment:Fragment() {
         })
 
         viewPagerAndTabLayoutConfig()
-
-        recyclerViewConfig()
     }
 
     private fun viewPagerAndTabLayoutConfig() {
@@ -97,20 +97,21 @@ class InicioFragment:Fragment() {
         }.attach()
     }
 
-    private fun recyclerViewConfig() {
+    private fun recyclerViewConfig(listBenefits: List<BalanceBenefits.Benefits>) {
         with(binding.listaVantagens) {
             layoutManager = LinearLayoutManager(
                 requireContext(),
                 LinearLayoutManager.HORIZONTAL,
                 false
             )
-            adapter = ListaVantagensAdapter()
+            adapter = ListaVantagensAdapter(listBenefits, requireContext())
             dotsConfig()
         }
     }
 
     private fun RecyclerView.dotsConfig() {
-        addItemDecoration(PagerDecorator())
+        val decor = PagerDecorator()
+        addItemDecoration(decor)
         addOnItemTouchListener(object : RecyclerView.OnItemTouchListener {
             override fun onTouchEvent(rv: RecyclerView, e: MotionEvent) {
             }
@@ -119,7 +120,7 @@ class InicioFragment:Fragment() {
                 rv: RecyclerView,
                 motionEvent: MotionEvent
             ): Boolean {
-                return PagerDecorator().isIndicatorPressing(motionEvent, rv)
+                return decor.isIndicatorPressing(motionEvent, rv)
             }
 
             override fun onRequestDisallowInterceptTouchEvent(disallowIntercept: Boolean) {
