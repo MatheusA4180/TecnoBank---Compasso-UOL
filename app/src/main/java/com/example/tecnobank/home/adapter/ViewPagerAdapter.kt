@@ -1,13 +1,12 @@
 package com.example.tecnobank.home.adapter
 
-import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.tecnobank.home.fragments.PageOneFragment
 import com.example.tecnobank.home.fragments.PageThreeFragment
 import com.example.tecnobank.home.fragments.PageTwoFragment
 
-class ViewPagerAdapter(fragmentbase:Fragment): FragmentStateAdapter(fragmentbase) {
+class ViewPagerAdapter(fragment:Fragment): FragmentStateAdapter(fragment) {
 
     override fun getItemCount(): Int = 3
 

@@ -5,14 +5,11 @@ import com.example.tecnobank.home.model.TokenAuthentication
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.Header
-import retrofit2.http.Headers
 
 interface EndPointHome {
     @GET("home")
-    //falta headers
     suspend fun saldoeBeneficios(@Header("token") token:TokenAuthentication): Response<BalanceBenefits>
 
     companion object {

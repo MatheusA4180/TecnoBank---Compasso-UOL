@@ -14,9 +14,9 @@ class ListaVantagensAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>() 
 
     val listadecores:List<String> = listOf("#ff0000","#00ff00","#0000ff","#00f0f0")
     val listadetitulos:List<String> =
-        listOf("Maquininhas PagSeguro","Titulo 2","Titulo 3","Titulo 4")
+        listOf("Titulo 1","Titulo 2","Titulo 3","Titulo 4")
     val listadedescricoes:List<String> =
-        listOf("Venda muito mais em até 18x e receba tudo na hora.Só no PagSeguro TecnoBank!",
+        listOf("Descrição da vantagem 1",
             "Descrição da vantagem 2",
             "Descrição da vantagem 3",
             "Descrição da vantagem 4")

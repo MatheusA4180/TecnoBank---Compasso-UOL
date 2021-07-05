@@ -19,25 +19,18 @@ class PagerDecorator: RecyclerView.ItemDecoration() {
         color = Color.parseColor("#5cbd4c")
     }
 
-    // save the center coordinates of all indicators
     private val indicators = mutableListOf<Pair<Float, Float>>()
-
     private val indicatorRadius = 20f
     private val indicatorPadding = 180f
 
     private var activeIndicator = 0
     private var isInitialized = false
 
-    // create three indicators for three slides
-    override fun onDrawOver(canvas: Canvas,
-                            parent: RecyclerView,
-                            state: RecyclerView.State) {
-
-        if(!isInitialized) {
+    override fun onDrawOver(canvas: Canvas, parent: RecyclerView, state: RecyclerView.State) {
+        if (!isInitialized) {
             setupIndicators(parent)
         }
 
-        // draw three indicators with stroke style
         parent.adapter?.let {
             with(canvas) {
                 drawCircle(indicators[0].first, indicators[0].second)
@@ -53,7 +46,6 @@ class PagerDecorator: RecyclerView.ItemDecoration() {
                 activeIndicator = visibleItem
             }
 
-            // paint over the needed circle
             when (activeIndicator) {
                 0 -> canvas.drawCircle(indicators[0].first, indicators[0].second, true)
                 1 -> canvas.drawCircle(indicators[1].first, indicators[1].second, true)
@@ -82,9 +74,6 @@ class PagerDecorator: RecyclerView.ItemDecoration() {
 
     private fun checkIfIndicatorPressing(touchX: Float, touchY: Float): Int?{
         indicators.indices.forEach {
-            // point belongs to a circle or not
-            // sqrt((x0-x1)*(x0-x1)+(y0-y1)*(y0-y1))<=r
-            // but I increased the radius value to make it easier to click
             if(Math.sqrt(Math.pow(((indicators[it].first - touchX).toDouble()), 2.0)
                         + Math.pow(((indicators[it].second - touchY).toDouble()), 2.0))
                 <= indicatorRadius * 2) {
@@ -104,5 +93,4 @@ class PagerDecorator: RecyclerView.ItemDecoration() {
         }
         return false
     }
-
 }

@@ -6,13 +6,19 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.tecnobank.R
+import com.example.tecnobank.databinding.CartoesFragmentBinding
+import com.example.tecnobank.databinding.ExtratoFragmentBinding
 
 class ExtratoFragment: Fragment() {
+    private var _binding: ExtratoFragmentBinding? = null
+    private val binding: ExtratoFragmentBinding get() = _binding!!
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.extrato_fragment, container, false)
+    ): View {
+        _binding = ExtratoFragmentBinding.inflate(inflater, container, false)
+        return _binding!!.root
     }
 }
