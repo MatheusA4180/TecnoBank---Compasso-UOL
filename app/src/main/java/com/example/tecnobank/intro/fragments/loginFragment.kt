@@ -5,11 +5,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
-import com.example.tecnobank.R
 import com.example.tecnobank.databinding.LoginFragmentBinding
 import com.example.tecnobank.intro.viewmodel.LoginViewModel
 import com.example.tecnobank.intro.viewmodel.ViewModelFactory
@@ -48,6 +47,7 @@ class loginFragment : Fragment() {
         binding.loginPassword.setText(viewModel.getPassword())
 
         viewModel.initLogin()
+        binding.progressCircular.isVisible = false
 
         viewModel.rememberUserToogle.observe(viewLifecycleOwner, {
             binding.remeberLogin.toggle()
@@ -62,7 +62,7 @@ class loginFragment : Fragment() {
         })
 
         viewModel.goToHome.observe(viewLifecycleOwner, {
-            findNavController().navigate(R.id.acao_loginfragment_to_homeactivity)
+            binding.progressCircular.isVisible = false
         })
 
         viewModel.showErro.observe(viewLifecycleOwner, {
@@ -74,6 +74,7 @@ class loginFragment : Fragment() {
         }
 
         binding.loginEnter.setOnClickListener {
+            binding.progressCircular.isVisible = true
             viewModel.onLoginClicked()
         }
     }
