@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -46,6 +47,7 @@ class loginFragment : Fragment() {
         binding.loginPassword.setText(viewModel.getPassword())
 
         viewModel.initLogin()
+        binding.progressCircular.isVisible = false
 
         viewModel.rememberUserToogle.observe(viewLifecycleOwner, {
             binding.remeberLogin.toggle()
@@ -60,7 +62,7 @@ class loginFragment : Fragment() {
         })
 
         viewModel.goToHome.observe(viewLifecycleOwner, {
-            //vai para a home da sprint 2
+            binding.progressCircular.isVisible = false
         })
 
         viewModel.showErro.observe(viewLifecycleOwner, {
@@ -72,6 +74,7 @@ class loginFragment : Fragment() {
         }
 
         binding.loginEnter.setOnClickListener {
+            binding.progressCircular.isVisible = true
             viewModel.onLoginClicked()
         }
     }

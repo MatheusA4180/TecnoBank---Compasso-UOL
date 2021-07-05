@@ -41,26 +41,26 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
 
 
     fun onLoginClicked() {
-        login()
-    }
-
-    private fun login() {
         if (email.isNullOrBlank()) {
             _emailErro.postValue(Unit)
         } else if (password.isNullOrBlank()) {
             _passwordErro.postValue(Unit)
         } else {
-            viewModelScope.launch {
-                try {
-                    val response = loginRepository.login(email!!, password!!)
-                    if (onChecked) {
-                        saveLogin()
-                    }
-                    loginRepository.saveTokenAuthentication(response.tokenAuthentication)
-                    _goToHome.postValue(Unit)
-                } catch (e: Exception) {
-                    _showErro.postValue(e.message)
+            login()
+        }
+    }
+
+    private fun login() {
+        viewModelScope.launch {
+            try {
+                val response = loginRepository.login(email!!, password!!)
+                if (onChecked) {
+                    saveLogin()
                 }
+                loginRepository.saveTokenAuthentication(response.tokenAuthentication)
+                _goToHome.postValue(Unit)
+            } catch (e: Exception) {
+                _showErro.postValue(e.message)
             }
         }
     }
