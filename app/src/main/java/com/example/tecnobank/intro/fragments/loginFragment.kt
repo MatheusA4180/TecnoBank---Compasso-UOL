@@ -56,10 +56,12 @@ class loginFragment : Fragment() {
         })
 
         viewModel.emailErro.observe(viewLifecycleOwner, {
+            binding.progressCircular.isVisible = false
             binding.loginEmail.error = "CPF, CNPJ ou Email não preenchido!";
         })
 
         viewModel.passwordErro.observe(viewLifecycleOwner, {
+            binding.progressCircular.isVisible = false
             binding.loginPassword.error = "Senha não preenchida!";
         })
 
@@ -69,6 +71,7 @@ class loginFragment : Fragment() {
         })
 
         viewModel.showErro.observe(viewLifecycleOwner, {
+            binding.progressCircular.isVisible = false
             showInfo(it)
         })
 
