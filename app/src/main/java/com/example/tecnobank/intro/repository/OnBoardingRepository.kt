@@ -2,8 +2,8 @@ package com.example.tecnobank.intro.repository
 
 import com.example.tecnobank.intro.data.local.SharedPreferenceServices
 
-class OnBoardingRepository(private val SPServices: SharedPreferenceServices) {
+class OnBoardingRepository(private val sharedPreferenceServices: SharedPreferenceServices) {
 
-    fun saveUserPassOnboarding() = SPServices.saveUserPassOnboarding()
+    fun saveUserPassOnboarding() = sharedPreferenceServices.saveUserPassOnboarding()
 
 }
