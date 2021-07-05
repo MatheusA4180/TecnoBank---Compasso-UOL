@@ -9,6 +9,7 @@ import retrofit2.http.Body
 import retrofit2.http.POST
 
 interface EndPoint {
+
     @POST("login")
     suspend fun login(@Body loginPayload: LoginPayload): Response<LoginResponse>
 

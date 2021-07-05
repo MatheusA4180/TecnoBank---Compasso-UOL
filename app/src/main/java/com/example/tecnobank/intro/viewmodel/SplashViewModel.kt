@@ -13,7 +13,7 @@ class SplashViewModel(private val repository: SplashRepository):ViewModel() {
     val splashToLogin: LiveData<Unit> = _splashToLogin
 
     fun initSplash() {
-        if (repository.passed()) {
+        if (repository.passedByTheOnBoarding()) {
             _splashToLogin.postValue(Unit)
         } else {
             _splashToOnBoarding.postValue(Unit)

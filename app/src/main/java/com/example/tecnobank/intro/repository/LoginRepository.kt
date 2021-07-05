@@ -7,7 +7,7 @@ import com.example.tecnobank.intro.data.remote.model.login.LoginResponse
 
 class LoginRepository(
     private val endPoint: EndPoint,
-    private val SPServices: SharedPreferenceServices
+    private val sharedpreferenceServices: SharedPreferenceServices
 ) {
 
     suspend fun login(email: String, password: String): LoginResponse {
@@ -25,15 +25,15 @@ class LoginRepository(
     }
 
     fun saveUserLogin(email: String, password: String) =
-        SPServices.saveUserLoginServices(email, password)
+        sharedpreferenceServices.saveUserLogin(email, password)
 
-    fun deleteUserLogin() = SPServices.deleteUserLoginServices()
+    fun deleteUserLogin() = sharedpreferenceServices.deleteUserLogin()
 
-    fun getUserEmail(): String? = SPServices.getUserEmailServices()
+    fun getUserEmail(): String? = sharedpreferenceServices.getUserEmail()
 
-    fun getUserPassword(): String? = SPServices.getUserPasswordServices()
+    fun getUserPassword(): String? = sharedpreferenceServices.getUserPassword()
 
-    fun saveTokenAuthentication(tokenAuthentication: String) = SPServices
-        .saveTokenAuthenticationServices(tokenAuthentication)
+    fun saveTokenAuthentication(tokenAuthentication: String) = sharedpreferenceServices
+        .saveTokenAuthentication(tokenAuthentication)
 
 }

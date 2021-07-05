@@ -15,9 +15,11 @@ import com.example.tecnobank.intro.viewmodel.ViewModelFactory
 
 class SplashFragment : Fragment() {
 
+    private val SPLASH_DELAY: Long = 3000
     private var _binding: SplashFragmentBinding? = null
     private val binding: SplashFragmentBinding get() = _binding!!
     private lateinit var viewModel: SplashViewModel
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -36,7 +38,7 @@ class SplashFragment : Fragment() {
 
         Handler().postDelayed(Runnable {
             viewModel.initSplash()
-        }, 3000)
+        }, SPLASH_DELAY)
 
         viewModel.splashToOnBoarding.observe(viewLifecycleOwner, {
             findNavController().navigate(R.id.acao_splashfragment_para_onbordingfragment)

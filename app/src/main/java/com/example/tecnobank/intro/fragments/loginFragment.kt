@@ -34,13 +34,6 @@ class loginFragment : Fragment() {
             LoginViewModel::class.java
         )
 
-        binding.loginEmail.setText(with(viewModel){
-            onEmailChange(this.getEmail())
-        })
-        binding.loginPassword.setText(with(viewModel){
-            onPasswordChange(this.getPassword())
-        })
-
         binding.loginEmail.addTextChangedListener {
             viewModel.onEmailChange(it.toString())
         }
@@ -49,20 +42,21 @@ class loginFragment : Fragment() {
             viewModel.onPasswordChange(it.toString())
         }
 
-        viewModel.thereIsASavedLogin()
+        binding.loginEmail.setText(viewModel.getEmail())
+        binding.loginPassword.setText(viewModel.getPassword())
 
-        viewModel.setSwitchToggle.observe(viewLifecycleOwner, {
+        viewModel.initLogin()
+
+        viewModel.rememberUserToogle.observe(viewLifecycleOwner, {
             binding.remeberLogin.toggle()
         })
 
         viewModel.emailErro.observe(viewLifecycleOwner, {
             binding.loginEmail.error = "CPF, CNPJ ou Email não preenchido!";
-            binding.loginEmail.requestFocus();
         })
 
         viewModel.passwordErro.observe(viewLifecycleOwner, {
             binding.loginPassword.error = "Senha não preenchida!";
-            binding.loginPassword.requestFocus();
         })
 
         viewModel.goToHome.observe(viewLifecycleOwner, {

@@ -25,22 +25,26 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
     private val _passwordErro = MutableLiveData<Unit>()
     val passwordErro: LiveData<Unit> = _passwordErro
 
-    private val _setSwitchToggle = MutableLiveData<Unit>()
-    val setSwitchToggle: LiveData<Unit> = _setSwitchToggle
+    private val _rememberUserToogle = MutableLiveData<Unit>()
+    val rememberUserToogle: LiveData<Unit> = _rememberUserToogle
 
 
-    fun onEmailChange(email:String):String{
+    fun onEmailChange(email: String): String {
         this.email = email
         return email
     }
 
-    fun onPasswordChange(password:String):String{
+    fun onPasswordChange(password: String): String {
         this.password = password
         return password
     }
 
 
     fun onLoginClicked() {
+        login()
+    }
+
+    private fun login() {
         if (email.isNullOrBlank()) {
             _emailErro.postValue(Unit)
         } else if (password.isNullOrBlank()) {
@@ -49,7 +53,7 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
             viewModelScope.launch {
                 try {
                     val response = loginRepository.login(email!!, password!!)
-                    if(onChecked){
+                    if (onChecked) {
                         saveLogin()
                     }
                     loginRepository.saveTokenAuthentication(response.tokenAuthentication)
@@ -82,9 +86,9 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
 
     fun getPassword(): String = loginRepository.getUserPassword().toString()
 
-    fun thereIsASavedLogin(email: String = getEmail(), password: String = getPassword()) {
+    fun initLogin() {
         if ((email != "") || (password != "")) {
-            _setSwitchToggle.postValue(Unit)
+            _rememberUserToogle.postValue(Unit)
         }
     }
 
