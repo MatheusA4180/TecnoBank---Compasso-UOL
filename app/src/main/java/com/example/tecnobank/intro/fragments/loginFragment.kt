@@ -9,6 +9,8 @@ import androidx.core.view.isVisible
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
+import com.example.tecnobank.R
 import com.example.tecnobank.databinding.LoginFragmentBinding
 import com.example.tecnobank.intro.viewmodel.LoginViewModel
 import com.example.tecnobank.intro.viewmodel.ViewModelFactory
@@ -63,6 +65,7 @@ class loginFragment : Fragment() {
 
         viewModel.goToHome.observe(viewLifecycleOwner, {
             binding.progressCircular.isVisible = false
+            findNavController().navigate(R.id.acao_loginfragment_to_homeactivity)
         })
 
         viewModel.showErro.observe(viewLifecycleOwner, {
