@@ -1,7 +1,6 @@
 package com.example.tecnobank.home.data.remote
 
 import com.example.tecnobank.home.model.BalanceBenefits
-import com.example.tecnobank.home.model.TokenAuthentication
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -10,7 +9,7 @@ import retrofit2.http.Header
 
 interface EndPointHome {
     @GET("home")
-    suspend fun saldoeBeneficios(@Header("token") token:TokenAuthentication): Response<BalanceBenefits>
+    suspend fun saldoeBeneficios(@Header("token") token: String): Response<BalanceBenefits>
 
     companion object {
 
