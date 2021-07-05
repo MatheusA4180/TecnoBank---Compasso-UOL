@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -35,23 +36,29 @@ class loginFragment : Fragment() {
             LoginViewModel::class.java
         )
 
+        binding.loginEmail.addTextChangedListener {
+            viewModel.onEmailChange(it.toString())
+        }
+
+        binding.loginPassword.addTextChangedListener {
+            viewModel.onPasswordChange(it.toString())
+        }
+
         binding.loginEmail.setText(viewModel.getEmail())
         binding.loginPassword.setText(viewModel.getPassword())
 
-        viewModel.thereIsASavedLogin()
+        viewModel.initLogin()
 
-        viewModel.setSwitchToggle.observe(viewLifecycleOwner, {
+        viewModel.rememberUserToogle.observe(viewLifecycleOwner, {
             binding.remeberLogin.toggle()
         })
 
         viewModel.emailErro.observe(viewLifecycleOwner, {
             binding.loginEmail.error = "CPF, CNPJ ou Email não preenchido!";
-            binding.loginEmail.requestFocus();
         })
 
         viewModel.passwordErro.observe(viewLifecycleOwner, {
             binding.loginPassword.error = "Senha não preenchida!";
-            binding.loginPassword.requestFocus();
         })
 
         viewModel.goToHome.observe(viewLifecycleOwner, {
@@ -63,21 +70,11 @@ class loginFragment : Fragment() {
         })
 
         binding.remeberLogin.setOnCheckedChangeListener { _, isChecked ->
-            if (isChecked) {
-                viewModel.onSwitchChecked(
-                    binding.loginEmail.text.toString(),
-                    binding.loginPassword.text.toString()
-                )
-            } else {
-                viewModel.offSwitchChecked()
-            }
+            viewModel.onRememberChecked(isChecked)
         }
 
         binding.loginEnter.setOnClickListener {
-            viewModel.onLoginClicked(
-                binding.loginEmail.text.toString(),
-                binding.loginPassword.text.toString()
-            )
+            viewModel.onLoginClicked()
         }
     }
 

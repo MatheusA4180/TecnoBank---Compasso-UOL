@@ -9,6 +9,10 @@ import kotlinx.coroutines.launch
 
 class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel() {
 
+    private var email:String? = null
+    private var password:String? = null
+    private var onChecked:Boolean = false
+
     private val _goToHome = MutableLiveData<Unit>()
     val goToHome: LiveData<Unit> = _goToHome
 
@@ -21,18 +25,37 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
     private val _passwordErro = MutableLiveData<Unit>()
     val passwordErro: LiveData<Unit> = _passwordErro
 
-    private val _setSwitchToggle = MutableLiveData<Unit>()
-    val setSwitchToggle: LiveData<Unit> = _setSwitchToggle
+    private val _rememberUserToogle = MutableLiveData<Unit>()
+    val rememberUserToogle: LiveData<Unit> = _rememberUserToogle
 
-    fun onLoginClicked(email: String, password: String) {
-        if (email == "") {
+
+    fun onEmailChange(email: String): String {
+        this.email = email
+        return email
+    }
+
+    fun onPasswordChange(password: String): String {
+        this.password = password
+        return password
+    }
+
+
+    fun onLoginClicked() {
+        login()
+    }
+
+    private fun login() {
+        if (email.isNullOrBlank()) {
             _emailErro.postValue(Unit)
-        } else if (password == "") {
+        } else if (password.isNullOrBlank()) {
             _passwordErro.postValue(Unit)
         } else {
             viewModelScope.launch {
                 try {
-                    val response = loginRepository.login(email, password)
+                    val response = loginRepository.login(email!!, password!!)
+                    if (onChecked) {
+                        saveLogin()
+                    }
                     loginRepository.saveTokenAuthentication(response.tokenAuthentication)
                     _goToHome.postValue(Unit)
                 } catch (e: Exception) {
@@ -42,16 +65,17 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
         }
     }
 
-    fun onSwitchChecked(user: String, password: String) {
-        saveLogin(user, password)
+    fun onRememberChecked(isChecked:Boolean) {
+        if(isChecked) {
+            this.onChecked = true
+        }else{
+            this.onChecked = false
+            deleteLogin()
+        }
     }
 
-    fun offSwitchChecked() {
-        deleteLogin()
-    }
-
-    private fun saveLogin(user: String, password: String) {
-        loginRepository.saveUserLogin(user, password)
+    private fun saveLogin() {
+        loginRepository.saveUserLogin(email!!, password!!)
     }
 
     private fun deleteLogin() {
@@ -62,9 +86,9 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
 
     fun getPassword(): String = loginRepository.getUserPassword().toString()
 
-    fun thereIsASavedLogin(email: String = getEmail(), password: String = getPassword()) {
+    fun initLogin() {
         if ((email != "") || (password != "")) {
-            _setSwitchToggle.postValue(Unit)
+            _rememberUserToogle.postValue(Unit)
         }
     }
 
