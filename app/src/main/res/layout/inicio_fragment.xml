@@ -223,14 +223,14 @@
                     android:background="#2270E3">
 
                     <androidx.cardview.widget.CardView
-                        android:id="@+id/cardView4"
+                        android:id="@+id/funcionalidades_view_pager_e_tab_layout"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         app:background="@drawable/card_custon_border"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/cardView5">
+                        app:layout_constraintTop_toBottomOf="@+id/funcionalidades_falta_pouco_banner">
 
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="match_parent"
@@ -257,7 +257,7 @@
                     </androidx.cardview.widget.CardView>
 
                     <androidx.cardview.widget.CardView
-                        android:id="@+id/cardView5"
+                        android:id="@+id/funcionalidades_falta_pouco_banner"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         app:layout_constraintEnd_toEndOf="parent"
