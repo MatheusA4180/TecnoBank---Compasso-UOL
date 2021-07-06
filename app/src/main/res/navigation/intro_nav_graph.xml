@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/splashfragment">
+
+    <fragment
+        android:id="@+id/onbordingfragment"
+        android:name="com.example.tecnobank.intro.fragments.OnBoardingFragment"
+        android:label="onbording"
+        tools:layout="@layout/onboarding_fragment">
+        <action
+            android:id="@+id/acao_onbordingfragment_para_loginfragment"
+            app:destination="@id/loginfragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginfragment"
+        android:name="com.example.tecnobank.intro.fragments.loginFragment"
+        android:label="login"
+        tools:layout="@layout/login_fragment" />
+    <fragment
+        android:id="@+id/splashfragment"
+        android:name="com.example.tecnobank.intro.fragments.SplashFragment"
+        android:label="splash"
+        tools:layout="@layout/splash_fragment">
+        <action
+            android:id="@+id/acao_splashfragment_para_onbordingfragment"
+            app:destination="@id/onbordingfragment" />
+        <action
+            android:id="@+id/acao_splashfragment_para_loginfragment"
+            app:destination="@id/loginfragment" />
+    </fragment>
+</navigation>
