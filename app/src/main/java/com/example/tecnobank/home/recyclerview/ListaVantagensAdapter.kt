@@ -22,10 +22,10 @@ class ListaVantagensAdapter(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        val post =
+        return PostViewHolder(
             LayoutInflater.from(parent.context)
                 .inflate(R.layout.vantagens_cardview, parent, false)
-        return PostViewHolder(post)
+        )
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {

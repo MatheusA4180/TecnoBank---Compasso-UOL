@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -59,13 +60,16 @@ class InicioFragment:Fragment() {
             viewModel.checkVisibleBalances()
         }
 
+        binding.fechaBanner.setOnClickListener {
+            binding.funcionalidadesFaltaPoucoBanner.isVisible = false
+        }
 
-        viewModel.visibleOn.observe(viewLifecycleOwner,{
+        viewModel.visibleOn.observe(viewLifecycleOwner, {
             binding.valorSaldo.setTransformationMethod(null)
             binding.valorVendas.setTransformationMethod(null)
         })
 
-        viewModel.visibleOff.observe(viewLifecycleOwner,{
+        viewModel.visibleOff.observe(viewLifecycleOwner, {
             binding.valorSaldo.setTransformationMethod(PasswordTransformationMethod())
             binding.valorVendas.setTransformationMethod(PasswordTransformationMethod())
         })
@@ -83,14 +87,14 @@ class InicioFragment:Fragment() {
             binding.tabLayoutFuncionalidades,
             binding.pagerFuncionalidades
         ) { tab, position ->
-            when (position + 1) {
-                1 -> {
+            when (position) {
+                0 -> {
                     tab.text = "Principais"
                 }
-                2 -> {
+                1 -> {
                     tab.text = "Produtos e Investimentos"
                 }
-                3 -> {
+                2 -> {
                     tab.text = "Serviços"
                 }
             }
