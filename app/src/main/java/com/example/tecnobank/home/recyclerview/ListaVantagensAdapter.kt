@@ -31,19 +31,19 @@ class ListaVantagensAdapter(
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (holder is PostViewHolder) {
             holder.banner.setBackgroundColor(Color.parseColor(listBenefits[position].indicatorColor))
-            Picasso.with(context).load(listBenefits[position].image).into(holder.imagem)
-            holder.titulo.text = listBenefits[position].title
-            holder.descricao.text = listBenefits[position].message
+            Picasso.with(context).load(listBenefits[position].image).into(holder.image)
+            holder.title.text = listBenefits[position].title
+            holder.description.text = listBenefits[position].message
             holder.link.text = listBenefits[position].textLink
         }
     }
 
     class PostViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val banner: View = itemView.findViewById(R.id.banner_colorido)
-        val imagem: ImageView = itemView.findViewById(R.id.imagem_vantagens)
-        val titulo: TextView = itemView.findViewById(R.id.titulo_vantagens)
-        val descricao: TextView = itemView.findViewById(R.id.descricao_vantagens)
-        val link: TextView = itemView.findViewById(R.id.link_vantagens)
+        val banner: View = itemView.findViewById(R.id.banner_colorful)
+        val image: ImageView = itemView.findViewById(R.id.image_benefits)
+        val title: TextView = itemView.findViewById(R.id.title_benefits)
+        val description: TextView = itemView.findViewById(R.id.description_benefits)
+        val link: TextView = itemView.findViewById(R.id.link_benefits)
     }
 
 }

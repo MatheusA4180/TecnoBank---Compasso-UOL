@@ -21,4 +21,6 @@ class InicioRepository(
     }
 
     fun getTokenAuthentication(): String? = sharedPreferenceServices.getSaveTokenAuthentication()
+
 }
+

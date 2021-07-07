@@ -11,6 +11,7 @@ import com.example.tecnobank.databinding.PageFuncionalidadesBinding
 import com.example.tecnobank.home.recyclerview.ListaServicosAdapter
 
 class ServicosFragment : Fragment() {
+
     private var _binding: PageFuncionalidadesBinding? = null
     private val binding: PageFuncionalidadesBinding get() = _binding!!
 
@@ -24,29 +25,27 @@ class ServicosFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        with(binding.listaServicos) {
+        with(binding.listServices) {
             layoutManager =
                 GridLayoutManager(
                     requireContext(), 2, GridLayoutManager.HORIZONTAL,
                     false
                 )
-            adapter = ListaServicosAdapter(getServicesByPage(requireArguments().getInt("position")))
+            adapter =
+                ListaServicosAdapter(getServicesByPage(requireArguments().getInt("position_view_pager")))
         }
-
     }
 
     fun getServicesByPage(positionViewPager: Int): List<ListaServicosAdapter.ItemService> {
         return when (positionViewPager) {
             0 -> {
-                getMainServices()
+                getListMainServices()
             }
             1 -> {
-                getProdutsAndInvestments()
+                getListProdutsAndInvestments()
             }
             2 -> {
-                getServices()
+                getListServices()
             }
             else -> {
                 throw Exception("nenhuma lista encontrada")
@@ -54,21 +53,36 @@ class ServicosFragment : Fragment() {
         }
     }
 
-    fun getMainServices(): List<ListaServicosAdapter.ItemService> {
+    fun getListMainServices(): List<ListaServicosAdapter.ItemService> {
         return listOf(
-            ListaServicosAdapter.ItemService("Transferências", R.drawable.ic_transferencia),
-            ListaServicosAdapter.ItemService("Cartões", R.drawable.ic_cartoes),
-            ListaServicosAdapter.ItemService("Pagar Contas", R.drawable.ic_pagar_contas),
-            ListaServicosAdapter.ItemService("Recargas", R.drawable.ic_recarga),
+            ListaServicosAdapter.ItemService(
+                "Transferências",
+                R.drawable.ic_transferencia
+            ),
+            ListaServicosAdapter.ItemService(
+                "Cartões",
+                R.drawable.ic_cartoes
+            ),
+            ListaServicosAdapter.ItemService(
+                "Pagar Contas",
+                R.drawable.ic_pagar_contas
+            ),
+            ListaServicosAdapter.ItemService(
+                "Recargas",
+                R.drawable.ic_recarga
+            ),
             ListaServicosAdapter.ItemService(
                 "Adicionar dinheiro",
                 R.drawable.ic_adicionar_dinheiro
             ),
-            ListaServicosAdapter.ItemService("Pix/QR Code", R.drawable.ic_pix_qrcode)
+            ListaServicosAdapter.ItemService(
+                "Pix/QR Code",
+                R.drawable.ic_pix_qrcode
+            )
         )
     }
 
-    private fun getProdutsAndInvestments(): List<ListaServicosAdapter.ItemService> {
+    private fun getListProdutsAndInvestments(): List<ListaServicosAdapter.ItemService> {
         return listOf(
             ListaServicosAdapter.ItemService(
                 "Aplicando meu Dinheiro",
@@ -78,22 +92,43 @@ class ServicosFragment : Fragment() {
                 "Meus Investimentos",
                 R.drawable.ic_meus_investimentos
             ),
-            ListaServicosAdapter.ItemService("Seguros", R.drawable.ic_seguros),
+            ListaServicosAdapter.ItemService(
+                "Seguros",
+                R.drawable.ic_seguros
+            ),
             ListaServicosAdapter.ItemService(
                 "Aprenda a Investir",
                 R.drawable.ic_aprenda_a_investir
-            ),
-            ListaServicosAdapter.ItemService("Postos Shell", R.drawable.ic_postos_shell),
-            ListaServicosAdapter.ItemService("Radar de Ofertas", R.drawable.ic_radar_ofertas)
+            )
         )
     }
 
-    private fun getServices(): List<ListaServicosAdapter.ItemService> {
+    private fun getListServices(): List<ListaServicosAdapter.ItemService> {
         return listOf(
-            ListaServicosAdapter.ItemService("Shopping", R.drawable.ic_shopping),
-            ListaServicosAdapter.ItemService("Onde sacar Dinheiro", R.drawable.ic_onde_sacar),
-            ListaServicosAdapter.ItemService("Indique e Ganhe", R.drawable.ic_indique_e_ganhe),
-            ListaServicosAdapter.ItemService("Pagar com QR code", R.drawable.ic_pagar_com_qrcode)
+            ListaServicosAdapter.ItemService(
+                "Postos Shell",
+                R.drawable.ic_postos_shell
+            ),
+            ListaServicosAdapter.ItemService(
+                "Radar de Ofertas",
+                R.drawable.ic_radar_ofertas
+            ),
+            ListaServicosAdapter.ItemService(
+                "Shopping",
+                R.drawable.ic_shopping
+            ),
+            ListaServicosAdapter.ItemService(
+                "Onde sacar Dinheiro",
+                R.drawable.ic_onde_sacar
+            ),
+            ListaServicosAdapter.ItemService(
+                "Indique e Ganhe",
+                R.drawable.ic_indique_e_ganhe
+            ),
+            ListaServicosAdapter.ItemService(
+                "Pagar com QR code",
+                R.drawable.ic_pagar_com_qrcode
+            )
         )
     }
 

@@ -5,11 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.tecnobank.R
-import com.example.tecnobank.databinding.CartoesFragmentBinding
 import com.example.tecnobank.databinding.ExtratoFragmentBinding
 
 class ExtratoFragment: Fragment() {
+
     private var _binding: ExtratoFragmentBinding? = null
     private val binding: ExtratoFragmentBinding get() = _binding!!
 
@@ -21,4 +20,5 @@ class ExtratoFragment: Fragment() {
         _binding = ExtratoFragmentBinding.inflate(inflater, container, false)
         return _binding!!.root
     }
+
 }

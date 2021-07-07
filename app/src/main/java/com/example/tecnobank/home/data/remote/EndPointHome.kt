@@ -8,6 +8,7 @@ import retrofit2.http.GET
 import retrofit2.http.Header
 
 interface EndPointHome {
+
     @GET("home")
     suspend fun saldoeBeneficios(@Header("token") token: String): Response<BalanceBenefits>
 
