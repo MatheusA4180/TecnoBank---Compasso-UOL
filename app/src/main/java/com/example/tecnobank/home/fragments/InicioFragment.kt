@@ -45,7 +45,10 @@ class InicioFragment:Fragment() {
 
         viewModel.onOpenHome()
 
-        viewModel.response.observe(viewLifecycleOwner, {
+        binding.cardBenefitsAndHelp.isVisible = false
+
+        viewModel.responseSucess.observe(viewLifecycleOwner, {
+            binding.cardBenefitsAndHelp.isVisible = true
             binding.valorSaldo.text = it.balance.currentValue.replace(".", ",")
             binding.valorVendas.text = (it.balance.receivables + ".00")
                 .replace(".", ",")
@@ -64,12 +67,12 @@ class InicioFragment:Fragment() {
             binding.funcionalidadesFaltaPoucoBanner.isVisible = false
         }
 
-        viewModel.visibleOn.observe(viewLifecycleOwner, {
+        viewModel.visibleBalancesOn.observe(viewLifecycleOwner, {
             binding.valorSaldo.setTransformationMethod(null)
             binding.valorVendas.setTransformationMethod(null)
         })
 
-        viewModel.visibleOff.observe(viewLifecycleOwner, {
+        viewModel.visibleBalancesOff.observe(viewLifecycleOwner, {
             binding.valorSaldo.setTransformationMethod(PasswordTransformationMethod())
             binding.valorVendas.setTransformationMethod(PasswordTransformationMethod())
         })
@@ -102,7 +105,7 @@ class InicioFragment:Fragment() {
     }
 
     private fun recyclerViewConfig(listBenefits: List<BalanceBenefits.Benefits>) {
-        with(binding.listaVantagens) {
+        with(binding.listBenefits) {
             layoutManager = LinearLayoutManager(
                 requireContext(),
                 LinearLayoutManager.HORIZONTAL,
@@ -144,4 +147,6 @@ class InicioFragment:Fragment() {
         super.onDestroyView()
         _binding = null
     }
+
 }
+

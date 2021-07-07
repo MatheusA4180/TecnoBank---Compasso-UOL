@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 class PagerDecorator: RecyclerView.ItemDecoration() {
+
     private var paintStroke: Paint = Paint().apply {
         style = Paint.Style.STROKE
         strokeWidth = 4f
@@ -93,4 +94,5 @@ class PagerDecorator: RecyclerView.ItemDecoration() {
         }
         return false
     }
+
 }

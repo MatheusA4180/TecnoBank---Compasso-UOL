@@ -18,23 +18,24 @@ class ListaServicosAdapter(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        return CardServicosViewHolder(
+        return CardServicesViewHolder(
             LayoutInflater.from(parent.context)
                 .inflate(R.layout.servicos_cardview, parent, false)
         )
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        if (holder is CardServicosViewHolder) {
-            holder.icone.setImageResource(listServices[position].icon)
-            holder.titulo.text = listServices[position].title
+        if (holder is CardServicesViewHolder) {
+            holder.icon.setImageResource(listServices[position].icon)
+            holder.title.text = listServices[position].title
         }
     }
 
-    class CardServicosViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val icone: ImageView = itemView.findViewById(R.id.icone_services)
-        val titulo: TextView = itemView.findViewById(R.id.title_sevice)
+    class CardServicesViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val icon: ImageView = itemView.findViewById(R.id.icon_services)
+        val title: TextView = itemView.findViewById(R.id.title_service)
     }
 
     data class ItemService(val title: String, val icon: Int)
+
 }

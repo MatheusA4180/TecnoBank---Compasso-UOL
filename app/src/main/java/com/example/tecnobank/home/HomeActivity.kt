@@ -15,6 +15,7 @@ class HomeActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         _binding = HomeActivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -26,5 +27,6 @@ class HomeActivity : AppCompatActivity() {
                         .navController
                 )
         }
+
     }
 }
