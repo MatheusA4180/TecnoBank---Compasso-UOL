@@ -4,10 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.tecnobank.R
 import com.example.tecnobank.databinding.FiltroExtratoFragmentBinding
+import com.example.tecnobank.home.recyclerview.ListaFiltrosAdapter
 
 class FiltroExtratoFragment : Fragment() {
 
@@ -30,5 +33,14 @@ class FiltroExtratoFragment : Fragment() {
             findNavController().navigate(R.id.acao_filtroExtratoFragment_para_extratoFragment)
         }
 
+        with(binding.listFilters) {
+            layoutManager = LinearLayoutManager(requireContext())
+            adapter = ListaFiltrosAdapter()
+        }
+
+    }
+
+    fun onCellClickListener() {
+        Toast.makeText(requireContext(), "Cell clicked", Toast.LENGTH_SHORT).show()
     }
 }
