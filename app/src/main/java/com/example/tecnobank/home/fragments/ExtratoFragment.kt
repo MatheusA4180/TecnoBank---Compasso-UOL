@@ -10,6 +10,7 @@ import com.example.tecnobank.R
 import com.example.tecnobank.databinding.ExtratoFragmentBinding
 
 class ExtratoFragment: Fragment() {
+
     private var _binding: ExtratoFragmentBinding? = null
     private val binding: ExtratoFragmentBinding get() = _binding!!
 
@@ -28,5 +29,6 @@ class ExtratoFragment: Fragment() {
         binding.entraFiltro.setOnClickListener {
             findNavController().navigate(R.id.acao_extratoFragment_para_filtroExtratoFragment)
         }
+
     }
 }
