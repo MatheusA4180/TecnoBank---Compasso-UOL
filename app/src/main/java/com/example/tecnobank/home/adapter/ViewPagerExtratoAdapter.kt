@@ -3,16 +3,15 @@ package com.example.tecnobank.home.adapter
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.example.tecnobank.home.fragments.ExtratoContaFragment
-import com.example.tecnobank.home.fragments.ServicosFragment
+import com.example.tecnobank.home.fragments.FiltroExtratoFragment
 
 class ViewPagerExtratoAdapter(fragment: Fragment) : FragmentStateAdapter(fragment) {
     override fun getItemCount(): Int {
-        return 3
+        return 4
     }
 
     override fun createFragment(position: Int): Fragment {
-        return ExtratoContaFragment().also {
+        return FiltroExtratoFragment().also {
             it.arguments = Bundle().apply {
                 putInt("position", position)
             }

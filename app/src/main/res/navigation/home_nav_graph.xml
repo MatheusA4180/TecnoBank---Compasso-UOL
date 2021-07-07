@@ -14,7 +14,15 @@
         android:id="@+id/extratoFragment"
         android:name="com.example.tecnobank.home.fragments.ExtratoFragment"
         android:label="extrato"
-        tools:layout="@layout/extrato_fragment" />
+        tools:layout="@layout/extrato_fragment">
+        <action
+            android:id="@+id/acao_extratoFragment_para_filtroExtratoFragment"
+            app:destination="@id/filtroExtratoFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
     <fragment
         android:id="@+id/cartoesFragment"
         android:name="com.example.tecnobank.home.fragments.CartoesFragment"
@@ -25,4 +33,18 @@
         android:name="com.example.tecnobank.home.fragments.VendasFragment"
         android:label="vendas"
         tools:layout="@layout/cartoes_fragment" />
+    <fragment
+        android:id="@+id/filtroExtratoFragment"
+        android:name="com.example.tecnobank.home.fragments.FiltroExtratoFragment"
+        android:label="FiltroExtratoFragment"
+        tools:layout="@layout/filtro_extrato_fragment">
+        <action
+            android:id="@+id/acao_filtroExtratoFragment_para_extratoFragment"
+            app:destination="@id/extratoFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpToInclusive="true" />
+    </fragment>
 </navigation>

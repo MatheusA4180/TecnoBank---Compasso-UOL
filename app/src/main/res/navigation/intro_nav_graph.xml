@@ -12,7 +12,11 @@
         tools:layout="@layout/onboarding_fragment">
         <action
             android:id="@+id/acao_onbordingfragment_para_loginfragment"
-            app:destination="@id/loginfragment" />
+            app:destination="@id/loginfragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
     </fragment>
     <fragment
         android:id="@+id/loginfragment"
@@ -21,7 +25,12 @@
         tools:layout="@layout/login_fragment" >
         <action
             android:id="@+id/acao_loginfragment_to_homeactivity"
-            app:destination="@id/homeactivity" />
+            app:destination="@id/homeactivity"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpToInclusive="false" />
     </fragment>
     <fragment
         android:id="@+id/splashfragment"
@@ -30,10 +39,18 @@
         tools:layout="@layout/splash_fragment">
         <action
             android:id="@+id/acao_splashfragment_para_onbordingfragment"
-            app:destination="@id/onbordingfragment" />
+            app:destination="@id/onbordingfragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
         <action
             android:id="@+id/acao_splashfragment_para_loginfragment"
-            app:destination="@id/loginfragment" />
+            app:destination="@id/loginfragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
     </fragment>
     <activity
         android:id="@+id/homeactivity"

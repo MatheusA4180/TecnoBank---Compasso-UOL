@@ -7,26 +7,28 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.tecnobank.R
-import com.example.tecnobank.databinding.ExtratoFragmentBinding
+import com.example.tecnobank.databinding.FiltroExtratoFragmentBinding
 
-class ExtratoFragment: Fragment() {
-    private var _binding: ExtratoFragmentBinding? = null
-    private val binding: ExtratoFragmentBinding get() = _binding!!
+class FiltroExtratoFragment : Fragment() {
+
+    private var _binding: FiltroExtratoFragmentBinding? = null
+    private val binding: FiltroExtratoFragmentBinding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
-        _binding = ExtratoFragmentBinding.inflate(inflater, container, false)
+    ): View? {
+        _binding = FiltroExtratoFragmentBinding.inflate(inflater, container, false)
         return _binding!!.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.entraFiltro.setOnClickListener {
-            findNavController().navigate(R.id.acao_extratoFragment_para_filtroExtratoFragment)
+        binding.btBack.setOnClickListener {
+            findNavController().navigate(R.id.acao_filtroExtratoFragment_para_extratoFragment)
         }
+
     }
 }
