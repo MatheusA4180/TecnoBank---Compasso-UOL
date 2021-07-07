@@ -9,13 +9,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.tecnobank.R
 
 class ListaServicosAdapter(
-    private val listServicesTitles: List<String>,
-    private val listServicesIcons: List<Int>,
+    private val listServices: List<ItemService>,
 ) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun getItemCount(): Int {
-        return 16
+        return listServices.size
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -27,8 +26,8 @@ class ListaServicosAdapter(
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (holder is CardServicosViewHolder) {
-            holder.icone.setImageResource(listServicesIcons[position])
-            holder.titulo.text = listServicesTitles[position]
+            holder.icone.setImageResource(listServices[position].icon)
+            holder.titulo.text = listServices[position].title
         }
     }
 
@@ -37,4 +36,5 @@ class ListaServicosAdapter(
         val titulo: TextView = itemView.findViewById(R.id.title_sevice)
     }
 
+    data class ItemService(val title: String, val icon: Int)
 }

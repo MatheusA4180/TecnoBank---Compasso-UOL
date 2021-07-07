@@ -14,10 +14,10 @@ class ViewPagerAdapter(fragment:Fragment): FragmentStateAdapter(fragment) {
 //            arguments = Bundle().
 //        }
 
-        val fragment = ServicosFragment()
-        fragment.arguments = Bundle().apply {
-            putInt("position", position * 7)
+        return ServicosFragment().also {
+            it.arguments = Bundle().apply {
+                putInt("position", position)
+            }
         }
-        return fragment
     }
 }

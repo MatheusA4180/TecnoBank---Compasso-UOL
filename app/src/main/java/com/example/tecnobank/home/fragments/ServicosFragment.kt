@@ -26,64 +26,74 @@ class ServicosFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val listServicesTitles: List<String> = listOf(
-            "Transferências",
-            "Cartões",
-            "Pagar Contas",
-            "Recargas",
-            "Adicionar dinheiro",
-            "Pix/QR Code",
-            "Aplicando meu Dinheiro",
-            "Meus Investimentos",
-            "Seguros",
-            "Aprenda a Investir",
-            "Postos Shell",
-            "Radar de Ofertas",
-            "Shopping",
-            "Onde sacar Dinheiro",
-            "Indique e Ganhe",
-            "Pagar com QR code"
-        )
-
-        val listServicesIcons: List<Int> = listOf(
-            R.drawable.ic_transferencia,
-            R.drawable.ic_cartoes,
-            R.drawable.ic_pagar_contas,
-            R.drawable.ic_recarga,
-            R.drawable.ic_adicionar_dinheiro,
-            R.drawable.ic_pix_qrcode,
-            R.drawable.ic_aplicando_meu_dinheiro,
-            R.drawable.ic_meus_investimentos,
-            R.drawable.ic_seguros,
-            R.drawable.ic_aprenda_a_investir,
-            R.drawable.ic_postos_shell,
-            R.drawable.ic_radar_ofertas,
-            R.drawable.ic_shopping,
-            R.drawable.ic_onde_sacar,
-            R.drawable.ic_indique_e_ganhe,
-            R.drawable.ic_pagar_com_qrcode
-        )
-
         with(binding.listaServicos) {
             layoutManager =
                 GridLayoutManager(
                     requireContext(), 2, GridLayoutManager.HORIZONTAL,
                     false
                 )
-            adapter = ListaServicosAdapter(listServicesTitles, listServicesIcons)
+            adapter = ListaServicosAdapter(getServicesByPage(requireArguments().getInt("position")))
         }
 
-        //if(positionViewPager==0){(1 pagina do view pager)
-        //  limitar o trecho de exibição inicial da recycler view(6 botões iniciais)
-        // }else if(positionViewPager==1){(2 pagina do view pager)
-        //  limitar o trecho de exibição medio da recycler view(6 botões intermediarios)
-        // }else{(3 pagina do view pager)
-        //  limitar o trecho de exibição final da recycler view(4 botões finais)
-        // }
+    }
 
-        arguments?.takeIf { it.containsKey("position") }?.apply {
-            binding.listaServicos.scrollToPosition(getInt("position"))
+    fun getServicesByPage(positionViewPager: Int): List<ListaServicosAdapter.ItemService> {
+        return when (positionViewPager) {
+            0 -> {
+                getMainServices()
+            }
+            1 -> {
+                getProdutsAndInvestments()
+            }
+            2 -> {
+                getServices()
+            }
+            else -> {
+                throw Exception("nenhuma lista encontrada")
+            }
         }
     }
 
+    fun getMainServices(): List<ListaServicosAdapter.ItemService> {
+        return listOf(
+            ListaServicosAdapter.ItemService("Transferências", R.drawable.ic_transferencia),
+            ListaServicosAdapter.ItemService("Cartões", R.drawable.ic_cartoes),
+            ListaServicosAdapter.ItemService("Pagar Contas", R.drawable.ic_pagar_contas),
+            ListaServicosAdapter.ItemService("Recargas", R.drawable.ic_recarga),
+            ListaServicosAdapter.ItemService(
+                "Adicionar dinheiro",
+                R.drawable.ic_adicionar_dinheiro
+            ),
+            ListaServicosAdapter.ItemService("Pix/QR Code", R.drawable.ic_pix_qrcode)
+        )
+    }
+
+    private fun getProdutsAndInvestments(): List<ListaServicosAdapter.ItemService> {
+        return listOf(
+            ListaServicosAdapter.ItemService(
+                "Aplicando meu Dinheiro",
+                R.drawable.ic_aplicando_meu_dinheiro
+            ),
+            ListaServicosAdapter.ItemService(
+                "Meus Investimentos",
+                R.drawable.ic_meus_investimentos
+            ),
+            ListaServicosAdapter.ItemService("Seguros", R.drawable.ic_seguros),
+            ListaServicosAdapter.ItemService(
+                "Aprenda a Investir",
+                R.drawable.ic_aprenda_a_investir
+            ),
+            ListaServicosAdapter.ItemService("Postos Shell", R.drawable.ic_postos_shell),
+            ListaServicosAdapter.ItemService("Radar de Ofertas", R.drawable.ic_radar_ofertas)
+        )
+    }
+
+    private fun getServices(): List<ListaServicosAdapter.ItemService> {
+        return listOf(
+            ListaServicosAdapter.ItemService("Shopping", R.drawable.ic_shopping),
+            ListaServicosAdapter.ItemService("Onde sacar Dinheiro", R.drawable.ic_onde_sacar),
+            ListaServicosAdapter.ItemService("Indique e Ganhe", R.drawable.ic_indique_e_ganhe),
+            ListaServicosAdapter.ItemService("Pagar com QR code", R.drawable.ic_pagar_com_qrcode)
+        )
+    }
 }
