@@ -10,14 +10,11 @@ class ViewPagerAdapter(fragment:Fragment): FragmentStateAdapter(fragment) {
     override fun getItemCount(): Int = 3
 
     override fun createFragment(position: Int): Fragment {
-//        return ServicosFragment().apply {
-//            arguments = Bundle().
-//        }
-
         return ServicosFragment().also {
             it.arguments = Bundle().apply {
                 putInt("position", position)
             }
         }
+
     }
 }

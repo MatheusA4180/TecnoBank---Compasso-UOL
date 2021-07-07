@@ -96,4 +96,5 @@ class ServicosFragment : Fragment() {
             ListaServicosAdapter.ItemService("Pagar com QR code", R.drawable.ic_pagar_com_qrcode)
         )
     }
+
 }
