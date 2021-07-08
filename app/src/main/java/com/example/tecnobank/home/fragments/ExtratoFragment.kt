@@ -59,7 +59,7 @@ class ExtratoFragment: Fragment() {
 //        })
 
         binding.entraFiltro.setOnClickListener {
-            findNavController().navigate(R.id.acao_extratoFragment_para_filtroExtratoFragment)
+            findNavController().navigate(R.id.action_extratoFragment_to_complementActivity)
         }
 
         binding.todosExtratos.setOnClickListener {

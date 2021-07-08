@@ -9,12 +9,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.tecnobank.R
 
 class ListaFiltrosAdapter(
-    private val listItemFilter: List<String>//,
-    //private val selectFilterlistener: SelectFilterlistener
+    private val listItemFilter: List<String>,
+    private val selectFilterlistener: SelectFilterlistener
 ) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    //private val listSelectFilter: MutableList<Boolean> = mutableListOf(true, false, false, false, false)
+    private var positionSelected: Int = 1
 
     override fun getItemCount(): Int {
         return 5
@@ -29,10 +29,16 @@ class ListaFiltrosAdapter(
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (holder is FilterItemViewHolder) {
-            //troca da posição do icone
             holder.description.text = listItemFilter[position]
             holder.itemView.setOnClickListener {
+                positionSelected = position
+                notifyDataSetChanged()
+                selectFilterlistener.selectedFilterlistener(positionSelected)
+            }
+            if (position == positionSelected) {
                 holder.icon.setImageResource(R.drawable.ic_check)
+            } else {
+                holder.icon.setImageResource(0)
             }
         }
     }
@@ -40,16 +46,6 @@ class ListaFiltrosAdapter(
     class FilterItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val description: TextView = itemView.findViewById(R.id.description_filter)
         val icon: ImageView = itemView.findViewById(R.id.image_check)
-
-//        lateinit var selectFilterlistener: SelectFilterlistener
-//        this.selectFilterlistener = SelectFilterlistener
-//        itemView.setOnClickListener(this)
-//
-//        override fun onClick(p0: View?) {
-//            SelectFilterlistener.selectedFilterlistener(adapterPosition)
-//        }
-
-
     }
 
     interface SelectFilterlistener {

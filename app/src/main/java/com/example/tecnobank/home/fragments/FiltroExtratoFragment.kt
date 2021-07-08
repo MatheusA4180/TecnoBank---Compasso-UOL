@@ -11,7 +11,7 @@ import com.example.tecnobank.R
 import com.example.tecnobank.databinding.FiltroExtratoFragmentBinding
 import com.example.tecnobank.home.recyclerview.ListaFiltrosAdapter
 
-class FiltroExtratoFragment : Fragment() {//, ListaFiltrosAdapter.selectFilterlistener {
+class FiltroExtratoFragment : Fragment(), ListaFiltrosAdapter.SelectFilterlistener {
 
     private var _binding: FiltroExtratoFragmentBinding? = null
     private val binding: FiltroExtratoFragmentBinding get() = _binding!!
@@ -36,23 +36,22 @@ class FiltroExtratoFragment : Fragment() {//, ListaFiltrosAdapter.selectFilterli
         super.onViewCreated(view, savedInstanceState)
 
         binding.btBack.setOnClickListener {
-            findNavController().navigate(R.id.acao_filtroExtratoFragment_para_extratoFragment)
+            findNavController().navigate(R.id.action_extratoFragment_to_complementActivity)
         }
 
-        //receber a posição selecionada para enviar para o outro fragmento
         with(binding.listFilters) {
             layoutManager = LinearLayoutManager(requireContext())
-            adapter = ListaFiltrosAdapter(listItemFilter)//,this)
+            adapter = ListaFiltrosAdapter(listItemFilter, this@FiltroExtratoFragment)
         }
 
 //        binding.applyFilter.setOnClickListener {
 //            arguments = Bundle().apply {
-//              putString("text_selected",//listItemFilter[position])
+//              putString("text_selected",listItemFilter[position])
 //            }
 //        }
     }
 
-//    override fun SelectFilterlistener(position: Int) {
-//
-//    }
+    override fun selectedFilterlistener(position: Int) {
+
+    }
 }

@@ -19,14 +19,9 @@ class HomeActivity : AppCompatActivity() {
         _binding = HomeActivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        with(binding) {
-            bottomNavigation
-                .setupWithNavController(
-                    (supportFragmentManager
-                        .findFragmentById(R.id.navHostFragment) as NavHostFragment)
-                        .navController
-                )
-        }
-
+        binding.bottomNavigation.setupWithNavController(
+            (supportFragmentManager
+                .findFragmentById(R.id.navHostFragment) as NavHostFragment).navController
+        )
     }
 }
