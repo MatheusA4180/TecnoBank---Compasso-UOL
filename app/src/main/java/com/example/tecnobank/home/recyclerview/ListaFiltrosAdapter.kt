@@ -18,6 +18,9 @@ class ListaFiltrosAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         "Últimos 120 dias"
     )
 
+    private val listSelectFilter: MutableList<Boolean> =
+        mutableListOf(true, false, false, false, false)
+
     override fun getItemCount(): Int {
         return 5
     }
@@ -35,6 +38,7 @@ class ListaFiltrosAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
             holder.itemView.setOnClickListener {
                 holder.icon.setImageResource(R.drawable.ic_check)
             }
+
         }
     }
 
