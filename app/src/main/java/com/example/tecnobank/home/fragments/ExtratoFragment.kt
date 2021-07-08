@@ -41,6 +41,7 @@ class ExtratoFragment: Fragment() {
         ).get(ExtratoViewModel::class.java)
 
         binding.progressCircular.isVisible = false
+        binding.listExtratos.isVisible = false
 
 //        if(requireArguments().getString("filter").isNullOrEmpty()){
 //            binding.textFilter.text = "nos ${(requireArguments().getString("text_selected"))!!.toLowerCase()}."
@@ -66,9 +67,16 @@ class ExtratoFragment: Fragment() {
             findNavController().navigate(R.id.action_extratoFragment_to_filterActivity)
         }
 
+//        binding.listExtratos.layoutManager = LinearLayoutManager(requireContext())
+//        val headerAdapter = ListExtractHistoryHeaderAdapter()
+//        val flowersAdapter = ListExtractHistoryAdapter()
+//        val concatAdapter =
+//        binding.listExtratos.adapter = concatAdapter
+
         binding.todosExtratos.setOnClickListener {
             checkSelectedButton(listOf(true, false, false))
             loading()
+            binding.listExtratos.isVisible = true
         }
 
         binding.entradasExtratos.setOnClickListener {
