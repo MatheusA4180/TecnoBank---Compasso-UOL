@@ -95,7 +95,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/lista_extratos"
+        android:id="@+id/list_extratos"
         android:layout_width="409dp"
         android:layout_height="589dp"
         android:layout_marginTop="1dp"
@@ -106,7 +106,7 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
-        android:id="@+id/imagem_extrato"
+        android:id="@+id/image_extract"
         android:layout_width="300dp"
         android:layout_height="200dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -117,7 +117,7 @@
         app:srcCompat="@drawable/fundo_extrato" />
 
     <TextView
-        android:id="@+id/texto_extrato"
+        android:id="@+id/text_extract"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
@@ -127,9 +127,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imagem_extrato" />
+        app:layout_constraintTop_toBottomOf="@+id/image_extract" />
 
     <TextView
+        android:id="@+id/text_filter"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
@@ -139,7 +140,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/texto_extrato" />
+        app:layout_constraintTop_toBottomOf="@+id/text_extract" />
+
+    <ProgressBar
+        android:id="@+id/progressCircular"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,15 +1,20 @@
 package com.example.tecnobank.home.fragments
 
+import android.app.AlertDialog
 import android.graphics.Color
 import android.os.Bundle
+import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.tecnobank.R
 import com.example.tecnobank.databinding.ExtratoFragmentBinding
 import com.example.tecnobank.home.viewmodel.ExtratoViewModel
+import com.example.tecnobank.home.viewmodel.ViewModelFactoryHome
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 
 class ExtratoFragment: Fragment() {
@@ -30,34 +35,67 @@ class ExtratoFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-//        viewModel = ViewModelProvider(this).get(ExtratoViewModel::class.java)
+        viewModel = ViewModelProvider(
+            this,
+            ViewModelFactoryHome(requireContext())
+        ).get(ExtratoViewModel::class.java)
+
+        binding.progressCircular.isVisible = false
+
+//        viewModel.onOpenExtract("","")
+
+//        viewModel.responseSucess.observe(viewLifecycleOwner, {
+//                binding.imageExtract.isVisible = false
+//                binding.textExtract.isVisible = false
+//                binding.textFilter.isVisible = false
+//                recyclerViewConfig()
+//        })
+
+//        viewModel.responseErro.observe(viewLifecycleOwner, {
+//            showInfo(it)
+//            if(requireArguments().getString("text_selected").isNullOrEmpty()){
+//                binding.textFilter.text = "nos ${(requireArguments().getString("text_selected")).toLowerCase()}."
+//            }
+//        })
 
         binding.entraFiltro.setOnClickListener {
             findNavController().navigate(R.id.acao_extratoFragment_para_filtroExtratoFragment)
         }
 
-        checkSelectedButton(listOf(true, false, false))
-
         binding.todosExtratos.setOnClickListener {
             checkSelectedButton(listOf(true, false, false))
+            loading()
         }
 
         binding.entradasExtratos.setOnClickListener {
             checkSelectedButton(listOf(false, true, false))
+            loading()
         }
 
         binding.saidasExtratos.setOnClickListener {
             checkSelectedButton(listOf(false, false, true))
+            loading()
         }
 
-//        viewModel.seletedButtonEveryOn.observe(viewLifecycleOwner, {
-//        })
-//
-//        viewModel.seletedButtonEveryOff.observe(viewLifecycleOwner, {
-//        })
-
-
     }
+
+    private fun loading() {
+        binding.progressCircular.isVisible = true
+        Handler().postDelayed({
+            binding.progressCircular.isVisible = false
+        }, 1500)
+    }
+
+//    private fun recyclerViewConfig(listBenefits: List<BalanceBenefits.Benefits>) {
+//        with(binding.listExtratos) {
+//            layoutManager = LinearLayoutManager(
+//                requireContext(),
+//                LinearLayoutManager.HORIZONTAL,
+//                false
+//            )
+//            adapter = ListaExtratoAdapter()
+//        }
+//    }
 
     private fun checkSelectedButton(listSelectedButtons: List<Boolean>) {
         for (position in listSelectedButtons.indices) {
@@ -91,6 +129,14 @@ class ExtratoFragment: Fragment() {
             setTextColor(Color.parseColor("#FFFFFF"))
             setStrokeColorResource(R.color.white)
         }
+    }
+
+    fun showInfo(titulo: String?) {
+        AlertDialog.Builder(requireContext())
+            .setCancelable(true)
+            .setTitle(titulo)
+            .setMessage("")
+            .show()
     }
 
 }

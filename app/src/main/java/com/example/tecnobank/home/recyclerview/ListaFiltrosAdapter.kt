@@ -8,18 +8,10 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tecnobank.R
 
-class ListaFiltrosAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class ListaFiltrosAdapter(private val listItemFilter: List<String>) :
+    RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    private val listItemFilter: List<String> = listOf(
-        "Últimos 3 dias",
-        "Últimos 7 dias",
-        "Últimos 30 dias",
-        "Últimos 60 dias",
-        "Últimos 120 dias"
-    )
-
-    private val listSelectFilter: MutableList<Boolean> =
-        mutableListOf(true, false, false, false, false)
+    //private val listSelectFilter: MutableList<Boolean> = mutableListOf(true, false, false, false, false)
 
     override fun getItemCount(): Int {
         return 5
@@ -34,11 +26,11 @@ class ListaFiltrosAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (holder is FilterItemViewHolder) {
+            //troca da posição do icone
             holder.description.text = listItemFilter[position]
             holder.itemView.setOnClickListener {
                 holder.icon.setImageResource(R.drawable.ic_check)
             }
-
         }
     }
 

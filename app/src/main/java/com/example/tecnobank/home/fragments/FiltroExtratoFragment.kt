@@ -15,6 +15,13 @@ class FiltroExtratoFragment : Fragment() {
 
     private var _binding: FiltroExtratoFragmentBinding? = null
     private val binding: FiltroExtratoFragmentBinding get() = _binding!!
+    private val listItemFilter: List<String> = listOf(
+        "Últimos 3 dias",
+        "Últimos 7 dias",
+        "Últimos 30 dias",
+        "Últimos 60 dias",
+        "Últimos 120 dias"
+    )
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -32,10 +39,16 @@ class FiltroExtratoFragment : Fragment() {
             findNavController().navigate(R.id.acao_filtroExtratoFragment_para_extratoFragment)
         }
 
+        //receber a posição selecionada para enviar para o outro fragmento
         with(binding.listFilters) {
             layoutManager = LinearLayoutManager(requireContext())
-            adapter = ListaFiltrosAdapter()
+            adapter = ListaFiltrosAdapter(listItemFilter)
         }
 
+//        binding.applyFilter.setOnClickListener {
+//            arguments = Bundle().apply {
+//              putString("text_selected",//listItemFilter[position])
+//            }
+//        }
     }
 }
