@@ -23,5 +23,13 @@ class HomeActivity : AppCompatActivity() {
             (supportFragmentManager
                 .findFragmentById(R.id.navHostFragment) as NavHostFragment).navController
         )
+
+
+//        val intent = intent
+//        val filter = intent.getStringExtra("filter")
+//        val bundle = Bundle()
+//        bundle.putString("filter", filter)
+//        ExtratoFragment().setArguments(bundle)
+
     }
 }

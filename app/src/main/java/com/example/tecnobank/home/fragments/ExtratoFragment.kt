@@ -42,6 +42,10 @@ class ExtratoFragment: Fragment() {
 
         binding.progressCircular.isVisible = false
 
+//        if(requireArguments().getString("filter").isNullOrEmpty()){
+//            binding.textFilter.text = "nos ${(requireArguments().getString("text_selected"))!!.toLowerCase()}."
+//        }
+
 //        viewModel.onOpenExtract("","")
 
 //        viewModel.responseSucess.observe(viewLifecycleOwner, {
@@ -59,7 +63,7 @@ class ExtratoFragment: Fragment() {
 //        })
 
         binding.entraFiltro.setOnClickListener {
-            findNavController().navigate(R.id.action_extratoFragment_to_complementActivity)
+            findNavController().navigate(R.id.action_extratoFragment_to_filterActivity)
         }
 
         binding.todosExtratos.setOnClickListener {

@@ -16,7 +16,7 @@
         android:label="extrato"
         tools:layout="@layout/extrato_fragment">
         <action
-            android:id="@+id/action_extratoFragment_to_complementActivity"
+            android:id="@+id/action_extratoFragment_to_filterActivity"
             app:destination="@id/complementActivity" />
     </fragment>
     <fragment
@@ -31,7 +31,7 @@
         tools:layout="@layout/cartoes_fragment" />
     <activity
         android:id="@+id/complementActivity"
-        android:name="com.example.tecnobank.home.ComplementActivity"
+        android:name="com.example.tecnobank.home.FilterActivity"
         android:label="complement_activity"
-        tools:layout="@layout/complement_activity" />
+        tools:layout="@layout/filter_activity" />
 </navigation>
