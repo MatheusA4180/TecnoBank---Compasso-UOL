@@ -9,13 +9,5 @@
         android:id="@+id/pixQrCodeFragment"
         android:name="com.example.tecnobank.home.fragments.PixQrCodeFragment"
         android:label="PixQrCodeFragment"
-        tools:layout="@layout/pix_qr_code_fragment">
-        <action
-            android:id="@+id/action_pixQrCodeFragment_to_homeActivity"
-            app:destination="@id/homeActivity" />
-    </fragment>
-    <activity
-        android:id="@+id/homeActivity"
-        android:name="com.example.tecnobank.home.HomeActivity"
-        android:label="HomeActivity" />
+        tools:layout="@layout/pix_qr_code_fragment" />
 </navigation>

@@ -5,9 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.tecnobank.R
 import com.example.tecnobank.databinding.FiltroExtratoFragmentBinding
 import com.example.tecnobank.home.recyclerview.ListaFiltrosAdapter
 
@@ -40,7 +38,7 @@ class FiltroExtratoFragment : Fragment(), ListaFiltrosAdapter.SelectFilterlisten
         super.onViewCreated(view, savedInstanceState)
 
         binding.btBack.setOnClickListener {
-            findNavController().navigate(R.id.action_filtroExtratoFragment_to_homeActivity)
+            requireActivity().finish()
         }
 
         with(binding.listFilters) {
@@ -50,11 +48,6 @@ class FiltroExtratoFragment : Fragment(), ListaFiltrosAdapter.SelectFilterlisten
 
         positionS
 
-//        binding.applyFilter.setOnClickListener {
-//            arguments = Bundle().apply {
-//              putString("text_selected",listItemFilter[position])
-//            }
-//        }
 
 //        val intent = Intent(requireActivity().baseContext, FilterActivity::class.java)
 //        intent.putExtra("filter", listItemFilter[4])

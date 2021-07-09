@@ -10,6 +10,8 @@ import com.example.tecnobank.R
 
 class ListaServicosAdapter(
     private val listServices: List<ItemService>,
+    private val clickedServiceListener: ClickedServiceListener,
+    private val positionViewPager: Int
 ) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
@@ -28,6 +30,9 @@ class ListaServicosAdapter(
         if (holder is CardServicesViewHolder) {
             holder.icon.setImageResource(listServices[position].icon)
             holder.title.text = listServices[position].title
+            holder.itemView.setOnClickListener {
+                clickedServiceListener.clickServiceListener(position, positionViewPager)
+            }
         }
     }
 
@@ -37,5 +42,9 @@ class ListaServicosAdapter(
     }
 
     data class ItemService(val title: String, val icon: Int)
+
+    interface ClickedServiceListener {
+        fun clickServiceListener(positionRecyclerView: Int, positionViewPager: Int)
+    }
 
 }

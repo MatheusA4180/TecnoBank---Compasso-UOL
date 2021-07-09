@@ -2,7 +2,8 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#EFEFEF">
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/pix_qrcode_toobar"
@@ -68,7 +69,7 @@
                         android:layout_width="32dp"
                         android:layout_height="32dp"
                         android:layout_marginStart="20dp"
-                        android:layout_marginTop="16dp"
+                        android:layout_marginTop="12dp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:srcCompat="@drawable/ic_transferencia" />
@@ -121,7 +122,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:layout_marginEnd="16dp"
-                        android:layout_marginBottom="16dp"
+                        android:layout_marginBottom="12dp"
                         android:text="Transfira utilizando a chave ou os dados bancários."
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/imageView11"
@@ -150,7 +151,7 @@
                 android:layout_marginTop="20dp"
                 android:text="Transferir ou pagar QR Code"
                 android:textColor="@color/black"
-                android:textSize="16sp"
+                android:textSize="17sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -158,6 +159,7 @@
                 android:id="@+id/cardview_pix_2"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/cardview_pix_1">
@@ -171,7 +173,7 @@
                         android:layout_width="32dp"
                         android:layout_height="32dp"
                         android:layout_marginStart="20dp"
-                        android:layout_marginTop="16dp"
+                        android:layout_marginTop="12dp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:srcCompat="@drawable/ic_pagar_com_qrcode" />
@@ -224,7 +226,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:layout_marginEnd="16dp"
-                        android:layout_marginBottom="20dp"
+                        android:layout_marginBottom="12dp"
                         android:text="Leia o QR Code para realizar o pagamento."
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/imageView14"
@@ -248,6 +250,7 @@
                 android:id="@+id/cardview_pix_3"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/cardview_pix_2">
@@ -261,7 +264,7 @@
                         android:layout_width="32dp"
                         android:layout_height="32dp"
                         android:layout_marginStart="20dp"
-                        android:layout_marginTop="20dp"
+                        android:layout_marginTop="12dp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:srcCompat="@drawable/ic_copia_e_cola" />
@@ -314,7 +317,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:layout_marginEnd="16dp"
-                        android:layout_marginBottom="20dp"
+                        android:layout_marginBottom="12dp"
                         android:text="Cole o código do QR que você copiou para pagar."
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/imageView15"
@@ -342,7 +345,7 @@
                 android:layout_marginTop="20dp"
                 android:text="Receber"
                 android:textColor="@color/black"
-                android:textSize="16sp"
+                android:textSize="17sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
@@ -366,7 +369,7 @@
                         android:layout_width="32dp"
                         android:layout_height="32dp"
                         android:layout_marginStart="20dp"
-                        android:layout_marginTop="20dp"
+                        android:layout_marginTop="12dp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:srcCompat="@drawable/ic_portabilidade_salario" />
@@ -419,7 +422,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:layout_marginEnd="16dp"
-                        android:layout_marginBottom="20dp"
+                        android:layout_marginBottom="12dp"
                         android:text="Crie um QR Code para receber dinheiro na hora."
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/imageView18"
@@ -447,7 +450,7 @@
                 android:layout_marginTop="20dp"
                 android:text="Minhas chaves ativas"
                 android:textColor="@color/black"
-                android:textSize="16sp"
+                android:textSize="17sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
@@ -475,7 +478,7 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="20dp"
                 android:text="Cadastre chaves para receber transferências grátis de forma fácil e rápida."
-                android:textSize="14sp"
+                android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
@@ -489,7 +492,7 @@
                 android:layout_marginTop="20dp"
                 android:text="CADASTRAR CHAVES"
                 android:textColor="#2270E3"
-                android:textSize="14sp"
+                android:textSize="15sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"

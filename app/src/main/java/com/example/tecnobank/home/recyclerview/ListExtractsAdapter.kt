@@ -12,6 +12,7 @@ class ListExtractsAdapter(private val CurrentDate: Date) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private val listDatas: List<String> = listOf("09", "10", "11")
+    private val data: Int = 9
 
     override fun getItemCount(): Int = 9
 
@@ -42,7 +43,7 @@ class ListExtractsAdapter(private val CurrentDate: Date) :
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (holder is HeaderViewHolder) {
-            holder.headerText.text = "09 Junho"
+            holder.headerText.text = "${data + (position / 3)} Junho"
         } else {
             //o que for mudar na extractViewHolder
         }

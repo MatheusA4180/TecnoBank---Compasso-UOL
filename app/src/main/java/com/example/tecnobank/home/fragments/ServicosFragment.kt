@@ -5,15 +5,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.tecnobank.R
 import com.example.tecnobank.databinding.PageFuncionalidadesBinding
 import com.example.tecnobank.home.recyclerview.ListaServicosAdapter
 
-class ServicosFragment : Fragment() {
+class ServicosFragment : Fragment(), ListaServicosAdapter.ClickedServiceListener {
 
     private var _binding: PageFuncionalidadesBinding? = null
     private val binding: PageFuncionalidadesBinding get() = _binding!!
+    private var positionClicked: Int = 0
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -32,7 +34,13 @@ class ServicosFragment : Fragment() {
                     false
                 )
             adapter =
-                ListaServicosAdapter(getServicesByPage(requireArguments().getInt("position_view_pager")))
+                ListaServicosAdapter(
+                    getServicesByPage(
+                        requireArguments()
+                            .getInt("position_view_pager")
+                    ), this@ServicosFragment,
+                    requireArguments().getInt("position_view_pager")
+                )
         }
     }
 
@@ -134,6 +142,12 @@ class ServicosFragment : Fragment() {
                 R.drawable.ic_pagar_com_qrcode
             )
         )
+    }
+
+    override fun clickServiceListener(positionRecyclerView: Int, positionViewPager: Int) {
+        if ((positionRecyclerView == 5) && (positionViewPager == 0)) {
+            findNavController().navigate(R.id.action_inicioFragment_to_pixQrCodeActivity)
+        }
     }
 
 }

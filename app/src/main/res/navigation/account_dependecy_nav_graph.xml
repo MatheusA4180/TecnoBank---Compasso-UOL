@@ -9,13 +9,5 @@
         android:id="@+id/accountDependecyFragment"
         android:name="com.example.tecnobank.home.fragments.AccountDependecyFragment"
         android:label="AccountDependecyFragment"
-        tools:layout="@layout/liberacao_de_servicos_fragment">
-        <action
-            android:id="@+id/action_accountDependecyFragment_to_homeActivity"
-            app:destination="@id/homeActivity" />
-    </fragment>
-    <activity
-        android:id="@+id/homeActivity"
-        android:name="com.example.tecnobank.home.HomeActivity"
-        android:label="HomeActivity" />
+        tools:layout="@layout/liberacao_de_servicos_fragment" />
 </navigation>

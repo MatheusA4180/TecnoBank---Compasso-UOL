@@ -5,8 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
-import com.example.tecnobank.R
 import com.example.tecnobank.databinding.PixQrCodeFragmentBinding
 
 
@@ -28,7 +26,7 @@ class PixQrCodeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.btBack.setOnClickListener {
-            findNavController().navigate(R.id.action_pixQrCodeFragment_to_homeActivity)
+            requireActivity().finish()
         }
 
     }
