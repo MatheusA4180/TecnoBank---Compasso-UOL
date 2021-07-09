@@ -26,13 +26,13 @@ class ListExtractsAdapter(private val CurrentDate: Date) :
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         when (viewType) {
             1 -> {
-                return ListExtractHistoryAdapter.ExtractViewHolder(
+                return ExtractViewHolder(
                     LayoutInflater.from(parent.context)
                         .inflate(R.layout.extract_cardview, parent, false)
                 )
             }
             else -> {
-                return ListExtractHistoryHeaderAdapter.HeaderViewHolder(
+                return HeaderViewHolder(
                     LayoutInflater.from(parent.context)
                         .inflate(R.layout.header_extrato, parent, false)
                 )
@@ -42,7 +42,7 @@ class ListExtractsAdapter(private val CurrentDate: Date) :
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (holder is HeaderViewHolder) {
-            holder.headerText.text = "09 Junh"
+            holder.headerText.text = "09 Junho"
         } else {
             //o que for mudar na extractViewHolder
         }
