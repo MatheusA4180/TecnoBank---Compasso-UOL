@@ -24,6 +24,9 @@ class FiltroExtratoFragment : Fragment(), ListaFiltrosAdapter.SelectFilterlisten
         "Últimos 120 dias"
     )
 
+    private var positionS: Int = 1
+
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -45,6 +48,8 @@ class FiltroExtratoFragment : Fragment(), ListaFiltrosAdapter.SelectFilterlisten
             adapter = ListaFiltrosAdapter(listItemFilter, this@FiltroExtratoFragment)
         }
 
+        positionS
+
 //        binding.applyFilter.setOnClickListener {
 //            arguments = Bundle().apply {
 //              putString("text_selected",listItemFilter[position])
@@ -58,6 +63,6 @@ class FiltroExtratoFragment : Fragment(), ListaFiltrosAdapter.SelectFilterlisten
     }
 
     override fun selectedFilterlistener(position: Int) {
-
+        this.positionS = position
     }
 }

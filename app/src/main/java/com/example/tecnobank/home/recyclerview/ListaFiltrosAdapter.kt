@@ -37,7 +37,6 @@ class ListaFiltrosAdapter(
             }
             if (position == positionSelected) {
                 holder.icon.setImageResource(R.drawable.ic_check)
-                //selectFilterlistener(position)
             } else {
                 holder.icon.setImageResource(0)
             }

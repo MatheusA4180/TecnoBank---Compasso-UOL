@@ -173,7 +173,7 @@
                                         style="@style/Widget.MaterialComponents.Button.TextButton"
                                         android:layout_width="50dp"
                                         android:layout_height="wrap_content"
-                                        android:layout_marginEnd="40dp"
+                                        android:layout_marginEnd="20dp"
                                         android:drawableEnd="@drawable/ic_visivel"
                                         app:layout_constraintEnd_toEndOf="parent"
                                         app:layout_constraintTop_toTopOf="@+id/valor_saldo" />

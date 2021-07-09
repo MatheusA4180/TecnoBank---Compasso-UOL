@@ -26,13 +26,13 @@ class ListExtractsAdapter(private val CurrentDate: Date) :
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         when (viewType) {
             1 -> {
-                return ListExtractHistoryAdapter.ExtractViewHolder(
+                return ExtractViewHolder(
                     LayoutInflater.from(parent.context)
                         .inflate(R.layout.extract_cardview, parent, false)
                 )
             }
             else -> {
-                return ListExtractHistoryHeaderAdapter.HeaderViewHolder(
+                return HeaderViewHolder(
                     LayoutInflater.from(parent.context)
                         .inflate(R.layout.header_extrato, parent, false)
                 )
