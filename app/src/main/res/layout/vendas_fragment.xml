@@ -77,7 +77,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="15dp"
         android:layout_marginEnd="16dp"
-        android:text="Venda pela internet atravéz das redes sociais e WhatsApp, QR Code, boleto e muito"
+        android:text="Venda pela internet através das redes sociais e WhatsApp, QR Code, boleto e muito mais"
         android:textAlignment="center"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
