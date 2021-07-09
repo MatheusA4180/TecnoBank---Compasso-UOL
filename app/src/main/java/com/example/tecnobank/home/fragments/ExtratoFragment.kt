@@ -114,6 +114,7 @@ class ExtratoFragment: Fragment() {
     private fun loadingSemDados() {
         Handler().postDelayed({
             binding.progressCircular.isVisible = false
+            binding.listExtratos.isVisible = false
             binding.imageExtract.isVisible = true
             binding.textExtract.isVisible = true
             binding.textFilter.isVisible = true
