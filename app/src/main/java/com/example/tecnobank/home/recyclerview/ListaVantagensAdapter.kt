@@ -9,11 +9,11 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tecnobank.R
-import com.example.tecnobank.home.model.BalanceBenefits
+import com.example.tecnobank.home.model.BalanceBenefitsResponse
 import com.squareup.picasso.Picasso
 
 class ListaVantagensAdapter(
-    private val listBenefits: List<BalanceBenefits.Benefits>,
+    private val listBenefitsResponse: List<BalanceBenefitsResponse.Benefits>,
     private val context: Context
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
@@ -30,11 +30,11 @@ class ListaVantagensAdapter(
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (holder is PostViewHolder) {
-            holder.banner.setBackgroundColor(Color.parseColor(listBenefits[position].indicatorColor))
-            Picasso.with(context).load(listBenefits[position].image).into(holder.image)
-            holder.title.text = listBenefits[position].title
-            holder.description.text = listBenefits[position].message
-            holder.link.text = listBenefits[position].textLink
+            holder.banner.setBackgroundColor(Color.parseColor(listBenefitsResponse[position].indicatorColor))
+            Picasso.with(context).load(listBenefitsResponse[position].image).into(holder.image)
+            holder.title.text = listBenefitsResponse[position].title
+            holder.description.text = listBenefitsResponse[position].message
+            holder.link.text = listBenefitsResponse[position].textLink
         }
     }
 

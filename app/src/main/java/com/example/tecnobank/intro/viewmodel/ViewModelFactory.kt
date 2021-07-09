@@ -59,7 +59,7 @@ class ViewModelFactory(private val context: Context): ViewModelProvider.Factory 
     }
 
     private fun providerRetrofitInstance(): EndPoint {
-        return EndPoint.getRetrofitInstance()
+        return EndPoint.getEndPointInstance()
     }
 
     private fun providerSharedPreference(): SharedPreferences {

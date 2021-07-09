@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tecnobank.databinding.InicioFragmentBinding
 import com.example.tecnobank.home.adapter.ViewPagerAdapter
-import com.example.tecnobank.home.model.BalanceBenefits
+import com.example.tecnobank.home.model.BalanceBenefitsResponse
 import com.example.tecnobank.home.recyclerview.ListaVantagensAdapter
 import com.example.tecnobank.home.recyclerview.PagerDecorator
 import com.example.tecnobank.home.viewmodel.InicioViewModel
@@ -104,14 +104,14 @@ class InicioFragment:Fragment() {
         }.attach()
     }
 
-    private fun recyclerViewConfig(listBenefits: List<BalanceBenefits.Benefits>) {
+    private fun recyclerViewConfig(listBenefitsResponse: List<BalanceBenefitsResponse.Benefits>) {
         with(binding.listBenefits) {
             layoutManager = LinearLayoutManager(
                 requireContext(),
                 LinearLayoutManager.HORIZONTAL,
                 false
             )
-            adapter = ListaVantagensAdapter(listBenefits, requireContext())
+            adapter = ListaVantagensAdapter(listBenefitsResponse, requireContext())
             dotsConfig()
         }
     }

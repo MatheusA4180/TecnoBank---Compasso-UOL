@@ -29,7 +29,7 @@ class ViewModelFactoryHome(private val context: Context): ViewModelProvider.Fact
 
 
     private fun providerRetrofitInstance():EndPointHome {
-        return EndPointHome.getRetrofitInstance()
+        return EndPointHome.getEndPointHomeIntance()
     }
 
     private fun providerSharedPreference(): SharedPreferences {

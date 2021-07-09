@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.tecnobank.R
 import com.example.tecnobank.databinding.PageFuncionalidadesBinding
+import com.example.tecnobank.home.adapter.POSITION_VIEW_HOLDER
 import com.example.tecnobank.home.recyclerview.ListaServicosAdapter
 
 class ServicosFragment : Fragment() {
@@ -32,7 +33,13 @@ class ServicosFragment : Fragment() {
                     false
                 )
             adapter =
-                ListaServicosAdapter(getServicesByPage(requireArguments().getInt("position_view_pager")))
+                ListaServicosAdapter(
+                    getServicesByPage(
+                        requireArguments().getInt(
+                            POSITION_VIEW_HOLDER
+                        )
+                    )
+                )
         }
     }
 
