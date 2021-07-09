@@ -42,7 +42,7 @@ class ListExtractsAdapter(private val CurrentDate: Date) :
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (holder is HeaderViewHolder) {
-            holder.headerText.text = "09 Junh"
+            holder.headerText.text = "09 Junho"
         } else {
             //o que for mudar na extractViewHolder
         }
