@@ -23,7 +23,7 @@ class ListaFiltrosAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return FilterItemViewHolder(
             LayoutInflater.from(parent.context)
-                .inflate(R.layout.item_filter, parent, false)//, selectFilterlistener
+                .inflate(R.layout.item_filter, parent, false)
         )
     }
 
@@ -37,6 +37,7 @@ class ListaFiltrosAdapter(
             }
             if (position == positionSelected) {
                 holder.icon.setImageResource(R.drawable.ic_check)
+                //selectFilterlistener(position)
             } else {
                 holder.icon.setImageResource(0)
             }

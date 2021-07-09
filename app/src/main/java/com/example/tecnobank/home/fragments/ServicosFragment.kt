@@ -85,6 +85,10 @@ class ServicosFragment : Fragment() {
     private fun getListProdutsAndInvestments(): List<ListaServicosAdapter.ItemService> {
         return listOf(
             ListaServicosAdapter.ItemService(
+                "Portabilidade de Salário",
+                R.drawable.ic_portabilidade_salario
+            ),
+            ListaServicosAdapter.ItemService(
                 "Aplicando meu Dinheiro",
                 R.drawable.ic_aplicando_meu_dinheiro
             ),

@@ -11,11 +11,14 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.tecnobank.R
 import com.example.tecnobank.databinding.ExtratoFragmentBinding
+import com.example.tecnobank.home.recyclerview.ListExtractsAdapter
 import com.example.tecnobank.home.viewmodel.ExtratoViewModel
 import com.example.tecnobank.home.viewmodel.ViewModelFactoryHome
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+import java.util.*
 
 class ExtratoFragment: Fragment() {
 
@@ -76,26 +79,49 @@ class ExtratoFragment: Fragment() {
         binding.todosExtratos.setOnClickListener {
             checkSelectedButton(listOf(true, false, false))
             loading()
-            binding.listExtratos.isVisible = true
+            Handler().postDelayed({
+                binding.progressCircular.isVisible = false
+                binding.imageExtract.isVisible = false
+                binding.textExtract.isVisible = false
+                binding.textFilter.isVisible = false
+                val data: Date = Calendar.getInstance().time
+                testRecyclerViewConfig(data)
+            }, 1500)
         }
 
         binding.entradasExtratos.setOnClickListener {
             checkSelectedButton(listOf(false, true, false))
             loading()
+            loadingSemDados()
         }
 
         binding.saidasExtratos.setOnClickListener {
             checkSelectedButton(listOf(false, false, true))
             loading()
+            loadingSemDados()
         }
 
     }
 
-    private fun loading() {
-        binding.progressCircular.isVisible = true
+    private fun testRecyclerViewConfig(date: Date) {
+        with(binding.listExtratos) {
+            isVisible = true
+            layoutManager = LinearLayoutManager(requireContext())
+            adapter = ListExtractsAdapter(date)
+        }
+    }
+
+    private fun loadingSemDados() {
         Handler().postDelayed({
             binding.progressCircular.isVisible = false
+            binding.imageExtract.isVisible = true
+            binding.textExtract.isVisible = true
+            binding.textFilter.isVisible = true
         }, 1500)
+    }
+
+    private fun loading() {
+        binding.progressCircular.isVisible = true
     }
 
 //    private fun recyclerViewConfig(listBenefits: List<BalanceBenefits.Benefits>) {

@@ -20,7 +20,7 @@ class ListExtractHistoryHeaderAdapter :
     }
 
     override fun onBindViewHolder(holder: HeaderViewHolder, position: Int) {
-        holder.headerText.text = "08 Jul"
+        holder.headerText.text = "09 Jul"
     }
 
     class HeaderViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

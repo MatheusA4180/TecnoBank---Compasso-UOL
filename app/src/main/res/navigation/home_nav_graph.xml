@@ -9,7 +9,14 @@
         android:id="@+id/inicioFragment"
         android:name="com.example.tecnobank.home.fragments.InicioFragment"
         android:label="inicio"
-        tools:layout="@layout/inicio_fragment" />
+        tools:layout="@layout/inicio_fragment">
+        <action
+            android:id="@+id/action_inicioFragment_to_pixQrCodeActivity"
+            app:destination="@id/pixQrCodeActivity" />
+        <action
+            android:id="@+id/action_inicioFragment_to_accountDependencyActivity"
+            app:destination="@id/accountDependencyActivity" />
+    </fragment>
     <fragment
         android:id="@+id/extratoFragment"
         android:name="com.example.tecnobank.home.fragments.ExtratoFragment"
@@ -34,4 +41,14 @@
         android:name="com.example.tecnobank.home.FilterActivity"
         android:label="complement_activity"
         tools:layout="@layout/filter_activity" />
+    <activity
+        android:id="@+id/pixQrCodeActivity"
+        android:name="com.example.tecnobank.home.PixQrCodeActivity"
+        android:label="PixQrCodeActivity"
+        tools:layout="@layout/pix_qr_code_fragment" />
+    <activity
+        android:id="@+id/accountDependencyActivity"
+        android:name="com.example.tecnobank.home.AccountDependencyActivity"
+        android:label="account_dependency_activity"
+        tools:layout="@layout/account_dependency_activity" />
 </navigation>
