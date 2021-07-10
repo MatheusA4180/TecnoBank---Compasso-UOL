@@ -7,9 +7,9 @@
 
     <fragment
         android:id="@+id/filtroExtratoFragment"
-        android:name="com.example.tecnobank.home.fragments.FiltroExtratoFragment"
+        android:name="com.example.tecnobank.extract.fragments.FilterExtractFragment"
         android:label="Filtro Extrato"
-        tools:layout="@layout/filtro_extrato_fragment">
+        tools:layout="@layout/filter_extract_fragment">
         <action
             android:id="@+id/action_filtroExtratoFragment_to_homeActivity"
             app:destination="@id/homeActivity" />

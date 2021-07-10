@@ -7,9 +7,9 @@
 
     <fragment
         android:id="@+id/inicioFragment"
-        android:name="com.example.tecnobank.home.fragments.InicioFragment"
+        android:name="com.example.tecnobank.home.fragments.HomeFragment"
         android:label="inicio"
-        tools:layout="@layout/inicio_fragment">
+        tools:layout="@layout/home_fragment">
         <action
             android:id="@+id/action_inicioFragment_to_pixQrCodeActivity"
             app:destination="@id/pixQrCodeActivity" />
@@ -19,26 +19,26 @@
     </fragment>
     <fragment
         android:id="@+id/extratoFragment"
-        android:name="com.example.tecnobank.home.fragments.ExtratoFragment"
+        android:name="com.example.tecnobank.extract.fragments.ExtractFragment"
         android:label="extrato"
-        tools:layout="@layout/extrato_fragment">
+        tools:layout="@layout/extract_fragment">
         <action
             android:id="@+id/action_extratoFragment_to_filterActivity"
             app:destination="@id/complementActivity" />
     </fragment>
     <fragment
         android:id="@+id/cartoesFragment"
-        android:name="com.example.tecnobank.home.fragments.CartoesFragment"
+        android:name="com.example.tecnobank.cards.fragments.CardsFragment"
         android:label="cartoes"
-        tools:layout="@layout/vendas_fragment" />
+        tools:layout="@layout/sales_fragment" />
     <fragment
         android:id="@+id/vendasFragment"
-        android:name="com.example.tecnobank.home.fragments.VendasFragment"
+        android:name="com.example.tecnobank.sales.fragments.SalesFragment"
         android:label="vendas"
-        tools:layout="@layout/cartoes_fragment" />
+        tools:layout="@layout/cards_fragment" />
     <activity
         android:id="@+id/complementActivity"
-        android:name="com.example.tecnobank.home.FilterActivity"
+        android:name="com.example.tecnobank.extract.FilterActivity"
         android:label="complement_activity"
         tools:layout="@layout/filter_activity" />
     <activity

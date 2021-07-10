@@ -11,11 +11,11 @@
         android:roundIcon="@mipmap/ic_launcher_custom_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Tecnobank">
-        <activity android:name=".home.AccountDependencyActivity"></activity>
-        <activity android:name=".home.PixQrCodeActivity" />
-        <activity android:name=".home.FilterActivity" />
+        <activity android:name=".home.AccountDependencyActivity"/>
+        <activity android:name=".home.PixQrCodeActivity"/>
+        <activity android:name=".extract.FilterActivity" />
         <activity android:name=".home.HomeActivity" />
-        <activity android:name=".intro.MainActivity">
+        <activity android:name=".intro.IntroActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

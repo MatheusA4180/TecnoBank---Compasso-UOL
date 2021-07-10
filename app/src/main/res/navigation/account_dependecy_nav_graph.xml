@@ -9,5 +9,5 @@
         android:id="@+id/accountDependecyFragment"
         android:name="com.example.tecnobank.home.fragments.AccountDependecyFragment"
         android:label="AccountDependecyFragment"
-        tools:layout="@layout/liberacao_de_servicos_fragment" />
+        tools:layout="@layout/account_dependency_fragment" />
 </navigation>

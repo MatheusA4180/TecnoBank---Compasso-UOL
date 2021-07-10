@@ -1,6 +1,6 @@
 package com.example.tecnobank.intro.repository
 
-import com.example.tecnobank.intro.data.local.SharedPreferenceServices
+import com.example.tecnobank.data.local.SharedPreferenceServices
 
 class OnBoardingRepository(private val sharedPreferenceServices: SharedPreferenceServices) {
 

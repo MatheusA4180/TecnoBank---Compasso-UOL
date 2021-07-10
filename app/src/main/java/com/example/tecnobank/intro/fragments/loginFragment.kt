@@ -13,7 +13,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.tecnobank.R
 import com.example.tecnobank.databinding.LoginFragmentBinding
 import com.example.tecnobank.intro.viewmodel.LoginViewModel
-import com.example.tecnobank.intro.viewmodel.ViewModelFactory
+import com.example.tecnobank.viewmodelfactory.ViewModelFactory
 
 class loginFragment : Fragment() {
 
