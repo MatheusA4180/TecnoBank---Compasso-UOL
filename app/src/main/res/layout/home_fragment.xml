@@ -169,7 +169,7 @@
                                         app:layout_constraintStart_toEndOf="@+id/textView6" />
 
                                     <Button
-                                        android:id="@+id/visivel_saldo"
+                                        android:id="@+id/bt_visible_balance"
                                         style="@style/Widget.MaterialComponents.Button.TextButton"
                                         android:layout_width="50dp"
                                         android:layout_height="wrap_content"
@@ -305,7 +305,7 @@
                             android:layout_height="match_parent">
 
                             <com.google.android.material.tabs.TabLayout
-                                android:id="@+id/tab_layout_funcionalidades"
+                                android:id="@+id/tab_layout_functionalities"
                                 android:layout_width="0dp"
                                 android:layout_height="60dp"
                                 app:layout_constraintEnd_toEndOf="parent"
@@ -313,13 +313,13 @@
                                 app:layout_constraintTop_toTopOf="parent" />
 
                             <androidx.viewpager2.widget.ViewPager2
-                                android:id="@+id/pager_funcionalidades"
+                                android:id="@+id/pager_functionalities"
                                 android:layout_width="0dp"
                                 android:layout_height="260dp"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toBottomOf="@+id/tab_layout_funcionalidades" />
+                                app:layout_constraintTop_toBottomOf="@+id/tab_layout_functionalities" />
 
                         </androidx.constraintlayout.widget.ConstraintLayout>
                     </androidx.cardview.widget.CardView>
@@ -368,7 +368,7 @@
                                 app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
                             <ImageView
-                                android:id="@+id/fecha_banner"
+                                android:id="@+id/incomplet_sing_up"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 app:layout_constraintBottom_toBottomOf="parent"

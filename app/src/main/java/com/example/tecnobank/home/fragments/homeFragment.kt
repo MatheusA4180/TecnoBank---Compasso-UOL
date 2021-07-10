@@ -2,7 +2,6 @@ package com.example.tecnobank.home.fragments
 
 import android.app.AlertDialog
 import android.os.Bundle
-import android.text.format.DateFormat.format
 import android.text.method.PasswordTransformationMethod
 import android.view.LayoutInflater
 import android.view.MotionEvent
@@ -55,7 +54,6 @@ class homeFragment:Fragment() {
             binding.cardBenefitsAndHelp.isVisible = true
             binding.valorSaldo.text = converterStringToReal(it.balance.currentValue)
             binding.valorVendas.text = addDecimalCases(it.balance.receivables)
-                .replace(".", ",")
             recyclerViewConfig(it.benefits)
         })
 
@@ -63,11 +61,11 @@ class homeFragment:Fragment() {
             showInfo(it)
         })
 
-        binding.visivelSaldo.setOnClickListener {
+        binding.btVisibleBalance.setOnClickListener {
             viewModel.checkVisibleBalances()
         }
 
-        binding.fechaBanner.setOnClickListener {
+        binding.incompletSingUp.setOnClickListener {
             binding.funcionalidadesFaltaPoucoBanner.isVisible = false
         }
 
@@ -85,14 +83,14 @@ class homeFragment:Fragment() {
     }
 
     private fun viewPagerAndTabLayoutConfig() {
-        binding.pagerFuncionalidades.adapter = ViewPagerAdapter(this)
+        binding.pagerFunctionalities.adapter = ViewPagerAdapter(this)
         tabLayoutConfig()
     }
 
     private fun tabLayoutConfig() {
         TabLayoutMediator(
-            binding.tabLayoutFuncionalidades,
-            binding.pagerFuncionalidades
+            binding.tabLayoutFunctionalities,
+            binding.pagerFunctionalities
         ) { tab, position ->
             when (position) {
                 0 -> {

@@ -6,7 +6,7 @@ class ExtensionFunctions() {
             return string.replace(".", ",")
         }
         fun addDecimalCases(string:String): String {
-            return "$string.00"
+            return "$string.00".replace(".", ",")
         }
     }
 
