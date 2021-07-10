@@ -9,29 +9,27 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tecnobank.R
-import com.example.tecnobank.home.model.BalanceBenefitsResponse
+import com.example.tecnobank.data.remote.model.home.BalanceBenefitsResponse
 import com.squareup.picasso.Picasso
 
-class ListaVantagensAdapter(
-    private val listBenefitsResponse: List<BalanceBenefitsResponse.Benefits>,
-    private val context: Context
+class ListBenefitsAdapter(
+    private val listBenefitsResponse: List<BalanceBenefitsResponse.Benefits>
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    override fun getItemCount(): Int {
-        return 4
-    }
+    override fun getItemCount(): Int =  listBenefitsResponse.size
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return PostViewHolder(
             LayoutInflater.from(parent.context)
-                .inflate(R.layout.vantagens_cardview, parent, false)
+                .inflate(R.layout.benefits_cardview, parent, false)
         )
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (holder is PostViewHolder) {
             holder.banner.setBackgroundColor(Color.parseColor(listBenefitsResponse[position].indicatorColor))
-            Picasso.with(context).load(listBenefitsResponse[position].image).into(holder.image)
+            Picasso.with(holder.image.context).load(listBenefitsResponse[position].image).into(holder.image)
             holder.title.text = listBenefitsResponse[position].title
             holder.description.text = listBenefitsResponse[position].message
             holder.link.text = listBenefitsResponse[position].textLink

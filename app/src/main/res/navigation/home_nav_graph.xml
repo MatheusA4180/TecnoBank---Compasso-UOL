@@ -7,22 +7,22 @@
 
     <fragment
         android:id="@+id/inicioFragment"
-        android:name="com.example.tecnobank.home.fragments.InicioFragment"
+        android:name="com.example.tecnobank.home.fragments.homeFragment"
         android:label="inicio"
-        tools:layout="@layout/inicio_fragment" />
+        tools:layout="@layout/home_fragment" />
     <fragment
         android:id="@+id/extratoFragment"
-        android:name="com.example.tecnobank.home.fragments.ExtratoFragment"
+        android:name="com.example.tecnobank.extract.fragments.ExtractFragment"
         android:label="extrato"
-        tools:layout="@layout/extrato_fragment" />
+        tools:layout="@layout/extract_fragment" />
     <fragment
         android:id="@+id/cartoesFragment"
-        android:name="com.example.tecnobank.home.fragments.CartoesFragment"
+        android:name="com.example.tecnobank.cards.fragments.CardsFragment"
         android:label="cartoes"
-        tools:layout="@layout/vendas_fragment" />
+        tools:layout="@layout/sales_fragment" />
     <fragment
         android:id="@+id/vendasFragment"
-        android:name="com.example.tecnobank.home.fragments.VendasFragment"
+        android:name="com.example.tecnobank.sales.fragments.SalesFragment"
         android:label="vendas"
-        tools:layout="@layout/cartoes_fragment" />
+        tools:layout="@layout/cards_fragment" />
 </navigation>

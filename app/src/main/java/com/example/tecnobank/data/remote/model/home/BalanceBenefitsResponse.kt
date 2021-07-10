@@ -1,4 +1,4 @@
-package com.example.tecnobank.home.model
+package com.example.tecnobank.data.remote.model.home
 
 import com.google.gson.annotations.SerializedName
 

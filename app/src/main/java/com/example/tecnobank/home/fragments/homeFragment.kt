@@ -2,6 +2,7 @@ package com.example.tecnobank.home.fragments
 
 import android.app.AlertDialog
 import android.os.Bundle
+import android.text.format.DateFormat.format
 import android.text.method.PasswordTransformationMethod
 import android.view.LayoutInflater
 import android.view.MotionEvent
@@ -12,27 +13,30 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.tecnobank.databinding.InicioFragmentBinding
 import com.example.tecnobank.home.adapter.ViewPagerAdapter
-import com.example.tecnobank.home.model.BalanceBenefitsResponse
-import com.example.tecnobank.home.recyclerview.ListaVantagensAdapter
-import com.example.tecnobank.home.recyclerview.PagerDecorator
-import com.example.tecnobank.home.viewmodel.InicioViewModel
-import com.example.tecnobank.home.viewmodel.ViewModelFactoryHome
+import com.example.tecnobank.data.remote.model.home.BalanceBenefitsResponse
+import com.example.tecnobank.databinding.HomeFragmentBinding
+import com.example.tecnobank.extension.ExtensionFunctions.Companion.addDecimalCases
+import com.example.tecnobank.extension.ExtensionFunctions.Companion.converterStringToReal
+import com.example.tecnobank.home.recyclerview.ListBenefitsAdapter
+import com.example.tecnobank.home.recyclerview.PagerDecoratorDots
+import com.example.tecnobank.home.viewmodel.HomeViewModel
+import com.example.tecnobank.viewmodelfactory.ViewModelFactory
 import com.google.android.material.tabs.TabLayoutMediator
+import java.text.NumberFormat
 
 
-class InicioFragment:Fragment() {
-    private var _binding: InicioFragmentBinding? = null
-    private val binding: InicioFragmentBinding get() = _binding!!
-    private lateinit var viewModel:InicioViewModel
+class homeFragment:Fragment() {
+    private var _binding: HomeFragmentBinding? = null
+    private val binding: HomeFragmentBinding get() = _binding!!
+    private lateinit var viewModel:HomeViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = InicioFragmentBinding.inflate(inflater, container, false)
+        _binding = HomeFragmentBinding.inflate(inflater, container, false)
         return _binding!!.root
     }
 
@@ -40,8 +44,8 @@ class InicioFragment:Fragment() {
 
         viewModel = ViewModelProvider(
             this,
-            ViewModelFactoryHome(requireContext())
-        ).get(InicioViewModel::class.java)
+            ViewModelFactory(requireContext())
+        ).get(HomeViewModel::class.java)
 
         viewModel.onOpenHome()
 
@@ -49,8 +53,8 @@ class InicioFragment:Fragment() {
 
         viewModel.responseSucess.observe(viewLifecycleOwner, {
             binding.cardBenefitsAndHelp.isVisible = true
-            binding.valorSaldo.text = it.balance.currentValue.replace(".", ",")
-            binding.valorVendas.text = (it.balance.receivables + ".00")
+            binding.valorSaldo.text = converterStringToReal(it.balance.currentValue)
+            binding.valorVendas.text = addDecimalCases(it.balance.receivables)
                 .replace(".", ",")
             recyclerViewConfig(it.benefits)
         })
@@ -111,13 +115,13 @@ class InicioFragment:Fragment() {
                 LinearLayoutManager.HORIZONTAL,
                 false
             )
-            adapter = ListaVantagensAdapter(listBenefitsResponse, requireContext())
+            adapter = ListBenefitsAdapter(listBenefitsResponse)
             dotsConfig()
         }
     }
 
     private fun RecyclerView.dotsConfig() {
-        val decor = PagerDecorator()
+        val decor = PagerDecoratorDots()
         addItemDecoration(decor)
         addOnItemTouchListener(object : RecyclerView.OnItemTouchListener {
             override fun onTouchEvent(rv: RecyclerView, e: MotionEvent) {

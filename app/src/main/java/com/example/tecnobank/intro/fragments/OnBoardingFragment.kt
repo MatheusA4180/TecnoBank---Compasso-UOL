@@ -10,7 +10,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.tecnobank.R
 import com.example.tecnobank.databinding.OnboardingFragmentBinding
 import com.example.tecnobank.intro.viewmodel.OnBoardingViewModel
-import com.example.tecnobank.intro.viewmodel.ViewModelFactory
+import com.example.tecnobank.viewmodelfactory.ViewModelFactory
 
 
 class OnBoardingFragment : Fragment() {

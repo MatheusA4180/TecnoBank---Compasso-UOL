@@ -8,7 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tecnobank.R
 
-class ListaServicosAdapter(
+class ListServicesAdapter(
     private val listServices: List<ItemService>,
 ) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
@@ -20,7 +20,7 @@ class ListaServicosAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return CardServicesViewHolder(
             LayoutInflater.from(parent.context)
-                .inflate(R.layout.servicos_cardview, parent, false)
+                .inflate(R.layout.services_cardview, parent, false)
         )
     }
 

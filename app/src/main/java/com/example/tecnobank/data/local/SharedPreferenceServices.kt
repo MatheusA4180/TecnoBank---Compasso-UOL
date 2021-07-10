@@ -1,4 +1,4 @@
-package com.example.tecnobank.intro.data.local
+package com.example.tecnobank.data.local
 
 import android.content.SharedPreferences
 import androidx.core.content.edit

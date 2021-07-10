@@ -4,11 +4,11 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.tecnobank.home.model.BalanceBenefitsResponse
-import com.example.tecnobank.home.repository.InicioRepository
+import com.example.tecnobank.data.remote.model.home.BalanceBenefitsResponse
+import com.example.tecnobank.home.repository.HomeRepository
 import kotlinx.coroutines.launch
 
-class InicioViewModel(private val inicioRepository: InicioRepository):ViewModel() {
+class HomeViewModel(private val homeRepository: HomeRepository):ViewModel() {
 
     private var visibleBalances = true
 
@@ -27,14 +27,12 @@ class InicioViewModel(private val inicioRepository: InicioRepository):ViewModel(
     fun onOpenHome() {
         viewModelScope.launch {
             try {
-                _responseSucess.postValue(inicioRepository.BalancesAndBenefits(getToken()))
+                _responseSucess.postValue(homeRepository.BalancesAndBenefits())
             } catch (e: Exception) {
                 _responseErro.postValue(e.message)
             }
         }
     }
-
-    fun getToken(): String = inicioRepository.getTokenAuthentication().toString()
 
     fun checkVisibleBalances(){
         if (visibleBalances == true) {

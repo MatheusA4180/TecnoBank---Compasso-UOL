@@ -13,9 +13,9 @@ import androidx.navigation.fragment.findNavController
 import com.example.tecnobank.R
 import com.example.tecnobank.databinding.LoginFragmentBinding
 import com.example.tecnobank.intro.viewmodel.LoginViewModel
-import com.example.tecnobank.intro.viewmodel.ViewModelFactory
+import com.example.tecnobank.viewmodelfactory.ViewModelFactory
 
-class loginFragment : Fragment() {
+class LoginFragment : Fragment() {
 
     private var _binding: LoginFragmentBinding? = null
     private val binding: LoginFragmentBinding get() = _binding!!
@@ -85,10 +85,10 @@ class loginFragment : Fragment() {
         }
     }
 
-    fun showInfo(titulo: String?) {
+    fun showInfo(title: String?) {
         AlertDialog.Builder(requireContext())
             .setCancelable(true)
-            .setTitle(titulo)
+            .setTitle(title)
             .setMessage("")
             .show()
     }

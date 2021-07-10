@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/greenTecnoBank"
     android:backgroundTint="@color/greenTecnoBank"
-    tools:context=".intro.MainActivity">
+    tools:context=".intro.IntroActivity">
 
     <ImageView
         android:id="@+id/imageView2"
