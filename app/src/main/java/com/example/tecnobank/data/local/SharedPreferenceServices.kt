@@ -40,10 +40,19 @@ class SharedPreferenceServices(private val preferences: SharedPreferences) {
     fun getSaveTokenAuthentication(): String? =
         preferences.getString(TOKEN_AUTHENTICATION, "")
 
+    fun saveUserName(userNameFirst:String,userNameLast: String){
+        preferences.edit{
+            putString(UserName,(userNameFirst+" "+userNameLast))
+        }
+    }
+
+    fun getSaveUserName(): String? = preferences.getString(UserName,"")
+
     companion object {
         private const val PASS_TO_ONBOARDING = "Passou"
         private const val USER = "Username"
         private const val PASSWORD = "Password"
         private const val TOKEN_AUTHENTICATION = "TokenAuthentication"
+        private const val UserName = "UserName"
     }
 }

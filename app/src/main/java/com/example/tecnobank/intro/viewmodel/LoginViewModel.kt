@@ -58,6 +58,7 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
                     saveLogin()
                 }
                 loginRepository.saveTokenAuthentication(response.tokenAuthentication)
+                loginRepository.saveUserName(response.user.firstName,response.user.lastName)
                 _goToHome.postValue(Unit)
             } catch (e: Exception) {
                 _showErro.postValue(e.message)

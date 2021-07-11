@@ -8,8 +8,9 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tecnobank.R
 
-class ListOptionsProfileAdapter(private val listOptionsProfile: List<ItemOptionProfile>) :
-    RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class ListOptionsProfileAdapter(
+    private val listOptionsProfile: List<ItemOptionProfile>
+    ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun getItemCount(): Int = 10
 

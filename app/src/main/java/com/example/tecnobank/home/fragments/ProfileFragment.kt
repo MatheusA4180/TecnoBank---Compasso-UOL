@@ -24,7 +24,7 @@ class ProfileFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = ProfileFragmentBinding.inflate(inflater, container, false)
         return _binding!!.root
     }
