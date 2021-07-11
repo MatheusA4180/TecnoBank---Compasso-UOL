@@ -71,6 +71,10 @@ class HomeFragment : Fragment() {
             findNavController().navigate(R.id.action_homeFragment_to_notificationActivity)
         }
 
+        binding.btQrcode.setOnClickListener {
+            findNavController().navigate(R.id.action_homeFragment_to_qrCodeSafeActivity)
+        }
+
         viewModel.visibleBalancesOn.observe(viewLifecycleOwner, {
             binding.valorSaldo.setTransformationMethod(null)
             binding.valorVendas.setTransformationMethod(null)

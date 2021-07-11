@@ -19,6 +19,9 @@
         <action
             android:id="@+id/action_homeFragment_to_notificationActivity"
             app:destination="@id/notificationActivity" />
+        <action
+            android:id="@+id/action_homeFragment_to_qrCodeSafeActivity"
+            app:destination="@id/qrCodeSafeActivity" />
     </fragment>
     <fragment
         android:id="@+id/extractFragment"
@@ -59,4 +62,9 @@
         android:name="com.example.tecnobank.home.NotificationActivity"
         android:label="notification_activity"
         tools:layout="@layout/notification_activity" />
+    <activity
+        android:id="@+id/qrCodeSafeActivity"
+        android:name="com.example.tecnobank.home.QrCodeSafeActivity"
+        android:label="qr_code_safe_activity"
+        tools:layout="@layout/qr_code_safe_activity" />
 </navigation>
