@@ -11,11 +11,14 @@
         android:label="inicio"
         tools:layout="@layout/home_fragment">
         <action
-            android:id="@+id/action_inicioFragment_to_pixQrCodeActivity"
+            android:id="@+id/action_homeFragment_to_pixQrCodeActivity"
             app:destination="@id/pixQrCodeActivity" />
         <action
-            android:id="@+id/action_inicioFragment_to_accountDependencyActivity"
+            android:id="@+id/action_homeFragment_to_accountDependencyActivity"
             app:destination="@id/accountDependencyActivity" />
+        <action
+            android:id="@+id/action_homeFragment_to_notificationActivity"
+            app:destination="@id/notificationActivity" />
     </fragment>
     <fragment
         android:id="@+id/extractFragment"
@@ -51,4 +54,9 @@
         android:name="com.example.tecnobank.home.AccountDependencyActivity"
         android:label="account_dependency_activity"
         tools:layout="@layout/account_dependency_activity" />
+    <activity
+        android:id="@+id/notificationActivity"
+        android:name="com.example.tecnobank.home.NotificationActivity"
+        android:label="notification_activity"
+        tools:layout="@layout/notification_activity" />
 </navigation>

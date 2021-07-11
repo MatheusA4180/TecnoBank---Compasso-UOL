@@ -7,7 +7,7 @@ import com.example.tecnobank.home.fragments.ServicesFragment
 
 const val POSITION_VIEW_PAGER = "position_view_pager"
 
-class ViewPagerAdapter(fragment: Fragment) : FragmentStateAdapter(fragment) {
+class ViewPagerServicesAdapter(fragment: Fragment) : FragmentStateAdapter(fragment) {
 
     override fun getItemCount(): Int = 3
 

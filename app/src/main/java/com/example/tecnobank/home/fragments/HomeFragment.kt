@@ -18,7 +18,7 @@ import com.example.tecnobank.data.remote.model.home.BalanceBenefitsResponse
 import com.example.tecnobank.databinding.HomeFragmentBinding
 import com.example.tecnobank.extension.ExtensionFunctions.Companion.addDecimalCases
 import com.example.tecnobank.extension.ExtensionFunctions.Companion.converterStringToReal
-import com.example.tecnobank.home.adapter.ViewPagerAdapter
+import com.example.tecnobank.home.adapter.ViewPagerServicesAdapter
 import com.example.tecnobank.home.recyclerview.ListBenefitsAdapter
 import com.example.tecnobank.home.recyclerview.PagerDecoratorDots
 import com.example.tecnobank.home.viewmodel.HomeViewModel
@@ -64,7 +64,11 @@ class HomeFragment : Fragment() {
         }
 
         binding.incompletSingUp.setOnClickListener {
-            findNavController().navigate(R.id.action_inicioFragment_to_accountDependencyActivity)
+            findNavController().navigate(R.id.action_homeFragment_to_accountDependencyActivity)
+        }
+
+        binding.btNotification.setOnClickListener {
+            findNavController().navigate(R.id.action_homeFragment_to_notificationActivity)
         }
 
         viewModel.visibleBalancesOn.observe(viewLifecycleOwner, {
@@ -81,7 +85,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun viewPagerAndTabLayoutConfig() {
-        binding.pagerFunctionalities.adapter = ViewPagerAdapter(this)
+        binding.pagerFunctionalities.adapter = ViewPagerServicesAdapter(this)
         tabLayoutConfig()
     }
 

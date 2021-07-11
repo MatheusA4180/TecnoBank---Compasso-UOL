@@ -75,7 +75,7 @@
                         app:srcCompat="@drawable/ic_transferencia" />
 
                     <androidx.cardview.widget.CardView
-                        android:id="@+id/cardView6"
+                        android:id="@+id/card_decor"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
@@ -90,7 +90,7 @@
                             android:layout_height="match_parent">
 
                             <TextView
-                                android:id="@+id/textView32"
+                                android:id="@+id/text_decor"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="8dp"
@@ -113,8 +113,8 @@
                         android:text="@string/title_card_1_pix"
                         android:textColor="@color/black"
                         android:textSize="16sp"
-                        app:layout_constraintStart_toStartOf="@+id/cardView6"
-                        app:layout_constraintTop_toBottomOf="@+id/cardView6" />
+                        app:layout_constraintStart_toStartOf="@+id/card_decor"
+                        app:layout_constraintTop_toBottomOf="@+id/card_decor" />
 
                     <TextView
                         android:id="@+id/textView34"

@@ -82,4 +82,13 @@
     <string name="text_7_pix">Cadastre chaves para receber transferências grátis de forma fácil e rápida.</string>
     <string name="title_7_pix">CADASTRAR CHAVES</string>
     <string name="text_8_pix">Encontre as respostas que precisa ou entre em contato com a gente</string>
+    <string name="title_info_shopping">TEM CASHBACK</string>
+    <string name="title_info_safe">TEM NOVIDADE</string>
+    <string name="title_info_pix">GRÁTIS</string>
+    <string name="title_info_reload">BÔNUS INTERNET</string>
+    <string name="title_info_cards">12X NO CARTÃO</string>
+    <string name="title_notification">Notificações</string>
+    <string name="title_tab_layoult_notification_3">PROMOÇÔES</string>
+    <string name="title_tab_layoult_notification_2">SUA CONTA</string>
+    <string name="title_tab_layoult_notification_1">TODAS</string>
 </resources>

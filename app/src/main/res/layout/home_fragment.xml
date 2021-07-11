@@ -43,7 +43,7 @@
         app:layout_constraintTop_toTopOf="@id/inicio_toolbar" />
 
     <Button
-        android:id="@+id/botao_login"
+        android:id="@+id/bt_login"
         style="@style/Widget.MaterialComponents.Button.TextButton"
         android:layout_width="50dp"
         android:layout_height="wrap_content"
@@ -54,23 +54,23 @@
         app:layout_constraintTop_toTopOf="@id/inicio_toolbar" />
 
     <Button
-        android:id="@+id/botao_notificacao"
+        android:id="@+id/bt_notification"
         style="@style/Widget.MaterialComponents.Button.TextButton"
         android:layout_width="50dp"
         android:layout_height="wrap_content"
         android:drawableEnd="@drawable/ic_notificacao"
         app:layout_constraintBottom_toBottomOf="@+id/inicio_toolbar"
-        app:layout_constraintEnd_toStartOf="@+id/botao_login"
+        app:layout_constraintEnd_toStartOf="@+id/bt_login"
         app:layout_constraintTop_toTopOf="@id/inicio_toolbar" />
 
     <Button
-        android:id="@+id/botao_qrcode"
+        android:id="@+id/bt_qrcode"
         style="@style/Widget.MaterialComponents.Button.TextButton"
         android:layout_width="50dp"
         android:layout_height="wrap_content"
         android:drawableEnd="@drawable/ic_qrcode"
         app:layout_constraintBottom_toBottomOf="@+id/inicio_toolbar"
-        app:layout_constraintEnd_toStartOf="@+id/botao_notificacao"
+        app:layout_constraintEnd_toStartOf="@+id/bt_notification"
         app:layout_constraintTop_toTopOf="@id/inicio_toolbar" />
 
     <ScrollView
