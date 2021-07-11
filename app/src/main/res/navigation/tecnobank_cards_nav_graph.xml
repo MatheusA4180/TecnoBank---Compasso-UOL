@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/tecnobank_cards_nav_graph.xml"
+    app:startDestination="@id/tecnobankCardsFragment">
+
+    <fragment
+        android:id="@+id/tecnobankCardsFragment"
+        android:name="com.example.tecnobank.cards.fragments.TecnobankCardsFragment"
+        android:label="TecnobankCardsFragment"
+        tools:layout="@layout/tecnobank_cards_fragment"/>
+</navigation>

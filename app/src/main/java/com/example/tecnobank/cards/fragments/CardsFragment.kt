@@ -31,5 +31,8 @@ class CardsFragment : Fragment() {
         binding.buyPrepaidCard.setOnClickListener {
             findNavController().navigate(R.id.action_cardsFragment_to_prepaidCardActivity)
         }
+        binding.tecnobankCards.setOnClickListener {
+            findNavController().navigate(R.id.action_cardsFragment_to_tecnobankCardsActivity)
+        }
     }
 }
