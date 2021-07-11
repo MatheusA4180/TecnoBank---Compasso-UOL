@@ -22,6 +22,9 @@
         <action
             android:id="@+id/action_homeFragment_to_qrCodeSafeActivity"
             app:destination="@id/qrCodeSafeActivity" />
+        <action
+            android:id="@+id/action_homeFragment_to_profileActivity"
+            app:destination="@id/profileActivity" />
     </fragment>
     <fragment
         android:id="@+id/extractFragment"
@@ -67,4 +70,9 @@
         android:name="com.example.tecnobank.home.QrCodeSafeActivity"
         android:label="qr_code_safe_activity"
         tools:layout="@layout/qr_code_safe_activity" />
+    <activity
+        android:id="@+id/profileActivity"
+        android:name="com.example.tecnobank.home.ProfileActivity"
+        android:label="profile_activity"
+        tools:layout="@layout/profile_activity" />
 </navigation>

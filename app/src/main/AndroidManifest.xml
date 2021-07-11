@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_custom_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Tecnobank">
-        <activity android:name=".home.QrCodeSafeActivity"></activity>
+        <activity android:name=".home.ProfileActivity"></activity>
+        <activity android:name=".home.QrCodeSafeActivity" />
         <activity android:name=".home.NotificationActivity" />
         <activity android:name=".home.AccountDependencyActivity" />
         <activity android:name=".home.PixQrCodeActivity" />
