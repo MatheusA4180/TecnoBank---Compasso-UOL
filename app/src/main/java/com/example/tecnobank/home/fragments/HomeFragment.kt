@@ -1,3 +1,5 @@
+package com.example.tecnobank.home.fragments
+
 import android.app.AlertDialog
 import android.os.Bundle
 import android.text.method.PasswordTransformationMethod
@@ -8,8 +10,10 @@ import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.tecnobank.R
 import com.example.tecnobank.data.remote.model.home.BalanceBenefitsResponse
 import com.example.tecnobank.databinding.HomeFragmentBinding
 import com.example.tecnobank.extension.ExtensionFunctions.Companion.addDecimalCases
@@ -44,10 +48,8 @@ class HomeFragment : Fragment() {
 
         viewModel.onOpenHome()
 
-        binding.cardBenefitsAndHelp.isVisible = false
-
         viewModel.responseSucess.observe(viewLifecycleOwner, {
-            binding.cardBenefitsAndHelp.isVisible = true
+            binding.listBenefits.isVisible = true
             binding.valorSaldo.text = converterStringToReal(it.balance.currentValue)
             binding.valorVendas.text = addDecimalCases(it.balance.receivables)
             recyclerViewConfig(it.benefits)
@@ -62,7 +64,7 @@ class HomeFragment : Fragment() {
         }
 
         binding.incompletSingUp.setOnClickListener {
-            binding.funcionalidadesFaltaPoucoBanner.isVisible = false
+            findNavController().navigate(R.id.action_inicioFragment_to_accountDependencyActivity)
         }
 
         viewModel.visibleBalancesOn.observe(viewLifecycleOwner, {
@@ -90,13 +92,13 @@ class HomeFragment : Fragment() {
         ) { tab, position ->
             when (position) {
                 0 -> {
-                    tab.text = "Principais"
+                    tab.text = getString(R.string.main_services)
                 }
                 1 -> {
-                    tab.text = "Produtos e Investimentos"
+                    tab.text = getString(R.string.products_services)
                 }
                 2 -> {
-                    tab.text = "Serviços"
+                    tab.text = getString(R.string.service_services)
                 }
             }
         }.attach()
@@ -104,11 +106,6 @@ class HomeFragment : Fragment() {
 
     private fun recyclerViewConfig(listBenefitsResponse: List<BalanceBenefitsResponse.Benefits>) {
         with(binding.listBenefits) {
-            layoutManager = LinearLayoutManager(
-                requireContext(),
-                LinearLayoutManager.HORIZONTAL,
-                false
-            )
             adapter = ListBenefitsAdapter(listBenefitsResponse)
             dotsConfig()
         }

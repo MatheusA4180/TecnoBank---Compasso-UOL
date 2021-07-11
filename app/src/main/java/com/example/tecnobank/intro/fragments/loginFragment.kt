@@ -49,7 +49,6 @@ class loginFragment : Fragment() {
         binding.loginPassword.setText(viewModel.getPassword())
 
         viewModel.initLogin()
-        binding.progressCircular.isVisible = false
 
         viewModel.rememberUserToogle.observe(viewLifecycleOwner, {
             binding.remeberLogin.toggle()

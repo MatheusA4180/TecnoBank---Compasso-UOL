@@ -42,7 +42,6 @@ class FilterExtractFragment : Fragment(), ListFilterAdapter.SelectFilterlistener
         }
 
         with(binding.listFilters) {
-            layoutManager = LinearLayoutManager(requireContext())
             adapter = ListFilterAdapter(listItemFilter, this@FilterExtractFragment)
         }
 

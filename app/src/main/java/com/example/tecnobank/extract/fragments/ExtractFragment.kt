@@ -43,9 +43,6 @@ class ExtractFragment: Fragment() {
             ViewModelFactory(requireContext())
         ).get(ExtractViewModel::class.java)
 
-        binding.progressCircular.isVisible = false
-        binding.listExtracts.isVisible = false
-
 //        if(requireArguments().getString("filter").isNullOrEmpty()){
 //            binding.textFilter.text = "nos ${(requireArguments().getString("text_selected"))!!.toLowerCase()}."
 //        }
@@ -100,7 +97,6 @@ class ExtractFragment: Fragment() {
     private fun testRecyclerViewConfig(date: Date) {
         with(binding.listExtracts) {
             isVisible = true
-            layoutManager = LinearLayoutManager(requireContext())
             adapter = ListExtractsAdapter(date)
         }
     }
