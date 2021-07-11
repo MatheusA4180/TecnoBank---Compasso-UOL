@@ -43,6 +43,9 @@
         <action
             android:id="@+id/action_cardsFragment_to_requestCardActivity"
             app:destination="@id/requestCardActivity" />
+        <action
+            android:id="@+id/action_cardsFragment_to_prepaidCardActivity"
+            app:destination="@id/prepaidCardActivity" />
     </fragment>
     <fragment
         android:id="@+id/salesFragment"
@@ -84,4 +87,9 @@
         android:name="com.example.tecnobank.cards.RequestCardActivity"
         android:label="request_card_activity"
         tools:layout="@layout/request_card_activity" />
+    <activity
+        android:id="@+id/prepaidCardActivity"
+        android:name="com.example.tecnobank.cards.PrepaidCardActivity"
+        android:label="prepaid_card_activity"
+        tools:layout="@layout/prepaid_card_activity" />
 </navigation>

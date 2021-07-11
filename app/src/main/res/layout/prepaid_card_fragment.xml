@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
+        android:id="@+id/toolbar2"
         android:layout_width="409dp"
         android:layout_height="wrap_content"
         android:background="?attr/colorPrimary"
@@ -19,16 +19,17 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="@+id/toolbar"
-        app:layout_constraintEnd_toEndOf="@+id/toolbar"
-        app:layout_constraintStart_toStartOf="@+id/toolbar"
-        app:layout_constraintTop_toTopOf="@+id/toolbar">
+        app:layout_constraintBottom_toBottomOf="@+id/toolbar2"
+        app:layout_constraintEnd_toEndOf="@+id/toolbar2"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="@+id/toolbar2"
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/textView51"
+            android:id="@+id/textView66"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Pedir cartão"
+            android:text="Cartão Pré-Pago"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="20sp"
@@ -52,144 +53,152 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
-        android:id="@+id/textView52"
+        android:id="@+id/textView67"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Cartão da Conta"
+        android:text="Pré-Pago"
+        android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbar2" />
 
     <TextView
-        android:id="@+id/textView54"
-        android:layout_width="wrap_content"
+        android:id="@+id/textView68"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Tenha mais praticidade nas compras do dia a dia"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="16dp"
+        android:text="Controle os gastos, acompanhe o saldo no app e recarregue sempre que quiser."
+        android:textAlignment="center"
         android:textColor="@color/black"
-        app:layout_constraintEnd_toEndOf="@+id/textView52"
-        app:layout_constraintStart_toStartOf="@+id/textView52"
-        app:layout_constraintTop_toBottomOf="@+id/textView52" />
-
-    <ImageView
-        android:id="@+id/imageView23"
-        android:layout_width="324dp"
-        android:layout_height="174dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView54"
-        app:srcCompat="@drawable/card" />
+        app:layout_constraintTop_toBottomOf="@+id/textView67" />
 
     <ImageView
-        android:id="@+id/imageView24"
+        android:id="@+id/imageView28"
+        android:layout_width="326dp"
+        android:layout_height="207dp"
+        app:layout_constraintEnd_toEndOf="@+id/textView68"
+        app:layout_constraintStart_toStartOf="@+id/textView68"
+        app:layout_constraintTop_toBottomOf="@+id/textView68"
+        app:srcCompat="@drawable/prepaid_card" />
+
+    <ImageView
+        android:id="@+id/imageView30"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        app:layout_constraintStart_toStartOf="@+id/imageView23"
-        app:layout_constraintTop_toBottomOf="@+id/imageView23"
+        app:layout_constraintStart_toStartOf="@+id/imageView28"
+        app:layout_constraintTop_toBottomOf="@+id/imageView28"
         app:srcCompat="@drawable/ic_portabilidade_salario"
         app:tint="#898989" />
 
     <TextView
-        android:id="@+id/textView62"
+        android:id="@+id/textView69"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginEnd="24dp"
-        android:text="Movimente o dinheiro do saldo da sua conta para compras usando a função crédito à vista"
+        android:layout_marginEnd="16dp"
+        android:text="Sem fatura e sem mensalidades: gaste apenas o saldo disponível no cartão"
+        android:textAlignment="viewStart"
         android:textColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView24"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView30"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageView24"
-        app:layout_constraintTop_toTopOf="@+id/imageView24" />
+        app:layout_constraintStart_toEndOf="@+id/imageView30"
+        app:layout_constraintTop_toTopOf="@+id/imageView30" />
 
     <ImageView
-        android:id="@+id/imageView25"
+        android:id="@+id/imageView31"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        app:layout_constraintStart_toStartOf="@+id/imageView24"
-        app:layout_constraintTop_toBottomOf="@+id/imageView24"
-        app:srcCompat="@drawable/ic_world"
+        android:layout_marginTop="32dp"
+        app:layout_constraintStart_toStartOf="@+id/imageView30"
+        app:layout_constraintTop_toBottomOf="@+id/imageView30"
+        app:srcCompat="@drawable/ic_onde_sacar"
         app:tint="#898989" />
 
     <TextView
-        android:id="@+id/textView63"
+        android:id="@+id/textView70"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginEnd="24dp"
-        android:text="Faça compras e assine serviços digitais em sites nacionais e internacionais como Uber, Netflix, etc"
+        android:layout_marginEnd="16dp"
+        android:text="Use na função crédito e recarregue com o seu saldo"
+        android:textAlignment="viewStart"
         android:textColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView25"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView31"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageView25"
-        app:layout_constraintTop_toTopOf="@+id/imageView25" />
+        app:layout_constraintStart_toEndOf="@+id/imageView31"
+        app:layout_constraintTop_toTopOf="@+id/imageView31" />
 
     <ImageView
-        android:id="@+id/imageView26"
+        android:id="@+id/imageView32"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        app:layout_constraintStart_toStartOf="@+id/imageView25"
-        app:layout_constraintTop_toBottomOf="@+id/imageView25"
-        app:srcCompat="@drawable/ic_withdraw_money"
+        android:layout_marginTop="32dp"
+        app:layout_constraintStart_toStartOf="@+id/imageView31"
+        app:layout_constraintTop_toBottomOf="@+id/imageView31"
+        app:srcCompat="@drawable/ic_cartao"
         app:tint="#898989" />
 
     <TextView
-        android:id="@+id/textView64"
+        android:id="@+id/textView71"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginEnd="24dp"
-        android:text="Saques em toda a rede Banco24Horas nacional e Rede Plus internacional"
+        android:layout_marginEnd="16dp"
+        android:text="Controle os saldos pelo app: o seu, o dos seus funcionários e a mesada dos seus filhos"
+        android:textAlignment="viewStart"
         android:textColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView26"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView32"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageView26"
-        app:layout_constraintTop_toTopOf="@+id/imageView26" />
-
-    <ImageView
-        android:id="@+id/imageView27"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
-        app:layout_constraintStart_toStartOf="@+id/imageView26"
-        app:layout_constraintTop_toBottomOf="@+id/imageView26"
-        app:srcCompat="@drawable/ic_alert" />
+        app:layout_constraintStart_toEndOf="@+id/imageView32"
+        app:layout_constraintTop_toTopOf="@+id/imageView32" />
 
     <TextView
-        android:id="@+id/textView65"
-        android:layout_width="0dp"
+        android:id="@+id/textView72"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="24dp"
-        android:text="ATENÇÃO! O cartão da conta utiliza o saldo da sua conta TecnoBank para compras e saques, e não possui limite de crédito aprovado."
-        android:textColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView27"
+        android:layout_marginTop="48dp"
+        android:text="Adquira o seu por apenas:"
+        android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageView27"
-        app:layout_constraintTop_toTopOf="@+id/imageView27" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView71" />
+
+    <TextView
+        android:id="@+id/textView73"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="R$ 49,90"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/textView72"
+        app:layout_constraintStart_toStartOf="@+id/textView72"
+        app:layout_constraintTop_toBottomOf="@+id/textView72" />
 
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
         android:id="@+id/apply_filter"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="100dp"
         android:layout_marginEnd="32dp"
-        android:text="PEDIR CARTÃO"
+        android:text="EU QUERO"
         android:textAlignment="center"
         android:textColor="@color/white"
+        android:textStyle="bold"
         app:backgroundTint="#2270E3"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView65" />
+        app:layout_constraintTop_toBottomOf="@+id/textView73"
+        app:layout_constraintVertical_bias="0.68" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

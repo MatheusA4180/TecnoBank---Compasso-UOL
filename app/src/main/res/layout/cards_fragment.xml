@@ -153,7 +153,7 @@
                 app:srcCompat="@drawable/ic_shopping" />
 
             <TextView
-                android:id="@+id/textView21"
+                android:id="@+id/buy_prepaid_card"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
