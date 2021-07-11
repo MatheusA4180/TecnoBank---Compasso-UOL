@@ -41,7 +41,7 @@ class ListBenefitsAdapter(
         val image: ImageView = itemView.findViewById(R.id.image_benefits)
         val title: TextView = itemView.findViewById(R.id.title_benefits)
         val description: TextView = itemView.findViewById(R.id.description_benefits)
-        val link: TextView = itemView.findViewById(R.id.link_benefits)
+        val link: TextView = itemView.findViewById(R.id.require_card)
     }
 
 }

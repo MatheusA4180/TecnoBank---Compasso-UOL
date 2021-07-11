@@ -39,12 +39,16 @@
         android:id="@+id/cardsFragment"
         android:name="com.example.tecnobank.cards.fragments.CardsFragment"
         android:label="cartoes"
-        tools:layout="@layout/sales_fragment" />
+        tools:layout="@layout/cards_fragment" >
+        <action
+            android:id="@+id/action_cardsFragment_to_requestCardActivity"
+            app:destination="@id/requestCardActivity" />
+    </fragment>
     <fragment
         android:id="@+id/salesFragment"
         android:name="com.example.tecnobank.sales.fragments.SalesFragment"
         android:label="vendas"
-        tools:layout="@layout/cards_fragment" />
+        tools:layout="@layout/sales_fragment" />
     <activity
         android:id="@+id/filterActivity"
         android:name="com.example.tecnobank.extract.FilterActivity"
@@ -75,4 +79,9 @@
         android:name="com.example.tecnobank.home.ProfileActivity"
         android:label="profile_activity"
         tools:layout="@layout/profile_activity" />
+    <activity
+        android:id="@+id/requestCardActivity"
+        android:name="com.example.tecnobank.cards.RequestCardActivity"
+        android:label="request_card_activity"
+        tools:layout="@layout/request_card_activity" />
 </navigation>

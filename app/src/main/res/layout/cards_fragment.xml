@@ -101,7 +101,7 @@
 
 
             <TextView
-                android:id="@+id/link_benefits"
+                android:id="@+id/require_card"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
