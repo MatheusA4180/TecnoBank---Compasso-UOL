@@ -23,10 +23,10 @@ class ListOptionsProfileAdapter(
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (holder is CardOptionViewHolder) {
-//            holder.icon.setImageResource(listOptionsProfile[position].icon)
-//            holder.title.text = listOptionsProfile[position].title
-//            holder.itemView.setOnClickListener {
-//            }
+            holder.icon.setImageResource(listOptionsProfile[position].icon)
+            holder.title.text = listOptionsProfile[position].title
+            holder.itemView.setOnClickListener {
+            }
         }
     }
 
