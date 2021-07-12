@@ -37,6 +37,9 @@
         <action
             android:id="@+id/action_homeFragment_to_payCheckActivity"
             app:destination="@id/payCheckActivity" />
+        <action
+            android:id="@+id/action_homeFragment_to_addMoneyActivity"
+            app:destination="@id/addMoneyActivity" />
     </fragment>
     <fragment
         android:id="@+id/extractFragment"
@@ -127,4 +130,9 @@
         android:name="com.example.tecnobank.home.PayCheckActivity"
         android:label="pay_check_activity"
         tools:layout="@layout/pay_check_activity" />
+    <activity
+        android:id="@+id/addMoneyActivity"
+        android:name="com.example.tecnobank.home.AddMoneyActivity"
+        android:label="add_money_activity"
+        tools:layout="@layout/add_money_activity" />
 </navigation>

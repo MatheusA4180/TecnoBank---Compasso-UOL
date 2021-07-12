@@ -75,7 +75,7 @@ class ServicesFragment : Fragment(), ListServicesAdapter.ClickedServiceListener 
                 R.drawable.ic_recarga
             ),
             ListServicesAdapter.ItemService(
-                true, null,
+                false, null,
                 getString(R.string.add_money_service),
                 R.drawable.ic_adicionar_dinheiro
             ),
@@ -163,6 +163,8 @@ class ServicesFragment : Fragment(), ListServicesAdapter.ClickedServiceListener 
             findNavController().navigate(R.id.action_homeFragment_to_shoppingCashbackActivity)
         }else if((positionRecyclerView == 2) && (positionViewPager== 0)) {
             findNavController().navigate(R.id.action_homeFragment_to_payCheckActivity)
+        }else if((positionRecyclerView == 4) && (positionViewPager == 0)) {
+            findNavController().navigate(R.id.action_homeFragment_to_addMoneyActivity)
         }
     }
 }
