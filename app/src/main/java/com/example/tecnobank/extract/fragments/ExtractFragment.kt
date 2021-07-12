@@ -1,26 +1,29 @@
 package com.example.tecnobank.extract.fragments
 
 import android.app.AlertDialog
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.tecnobank.R
 import com.example.tecnobank.databinding.ExtractFragmentBinding
+import com.example.tecnobank.extract.FilterActivity
 import com.example.tecnobank.extract.recyclerview.ListExtractsAdapter
 import com.example.tecnobank.extract.viewmodel.ExtractViewModel
 import com.example.tecnobank.viewmodelfactory.ViewModelFactory
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 import java.util.*
 
-class ExtractFragment: Fragment() {
+const val REQUEST_CODE: Int = 1
+
+class ExtractFragment : Fragment() {
 
     private var _binding: ExtractFragmentBinding? = null
     private val binding: ExtractFragmentBinding get() = _binding!!
@@ -43,28 +46,38 @@ class ExtractFragment: Fragment() {
             ViewModelFactory(requireContext())
         ).get(ExtractViewModel::class.java)
 
-//        if(requireArguments().getString("filter").isNullOrEmpty()){
-//            binding.textFilter.text = "nos ${(requireArguments().getString("text_selected"))!!.toLowerCase()}."
-//        }
+        viewModel.onOpenExtract("09/07/2021","12/07/2021")
 
-//        viewModel.onOpenExtract("","")
+        viewModel.responseSucess.observe(viewLifecycleOwner, {
+                binding.imageExtract.isVisible = false
+                binding.textExtract.isVisible = false
+                binding.textFilter.isVisible = false
+                Toast.makeText(requireContext(),"sucesso",Toast.LENGTH_LONG).show()
+                //recyclerViewConfig()
+        })
 
-//        viewModel.responseSucess.observe(viewLifecycleOwner, {
-//                binding.imageExtract.isVisible = false
-//                binding.textExtract.isVisible = false
-//                binding.textFilter.isVisible = false
-//                recyclerViewConfig()
-//        })
+        viewModel.responseErro.observe(viewLifecycleOwner, {
+            showInfo(it)
+            Toast.makeText(requireContext(),it,Toast.LENGTH_LONG).show()
+        })
 
-//        viewModel.responseErro.observe(viewLifecycleOwner, {
-//            showInfo(it)
-//            if(requireArguments().getString("text_selected").isNullOrEmpty()){
-//                binding.textFilter.text = "nos ${(requireArguments().getString("text_selected")).toLowerCase()}."
-//            }
-//        })
 
         binding.enterFilter.setOnClickListener {
-            findNavController().navigate(R.id.action_extratoFragment_to_filterActivity)
+            //findNavController().navigate(R.id.action_extratoFragment_to_filterActivity)
+            val intent = Intent(requireActivity(), FilterActivity::class.java)
+            requireActivity().startActivityForResult(intent, REQUEST_CODE)
+        }
+
+        try {
+            Toast.makeText(
+                requireContext(),
+                requireArguments().getString("filter").toString().lowercase(),
+                Toast.LENGTH_LONG
+            ).show()
+            binding.textFilter.text =
+                "nos ${requireArguments().getString("filter").toString().lowercase()}"
+        } catch (e: IllegalStateException) {
+            binding.textFilter.text = binding.textFilter.text.toString().replace("três", "3")
         }
 
         binding.everyExtracts.setOnClickListener {

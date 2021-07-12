@@ -21,7 +21,6 @@ class ExtractRepositoty(
 
         if (response.isSuccessful) {
             return response.body()!!
-
         } else {
             throw Exception("Erro no sistema.")
         }
