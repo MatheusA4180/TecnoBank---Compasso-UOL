@@ -65,7 +65,7 @@ class ServicesFragment : Fragment(), ListServicesAdapter.ClickedServiceListener 
                 R.drawable.ic_cartoes
             ),
             ListServicesAdapter.ItemService(
-                true, null,
+                false, null,
                 getString(R.string.pay_check_service),
                 R.drawable.ic_pagar_contas
             ),
@@ -161,6 +161,8 @@ class ServicesFragment : Fragment(), ListServicesAdapter.ClickedServiceListener 
             findNavController().navigate(R.id.action_homeFragment_to_payQrCodeActivity)
         }else if((positionRecyclerView== 2) && (positionViewPager == 2)) {
             findNavController().navigate(R.id.action_homeFragment_to_shoppingCashbackActivity)
+        }else if((positionRecyclerView == 2) && (positionViewPager== 0)) {
+            findNavController().navigate(R.id.action_homeFragment_to_payCheckActivity)
         }
     }
 }

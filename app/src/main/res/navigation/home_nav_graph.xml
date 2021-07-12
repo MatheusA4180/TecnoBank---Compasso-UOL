@@ -34,6 +34,9 @@
         <action
             android:id="@+id/action_homeFragment_to_shoppingCashbackActivity"
             app:destination="@id/shoppingCashbackActivity" />
+        <action
+            android:id="@+id/action_homeFragment_to_payCheckActivity"
+            app:destination="@id/payCheckActivity" />
     </fragment>
     <fragment
         android:id="@+id/extractFragment"
@@ -119,4 +122,9 @@
         android:name="com.example.tecnobank.home.ShoppingCashbackActivity"
         android:label="shopping_cashback_activity"
         tools:layout="@layout/shopping_cashback_activity" />
+    <activity
+        android:id="@+id/payCheckActivity"
+        android:name="com.example.tecnobank.home.PayCheckActivity"
+        android:label="pay_check_activity"
+        tools:layout="@layout/pay_check_activity" />
 </navigation>
