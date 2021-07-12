@@ -11,8 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_custom_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Tecnobank">
-        <activity android:name=".cards.TecnobankCardsActivity"/>
-        <activity android:name=".cards.PrepaidCardActivity"/>
+        <activity android:name=".home.PayQrCodeActivity"></activity>
+        <activity android:name=".cards.TecnobankCardsActivity" />
+        <activity android:name=".cards.PrepaidCardActivity" />
         <activity android:name=".cards.RequestCardActivity" />
         <activity android:name=".home.ProfileActivity" />
         <activity android:name=".home.QrCodeSafeActivity" />

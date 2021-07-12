@@ -145,7 +145,7 @@ class ServicesFragment : Fragment(), ListServicesAdapter.ClickedServiceListener 
                 R.drawable.ic_indique_e_ganhe
             ),
             ListServicesAdapter.ItemService(
-                true, null,
+                false, null,
                 getString(R.string.pay_with_qr_code),
                 R.drawable.ic_pagar_com_qrcode
             )
@@ -157,7 +157,8 @@ class ServicesFragment : Fragment(), ListServicesAdapter.ClickedServiceListener 
             findNavController().navigate(R.id.action_homeFragment_to_cardsFragment)
         }else if ((positionRecyclerView == 5) && (positionViewPager == 0)) {
             findNavController().navigate(R.id.action_homeFragment_to_pixQrCodeActivity)
+        }else if((positionRecyclerView ==5) && (positionViewPager ==2)) {
+            findNavController().navigate(R.id.action_homeFragment_to_payQrCodeActivity)
         }
     }
-
 }
