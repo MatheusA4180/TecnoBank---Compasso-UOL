@@ -1,5 +1,6 @@
 package com.example.tecnobank.extract.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.tecnobank.databinding.FilterExtractFragmentBinding
+import com.example.tecnobank.extract.FilterActivity
 import com.example.tecnobank.extract.recyclerview.ListFilterAdapter
 
 
@@ -45,12 +47,16 @@ class FilterExtractFragment : Fragment(), ListFilterAdapter.SelectFilterlistener
             adapter = ListFilterAdapter(listItemFilter, this@FilterExtractFragment)
         }
 
+
         positionS
 
 
-//        val intent = Intent(requireActivity().baseContext, FilterActivity::class.java)
-//        intent.putExtra("filter", listItemFilter[4])
-//        requireActivity().startActivity(intent)
+        val intent = Intent(requireActivity().baseContext, FilterActivity::class.java)
+        intent.putExtra("filter", listItemFilter[4])
+        //requireActivity().setResult(1,intent)
+        //requireActivity().startActivityForResult(intent,1)
+
+        //requireActivity().startActivity(intent)
 
     }
 
