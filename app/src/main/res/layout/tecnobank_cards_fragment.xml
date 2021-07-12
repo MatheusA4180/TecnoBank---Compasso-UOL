@@ -95,6 +95,7 @@
                 android:layout_marginStart="8dp"
                 android:text="Cartão da Conta"
                 android:textColor="@color/black"
+                android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toEndOf="@+id/imageView29"
                 app:layout_constraintTop_toTopOf="@+id/imageView29" />
@@ -106,6 +107,7 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="16dp"
                 android:text="Use seu saldo TecnoBank para compras e saques usando a função crédito:"
+                android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/textView76"
                 app:layout_constraintTop_toBottomOf="@+id/textView76" />
@@ -118,6 +120,7 @@
                 android:layout_marginTop="12dp"
                 android:layout_marginEnd="16dp"
                 android:text="Sem fatura e sem mensalidades"
+                android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/textView77"
                 app:layout_constraintTop_toBottomOf="@+id/textView77" />
@@ -129,6 +132,7 @@
                 android:layout_marginTop="12dp"
                 android:layout_marginEnd="16dp"
                 android:text="Desconto imediato do saldo em compras e saques"
+                android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/textView78"
                 app:layout_constraintTop_toBottomOf="@+id/textView78" />
@@ -141,6 +145,7 @@
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="16dp"
                 android:text="O limite é o saldo da sua conta TecnoBank"
+                android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/textView79"
@@ -180,6 +185,7 @@
                 android:layout_marginStart="8dp"
                 android:text="Cartão de Crédito"
                 android:textColor="@color/black"
+                android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toEndOf="@+id/imageView34"
                 app:layout_constraintTop_toTopOf="@+id/imageView34" />
@@ -191,6 +197,7 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="16dp"
                 android:text="Compre, parcele e pague com o saldo TecnoBank para liberar o limite na hora:"
+                android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/textView81"
                 app:layout_constraintTop_toBottomOf="@+id/textView81" />
@@ -203,6 +210,7 @@
                 android:layout_marginTop="12dp"
                 android:layout_marginEnd="16dp"
                 android:text="Grátis e sem anuidade"
+                android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/textView82"
                 app:layout_constraintTop_toBottomOf="@+id/textView82" />
@@ -214,6 +222,7 @@
                 android:layout_marginTop="12dp"
                 android:layout_marginEnd="16dp"
                 android:text="Parcele suas compras"
+                android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/textView83"
                 app:layout_constraintTop_toBottomOf="@+id/textView83" />
@@ -226,6 +235,7 @@
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="16dp"
                 android:text="Pague a fatura com seu saldo TecnoBank ou boleto bancário"
+                android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/textView84"
@@ -265,6 +275,7 @@
                 android:layout_marginStart="8dp"
                 android:text="Cartão Pré-Pago"
                 android:textColor="@color/black"
+                android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toEndOf="@+id/imageView35"
                 app:layout_constraintTop_toTopOf="@+id/imageView35" />
@@ -276,6 +287,7 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="16dp"
                 android:text="Controle seus gastos e recarregue quando precisar:"
+                android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/textView86"
                 app:layout_constraintTop_toBottomOf="@+id/textView86" />
@@ -289,6 +301,7 @@
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="16dp"
                 android:text="Sem fatura e sem preocupação no final do mês"
+                android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/textView87"

@@ -82,7 +82,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:text="@string/title_cards"
-                android:textSize="15dp"
+                android:textColor="@color/black"
+                android:textSize="16dp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toEndOf="@+id/image_benefits"
                 app:layout_constraintTop_toTopOf="@+id/image_benefits" />
@@ -94,7 +95,7 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="20dp"
                 android:text="@string/title_2_cards"
-                android:textSize="14sp"
+                android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/title_benefits"
                 app:layout_constraintTop_toBottomOf="@+id/title_benefits" />
@@ -190,6 +191,7 @@
                 android:text="@string/title_card_3_cards"
                 android:textColor="@color/black"
                 android:textSize="16dp"
+                android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -200,6 +202,7 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="20dp"
                 android:text="@string/text_card_3_cards"
+                android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/textView23"
                 app:layout_constraintTop_toBottomOf="@+id/textView23" />

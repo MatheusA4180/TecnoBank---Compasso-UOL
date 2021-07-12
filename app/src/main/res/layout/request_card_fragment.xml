@@ -71,6 +71,7 @@
         android:layout_marginTop="8dp"
         android:text="Tenha mais praticidade nas compras do dia a dia"
         android:textColor="@color/black"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="@+id/textView52"
         app:layout_constraintStart_toStartOf="@+id/textView52"
         app:layout_constraintTop_toBottomOf="@+id/textView52" />
@@ -86,8 +87,8 @@
 
     <ImageView
         android:id="@+id/imageView24"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_marginTop="20dp"
         app:layout_constraintStart_toStartOf="@+id/imageView23"
         app:layout_constraintTop_toBottomOf="@+id/imageView23"
@@ -102,6 +103,7 @@
         android:layout_marginEnd="24dp"
         android:text="Movimente o dinheiro do saldo da sua conta para compras usando a função crédito à vista"
         android:textColor="@color/black"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@+id/imageView24"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imageView24"
@@ -109,9 +111,9 @@
 
     <ImageView
         android:id="@+id/imageView25"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="48dp"
         app:layout_constraintStart_toStartOf="@+id/imageView24"
         app:layout_constraintTop_toBottomOf="@+id/imageView24"
         app:srcCompat="@drawable/ic_world"
@@ -125,6 +127,7 @@
         android:layout_marginEnd="24dp"
         android:text="Faça compras e assine serviços digitais em sites nacionais e internacionais como Uber, Netflix, etc"
         android:textColor="@color/black"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@+id/imageView25"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imageView25"
@@ -132,9 +135,9 @@
 
     <ImageView
         android:id="@+id/imageView26"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="48dp"
         app:layout_constraintStart_toStartOf="@+id/imageView25"
         app:layout_constraintTop_toBottomOf="@+id/imageView25"
         app:srcCompat="@drawable/ic_withdraw_money"
@@ -148,6 +151,7 @@
         android:layout_marginEnd="24dp"
         android:text="Saques em toda a rede Banco24Horas nacional e Rede Plus internacional"
         android:textColor="@color/black"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@+id/imageView26"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imageView26"
@@ -155,9 +159,9 @@
 
     <ImageView
         android:id="@+id/imageView27"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="54dp"
         app:layout_constraintStart_toStartOf="@+id/imageView26"
         app:layout_constraintTop_toBottomOf="@+id/imageView26"
         app:srcCompat="@drawable/ic_alert" />
@@ -170,6 +174,7 @@
         android:layout_marginEnd="24dp"
         android:text="ATENÇÃO! O cartão da conta utiliza o saldo da sua conta TecnoBank para compras e saques, e não possui limite de crédito aprovado."
         android:textColor="@color/black"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@+id/imageView27"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imageView27"
@@ -180,8 +185,8 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="100dp"
         android:layout_marginEnd="32dp"
+        android:layout_marginBottom="16dp"
         android:text="PEDIR CARTÃO"
         android:textAlignment="center"
         android:textColor="@color/white"
@@ -189,7 +194,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView65" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
