@@ -6,18 +6,18 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.tecnobank.databinding.QrCodeSafeFragmentBinding
+import com.example.tecnobank.databinding.ShoppingCashbackFragmentBinding
 
-class QrCodeSafeFragment: Fragment() {
-
-    private var _binding: QrCodeSafeFragmentBinding? = null
-    private val binding: QrCodeSafeFragmentBinding get() = _binding!!
+class ShoppingCashbackFragment: Fragment() {
+    private var _binding: ShoppingCashbackFragmentBinding? = null
+    private val binding: ShoppingCashbackFragmentBinding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = QrCodeSafeFragmentBinding.inflate(inflater, container, false)
+        _binding = ShoppingCashbackFragmentBinding.inflate(inflater, container, false)
         return _binding!!.root
     }
 
