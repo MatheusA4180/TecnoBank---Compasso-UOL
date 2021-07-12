@@ -213,7 +213,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="20dp"
-                android:text="CONHEÇA"
+                android:text="@string/cards_subtitle_2"
                 android:textColor="#2270E3"
                 android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="parent"

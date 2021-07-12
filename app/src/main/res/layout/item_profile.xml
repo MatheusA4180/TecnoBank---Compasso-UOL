@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:text="Meu Perfil"
+        android:text="@string/item_my_profile_title_1"
         android:textColor="@color/white"
         android:textSize="18sp"
         android:textStyle="bold"
