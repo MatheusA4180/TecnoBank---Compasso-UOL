@@ -1,6 +1,6 @@
 package com.example.tecnobank.data.remote
 
-import com.example.tecnobank.data.remote.model.extract.ExtractResponse
+import com.example.tecnobank.data.remote.model.extract.ListExtractResponse
 import com.example.tecnobank.data.remote.model.home.BalanceBenefitsResponse
 import com.example.tecnobank.data.remote.model.login.LoginPayload
 import com.example.tecnobank.data.remote.model.login.LoginResponse
@@ -23,7 +23,7 @@ interface EndPoint {
         @Query("start") dataFilterStart: String,
         @Query("end") dataFilterEnd: String,
         @Header("token") token: String
-    ): Response<ExtractResponse>
+    ): Response<ListExtractResponse>
 
     companion object {
         fun getEndPointInstance(): EndPoint {

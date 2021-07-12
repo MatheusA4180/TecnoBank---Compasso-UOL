@@ -2,7 +2,7 @@ package com.example.tecnobank.extract.repository
 
 import com.example.tecnobank.data.local.SharedPreferenceServices
 import com.example.tecnobank.data.remote.EndPoint
-import com.example.tecnobank.data.remote.model.extract.ExtractResponse
+import com.example.tecnobank.data.remote.model.extract.ListExtractResponse
 
 class ExtractRepositoty(
     private val endPointHome: EndPoint,
@@ -12,7 +12,7 @@ class ExtractRepositoty(
     suspend fun extractTransactions(
         dataFilterStart: String,
         dataFilterEnd: String
-    ): ExtractResponse {
+    ): ListExtractResponse {
 
         val response = endPointHome.extractTransactions(
             dataFilterStart, dataFilterEnd,
