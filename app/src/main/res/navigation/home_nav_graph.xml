@@ -31,6 +31,9 @@
         <action
             android:id="@+id/action_homeFragment_to_payQrCodeActivity"
             app:destination="@id/payQrCodeActivity" />
+        <action
+            android:id="@+id/action_homeFragment_to_shoppingCashbackActivity"
+            app:destination="@id/shoppingCashbackActivity" />
     </fragment>
     <fragment
         android:id="@+id/extractFragment"
@@ -111,4 +114,9 @@
         android:name="com.example.tecnobank.home.PayQrCodeActivity"
         android:label="pay_qr_code_activity"
         tools:layout="@layout/pay_qr_code_activity" />
+    <activity
+        android:id="@+id/shoppingCashbackActivity"
+        android:name="com.example.tecnobank.home.ShoppingCashbackActivity"
+        android:label="shopping_cashback_activity"
+        tools:layout="@layout/shopping_cashback_activity" />
 </navigation>

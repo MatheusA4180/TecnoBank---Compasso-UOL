@@ -130,7 +130,7 @@ class ServicesFragment : Fragment(), ListServicesAdapter.ClickedServiceListener 
                 R.drawable.ic_radar_ofertas
             ),
             ListServicesAdapter.ItemService(
-                true, getString(R.string.title_info_shopping),
+                false, getString(R.string.title_info_shopping),
                 getString(R.string.shopping_service),
                 R.drawable.ic_shopping
             ),
@@ -157,8 +157,10 @@ class ServicesFragment : Fragment(), ListServicesAdapter.ClickedServiceListener 
             findNavController().navigate(R.id.action_homeFragment_to_cardsFragment)
         }else if ((positionRecyclerView == 5) && (positionViewPager == 0)) {
             findNavController().navigate(R.id.action_homeFragment_to_pixQrCodeActivity)
-        }else if((positionRecyclerView ==5) && (positionViewPager ==2)) {
+        }else if((positionRecyclerView == 5) && (positionViewPager == 2)) {
             findNavController().navigate(R.id.action_homeFragment_to_payQrCodeActivity)
+        }else if((positionRecyclerView== 2) && (positionViewPager == 2)) {
+            findNavController().navigate(R.id.action_homeFragment_to_shoppingCashbackActivity)
         }
     }
 }
