@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.tecnobank.R
 import com.example.tecnobank.databinding.PageFunctionalitiesBinding
-import com.example.tecnobank.home.adapter.POSITION_VIEW_PAGER
+import com.example.tecnobank.home.adapter.POSITION_VIEW_PAGER_SERVICES
 import com.example.tecnobank.home.recyclerview.ListServicesAdapter
 
 class ServicesFragment : Fragment(), ListServicesAdapter.ClickedServiceListener {
@@ -31,9 +31,9 @@ class ServicesFragment : Fragment(), ListServicesAdapter.ClickedServiceListener 
                 ListServicesAdapter(
                     getServicesByPage(
                         requireArguments()
-                            .getInt(POSITION_VIEW_PAGER)
+                            .getInt(POSITION_VIEW_PAGER_SERVICES)
                     ), this@ServicesFragment,
-                    requireArguments().getInt(POSITION_VIEW_PAGER)
+                    requireArguments().getInt(POSITION_VIEW_PAGER_SERVICES)
                 )
         }
     }
@@ -60,7 +60,7 @@ class ServicesFragment : Fragment(), ListServicesAdapter.ClickedServiceListener 
                 R.drawable.ic_transferencia
             ),
             ListServicesAdapter.ItemService(
-                true, getString(R.string.title_info_cards),
+                false, getString(R.string.title_info_cards),
                 getString(R.string.cards_service),
                 R.drawable.ic_cartoes
             ),
@@ -153,7 +153,9 @@ class ServicesFragment : Fragment(), ListServicesAdapter.ClickedServiceListener 
     }
 
     override fun clickServiceListener(positionRecyclerView: Int, positionViewPager: Int) {
-        if ((positionRecyclerView == 5) && (positionViewPager == 0)) {
+        if((positionRecyclerView == 1) && (positionViewPager == 0)){
+            findNavController().navigate(R.id.action_homeFragment_to_cardsFragment)
+        }else if ((positionRecyclerView == 5) && (positionViewPager == 0)) {
             findNavController().navigate(R.id.action_homeFragment_to_pixQrCodeActivity)
         }
     }
