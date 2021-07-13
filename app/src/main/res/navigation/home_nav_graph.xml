@@ -40,6 +40,9 @@
         <action
             android:id="@+id/action_homeFragment_to_addMoneyActivity"
             app:destination="@id/addMoneyActivity" />
+        <action
+            android:id="@+id/action_homeFragment_to_learningInvestmentsActivity"
+            app:destination="@id/learningInvestmentsActivity" />
     </fragment>
     <fragment
         android:id="@+id/extractFragment"
@@ -135,4 +138,9 @@
         android:name="com.example.tecnobank.home.AddMoneyActivity"
         android:label="add_money_activity"
         tools:layout="@layout/add_money_activity" />
+    <activity
+        android:id="@+id/learningInvestmentsActivity"
+        android:name="com.example.tecnobank.home.LearningInvestmentsActivity"
+        android:label="learning_investments_activity"
+        tools:layout="@layout/learning_investments_activity" />
 </navigation>

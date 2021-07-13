@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_custom_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Tecnobank">
-        <activity android:name=".home.AddMoneyActivity"></activity>
+        <activity android:name=".home.LearningInvestmentsActivity"></activity>
+        <activity android:name=".home.AddMoneyActivity" />
         <activity android:name=".home.PayCheckActivity" />
         <activity android:name=".home.ShoppingCashbackActivity" />
         <activity android:name=".home.PayQrCodeActivity" />
