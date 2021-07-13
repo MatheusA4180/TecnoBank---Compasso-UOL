@@ -48,8 +48,6 @@ class homeFragment:Fragment() {
 
         viewModel.onOpenHome()
 
-        binding.cardBenefitsAndHelp.isVisible = false
-
         viewModel.responseSucess.observe(viewLifecycleOwner, {
             binding.cardBenefitsAndHelp.isVisible = true
             binding.valorSaldo.text = converterStringToReal(it.balance.currentValue)
@@ -108,11 +106,6 @@ class homeFragment:Fragment() {
 
     private fun recyclerViewConfig(listBenefitsResponse: List<BalanceBenefitsResponse.Benefits>) {
         with(binding.listBenefits) {
-            layoutManager = LinearLayoutManager(
-                requireContext(),
-                LinearLayoutManager.HORIZONTAL,
-                false
-            )
             adapter = ListBenefitsAdapter(listBenefitsResponse)
             dotsConfig()
         }

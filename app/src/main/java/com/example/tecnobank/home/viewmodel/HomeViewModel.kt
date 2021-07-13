@@ -27,7 +27,7 @@ class HomeViewModel(private val homeRepository: HomeRepository):ViewModel() {
     fun onOpenHome() {
         viewModelScope.launch {
             try {
-                _responseSucess.postValue(homeRepository.BalancesAndBenefits())
+                _responseSucess.postValue(homeRepository.balancesAndBenefits())
             } catch (e: Exception) {
                 _responseErro.postValue(e.message)
             }

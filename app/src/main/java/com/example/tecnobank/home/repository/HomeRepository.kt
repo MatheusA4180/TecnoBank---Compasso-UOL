@@ -8,7 +8,7 @@ class HomeRepository(
     private val endPointHome: EndPoint,
     private val sharedPreferenceServices: SharedPreferenceServices
 ) {
-    suspend fun BalancesAndBenefits(): BalanceBenefitsResponse {
+    suspend fun balancesAndBenefits(): BalanceBenefitsResponse {
 
         val response = endPointHome.BalancesAndBenefits(
             sharedPreferenceServices.getSaveTokenAuthentication()!!)

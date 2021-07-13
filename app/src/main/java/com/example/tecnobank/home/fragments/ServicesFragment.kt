@@ -26,13 +26,7 @@ class ServicesFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        with(binding.listServices) {
-            layoutManager =
-                GridLayoutManager(
-                    requireContext(), 2, GridLayoutManager.HORIZONTAL,
-                    false
-                )
-            adapter =
+        binding.listServices.adapter =
                 ListServicesAdapter(
                     getServicesByPage(
                         requireArguments().getInt(
@@ -40,7 +34,6 @@ class ServicesFragment : Fragment() {
                         )
                     )
                 )
-        }
     }
 
     fun getServicesByPage(positionViewPager: Int): List<ListServicesAdapter.ItemService> {
