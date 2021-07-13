@@ -53,6 +53,7 @@ class FilterExtractFragment : Fragment(), ListFilterAdapter.SelectFilterlistener
             val intent = Intent()
             intent.putExtra("filter", listItemFilter[positionS])
             requireActivity().setResult(RESULT_CODE,intent)
+            requireActivity().finish()
         }
 
     }

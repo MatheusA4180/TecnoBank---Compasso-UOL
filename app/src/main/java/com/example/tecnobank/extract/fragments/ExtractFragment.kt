@@ -61,12 +61,11 @@ class ExtractFragment : Fragment() {
             Toast.makeText(requireContext(),it,Toast.LENGTH_LONG).show()
         })
 
-
         binding.enterFilter.setOnClickListener {
-            //findNavController().navigate(R.id.action_extratoFragment_to_filterActivity)
             val intent = Intent(requireActivity(), FilterActivity::class.java)
-            requireActivity().startActivityForResult(intent, REQUEST_CODE)
+            startActivityForResult(intent, REQUEST_CODE)
         }
+
 
         try {
             Toast.makeText(
@@ -105,6 +104,14 @@ class ExtractFragment : Fragment() {
             loadingSemDados()
         }
 
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if(requestCode == REQUEST_CODE && resultCode == RESULT_CODE ) {
+            data!!.getStringExtra("filter")!!
+            binding.textFilter.text = binding.textFilter.text
+        }
     }
 
     private fun testRecyclerViewConfig(date: Date) {

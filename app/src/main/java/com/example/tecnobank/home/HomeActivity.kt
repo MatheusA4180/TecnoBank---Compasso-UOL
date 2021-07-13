@@ -32,17 +32,4 @@ class HomeActivity : AppCompatActivity() {
 
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-
-        if(requestCode == REQUEST_CODE) {
-            if (resultCode == RESULT_CODE) {
-                ExtractFragment().also {
-                    it.arguments = Bundle().apply {
-                        putString("filter", data!!.getStringExtra("filter"))
-                    }
-                }
-            }
-        }
-    }
 }
