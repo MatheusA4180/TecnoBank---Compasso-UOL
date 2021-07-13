@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.tecnobank.R
 import com.example.tecnobank.home.adapter.ViewPagerAdapter
 import com.example.tecnobank.data.remote.model.home.BalanceBenefitsResponse
 import com.example.tecnobank.databinding.HomeFragmentBinding
@@ -92,13 +93,13 @@ class homeFragment:Fragment() {
         ) { tab, position ->
             when (position) {
                 0 -> {
-                    tab.text = "Principais"
+                    tab.text = getString(R.string.main_services)
                 }
                 1 -> {
-                    tab.text = "Produtos e Investimentos"
+                    tab.text = getString(R.string.products_services)
                 }
                 2 -> {
-                    tab.text = "Serviços"
+                    tab.text = getString(R.string.service_services)
                 }
             }
         }.attach()

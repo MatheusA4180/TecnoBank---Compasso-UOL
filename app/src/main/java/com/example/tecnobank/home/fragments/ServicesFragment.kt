@@ -53,27 +53,27 @@ class ServicesFragment : Fragment() {
     fun getListMainServices(): List<ListServicesAdapter.ItemService> {
         return listOf(
             ListServicesAdapter.ItemService(
-                "Transferências",
+                getString(R.string.tranfers_service),
                 R.drawable.ic_transferencia
             ),
             ListServicesAdapter.ItemService(
-                "Cartões",
+                getString(R.string.cards_service),
                 R.drawable.ic_cartoes
             ),
             ListServicesAdapter.ItemService(
-                "Pagar Contas",
+                getString(R.string.pay_check_service),
                 R.drawable.ic_pagar_contas
             ),
             ListServicesAdapter.ItemService(
-                "Recargas",
+                getString(R.string.reload_service),
                 R.drawable.ic_recarga
             ),
             ListServicesAdapter.ItemService(
-                "Adicionar dinheiro",
+                getString(R.string.add_money_service),
                 R.drawable.ic_adicionar_dinheiro
             ),
             ListServicesAdapter.ItemService(
-                "Pix/QR Code",
+                getString(R.string.pix_qr_code_service),
                 R.drawable.ic_pix_qrcode
             )
         )
@@ -82,19 +82,23 @@ class ServicesFragment : Fragment() {
     private fun getListProdutsAndInvestments(): List<ListServicesAdapter.ItemService> {
         return listOf(
             ListServicesAdapter.ItemService(
-                "Aplicando meu Dinheiro",
+                getString(R.string.salary_portability_service),
+                R.drawable.ic_portabilidade_salario
+            ),
+            ListServicesAdapter.ItemService(
+                getString(R.string.applying_my_money_service),
                 R.drawable.ic_aplicando_meu_dinheiro
             ),
             ListServicesAdapter.ItemService(
-                "Meus Investimentos",
+                getString(R.string.my_investiments_service),
                 R.drawable.ic_meus_investimentos
             ),
             ListServicesAdapter.ItemService(
-                "Seguros",
+                getString(R.string.safe_service),
                 R.drawable.ic_seguros
             ),
             ListServicesAdapter.ItemService(
-                "Aprenda a Investir",
+                getString(R.string.learn_invest_service),
                 R.drawable.ic_aprenda_a_investir
             )
         )
@@ -103,27 +107,27 @@ class ServicesFragment : Fragment() {
     private fun getListServices(): List<ListServicesAdapter.ItemService> {
         return listOf(
             ListServicesAdapter.ItemService(
-                "Postos Shell",
+                getString(R.string.post_shell_service),
                 R.drawable.ic_postos_shell
             ),
             ListServicesAdapter.ItemService(
-                "Radar de Ofertas",
+                getString(R.string.bid_radar_service),
                 R.drawable.ic_radar_ofertas
             ),
             ListServicesAdapter.ItemService(
-                "Shopping",
+                getString(R.string.shopping_service),
                 R.drawable.ic_shopping
             ),
             ListServicesAdapter.ItemService(
-                "Onde sacar Dinheiro",
+                getString(R.string.where_loot_money_service),
                 R.drawable.ic_onde_sacar
             ),
             ListServicesAdapter.ItemService(
-                "Indique e Ganhe",
+                getString(R.string.nominate_and_win_service),
                 R.drawable.ic_indique_e_ganhe
             ),
             ListServicesAdapter.ItemService(
-                "Pagar com QR code",
+                getString(R.string.pay_with_qr_code),
                 R.drawable.ic_pagar_com_qrcode
             )
         )
