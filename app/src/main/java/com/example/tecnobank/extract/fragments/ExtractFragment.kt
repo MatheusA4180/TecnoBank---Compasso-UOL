@@ -99,7 +99,10 @@ class ExtractFragment : Fragment() {
         binding.textFilter.isVisible = false
         with(binding.listExtracts) {
             isVisible = true
-            adapter = ListExtractsAdapter(listExtracts,buttonPressed)
+            adapter = ListExtractsAdapter(listExtracts,
+                //listDates,
+                //listPositionsChangeDates,
+                buttonPressed)
         }
     }
 

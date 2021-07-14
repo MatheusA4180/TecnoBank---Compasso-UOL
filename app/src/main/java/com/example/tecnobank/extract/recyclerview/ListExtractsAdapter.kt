@@ -1,5 +1,6 @@
 package com.example.tecnobank.extract.recyclerview
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,26 +12,25 @@ import java.lang.Exception
 
 class ListExtractsAdapter(
     private val listExtracts: List<ExtractResponse>,
+//    private val listDates: List<String>,
+//    private val listPositionsChangeDates: List<String>,
     private val buttonPressed: String
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-
-    private var listDates: MutableList<String> = mutableListOf()
-    private var listPositionsChangeDates: MutableList<Int> = mutableListOf()
 
 //    private fun getNumberOfDates():Int {
 //        var i = 1
 //        while(i<listExtracts.size){
 //            if(listExtracts[i].date != listExtracts[i-1].date){
-//                //listDates.add(listExtracts[i].date)
+//                listDates.add(listExtracts[i].date)
 //                listPositionsChangeDates.add(i)
 //            }
 //            i++
 //        }
-//        var numberOfDates = listPositionsChangeDates.size
-//        return numberOfDates
+//        return listDates.size
 //    }
 
-    override fun getItemCount(): Int = 5//getNumberOfDates() //+ listExtracts.size
+    //07/07/2021 - 07/07/2021 - 08/07/2021 - 09/07/2021 - 09/07/2021
+    override fun getItemCount(): Int = 8//listDates.size + listExtracts.size
 
     override fun getItemViewType(position: Int): Int {
         if(position==0) {

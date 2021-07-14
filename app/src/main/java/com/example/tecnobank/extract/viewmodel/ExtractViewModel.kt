@@ -36,11 +36,29 @@ class ExtractViewModel(private val extractRepository: ExtractRepositoty) : ViewM
                         dataFilterStart,
                         dataFilterEnd
                     )
+//                    getNumberOfDates(extractRepository.extractTransactions(
+//                        dataFilterStart,
+//                        dataFilterEnd
+//                    ))
                 )
             } catch (e: Exception) {
                 _responseErro.postValue(e.message)
             }
         }
     }
+
+//    private fun getNumberOfDates(listTransactions: List<ExtractResponse>):List<ExtractResponse> {
+//        var i = 1
+//        while(i<listTransactions.size){
+//            if(listTransactions[i].date != listTransactions[i-1].date){
+//                listDates.add(listTransactions[i].date)
+//                listPositionsChangeDates.add(i)
+//            }
+//            i++
+//        }
+//        return listDates.size
+//
+//    }
+//    data class
 
 }
