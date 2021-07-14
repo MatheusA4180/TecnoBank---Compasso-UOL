@@ -4,11 +4,9 @@ import android.app.AlertDialog
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
-import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -63,8 +61,10 @@ class ExtractFragment : Fragment() {
         })
 
         binding.enterFilter.setOnClickListener {
-            val intent = Intent(requireActivity(), FilterActivity::class.java)
-            startActivityForResult(intent, REQUEST_CODE)
+            startActivityForResult(
+                Intent(requireActivity(), FilterActivity::class.java),
+                REQUEST_CODE
+            )
         }
 
         binding.everyExtracts.setOnClickListener {
