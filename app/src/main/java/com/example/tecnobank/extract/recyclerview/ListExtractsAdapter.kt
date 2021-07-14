@@ -6,18 +6,36 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tecnobank.R
-import java.util.*
+import com.example.tecnobank.data.remote.model.extract.ExtractResponse
+import java.lang.Exception
 
-class ListExtractsAdapter(private val CurrentDate: Date) :
-    RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class ListExtractsAdapter(
+    private val listExtracts: List<ExtractResponse>,
+    private val buttonPressed: String
+) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    private val listDatas: List<String> = listOf("09", "10", "11")
-    private val data: Int = 9
+    private var listDates: MutableList<String> = mutableListOf()
+    private var listPositionsChangeDates: MutableList<Int> = mutableListOf()
 
-    override fun getItemCount(): Int = 9
+//    private fun getNumberOfDates():Int {
+//        var i = 1
+//        while(i<listExtracts.size){
+//            if(listExtracts[i].date != listExtracts[i-1].date){
+//                //listDates.add(listExtracts[i].date)
+//                listPositionsChangeDates.add(i)
+//            }
+//            i++
+//        }
+//        var numberOfDates = listPositionsChangeDates.size
+//        return numberOfDates
+//    }
+
+    override fun getItemCount(): Int = 5//getNumberOfDates() //+ listExtracts.size
 
     override fun getItemViewType(position: Int): Int {
-        if ((position == 0) || (position % 3 == 0)) {
+        if(position==0) {
+            return 0
+        }else if(listExtracts[position].date != listExtracts[position-1].date){
             return 0
         } else {
             return 1
@@ -42,11 +60,11 @@ class ListExtractsAdapter(private val CurrentDate: Date) :
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        if (holder is HeaderViewHolder) {
-            holder.headerText.text = "${data + (position / 3)} Junho"
-        } else {
-            //o que for mudar na extractViewHolder
-        }
+//        if (holder is HeaderViewHolder) {
+//            holder.headerText.text = listExtracts[position].date
+//        } else {
+//            //o que for mudar na extractViewHolder
+//        }
     }
 
     class HeaderViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

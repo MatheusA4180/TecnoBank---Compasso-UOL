@@ -13,6 +13,7 @@ import com.example.tecnobank.extract.recyclerview.ListFilterAdapter
 import com.example.tecnobank.home.HomeActivity
 
 const val RESULT_CODE: Int = 2
+const val FILTER = "filter"
 
 class FilterExtractFragment : Fragment(), ListFilterAdapter.SelectFilterlistener {
 
@@ -51,7 +52,7 @@ class FilterExtractFragment : Fragment(), ListFilterAdapter.SelectFilterlistener
 
         binding.applyFilter.setOnClickListener {
             val intent = Intent()
-            intent.putExtra("filter", listItemFilter[positionS])
+            intent.putExtra(FILTER, listItemFilter[positionS])
             requireActivity().setResult(RESULT_CODE,intent)
             requireActivity().finish()
         }

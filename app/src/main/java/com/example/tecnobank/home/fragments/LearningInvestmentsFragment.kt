@@ -30,6 +30,6 @@ class LearningInvestmentsFragment: Fragment() {
             requireActivity().finish()
         }
 
-        binding.recyclerLearningInvestments.adapter=ListLearningInvestmentsPostsAdapter()
+        binding.recyclerLearningInvestments.adapter = ListLearningInvestmentsPostsAdapter()
     }
 }

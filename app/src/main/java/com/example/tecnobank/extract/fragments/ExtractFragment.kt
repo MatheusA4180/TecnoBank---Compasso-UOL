@@ -13,21 +13,25 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.tecnobank.R
+import com.example.tecnobank.data.remote.model.extract.ExtractResponse
 import com.example.tecnobank.databinding.ExtractFragmentBinding
 import com.example.tecnobank.extract.FilterActivity
 import com.example.tecnobank.extract.recyclerview.ListExtractsAdapter
 import com.example.tecnobank.extract.viewmodel.ExtractViewModel
 import com.example.tecnobank.viewmodelfactory.ViewModelFactory
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-import java.util.*
 
 const val REQUEST_CODE: Int = 1
+const val BUTTON_EVERY: String = "bt_every"
+const val BUTTON_INPUTS: String = "bt_inputs"
+const val BUTTON_EXITS: String = "bt_exits"
 
 class ExtractFragment : Fragment() {
 
     private var _binding: ExtractFragmentBinding? = null
     private val binding: ExtractFragmentBinding get() = _binding!!
     private lateinit var viewModel: ExtractViewModel
+    private lateinit var listExtracts: List<ExtractResponse>
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -46,19 +50,16 @@ class ExtractFragment : Fragment() {
             ViewModelFactory(requireContext())
         ).get(ExtractViewModel::class.java)
 
-        viewModel.onOpenExtract("09/07/2021","12/07/2021")
+        viewModel.requestExtracts()
 
         viewModel.responseSucess.observe(viewLifecycleOwner, {
-                binding.imageExtract.isVisible = false
-                binding.textExtract.isVisible = false
-                binding.textFilter.isVisible = false
-                Toast.makeText(requireContext(),"sucesso",Toast.LENGTH_LONG).show()
-                //recyclerViewConfig()
+            binding.progressCircular.isVisible = false
+            listExtracts = it
         })
 
         viewModel.responseErro.observe(viewLifecycleOwner, {
+            binding.progressCircular.isVisible = false
             showInfo(it)
-            Toast.makeText(requireContext(),it,Toast.LENGTH_LONG).show()
         })
 
         binding.enterFilter.setOnClickListener {
@@ -66,42 +67,19 @@ class ExtractFragment : Fragment() {
             startActivityForResult(intent, REQUEST_CODE)
         }
 
-
-        try {
-            Toast.makeText(
-                requireContext(),
-                requireArguments().getString("filter").toString().lowercase(),
-                Toast.LENGTH_LONG
-            ).show()
-            binding.textFilter.text =
-                "nos ${requireArguments().getString("filter").toString().lowercase()}"
-        } catch (e: IllegalStateException) {
-            binding.textFilter.text = binding.textFilter.text.toString().replace("três", "3")
-        }
-
         binding.everyExtracts.setOnClickListener {
             checkSelectedButton(listOf(true, false, false))
-            loading()
-            Handler().postDelayed({
-                binding.progressCircular.isVisible = false
-                binding.imageExtract.isVisible = false
-                binding.textExtract.isVisible = false
-                binding.textFilter.isVisible = false
-                val data: Date = Calendar.getInstance().time
-                testRecyclerViewConfig(data)
-            }, 1500)
+            recyclerViewConfig(listExtracts, BUTTON_EVERY)
         }
 
         binding.inputsExtract.setOnClickListener {
             checkSelectedButton(listOf(false, true, false))
-            loading()
-            loadingSemDados()
+            recyclerViewConfig(listExtracts, BUTTON_INPUTS)
         }
 
         binding.exitExtracts.setOnClickListener {
             checkSelectedButton(listOf(false, false, true))
-            loading()
-            loadingSemDados()
+            recyclerViewConfig(listExtracts, BUTTON_EXITS)
         }
 
     }
@@ -109,57 +87,40 @@ class ExtractFragment : Fragment() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if(requestCode == REQUEST_CODE && resultCode == RESULT_CODE ) {
-            data!!.getStringExtra("filter")!!
-            binding.textFilter.text = binding.textFilter.text
+            viewModel.onChangeDataFilter(data!!.getStringExtra(FILTER)!!
+                .toString().lowercase())
+            binding.textFilter.text = viewModel.valueFilter()
         }
     }
 
-    private fun testRecyclerViewConfig(date: Date) {
+    private fun recyclerViewConfig(listExtracts: List<ExtractResponse>, buttonPressed:String) {
+        binding.imageExtract.isVisible = false
+        binding.textExtract.isVisible = false
+        binding.textFilter.isVisible = false
         with(binding.listExtracts) {
             isVisible = true
-            adapter = ListExtractsAdapter(date)
+            adapter = ListExtractsAdapter(listExtracts,buttonPressed)
         }
     }
-
-    private fun loadingSemDados() {
-        Handler().postDelayed({
-            binding.progressCircular.isVisible = false
-            binding.listExtracts.isVisible = false
-            binding.imageExtract.isVisible = true
-            binding.textExtract.isVisible = true
-            binding.textFilter.isVisible = true
-        }, 1500)
-    }
-
-    private fun loading() {
-        binding.progressCircular.isVisible = true
-    }
-
-//    private fun recyclerViewConfig(listBenefits: List<BalanceBenefits.Benefits>) {
-//        with(binding.listExtratos) {
-//            layoutManager = LinearLayoutManager(
-//                requireContext(),
-//                LinearLayoutManager.HORIZONTAL,
-//                false
-//            )
-//            adapter = ListaExtratoAdapter()
-//        }
-//    }
 
     private fun checkSelectedButton(listSelectedButtons: List<Boolean>) {
         for (position in listSelectedButtons.indices) {
-            if (listSelectedButtons[0] == true) {
-                paintButtonOn(binding.everyExtracts)
-                paintButtonOff(binding.inputsExtract)
-                paintButtonOff(binding.exitExtracts)
-            } else if (listSelectedButtons[1] == true) {
-                paintButtonOff(binding.everyExtracts)
-                paintButtonOn(binding.inputsExtract)
-                paintButtonOff(binding.exitExtracts)
-            } else if (listSelectedButtons[2] == true) {
-                paintButtonOff(binding.everyExtracts)
-                paintButtonOff(binding.inputsExtract)
-                paintButtonOn(binding.exitExtracts)
+            when {
+                listSelectedButtons[0] -> {
+                    paintButtonOn(binding.everyExtracts)
+                    paintButtonOff(binding.inputsExtract)
+                    paintButtonOff(binding.exitExtracts)
+                }
+                listSelectedButtons[1] -> {
+                    paintButtonOff(binding.everyExtracts)
+                    paintButtonOn(binding.inputsExtract)
+                    paintButtonOff(binding.exitExtracts)
+                }
+                listSelectedButtons[2] -> {
+                    paintButtonOff(binding.everyExtracts)
+                    paintButtonOff(binding.inputsExtract)
+                    paintButtonOn(binding.exitExtracts)
+                }
             }
         }
     }

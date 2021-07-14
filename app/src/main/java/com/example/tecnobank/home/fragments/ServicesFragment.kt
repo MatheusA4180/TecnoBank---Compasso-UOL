@@ -110,7 +110,7 @@ class ServicesFragment : Fragment(), ListServicesAdapter.ClickedServiceListener 
                 R.drawable.ic_seguros
             ),
             ListServicesAdapter.ItemService(
-                false, null,
+                true, null,
                 getString(R.string.learn_invest_service),
                 R.drawable.ic_aprenda_a_investir
             )
@@ -166,7 +166,7 @@ class ServicesFragment : Fragment(), ListServicesAdapter.ClickedServiceListener 
         }else if((positionRecyclerView == 4) && (positionViewPager == 0)) {
             findNavController().navigate(R.id.action_homeFragment_to_addMoneyActivity)
         }else if((positionRecyclerView == 4)&& (positionViewPager == 1)){
-            findNavController().navigate(R.id.action_homeFragment_to_learningInvestmentsActivity)
+            //findNavController().navigate(R.id.action_homeFragment_to_learningInvestmentsActivity)
         }
 
     }
