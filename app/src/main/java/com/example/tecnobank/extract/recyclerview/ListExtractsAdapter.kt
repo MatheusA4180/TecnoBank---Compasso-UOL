@@ -35,8 +35,8 @@ class ListExtractsAdapter(
     override fun getItemViewType(position: Int): Int {
         if(position==0) {
             return 0
-        }else if(listExtracts[position].date != listExtracts[position-1].date){
-            return 0
+//        }else if(listExtracts[position].date != listExtracts[position-1].date){
+//            return 0
         } else {
             return 1
         }

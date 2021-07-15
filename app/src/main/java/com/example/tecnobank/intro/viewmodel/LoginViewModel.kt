@@ -28,7 +28,6 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
     private val _rememberUserToogle = MutableLiveData<Unit>()
     val rememberUserToogle: LiveData<Unit> = _rememberUserToogle
 
-
     fun onEmailChange(email: String): String {
         this.email = email
         return email
@@ -38,7 +37,6 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
         this.password = password
         return password
     }
-
 
     fun onLoginClicked() {
         if (email.isNullOrBlank()) {
@@ -92,5 +90,4 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
             _rememberUserToogle.postValue(Unit)
         }
     }
-
 }
