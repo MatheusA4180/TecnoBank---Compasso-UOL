@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/greenTecnoBank"
     android:backgroundTint="@color/greenTecnoBank"
-    tools:context=".intro.MainActivity">
+    tools:context=".intro.IntroActivity">
 
     <ImageView
         android:id="@+id/imageView2"
@@ -25,7 +25,7 @@
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="A sua conta grátis do TecnoBank"
+        android:text="@string/title_onbording"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="36sp"
@@ -43,7 +43,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
-        android:text="Sua conta aberta em menos de 3 minutos"
+        android:text="@string/text_onbording"
 
         android:textColor="@color/white"
         android:textSize="18sp"
@@ -61,7 +61,7 @@
         android:layout_marginStart="60dp"
         android:layout_marginEnd="60dp"
         android:backgroundTint="@color/white"
-        android:text="Já sou cliente"
+        android:text="@string/bt_user"
         android:textColor="@color/greenTecnoBank"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -78,7 +78,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="60dp"
         android:layout_marginEnd="60dp"
-        android:text="Começar"
+        android:text="@string/bt_start_login"
         android:textColor="@color/white"
         android:textSize="20sp"
         app:backgroundTint="@color/greenTecnoBank"

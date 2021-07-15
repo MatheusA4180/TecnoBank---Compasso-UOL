@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/home_nav_graph"
+    app:startDestination="@id/inicioFragment">
+
+    <fragment
+        android:id="@+id/inicioFragment"
+        android:name="com.example.tecnobank.home.fragments.homeFragment"
+        android:label="inicio"
+        tools:layout="@layout/home_fragment" />
+    <fragment
+        android:id="@+id/extratoFragment"
+        android:name="com.example.tecnobank.extract.fragments.ExtractFragment"
+        android:label="extrato"
+        tools:layout="@layout/extract_fragment" />
+    <fragment
+        android:id="@+id/cartoesFragment"
+        android:name="com.example.tecnobank.cards.fragments.CardsFragment"
+        android:label="cartoes"
+        tools:layout="@layout/sales_fragment" />
+    <fragment
+        android:id="@+id/vendasFragment"
+        android:name="com.example.tecnobank.sales.fragments.SalesFragment"
+        android:label="vendas"
+        tools:layout="@layout/cards_fragment" />
+</navigation>

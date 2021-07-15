@@ -1,9 +1,9 @@
 package com.example.tecnobank.intro.repository
 
-import com.example.tecnobank.intro.data.local.SharedPreferenceServices
-import com.example.tecnobank.intro.data.remote.EndPoint
-import com.example.tecnobank.intro.data.remote.model.login.LoginPayload
-import com.example.tecnobank.intro.data.remote.model.login.LoginResponse
+import com.example.tecnobank.data.local.SharedPreferenceServices
+import com.example.tecnobank.data.remote.EndPoint
+import com.example.tecnobank.data.remote.model.login.LoginPayload
+import com.example.tecnobank.data.remote.model.login.LoginResponse
 
 class LoginRepository(
     private val endPoint: EndPoint,

@@ -16,9 +16,13 @@
     </fragment>
     <fragment
         android:id="@+id/loginfragment"
-        android:name="com.example.tecnobank.intro.fragments.loginFragment"
+        android:name="com.example.tecnobank.intro.fragments.LoginFragment"
         android:label="login"
-        tools:layout="@layout/login_fragment" />
+        tools:layout="@layout/login_fragment" >
+        <action
+            android:id="@+id/acao_loginfragment_to_homeactivity"
+            app:destination="@id/homeactivity" />
+    </fragment>
     <fragment
         android:id="@+id/splashfragment"
         android:name="com.example.tecnobank.intro.fragments.SplashFragment"
@@ -31,4 +35,9 @@
             android:id="@+id/acao_splashfragment_para_loginfragment"
             app:destination="@id/loginfragment" />
     </fragment>
+    <activity
+        android:id="@+id/homeactivity"
+        android:name="com.example.tecnobank.home.HomeActivity"
+        android:label="home"
+        tools:layout="@layout/home_activity"/>
 </navigation>
