@@ -15,6 +15,7 @@ import com.example.tecnobank.R
 import com.example.tecnobank.data.remote.model.home.BalanceBenefitsResponse
 import com.example.tecnobank.databinding.HomeFragmentBinding
 import com.example.tecnobank.extension.ExtensionFunctions.Companion.converterToReal
+import com.example.tecnobank.extension.HelperFunctions.converterToReal
 import com.example.tecnobank.home.adapter.ViewPagerAdapter
 import com.example.tecnobank.home.recyclerview.ListBenefitsAdapter
 import com.example.tecnobank.home.recyclerview.PagerDecoratorDots
@@ -48,8 +49,8 @@ class homeFragment : Fragment() {
 
         viewModel.responseSucess.observe(viewLifecycleOwner, {
             binding.cardBenefitsAndHelp.isVisible = true
-            binding.currentValue.text = converterToReal(it.balance.currentValue)
-            binding.receivables.text = converterToReal(it.balance.receivables)
+            binding.currentValue.text = converterToReal(it.balance.currentValue.toDouble())
+            binding.receivables.text = converterToReal(it.balance.receivables.toDouble())
             recyclerViewConfig(it.benefits)
         })
 
