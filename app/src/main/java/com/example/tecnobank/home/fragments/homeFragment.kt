@@ -65,14 +65,14 @@ class homeFragment : Fragment() {
             binding.funcionalidadesFaltaPoucoBanner.isVisible = false
         }
 
-        viewModel.visibleBalancesOn.observe(viewLifecycleOwner, {
-            binding.currentValue.setTransformationMethod(null)
-            binding.receivables.setTransformationMethod(null)
-        })
-
-        viewModel.visibleBalancesOff.observe(viewLifecycleOwner, {
-            binding.currentValue.setTransformationMethod(PasswordTransformationMethod())
-            binding.receivables.setTransformationMethod(PasswordTransformationMethod())
+        viewModel.balanceVisible.observe(viewLifecycleOwner, {
+            if(it){
+                binding.currentValue.setTransformationMethod(null)
+                binding.receivables.setTransformationMethod(null)
+            }else{
+                binding.currentValue.setTransformationMethod(PasswordTransformationMethod())
+                binding.receivables.setTransformationMethod(PasswordTransformationMethod())
+            }
         })
 
         viewPagerAndTabLayoutConfig()

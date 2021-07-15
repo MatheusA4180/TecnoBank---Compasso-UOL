@@ -10,13 +10,8 @@ import kotlinx.coroutines.launch
 
 class HomeViewModel(private val homeRepository: HomeRepository):ViewModel() {
 
-    private var visibleBalances = true
-
-    private val _visibleBalancesOn = MutableLiveData<Unit>()
-    val visibleBalancesOn: LiveData<Unit> = _visibleBalancesOn
-
-    private val _visibleBalancesOff = MutableLiveData<Unit>()
-    val visibleBalancesOff: LiveData<Unit> = _visibleBalancesOff
+    private val _balanceVisible = MutableLiveData<Boolean>()
+    val balanceVisible: LiveData<Boolean> = _balanceVisible
 
     private val _responseSucess = MutableLiveData<BalanceBenefitsResponse>()
     val responseSucess: LiveData<BalanceBenefitsResponse> = _responseSucess
@@ -35,13 +30,10 @@ class HomeViewModel(private val homeRepository: HomeRepository):ViewModel() {
     }
 
     fun checkVisibleBalances(){
-        if (visibleBalances == true) {
-            _visibleBalancesOff.postValue(Unit)
-            visibleBalances = false
+        if (balanceVisible.value == true) {
+            _balanceVisible.postValue(false)
         } else {
-            _visibleBalancesOn.postValue(Unit)
-            visibleBalances = true
+            _balanceVisible.postValue(true)
         }
     }
-
 }
