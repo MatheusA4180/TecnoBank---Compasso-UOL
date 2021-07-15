@@ -23,10 +23,10 @@ import com.example.tecnobank.viewmodelfactory.ViewModelFactory
 import com.google.android.material.tabs.TabLayoutMediator
 
 
-class homeFragment:Fragment() {
+class homeFragment : Fragment() {
     private var _binding: HomeFragmentBinding? = null
     private val binding: HomeFragmentBinding get() = _binding!!
-    private lateinit var viewModel:HomeViewModel
+    private lateinit var viewModel: HomeViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -104,6 +104,7 @@ class homeFragment:Fragment() {
 
     private fun recyclerViewConfig(listBenefitsResponse: List<BalanceBenefitsResponse.Benefits>) {
         with(binding.listBenefits) {
+            isVisible = true
             adapter = ListBenefitsAdapter(listBenefitsResponse)
             dotsConfig()
         }
