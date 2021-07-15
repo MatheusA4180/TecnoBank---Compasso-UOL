@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.tecnobank.R
 import com.example.tecnobank.data.remote.model.home.BalanceBenefitsResponse
 import com.example.tecnobank.databinding.HomeFragmentBinding
-import com.example.tecnobank.extension.ExtensionFunctions.Companion.converterToReal
+import com.example.tecnobank.extension.HelperFunctions.converterToReal
 import com.example.tecnobank.home.adapter.ViewPagerServicesAdapter
 import com.example.tecnobank.home.recyclerview.ListBenefitsAdapter
 import com.example.tecnobank.home.recyclerview.PagerDecoratorDots
@@ -48,8 +48,8 @@ class HomeFragment : Fragment() {
 
         viewModel.responseSucess.observe(viewLifecycleOwner, {
             binding.listBenefits.isVisible = true
-            binding.valorSaldo.text = converterToReal(it.balance.currentValue)
-            binding.valorVendas.text = converterToReal(it.balance.receivables)
+            binding.valorSaldo.text = converterToReal(it.balance.currentValue.toDouble())
+            binding.valorVendas.text = converterToReal(it.balance.receivables.toDouble())
             recyclerViewConfig(it.benefits)
         })
 
