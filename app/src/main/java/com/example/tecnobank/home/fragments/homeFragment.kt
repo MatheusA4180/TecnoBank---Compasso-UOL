@@ -14,7 +14,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.tecnobank.R
 import com.example.tecnobank.data.remote.model.home.BalanceBenefitsResponse
 import com.example.tecnobank.databinding.HomeFragmentBinding
-import com.example.tecnobank.extension.ExtensionFunctions.Companion.converterToReal
 import com.example.tecnobank.extension.HelperFunctions.converterToReal
 import com.example.tecnobank.home.adapter.ViewPagerAdapter
 import com.example.tecnobank.home.recyclerview.ListBenefitsAdapter
