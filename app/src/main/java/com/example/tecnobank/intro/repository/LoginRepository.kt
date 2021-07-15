@@ -22,6 +22,7 @@ class LoginRepository(
         } else {
             throw Exception("Falha no sistema.")
         }
+
     }
 
     fun saveUserLogin(email: String, password: String) =
@@ -35,5 +36,8 @@ class LoginRepository(
 
     fun saveTokenAuthentication(tokenAuthentication: String) = sharedPreferenceServices
         .saveTokenAuthentication(tokenAuthentication)
+
+    fun saveUserName(userNameFirst: String, userNameLast: String) = sharedPreferenceServices
+        .saveUserName(userNameFirst, userNameLast)
 
 }

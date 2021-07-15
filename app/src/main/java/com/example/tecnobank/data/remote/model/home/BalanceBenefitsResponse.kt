@@ -18,4 +18,5 @@ data class BalanceBenefitsResponse(
         val message: String,
         @SerializedName("text_link") val textLink: String
     )
+
 }

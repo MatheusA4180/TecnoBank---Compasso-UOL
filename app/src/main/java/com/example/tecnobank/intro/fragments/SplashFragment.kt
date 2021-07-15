@@ -17,9 +17,7 @@ class SplashFragment : Fragment() {
 
     private val SPLASH_DELAY: Long = 3000
     private var _binding: SplashFragmentBinding? = null
-    private val binding: SplashFragmentBinding get() = _binding!!
     private lateinit var viewModel: SplashViewModel
-
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -48,4 +46,5 @@ class SplashFragment : Fragment() {
         })
 
     }
+
 }

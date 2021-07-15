@@ -33,6 +33,7 @@ class LoginFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         viewModel = ViewModelProvider(this, ViewModelFactory(requireContext())).get(
             LoginViewModel::class.java
         )
@@ -81,6 +82,7 @@ class LoginFragment : Fragment() {
         viewModel.showLoading.observe(viewLifecycleOwner,{
             binding.progressCircular.isVisible = it
         })
+
     }
 
     fun showInfo(title: String?) {

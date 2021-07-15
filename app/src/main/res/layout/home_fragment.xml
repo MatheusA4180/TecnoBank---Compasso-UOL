@@ -211,7 +211,7 @@
                                         android:id="@+id/receivables"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:layout_marginStart="70dp"
+                                        android:layout_marginStart="80dp"
                                         android:text="@string/home_price_subtitle_6"
                                         android:textColor="@color/white"
                                         android:textSize="20sp"

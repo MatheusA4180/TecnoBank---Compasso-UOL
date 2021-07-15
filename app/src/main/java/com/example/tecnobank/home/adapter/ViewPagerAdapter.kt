@@ -3,7 +3,7 @@ package com.example.tecnobank.home.adapter
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.example.tecnobank.home.fragments.ServicesFragment
+import com.example.tecnobank.home.fragments.services.ServicesFragment
 
 const val POSITION_VIEW_HOLDER = "position_view_pager"
 

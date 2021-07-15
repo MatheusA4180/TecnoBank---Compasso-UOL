@@ -7,8 +7,12 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.tecnobank.R
 import com.example.tecnobank.data.local.SharedPreferenceServices
 import com.example.tecnobank.data.remote.EndPoint
+import com.example.tecnobank.extract.repository.ExtractRepositoty
+import com.example.tecnobank.extract.viewmodel.ExtractViewModel
 import com.example.tecnobank.home.repository.HomeRepository
+import com.example.tecnobank.home.repository.ProfileRepository
 import com.example.tecnobank.home.viewmodel.HomeViewModel
+import com.example.tecnobank.home.viewmodel.ProfileViewModel
 import com.example.tecnobank.intro.repository.LoginRepository
 import com.example.tecnobank.intro.repository.OnBoardingRepository
 import com.example.tecnobank.intro.repository.SplashRepository
@@ -18,19 +22,35 @@ import com.example.tecnobank.intro.viewmodel.SplashViewModel
 
 class ViewModelFactory(private val context: Context): ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        if(modelClass== SplashViewModel::class.java){
+        if (modelClass == SplashViewModel::class.java) {
             return providerSplashViewModel() as T
         }
-        if(modelClass== OnBoardingViewModel::class.java){
+        if (modelClass == OnBoardingViewModel::class.java) {
             return providerOnBoardingViewModel() as T
         }
-        if(modelClass== LoginViewModel::class.java){
+        if (modelClass == LoginViewModel::class.java) {
             return providerLoginViewModel() as T
         }
-        if(modelClass== HomeViewModel::class.java){
+        if (modelClass == HomeViewModel::class.java) {
             return providerHomeViewModel() as T
         }
+        if (modelClass == ExtractViewModel::class.java) {
+            return providerExtractViewModel() as T
+        }
+        if (modelClass == ProfileViewModel::class.java) {
+            return providerProfileViewModel() as T
+        }
         throw Exception("ViewModel não encotrado")
+    }
+
+    private fun providerProfileViewModel(): ProfileViewModel {
+        return ProfileViewModel(
+            ProfileRepository(
+                providerSharedPreferenceService(
+                    providerSharedPreference()
+                )
+            )
+        )
     }
 
     private fun providerSplashViewModel(): SplashViewModel {
@@ -56,7 +76,7 @@ class ViewModelFactory(private val context: Context): ViewModelProvider.Factory 
     private fun providerLoginViewModel(): LoginViewModel {
         return LoginViewModel(
             LoginRepository(
-                providerRetrofitInstance(),
+                providerEndPointInstance(),
                 providerSharedPreferenceService(providerSharedPreference())
             )
         )
@@ -64,16 +84,29 @@ class ViewModelFactory(private val context: Context): ViewModelProvider.Factory 
 
     private fun providerHomeViewModel(): HomeViewModel {
         return HomeViewModel(
-            HomeRepository(providerRetrofitInstance(),
-            providerSharedPreferenceService(providerSharedPreference()))
+            HomeRepository(
+                providerEndPointInstance(),
+                providerSharedPreferenceService(providerSharedPreference())
+            )
         )
     }
 
-    private fun providerSharedPreferenceService(preferences: SharedPreferences): SharedPreferenceServices {
+    private fun providerExtractViewModel(): ExtractViewModel {
+        return ExtractViewModel(
+            ExtractRepositoty(
+                providerEndPointInstance(),
+                providerSharedPreferenceService(providerSharedPreference())
+            )
+        )
+    }
+
+    private fun providerSharedPreferenceService(
+        preferences: SharedPreferences
+    ): SharedPreferenceServices {
         return SharedPreferenceServices(preferences)
     }
 
-    private fun providerRetrofitInstance(): EndPoint {
+    private fun providerEndPointInstance(): EndPoint {
         return EndPoint.getEndPointInstance()
     }
 
@@ -82,4 +115,5 @@ class ViewModelFactory(private val context: Context): ViewModelProvider.Factory 
             R.string.preference_file_key.toString(), Context.MODE_PRIVATE
         )
     }
+
 }

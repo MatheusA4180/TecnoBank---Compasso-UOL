@@ -9,4 +9,5 @@ object HelperFunctions {
         return NumberFormat.getCurrencyInstance(Locale("pt", "BR"))
             .format(value)
     }
+
 }
