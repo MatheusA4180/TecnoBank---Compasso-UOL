@@ -1,12 +1,14 @@
 package com.example.tecnobank.extension
 
+import java.text.NumberFormat
+import java.util.*
+
 class ExtensionFunctions() {
     companion object{
-        fun converterStringToReal(string:String): String {
-            return string.replace(".", ",")
-        }
-        fun addDecimalCases(string:String): String {
-            return "$string,00"
+        fun converterToReal(string: String): String {
+
+            return NumberFormat.getCurrencyInstance(Locale("pt", "BR")).
+            format(string.toDouble())
         }
     }
 

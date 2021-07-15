@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#DCDCDC">
@@ -146,30 +147,16 @@
                                         app:layout_constraintTop_toTopOf="parent" />
 
                                     <TextView
-                                        android:id="@+id/textView6"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginTop="8dp"
-                                        android:layout_marginBottom="16dp"
-                                        android:text="@string/home_rs_title_1"
-                                        android:textColor="@color/white"
-                                        android:textSize="28sp"
-                                        android:textStyle="bold"
-                                        app:layout_constraintBottom_toBottomOf="parent"
-                                        app:layout_constraintStart_toStartOf="@+id/textView5"
-                                        app:layout_constraintTop_toBottomOf="@+id/textView5" />
-
-                                    <TextView
                                         android:id="@+id/valor_saldo"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:layout_marginStart="16dp"
+                                        android:layout_marginTop="8dp"
                                         android:text="@string/home_balance_subtitle_1"
                                         android:textColor="@color/white"
                                         android:textSize="28sp"
                                         android:textStyle="bold"
-                                        app:layout_constraintBottom_toBottomOf="@+id/textView6"
-                                        app:layout_constraintStart_toEndOf="@+id/textView6" />
+                                        app:layout_constraintStart_toStartOf="@+id/textView5"
+                                        app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
                                     <Button
                                         android:id="@+id/bt_visible_balance"
@@ -221,28 +208,16 @@
                                         app:layout_constraintTop_toTopOf="parent" />
 
                                     <TextView
-                                        android:id="@+id/textView9"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginStart="70dp"
-                                        android:text="@string/home_rs_subtitle_5"
-                                        android:textColor="@color/white"
-                                        android:textSize="20sp"
-                                        android:textStyle="bold"
-                                        app:layout_constraintBottom_toBottomOf="@+id/textView8"
-                                        app:layout_constraintStart_toEndOf="@+id/textView8"
-                                        app:layout_constraintTop_toTopOf="@+id/textView8" />
-
-                                    <TextView
                                         android:id="@+id/valor_vendas"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:layout_marginStart="8dp"
+                                        android:layout_marginStart="70dp"
                                         android:text="@string/home_price_subtitle_6"
                                         android:textColor="@color/white"
                                         android:textSize="20sp"
-                                        app:layout_constraintBottom_toBottomOf="@+id/textView9"
-                                        app:layout_constraintStart_toEndOf="@+id/textView9" />
+                                        app:layout_constraintBottom_toBottomOf="parent"
+                                        app:layout_constraintStart_toEndOf="@+id/textView8"
+                                        app:layout_constraintTop_toTopOf="parent" />
                                 </androidx.constraintlayout.widget.ConstraintLayout>
                             </androidx.cardview.widget.CardView>
 

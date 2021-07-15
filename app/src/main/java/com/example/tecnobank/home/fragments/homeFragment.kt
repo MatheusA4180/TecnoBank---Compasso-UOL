@@ -10,20 +10,17 @@ import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tecnobank.R
-import com.example.tecnobank.home.adapter.ViewPagerAdapter
 import com.example.tecnobank.data.remote.model.home.BalanceBenefitsResponse
 import com.example.tecnobank.databinding.HomeFragmentBinding
-import com.example.tecnobank.extension.ExtensionFunctions.Companion.addDecimalCases
-import com.example.tecnobank.extension.ExtensionFunctions.Companion.converterStringToReal
+import com.example.tecnobank.extension.ExtensionFunctions.Companion.converterToReal
+import com.example.tecnobank.home.adapter.ViewPagerAdapter
 import com.example.tecnobank.home.recyclerview.ListBenefitsAdapter
 import com.example.tecnobank.home.recyclerview.PagerDecoratorDots
 import com.example.tecnobank.home.viewmodel.HomeViewModel
 import com.example.tecnobank.viewmodelfactory.ViewModelFactory
 import com.google.android.material.tabs.TabLayoutMediator
-import java.text.NumberFormat
 
 
 class homeFragment:Fragment() {
@@ -51,8 +48,8 @@ class homeFragment:Fragment() {
 
         viewModel.responseSucess.observe(viewLifecycleOwner, {
             binding.cardBenefitsAndHelp.isVisible = true
-            binding.valorSaldo.text = converterStringToReal(it.balance.currentValue)
-            binding.valorVendas.text = addDecimalCases(it.balance.receivables)
+            binding.valorSaldo.text = converterToReal(it.balance.currentValue)
+            binding.valorVendas.text = converterToReal(it.balance.receivables)
             recyclerViewConfig(it.benefits)
         })
 
