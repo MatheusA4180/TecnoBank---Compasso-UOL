@@ -49,29 +49,24 @@ class LoginFragment : Fragment() {
         binding.loginPassword.setText(viewModel.getPassword())
 
         viewModel.initLogin()
-        binding.progressCircular.isVisible = false
 
         viewModel.rememberUserToogle.observe(viewLifecycleOwner, {
             binding.remeberLogin.toggle()
         })
 
         viewModel.emailErro.observe(viewLifecycleOwner, {
-            binding.progressCircular.isVisible = false
             binding.loginEmail.error = "CPF, CNPJ ou Email não preenchido!";
         })
 
         viewModel.passwordErro.observe(viewLifecycleOwner, {
-            binding.progressCircular.isVisible = false
             binding.loginPassword.error = "Senha não preenchida!";
         })
 
         viewModel.goToHome.observe(viewLifecycleOwner, {
-            binding.progressCircular.isVisible = false
             findNavController().navigate(R.id.acao_loginfragment_to_homeactivity)
         })
 
         viewModel.showErro.observe(viewLifecycleOwner, {
-            binding.progressCircular.isVisible = false
             showInfo(it)
         })
 
@@ -80,9 +75,12 @@ class LoginFragment : Fragment() {
         }
 
         binding.loginEnter.setOnClickListener {
-            binding.progressCircular.isVisible = true
             viewModel.onLoginClicked()
         }
+
+        viewModel.showLoading.observe(viewLifecycleOwner,{
+            binding.progressCircular.isVisible = it
+        })
     }
 
     fun showInfo(title: String?) {

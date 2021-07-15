@@ -28,6 +28,9 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
     private val _rememberUserToogle = MutableLiveData<Unit>()
     val rememberUserToogle: LiveData<Unit> = _rememberUserToogle
 
+    private val _showLoading = MutableLiveData<Boolean>()
+    val showLoading: LiveData<Boolean> = _showLoading
+
 
     fun onEmailChange(email: String): String {
         this.email = email
@@ -52,6 +55,7 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
 
     private fun login() {
         viewModelScope.launch {
+            _showLoading.postValue(true)
             try {
                 val response = loginRepository.login(email!!, password!!)
                 if (onChecked) {
@@ -62,6 +66,7 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
             } catch (e: Exception) {
                 _showErro.postValue(e.message)
             }
+            _showLoading.postValue(false)
         }
     }
 
