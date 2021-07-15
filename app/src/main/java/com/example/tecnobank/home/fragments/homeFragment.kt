@@ -48,8 +48,8 @@ class homeFragment : Fragment() {
 
         viewModel.responseSucess.observe(viewLifecycleOwner, {
             binding.cardBenefitsAndHelp.isVisible = true
-            binding.valorSaldo.text = converterToReal(it.balance.currentValue)
-            binding.valorVendas.text = converterToReal(it.balance.receivables)
+            binding.currentValue.text = converterToReal(it.balance.currentValue)
+            binding.receivables.text = converterToReal(it.balance.receivables)
             recyclerViewConfig(it.benefits)
         })
 

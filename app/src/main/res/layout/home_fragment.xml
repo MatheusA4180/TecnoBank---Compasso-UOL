@@ -147,7 +147,7 @@
                                         app:layout_constraintTop_toTopOf="parent" />
 
                                     <TextView
-                                        android:id="@+id/valor_saldo"
+                                        android:id="@+id/current_value"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_marginTop="8dp"
@@ -166,7 +166,7 @@
                                         android:layout_marginEnd="20dp"
                                         android:drawableEnd="@drawable/ic_visivel"
                                         app:layout_constraintEnd_toEndOf="parent"
-                                        app:layout_constraintTop_toTopOf="@+id/valor_saldo" />
+                                        app:layout_constraintTop_toTopOf="@+id/current_value" />
 
                                 </androidx.constraintlayout.widget.ConstraintLayout>
                             </androidx.cardview.widget.CardView>
@@ -208,7 +208,7 @@
                                         app:layout_constraintTop_toTopOf="parent" />
 
                                     <TextView
-                                        android:id="@+id/valor_vendas"
+                                        android:id="@+id/receivables"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_marginStart="70dp"
