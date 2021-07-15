@@ -66,13 +66,13 @@ class homeFragment : Fragment() {
         }
 
         viewModel.visibleBalancesOn.observe(viewLifecycleOwner, {
-            binding.valorSaldo.setTransformationMethod(null)
-            binding.valorVendas.setTransformationMethod(null)
+            binding.currentValue.setTransformationMethod(null)
+            binding.receivables.setTransformationMethod(null)
         })
 
         viewModel.visibleBalancesOff.observe(viewLifecycleOwner, {
-            binding.valorSaldo.setTransformationMethod(PasswordTransformationMethod())
-            binding.valorVendas.setTransformationMethod(PasswordTransformationMethod())
+            binding.currentValue.setTransformationMethod(PasswordTransformationMethod())
+            binding.receivables.setTransformationMethod(PasswordTransformationMethod())
         })
 
         viewPagerAndTabLayoutConfig()
