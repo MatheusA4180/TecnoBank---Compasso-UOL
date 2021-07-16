@@ -22,8 +22,8 @@ class ExtractViewModel(private val extractRepository: ExtractRepositoty) : ViewM
         return "nos $filter"
     }
 
-    private val _responseSucess = MutableLiveData<List<ExtractResponse>>()
-    val responseSucess: LiveData<List<ExtractResponse>> = _responseSucess
+    private val _extractItemAdapter = MutableLiveData<List<ExtractResponse>>()//ExtractItemAdapter>>()
+    val extractItemAdapter: LiveData<List<ExtractResponse>> = _extractItemAdapter//ExtractItemAdapter>> = _extractItemAdapter
 
     private val _responseErro = MutableLiveData<String>()
     val responseErro: LiveData<String> = _responseErro
@@ -31,21 +31,29 @@ class ExtractViewModel(private val extractRepository: ExtractRepositoty) : ViewM
     fun requestExtracts() {
         viewModelScope.launch {
             try {
-                _responseSucess.postValue(
-                    extractRepository.extractTransactions(
-                        dataFilterStart,
-                        dataFilterEnd
-                    )
-//                    getNumberOfDates(extractRepository.extractTransactions(
-//                        dataFilterStart,
-//                        dataFilterEnd
-//                    ))
+                val response = extractRepository.extractTransactions(
+                    dataFilterStart,
+                    dataFilterEnd
                 )
+
+                _extractItemAdapter.postValue(response)//mapItemsForAdapter(response))
+
             } catch (e: Exception) {
                 _responseErro.postValue(e.message)
             }
         }
     }
+
+   // fun mapItemsForAdapter(list: List<ExtractResponse>):List<ExtractItemAdapter>{
+
+
+   // }
+
+    open class ExtractItemAdapter
+
+    data class ExtractItemHeader(val date:String):ExtractItemAdapter()
+
+    data class ExtractItemBody(val transactionValue: String):ExtractItemAdapter()
 
 //    private fun getNumberOfDates(listTransactions: List<ExtractResponse>):List<ExtractResponse> {
 //        var i = 1
