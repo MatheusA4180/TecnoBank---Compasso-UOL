@@ -55,18 +55,4 @@ class ExtractViewModel(private val extractRepository: ExtractRepositoty) : ViewM
 
     data class ExtractItemBody(val transactionValue: String):ExtractItemAdapter()
 
-//    private fun getNumberOfDates(listTransactions: List<ExtractResponse>):List<ExtractResponse> {
-//        var i = 1
-//        while(i<listTransactions.size){
-//            if(listTransactions[i].date != listTransactions[i-1].date){
-//                listDates.add(listTransactions[i].date)
-//                listPositionsChangeDates.add(i)
-//            }
-//            i++
-//        }
-//        return listDates.size
-//
-//    }
-//    data class
-
 }

@@ -13,20 +13,6 @@ class ListExtractsAdapter(
     //private val listExtracts: List<ExtractViewModel.ExtractItemAdapter>
     ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-//    private fun getNumberOfDates():Int {
-//        var i = 1
-//        while(i<listExtracts.size){
-//            if(listExtracts[i].date != listExtracts[i-1].date){
-//                listDates.add(listExtracts[i].date)
-//                listPositionsChangeDates.add(i)
-//            }
-//            i++
-//        }
-//        return listDates.size
-//    }
-
-
-
     override fun getItemCount() = 9//listExtracts.size
 
     override fun getItemViewType(position: Int): Int {
