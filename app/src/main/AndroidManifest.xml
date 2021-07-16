@@ -26,11 +26,11 @@
             android:screenOrientation="portrait" />
         <activity android:name=".cards.activity.RequestCardActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".home.ProfileActivity"
+        <activity android:name=".home.activity.ProfileActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".home.QrCodeSafeActivity"
+        <activity android:name=".home.activity.QrCodeSafeActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".home.NotificationActivity"
+        <activity android:name=".home.activity.NotificationActivity"
             android:screenOrientation="portrait" />
         <activity android:name=".home.activity.services.AccountDependencyActivity"
             android:screenOrientation="portrait" />

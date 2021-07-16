@@ -1,9 +1,8 @@
 package com.example.tecnobank.home.activity.services
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.example.tecnobank.databinding.AddMoneyActivityBinding
-import com.example.tecnobank.databinding.NotificationActivityBinding
 
 class AddMoneyActivity : AppCompatActivity() {
 
@@ -16,4 +15,5 @@ class AddMoneyActivity : AppCompatActivity() {
         _binding = AddMoneyActivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
     }
+
 }

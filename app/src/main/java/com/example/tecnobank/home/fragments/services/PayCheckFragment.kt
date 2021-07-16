@@ -9,6 +9,7 @@ import com.example.tecnobank.databinding.PayCheckFragmentBinding
 import com.example.tecnobank.databinding.PayQrCodeFragmentBinding
 
 class PayCheckFragment: Fragment() {
+
     private var _binding: PayCheckFragmentBinding? = null
     private val binding: PayCheckFragmentBinding get() = _binding!!
 
@@ -27,5 +28,7 @@ class PayCheckFragment: Fragment() {
         binding.btBack.setOnClickListener {
             requireActivity().finish()
         }
+
     }
+
 }

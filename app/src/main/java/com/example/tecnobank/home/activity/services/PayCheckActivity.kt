@@ -6,6 +6,7 @@ import com.example.tecnobank.databinding.PayCheckActivityBinding
 import com.example.tecnobank.databinding.PayQrCodeActivityBinding
 
 class PayCheckActivity : AppCompatActivity() {
+
     private var _binding: PayCheckActivityBinding? = null
     private val binding: PayCheckActivityBinding get() = _binding!!
 
@@ -14,5 +15,7 @@ class PayCheckActivity : AppCompatActivity() {
 
         _binding = PayCheckActivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
     }
+
 }

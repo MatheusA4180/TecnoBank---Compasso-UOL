@@ -36,4 +36,5 @@ class ListOptionsProfileAdapter(
     }
 
     data class ItemOptionProfile(val title: String, val icon: Int)
+
 }

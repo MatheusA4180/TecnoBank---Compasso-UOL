@@ -24,6 +24,7 @@ import com.example.tecnobank.viewmodelfactory.ViewModelFactory
 import com.google.android.material.tabs.TabLayoutMediator
 
 class HomeFragment : Fragment() {
+
     private var _binding: HomeFragmentBinding? = null
     private val binding: HomeFragmentBinding get() = _binding!!
     private lateinit var viewModel: HomeViewModel
@@ -154,4 +155,3 @@ class HomeFragment : Fragment() {
     }
 
 }
-

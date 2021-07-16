@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.tecnobank.R
 
 class ListLearningInvestmentsPostsAdapter:RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return ListLearningInvestmentsPostsAdapter.PostViewHolder(
             LayoutInflater.from(parent.context)
@@ -29,4 +30,5 @@ class ListLearningInvestmentsPostsAdapter:RecyclerView.Adapter<RecyclerView.View
         val text: TextView = itemView.findViewById<TextView>(R.id.text_post)
         val img = itemView.findViewById<ImageView>(R.id.btn_post)
     }
+
 }

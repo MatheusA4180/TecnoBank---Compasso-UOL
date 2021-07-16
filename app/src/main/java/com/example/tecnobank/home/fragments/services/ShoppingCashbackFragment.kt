@@ -5,10 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.tecnobank.databinding.QrCodeSafeFragmentBinding
 import com.example.tecnobank.databinding.ShoppingCashbackFragmentBinding
 
 class ShoppingCashbackFragment: Fragment() {
+
     private var _binding: ShoppingCashbackFragmentBinding? = null
     private val binding: ShoppingCashbackFragmentBinding get() = _binding!!
 
@@ -27,5 +27,7 @@ class ShoppingCashbackFragment: Fragment() {
         binding.btBack.setOnClickListener {
             requireActivity().finish()
         }
+
     }
+
 }
