@@ -84,4 +84,5 @@ class ProfileFragment : Fragment() {
         binding.listOptionsProfile.adapter = ListOptionsProfileAdapter(listOptionsProfile)
 
     }
+
 }

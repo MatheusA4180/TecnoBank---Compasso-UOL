@@ -27,5 +27,7 @@ class QrCodeSafeFragment: Fragment() {
         binding.btBack.setOnClickListener {
             requireActivity().finish()
         }
+
     }
+
 }

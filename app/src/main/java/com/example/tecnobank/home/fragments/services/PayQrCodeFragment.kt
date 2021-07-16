@@ -9,6 +9,7 @@ import com.example.tecnobank.databinding.PayQrCodeFragmentBinding
 import com.example.tecnobank.databinding.PixQrCodeFragmentBinding
 
 class PayQrCodeFragment: Fragment() {
+
     private var _binding: PayQrCodeFragmentBinding? = null
     private val binding: PayQrCodeFragmentBinding get() = _binding!!
 
@@ -27,5 +28,7 @@ class PayQrCodeFragment: Fragment() {
         binding.btBack.setOnClickListener {
             requireActivity().finish()
         }
+
     }
+
 }

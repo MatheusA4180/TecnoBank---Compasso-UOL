@@ -1,7 +1,7 @@
-package com.example.tecnobank.home
+package com.example.tecnobank.home.activity
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.example.tecnobank.databinding.ProfileActivityBinding
 
 class ProfileActivity : AppCompatActivity() {
@@ -14,6 +14,7 @@ class ProfileActivity : AppCompatActivity() {
 
         _binding = ProfileActivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
     }
 
 }

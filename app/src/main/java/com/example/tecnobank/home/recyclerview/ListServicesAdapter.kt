@@ -1,7 +1,6 @@
 package com.example.tecnobank.home.recyclerview
 
 import android.graphics.Color
-import android.graphics.PorterDuff
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup

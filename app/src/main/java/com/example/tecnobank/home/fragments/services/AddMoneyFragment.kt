@@ -29,4 +29,5 @@ class AddMoneyFragment : Fragment() {
         }
 
     }
+
 }

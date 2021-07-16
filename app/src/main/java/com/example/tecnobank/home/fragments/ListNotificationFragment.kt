@@ -9,7 +9,6 @@ import androidx.fragment.app.Fragment
 import com.example.tecnobank.databinding.ListNotificationFragmentBinding
 import com.example.tecnobank.home.adapter.POSITION_VIEW_PAGER_NOTIFICATION
 import com.example.tecnobank.home.recyclerview.ListNotificationAdapter
-import com.example.tecnobank.home.recyclerview.ListServicesAdapter
 
 class ListNotificationFragment : Fragment() {
 
@@ -33,6 +32,7 @@ class ListNotificationFragment : Fragment() {
     }
 
     fun getNotificationByPage(positionViewPager: Int):Int {
+
         return when (positionViewPager) {
             0 -> 0
             1 -> {
@@ -47,5 +47,7 @@ class ListNotificationFragment : Fragment() {
             }
             else -> 2
         }
+
     }
+
 }

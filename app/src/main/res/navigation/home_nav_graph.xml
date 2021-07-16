@@ -90,17 +90,17 @@
         tools:layout="@layout/account_dependency_activity" />
     <activity
         android:id="@+id/notificationActivity"
-        android:name="com.example.tecnobank.home.NotificationActivity"
+        android:name="com.example.tecnobank.home.activity.NotificationActivity"
         android:label="notification_activity"
         tools:layout="@layout/notification_activity" />
     <activity
         android:id="@+id/qrCodeSafeActivity"
-        android:name="com.example.tecnobank.home.QrCodeSafeActivity"
+        android:name="com.example.tecnobank.home.activity.QrCodeSafeActivity"
         android:label="qr_code_safe_activity"
         tools:layout="@layout/qr_code_safe_activity" />
     <activity
         android:id="@+id/profileActivity"
-        android:name="com.example.tecnobank.home.ProfileActivity"
+        android:name="com.example.tecnobank.home.activity.ProfileActivity"
         android:label="profile_activity"
         tools:layout="@layout/profile_activity" />
     <activity

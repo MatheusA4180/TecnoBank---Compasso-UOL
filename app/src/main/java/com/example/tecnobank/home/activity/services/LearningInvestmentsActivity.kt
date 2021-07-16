@@ -1,11 +1,8 @@
 package com.example.tecnobank.home.activity.services
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.tecnobank.R
+import androidx.appcompat.app.AppCompatActivity
 import com.example.tecnobank.databinding.LearningInvestmentsActivityBinding
-import com.example.tecnobank.databinding.LearningInvestmentsFragmentBinding
-import com.example.tecnobank.databinding.PixQrCodeActivityBinding
 
 class LearningInvestmentsActivity : AppCompatActivity() {
 
@@ -18,4 +15,5 @@ class LearningInvestmentsActivity : AppCompatActivity() {
         _binding = LearningInvestmentsActivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
     }
+
 }

@@ -7,6 +7,7 @@ import com.example.tecnobank.databinding.PayQrCodeFragmentBinding
 import com.example.tecnobank.databinding.PixQrCodeActivityBinding
 
 class PayQrCodeActivity : AppCompatActivity() {
+
     private var _binding: PayQrCodeActivityBinding? = null
     private val binding: PayQrCodeActivityBinding get() = _binding!!
 
@@ -16,4 +17,5 @@ class PayQrCodeActivity : AppCompatActivity() {
         _binding = PayQrCodeActivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
     }
+
 }
