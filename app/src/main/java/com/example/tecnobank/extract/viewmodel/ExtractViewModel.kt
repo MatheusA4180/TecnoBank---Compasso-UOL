@@ -22,8 +22,8 @@ class ExtractViewModel(private val extractRepository: ExtractRepositoty) : ViewM
         return "nos $filter"
     }
 
-    private val _extractItemAdapter = MutableLiveData<List<ExtractResponse>>()//ExtractItemAdapter>>()
-    val extractItemAdapter: LiveData<List<ExtractResponse>> = _extractItemAdapter//ExtractItemAdapter>> = _extractItemAdapter
+    private val _extractItemAdapter = MutableLiveData<List<ExtractItemAdapter>>()
+    val extractItemAdapter: LiveData<List<ExtractItemAdapter>> = _extractItemAdapter
 
     private val _responseErro = MutableLiveData<String>()
     val responseErro: LiveData<String> = _responseErro
@@ -36,7 +36,7 @@ class ExtractViewModel(private val extractRepository: ExtractRepositoty) : ViewM
                     dataFilterEnd
                 )
 
-                _extractItemAdapter.postValue(response)//mapItemsForAdapter(response))
+                _extractItemAdapter.postValue(mapItemsForAdapter(response))
 
             } catch (e: Exception) {
                 _responseErro.postValue(e.message)
@@ -44,10 +44,9 @@ class ExtractViewModel(private val extractRepository: ExtractRepositoty) : ViewM
         }
     }
 
-   // fun mapItemsForAdapter(list: List<ExtractResponse>):List<ExtractItemAdapter>{
+   fun mapItemsForAdapter(list: List<ExtractResponse>):List<ExtractItemAdapter>{
 
-
-   // }
+    }
 
     open class ExtractItemAdapter
 

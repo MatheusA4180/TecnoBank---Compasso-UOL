@@ -52,7 +52,7 @@ class ExtractFragment : Fragment() {
 
         viewModel.extractItemAdapter.observe(viewLifecycleOwner, {
             binding.progressCircular.isVisible = false
-            binding.listExtracts.adapter = ListExtractsAdapter()//it)
+            binding.listExtracts.adapter = ListExtractsAdapter(it, BUTTON_EVERY)
         })
 
         viewModel.responseErro.observe(viewLifecycleOwner, {
@@ -69,17 +69,17 @@ class ExtractFragment : Fragment() {
 
         binding.everyExtracts.setOnClickListener {
             checkSelectedButton(listOf(true, false, false))
-            recyclerViewConfig()//listExtracts, BUTTON_EVERY)
+            //recyclerViewConfig(listExtracts, BUTTON_EVERY)
         }
 
         binding.inputsExtract.setOnClickListener {
             checkSelectedButton(listOf(false, true, false))
-            recyclerViewConfig()//listExtracts, BUTTON_INPUTS)
+            //recyclerViewConfig(listExtracts, BUTTON_INPUTS)
         }
 
         binding.exitExtracts.setOnClickListener {
             checkSelectedButton(listOf(false, false, true))
-            recyclerViewConfig()//listExtracts, BUTTON_EXITS)
+            //recyclerViewConfig(listExtracts, BUTTON_EXITS)
         }
 
     }
@@ -95,17 +95,15 @@ class ExtractFragment : Fragment() {
         }
     }
 
-    private fun recyclerViewConfig(){//listExtracts: List<ExtractViewModel.ExtractItemAdapter>, buttonPressed: String) {
+    private fun recyclerViewConfig(listExtracts: List<ExtractViewModel.ExtractItemAdapter>, buttonPressed: String) {
         binding.imageExtract.isVisible = false
         binding.textExtract.isVisible = false
         binding.textFilter.isVisible = false
         with(binding.listExtracts) {
             isVisible = true
             adapter = ListExtractsAdapter(
-//                listExtracts,
-                //listDates,
-                //listPositionsChangeDates,
- //               buttonPressed
+                listExtracts,
+                buttonPressed
             )
         }
     }

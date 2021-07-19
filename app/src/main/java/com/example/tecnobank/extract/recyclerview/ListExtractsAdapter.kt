@@ -10,27 +10,20 @@ import com.example.tecnobank.data.remote.model.extract.ExtractResponse
 import com.example.tecnobank.extract.viewmodel.ExtractViewModel
 
 class ListExtractsAdapter(
-    //private val listExtracts: List<ExtractViewModel.ExtractItemAdapter>
+    private val listExtracts: List<ExtractViewModel.ExtractItemAdapter>,
+    private val buttonClicked:String
     ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun getItemCount() = 9//listExtracts.size
 
     override fun getItemViewType(position: Int): Int {
-//        val item = listExtracts.get(position)
-//        if (item is ExtractViewModel.ExtractItemHeader) {
-//            return LIST_DATE_TYPE
-//        } else if (item is ExtractViewModel.ExtractItemBody) {
-//            return LIST_EXTRACT_TYPE
-//        } else {
-//            throw Exception("Tipo invalido!")
-//        }
-
-        if(position == 0 || position %3==0)
-        {
+        val item = listExtracts.get(position)
+        if (item is ExtractViewModel.ExtractItemHeader) {
             return LIST_DATE_TYPE
-        }
-        else{
+        } else if (item is ExtractViewModel.ExtractItemBody) {
             return LIST_EXTRACT_TYPE
+        } else {
+            throw Exception("Tipo invalido!")
         }
 
     }
@@ -57,13 +50,11 @@ class ListExtractsAdapter(
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (holder is HeaderViewHolder) {
-//            val item = listExtracts.get(position) as ExtractViewModel.ExtractItemHeader
-//            holder.headerText.text = item.date
+            val item = listExtracts.get(position) as ExtractViewModel.ExtractItemHeader
+            holder.headerText.text = item.date
         } else if(holder is ExtractViewHolder) {
-//            val item = listExtracts.get(position) as ExtractViewModel.ExtractItemBody
-//            holder.transactionValue.text = item.transactionValue
-
-            //o que for mudar na extractViewHolder
+            val item = listExtracts.get(position) as ExtractViewModel.ExtractItemBody
+            holder.transactionValue.text = item.transactionValue
         }
 
     }
