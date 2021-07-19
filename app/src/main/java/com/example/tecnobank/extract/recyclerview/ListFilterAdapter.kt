@@ -10,11 +10,10 @@ import com.example.tecnobank.R
 
 class ListFilterAdapter(
     private val listItemFilter: List<String>,
-    private val selectFilterlistener: SelectFilterlistener
+    private val selectFilterlistener: SelectFilterlistener,
+    private var positionSelected: Int
 ) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-
-    private var positionSelected: Int = 1
 
     override fun getItemCount(): Int {
         return 5
@@ -33,7 +32,7 @@ class ListFilterAdapter(
             holder.itemView.setOnClickListener {
                 positionSelected = position
                 notifyDataSetChanged()
-                selectFilterlistener.selectedFilterlistener(positionSelected)
+                selectFilterlistener.selectedFilterlistener(positionSelected!!)
             }
             if (position == positionSelected) {
                 holder.icon.setImageResource(R.drawable.ic_check)

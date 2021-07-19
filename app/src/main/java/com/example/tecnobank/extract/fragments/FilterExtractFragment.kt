@@ -23,7 +23,7 @@ class FilterExtractFragment : Fragment(), ListFilterAdapter.SelectFilterlistener
         "Últimos 60 dias",
         "Últimos 120 dias"
     )
-    private var positionS: Int = 1
+    private var positionSelected: Int = 1
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -42,13 +42,13 @@ class FilterExtractFragment : Fragment(), ListFilterAdapter.SelectFilterlistener
         }
 
         with(binding.listFilters) {
-            adapter = ListFilterAdapter(listItemFilter, this@FilterExtractFragment)
+            adapter = ListFilterAdapter(listItemFilter, this@FilterExtractFragment, positionSelected)
         }
 
         binding.applyFilter.setOnClickListener {
             requireActivity().setResult(
                 RESULT_CODE,
-                Intent().putExtra(FILTER, listItemFilter[positionS])
+                Intent().putExtra(FILTER, listItemFilter[positionSelected])
             )
             requireActivity().finish()
         }
@@ -56,7 +56,7 @@ class FilterExtractFragment : Fragment(), ListFilterAdapter.SelectFilterlistener
     }
 
     override fun selectedFilterlistener(position: Int) {
-        this.positionS = position
+        this.positionSelected = position
     }
 
 }

@@ -14,7 +14,7 @@ class ListExtractsAdapter(
     private val buttonClicked:String
     ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    override fun getItemCount() = 9//listExtracts.size
+    override fun getItemCount() = listExtracts.size
 
     override fun getItemViewType(position: Int): Int {
         val item = listExtracts.get(position)
