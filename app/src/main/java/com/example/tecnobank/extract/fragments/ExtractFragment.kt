@@ -29,7 +29,6 @@ class ExtractFragment : Fragment() {
     private var _binding: ExtractFragmentBinding? = null
     private val binding: ExtractFragmentBinding get() = _binding!!
     private lateinit var viewModel: ExtractViewModel
-    private lateinit var listExtracts: List<ExtractResponse>
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -51,7 +50,6 @@ class ExtractFragment : Fragment() {
         viewModel.requestExtracts()
 
         viewModel.loading.observe(viewLifecycleOwner, {
-
             binding.progressCircular.isVisible = false
         })
 

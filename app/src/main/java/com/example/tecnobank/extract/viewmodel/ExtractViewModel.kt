@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.tecnobank.data.remote.model.extract.ExtractResponse
+import com.example.tecnobank.extension.HelperFunctions.getDateMonthFormat
 import com.example.tecnobank.extract.fragments.BUTTON_EXITS
 import com.example.tecnobank.extract.fragments.BUTTON_INPUTS
 import com.example.tecnobank.extract.repository.ExtractRepositoty
@@ -24,9 +25,6 @@ class ExtractViewModel(private val extractRepository: ExtractRepositoty) : ViewM
     fun valueFilter(): String {
         return "nos $filter"
     }
-
-    private val _extractItemAdapter = MutableLiveData<List<ExtractItemAdapter>>()
-    val extractItemAdapter: LiveData<List<ExtractItemAdapter>> = _extractItemAdapter
 
     private val _responseErro = MutableLiveData<String>()
     val responseErro: LiveData<String> = _responseErro
@@ -55,18 +53,15 @@ class ExtractViewModel(private val extractRepository: ExtractRepositoty) : ViewM
 
         for (i in 0 until extractList.size) {
             if (i == 0) {
-                val header = ExtractItemHeader(extractList[i].date)
-                val body = ExtractItemBody(extractList[i])
-                formattedList.add(header)
-                formattedList.add(body)
-            } else if (extractList[i].date != extractList[i - 1].date) {
-                val header = ExtractItemHeader(extractList[i].date)
-                val body = ExtractItemBody(extractList[i])
-                formattedList.add(header)
-                formattedList.add(body)
-            } else {
-                val body = ExtractItemBody(extractList[i])
-                formattedList.add(body)
+                formattedList.add(ExtractItemHeader(getDateMonthFormat(extractList[i].date)))
+                formattedList.add(ExtractItemBody(extractList[i]))
+            }
+            else if (extractList[i].date != extractList[i - 1].date) {
+                formattedList.add(ExtractItemHeader(getDateMonthFormat(extractList[i].date)))
+                formattedList.add(ExtractItemBody(extractList[i]))
+            }
+            else {
+                formattedList.add(ExtractItemBody(extractList[i]))
             }
         }
 
@@ -79,12 +74,9 @@ class ExtractViewModel(private val extractRepository: ExtractRepositoty) : ViewM
         val formattedList: MutableList<ExtractResponse> = mutableListOf()
 
         if (buttonClicked == BUTTON_INPUTS) {
-
             for (i in 0 until cloneListReturnedApi.size) {
-                if ((cloneListReturnedApi[i].type != "Despesa") && (!cloneListReturnedApi[i].time.contains(
-                        "CANCELADA"
-                    ))
-                ) {
+                if ((cloneListReturnedApi[i].type != "Despesa") &&
+                    (!cloneListReturnedApi[i].time.contains("CANCELADA"))) {
                     formattedList.add(cloneListReturnedApi[i])
                 }
             }
@@ -92,10 +84,8 @@ class ExtractViewModel(private val extractRepository: ExtractRepositoty) : ViewM
 
         } else if (buttonClicked == BUTTON_EXITS) {
             for (i in 0 until cloneListReturnedApi.size) {
-
-                if ((cloneListReturnedApi[i].type == "Despesa") && (!cloneListReturnedApi[i].time.contains(
-                    "CANCELADA"
-                ))) {
+                if ((cloneListReturnedApi[i].type == "Despesa") &&
+                    (!cloneListReturnedApi[i].time.contains("CANCELADA"))) {
                     formattedList.add(cloneListReturnedApi[i])
                 }
             }
@@ -105,7 +95,6 @@ class ExtractViewModel(private val extractRepository: ExtractRepositoty) : ViewM
         }
     }
 
-
     open class ExtractItemAdapter
 
     data class ExtractItemHeader(val date: String) : ExtractItemAdapter()
@@ -113,4 +102,3 @@ class ExtractViewModel(private val extractRepository: ExtractRepositoty) : ViewM
     data class ExtractItemBody(val body: ExtractResponse) : ExtractItemAdapter()
 
 }
-
