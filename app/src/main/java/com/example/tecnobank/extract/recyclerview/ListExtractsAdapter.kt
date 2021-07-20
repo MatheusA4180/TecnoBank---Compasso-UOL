@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tecnobank.R
-import com.example.tecnobank.data.remote.model.extract.ExtractResponse
 import com.example.tecnobank.extract.viewmodel.ExtractViewModel
 
 class ListExtractsAdapter(
@@ -74,10 +73,10 @@ class ListExtractsAdapter(
     }
 
     class ExtractViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val transactionValue: TextView = itemView.findViewById(R.id.textView28)
-        val transactionTime: TextView = itemView.findViewById(R.id.textView22)
-        val transactionName: TextView = itemView.findViewById(R.id.textView26)
-        val transactionType: TextView = itemView.findViewById(R.id.textView27)
+        val transactionValue: TextView = itemView.findViewById(R.id.extract_value_transaction)
+        val transactionTime: TextView = itemView.findViewById(R.id.extract_time)
+        val transactionName: TextView = itemView.findViewById(R.id.extract_type)
+        val transactionType: TextView = itemView.findViewById(R.id.extract_type_description)
 
     }
 
