@@ -1,5 +1,6 @@
 package com.example.tecnobank.extract.recyclerview
 
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,8 +11,7 @@ import com.example.tecnobank.data.remote.model.extract.ExtractResponse
 import com.example.tecnobank.extract.viewmodel.ExtractViewModel
 
 class ListExtractsAdapter(
-    private val listExtracts: List<ExtractViewModel.ExtractItemAdapter>,
-    private val buttonClicked:String
+    private val listExtracts: List<ExtractViewModel.ExtractItemAdapter>
     ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun getItemCount() = listExtracts.size
@@ -54,7 +54,17 @@ class ListExtractsAdapter(
             holder.headerText.text = item.date
         } else if(holder is ExtractViewHolder) {
             val item = listExtracts.get(position) as ExtractViewModel.ExtractItemBody
-            holder.transactionValue.text = item.transactionValue
+            holder.transactionValue.text = item.body.value
+            holder.transactionName.text = item.body.type
+            holder.transactionType.text = item.body.typeDescription
+            if(item.body.type=="Despesa"){
+
+                holder.transactionValue.setTextColor(Color.parseColor("#FF0000"))
+                holder.transactionValue.text = "-${item.body.value}"
+            }
+
+            holder.transactionType.text = item.body.typeDescription
+            holder.transactionTime.text = item.body.time
         }
 
     }
@@ -65,6 +75,9 @@ class ListExtractsAdapter(
 
     class ExtractViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val transactionValue: TextView = itemView.findViewById(R.id.textView28)
+        val transactionTime: TextView = itemView.findViewById(R.id.textView22)
+        val transactionName: TextView = itemView.findViewById(R.id.textView26)
+        val transactionType: TextView = itemView.findViewById(R.id.textView27)
 
     }
 
