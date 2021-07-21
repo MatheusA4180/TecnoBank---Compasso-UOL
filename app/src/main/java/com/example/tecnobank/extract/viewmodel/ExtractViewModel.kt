@@ -29,8 +29,8 @@ class ExtractViewModel(private val extractRepository: ExtractRepositoty) : ViewM
     private val _responseErro = MutableLiveData<String>()
     val responseErro: LiveData<String> = _responseErro
 
-    private val _loading = MutableLiveData<Unit>()
-    val loading: LiveData<Unit> = _loading
+    private val _loading = MutableLiveData<Boolean>()
+    val loading: LiveData<Boolean> = _loading
 
     fun requestExtracts() {
         viewModelScope.launch {
@@ -40,10 +40,11 @@ class ExtractViewModel(private val extractRepository: ExtractRepositoty) : ViewM
                     dataFilterEnd
                 )
 
-                _loading.postValue(Unit)
+                _loading.postValue(true)
 
             } catch (e: Exception) {
                 _responseErro.postValue(e.message)
+                _loading.postValue(true)
             }
         }
     }
@@ -52,15 +53,10 @@ class ExtractViewModel(private val extractRepository: ExtractRepositoty) : ViewM
         val formattedList: MutableList<ExtractItemAdapter> = mutableListOf()
 
         for (i in 0 until extractList.size) {
-            if (i == 0) {
+            if ((i == 0)||(extractList[i].date != extractList[i - 1].date)) {
                 formattedList.add(ExtractItemHeader(getDateMonthFormat(extractList[i].date)))
                 formattedList.add(ExtractItemBody(extractList[i]))
-            }
-            else if (extractList[i].date != extractList[i - 1].date) {
-                formattedList.add(ExtractItemHeader(getDateMonthFormat(extractList[i].date)))
-                formattedList.add(ExtractItemBody(extractList[i]))
-            }
-            else {
+            }else {
                 formattedList.add(ExtractItemBody(extractList[i]))
             }
         }
