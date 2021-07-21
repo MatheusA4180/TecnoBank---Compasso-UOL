@@ -58,13 +58,6 @@ class ExtractFragment : Fragment() {
             showInfo(it)
         })
 
-        binding.extractToolbar.setNavigationOnClickListener {
-            startActivityForResult(
-                Intent(requireActivity(), FilterActivity::class.java),
-                REQUEST_CODE
-            )
-        }
-
         binding.extractToolbar.setOnMenuItemClickListener { menuItem ->
 
             when (menuItem.itemId) {
@@ -82,17 +75,17 @@ class ExtractFragment : Fragment() {
         }
 
         binding.everyExtracts.setOnClickListener {
-            checkSelectedButton(listOf(true, false, false))
+            checkSelectedButton(everyButton = true, inputButton = false, exitButton = false)
             recyclerViewConfig(BUTTON_EVERY)
         }
 
         binding.inputsExtract.setOnClickListener {
-            checkSelectedButton(listOf(false, true, false))
+            checkSelectedButton(everyButton = false, inputButton = true, exitButton = false)
             recyclerViewConfig(BUTTON_INPUTS)
         }
 
         binding.exitExtracts.setOnClickListener {
-            checkSelectedButton(listOf(false, false, true))
+            checkSelectedButton(everyButton = false, inputButton = false, exitButton = true)
             recyclerViewConfig(BUTTON_EXITS)
         }
 
@@ -120,19 +113,19 @@ class ExtractFragment : Fragment() {
 
     }
 
-    private fun checkSelectedButton(listSelectedButtons: List<Boolean>) {
+    private fun checkSelectedButton(everyButton:Boolean, inputButton:Boolean, exitButton:Boolean) {
         when {
-            listSelectedButtons[0] -> {
+            everyButton -> {
                 paintButtonOn(binding.everyExtracts)
                 paintButtonOff(binding.inputsExtract)
                 paintButtonOff(binding.exitExtracts)
             }
-            listSelectedButtons[1] -> {
+            inputButton -> {
                 paintButtonOff(binding.everyExtracts)
                 paintButtonOn(binding.inputsExtract)
                 paintButtonOff(binding.exitExtracts)
             }
-            listSelectedButtons[2] -> {
+            exitButton -> {
                 paintButtonOff(binding.everyExtracts)
                 paintButtonOff(binding.inputsExtract)
                 paintButtonOn(binding.exitExtracts)
