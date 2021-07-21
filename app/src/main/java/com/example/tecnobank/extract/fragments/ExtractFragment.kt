@@ -58,11 +58,27 @@ class ExtractFragment : Fragment() {
             showInfo(it)
         })
 
-        binding.enterFilter.setOnClickListener {
+        binding.extractToolbar.setNavigationOnClickListener {
             startActivityForResult(
                 Intent(requireActivity(), FilterActivity::class.java),
                 REQUEST_CODE
             )
+        }
+
+        binding.extractToolbar.setOnMenuItemClickListener { menuItem ->
+
+            when (menuItem.itemId) {
+                R.id.filtro -> {
+                    startActivityForResult(
+                        Intent(requireActivity(), FilterActivity::class.java),
+                        REQUEST_CODE
+                    )
+
+                    true
+                }
+
+                else -> false
+            }
         }
 
         binding.everyExtracts.setOnClickListener {

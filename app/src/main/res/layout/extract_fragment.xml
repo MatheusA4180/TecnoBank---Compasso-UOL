@@ -5,10 +5,12 @@
     android:layout_height="match_parent">
 
     <com.google.android.material.appbar.MaterialToolbar
-        android:id="@+id/extrato_toolbar"
+        android:id="@+id/extract_toolbar"
         android:layout_width="0dp"
         android:layout_height="122dp"
         android:background="@color/greenTecnoBank"
+        app:menu="@menu/menu_filter"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -16,10 +18,10 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="@id/extrato_toolbar"
-        app:layout_constraintEnd_toEndOf="@id/extrato_toolbar"
-        app:layout_constraintStart_toStartOf="@+id/extrato_toolbar"
-        app:layout_constraintTop_toTopOf="@id/extrato_toolbar">
+        app:layout_constraintBottom_toBottomOf="@id/extract_toolbar"
+        app:layout_constraintEnd_toEndOf="@id/extract_toolbar"
+        app:layout_constraintStart_toStartOf="@+id/extract_toolbar"
+        app:layout_constraintTop_toTopOf="@id/extract_toolbar">
 
         <TextView
             android:id="@+id/textView18"
@@ -34,17 +36,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
-        <Button
-            android:id="@+id/enter_filter"
-            style="@style/Widget.MaterialComponents.Button.TextButton"
-            android:layout_width="50dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:drawableEnd="@drawable/ic_filtro"
-            app:layout_constraintBottom_toBottomOf="@+id/textView18"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/textView18" />
 
         <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
             android:id="@+id/inputs_extract"
@@ -104,7 +95,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/extrato_toolbar"
+        app:layout_constraintTop_toBottomOf="@+id/extract_toolbar"
         app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
