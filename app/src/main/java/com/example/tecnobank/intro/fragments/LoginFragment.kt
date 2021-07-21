@@ -65,6 +65,7 @@ class LoginFragment : Fragment() {
 
         viewModel.goToHome.observe(viewLifecycleOwner, {
             findNavController().navigate(R.id.acao_loginfragment_to_homeactivity)
+            requireActivity().finish()
         })
 
         viewModel.showErro.observe(viewLifecycleOwner, {

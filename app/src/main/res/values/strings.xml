@@ -199,4 +199,9 @@
     <string name="tecnobank_cards_subtitle_12">Cartão Pré-Pago</string>
     <string name="tecnobank_cards_subtitle_13">Controle seus gastos e recarregue quando precisar:</string>
     <string name="tecnobank_cards_subtitle_14">Sem fatura e sem preocupação no final do mês</string>
+    <string name="list_filter_item_1">Últimos 3 dias</string>
+    <string name="list_filter_item_2">Últimos 7 dias</string>
+    <string name="list_filter_item_3">Últimos 30 dias</string>
+    <string name="list_filter_item_4">Últimos 60 dias</string>
+    <string name="list_filter_item_5">Últimos 120 dias</string>
 </resources>

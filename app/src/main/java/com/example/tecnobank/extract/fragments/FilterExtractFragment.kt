@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.example.tecnobank.R
 import com.example.tecnobank.databinding.FilterExtractFragmentBinding
 import com.example.tecnobank.extract.recyclerview.ListFilterAdapter
 
@@ -16,20 +17,18 @@ class FilterExtractFragment : Fragment(), ListFilterAdapter.SelectFilterlistener
 
     private var _binding: FilterExtractFragmentBinding? = null
     private val binding: FilterExtractFragmentBinding get() = _binding!!
-    private val listItemFilter: List<String> = listOf(
-        "Últimos 3 dias",
-        "Últimos 7 dias",
-        "Últimos 30 dias",
-        "Últimos 60 dias",
-        "Últimos 120 dias"
-    )
-    // private val listItemFilter: List<String> = listOf(
-    //     getString(R.string.list_filter_item_1),
-    //    getString(R.string.list_filter_item_2),
-    //   getString(R.string.list_filter_item_3),
-    //   getString(R.string.list_filter_item_4),
-    //   getString(R.string.list_filter_item_5)
-    // )
+
+    private val listItemFilter: List<String> by lazy {
+        listOf(
+            getString(R.string.list_filter_item_1),
+            getString(R.string.list_filter_item_2),
+            getString(R.string.list_filter_item_3),
+            getString(R.string.list_filter_item_4),
+            getString(R.string.list_filter_item_5)
+        )
+    }
+
+
     private var positionSelected: Int = 1
 
     override fun onCreateView(
@@ -51,7 +50,8 @@ class FilterExtractFragment : Fragment(), ListFilterAdapter.SelectFilterlistener
 
 
         with(binding.listFilters) {
-            adapter = ListFilterAdapter(listItemFilter, this@FilterExtractFragment, positionSelected)
+            adapter =
+                ListFilterAdapter(listItemFilter, this@FilterExtractFragment, positionSelected)
         }
 
         binding.applyFilter.setOnClickListener {
