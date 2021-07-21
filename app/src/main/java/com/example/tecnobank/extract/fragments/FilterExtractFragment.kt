@@ -44,9 +44,11 @@ class FilterExtractFragment : Fragment(), ListFilterAdapter.SelectFilterlistener
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.btBack.setOnClickListener {
+        binding.filterToolbar.setNavigationOnClickListener {
             requireActivity().finish()
         }
+
+
 
         with(binding.listFilters) {
             adapter = ListFilterAdapter(listItemFilter, this@FilterExtractFragment, positionSelected)
