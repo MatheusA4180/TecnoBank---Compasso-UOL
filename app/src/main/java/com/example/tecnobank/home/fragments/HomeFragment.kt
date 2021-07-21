@@ -62,22 +62,6 @@ class HomeFragment : Fragment() {
             viewModel.checkVisibleBalances()
         }
 
-        binding.incompletSingUp.setOnClickListener {
-            findNavController().navigate(R.id.action_homeFragment_to_accountDependencyActivity)
-        }
-
-        binding.btNotification.setOnClickListener {
-            findNavController().navigate(R.id.action_homeFragment_to_notificationActivity)
-        }
-
-        binding.btQrcode.setOnClickListener {
-            findNavController().navigate(R.id.action_homeFragment_to_qrCodeSafeActivity)
-        }
-
-        binding.btLogin.setOnClickListener {
-            findNavController().navigate(R.id.action_homeFragment_to_profileActivity)
-        }
-
         viewModel.balanceVisible.observe(viewLifecycleOwner, {
             if(it){
                 binding.currentValue.setTransformationMethod(null)

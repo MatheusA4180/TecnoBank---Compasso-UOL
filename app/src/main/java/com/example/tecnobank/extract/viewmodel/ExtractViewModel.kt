@@ -13,8 +13,8 @@ import kotlinx.coroutines.launch
 
 class ExtractViewModel(private val extractRepository: ExtractRepositoty) : ViewModel() {
 
-    private var dataFilterStart = "07/07/2021"
-    private var dataFilterEnd = "09/07/2021"
+    private var dateFilterStart = "07/07/2021"
+    private var dateFilterEnd = "09/07/2021"
     private var filter = "últimos 7 dias"
     private lateinit var receivedListApi: List<ExtractResponse>
 
@@ -36,8 +36,8 @@ class ExtractViewModel(private val extractRepository: ExtractRepositoty) : ViewM
         viewModelScope.launch {
             try {
                 receivedListApi = extractRepository.extractTransactions(
-                    dataFilterStart,
-                    dataFilterEnd
+                    dateFilterStart,
+                    dateFilterEnd
                 )
 
                 _loading.postValue(true)

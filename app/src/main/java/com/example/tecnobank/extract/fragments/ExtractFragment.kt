@@ -99,29 +99,27 @@ class ExtractFragment : Fragment() {
         binding.textFilter.isVisible = false
         binding.listExtracts.isVisible = true
         binding.listExtracts.adapter = ListExtractsAdapter(
-                viewModel.returnListForExtractFiltered(buttonPressed)
-            )
+            viewModel.returnListForExtractFiltered(buttonPressed)
+        )
 
     }
 
     private fun checkSelectedButton(listSelectedButtons: List<Boolean>) {
-        for (position in listSelectedButtons.indices) {
-            when {
-                listSelectedButtons[0] -> {
-                    paintButtonOn(binding.everyExtracts)
-                    paintButtonOff(binding.inputsExtract)
-                    paintButtonOff(binding.exitExtracts)
-                }
-                listSelectedButtons[1] -> {
-                    paintButtonOff(binding.everyExtracts)
-                    paintButtonOn(binding.inputsExtract)
-                    paintButtonOff(binding.exitExtracts)
-                }
-                listSelectedButtons[2] -> {
-                    paintButtonOff(binding.everyExtracts)
-                    paintButtonOff(binding.inputsExtract)
-                    paintButtonOn(binding.exitExtracts)
-                }
+        when {
+            listSelectedButtons[0] -> {
+                paintButtonOn(binding.everyExtracts)
+                paintButtonOff(binding.inputsExtract)
+                paintButtonOff(binding.exitExtracts)
+            }
+            listSelectedButtons[1] -> {
+                paintButtonOff(binding.everyExtracts)
+                paintButtonOn(binding.inputsExtract)
+                paintButtonOff(binding.exitExtracts)
+            }
+            listSelectedButtons[2] -> {
+                paintButtonOff(binding.everyExtracts)
+                paintButtonOff(binding.inputsExtract)
+                paintButtonOn(binding.exitExtracts)
             }
         }
     }

@@ -10,12 +10,12 @@ class ExtractRepositoty(
 ) {
 
     suspend fun extractTransactions(
-        dataFilterStart: String,
-        dataFilterEnd: String
+        dateFilterStart: String,
+        dateFilterEnd: String
     ): List<ExtractResponse> {
 
         val response = endPointHome.extractTransactions(
-            dataFilterStart, dataFilterEnd,
+            dateFilterStart, dateFilterEnd,
             sharedPreferenceServices.getSaveTokenAuthentication()!!
         )
 

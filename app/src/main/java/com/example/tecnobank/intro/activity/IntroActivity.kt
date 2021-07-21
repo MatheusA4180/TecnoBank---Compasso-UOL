@@ -13,7 +13,5 @@ class IntroActivity : AppCompatActivity() {
 
         binding = IntroActivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
     }
-
 }

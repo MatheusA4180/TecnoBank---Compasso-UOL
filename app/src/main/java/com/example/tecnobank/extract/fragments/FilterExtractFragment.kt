@@ -23,6 +23,13 @@ class FilterExtractFragment : Fragment(), ListFilterAdapter.SelectFilterlistener
         "Últimos 60 dias",
         "Últimos 120 dias"
     )
+    // private val listItemFilter: List<String> = listOf(
+    //     getString(R.string.list_filter_item_1),
+    //    getString(R.string.list_filter_item_2),
+    //   getString(R.string.list_filter_item_3),
+    //   getString(R.string.list_filter_item_4),
+    //   getString(R.string.list_filter_item_5)
+    // )
     private var positionSelected: Int = 1
 
     override fun onCreateView(

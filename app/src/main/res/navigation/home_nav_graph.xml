@@ -14,35 +14,9 @@
             android:id="@+id/action_homeFragment_to_pixQrCodeActivity"
             app:destination="@id/pixQrCodeActivity" />
         <action
-            android:id="@+id/action_homeFragment_to_accountDependencyActivity"
-            app:destination="@id/accountDependencyActivity" />
-        <action
-            android:id="@+id/action_homeFragment_to_notificationActivity"
-            app:destination="@id/notificationActivity" />
-        <action
-            android:id="@+id/action_homeFragment_to_qrCodeSafeActivity"
-            app:destination="@id/qrCodeSafeActivity" />
-        <action
-            android:id="@+id/action_homeFragment_to_profileActivity"
-            app:destination="@id/profileActivity" />
-        <action
             android:id="@+id/action_homeFragment_to_cardsFragment"
             app:destination="@id/cardsFragment" />
-        <action
-            android:id="@+id/action_homeFragment_to_payQrCodeActivity"
-            app:destination="@id/payQrCodeActivity" />
-        <action
-            android:id="@+id/action_homeFragment_to_shoppingCashbackActivity"
-            app:destination="@id/shoppingCashbackActivity" />
-        <action
-            android:id="@+id/action_homeFragment_to_payCheckActivity"
-            app:destination="@id/payCheckActivity" />
-        <action
-            android:id="@+id/action_homeFragment_to_addMoneyActivity"
-            app:destination="@id/addMoneyActivity" />
-        <action
-            android:id="@+id/action_homeFragment_to_learningInvestmentsActivity"
-            app:destination="@id/learningInvestmentsActivity" />
+
     </fragment>
     <fragment
         android:id="@+id/extractFragment"
@@ -55,22 +29,14 @@
     </fragment>
     <fragment
         android:id="@+id/cardsFragment"
-        android:name="com.example.tecnobank.cards.fragments.CardsFragment"
+        android:name="com.example.tecnobank.cards.fragment.CardsFragment"
         android:label="cartoes"
-        tools:layout="@layout/cards_fragment" >
-        <action
-            android:id="@+id/action_cardsFragment_to_requestCardActivity"
-            app:destination="@id/requestCardActivity" />
-        <action
-            android:id="@+id/action_cardsFragment_to_prepaidCardActivity"
-            app:destination="@id/prepaidCardActivity" />
-        <action
-            android:id="@+id/action_cardsFragment_to_tecnobankCardsActivity"
-            app:destination="@id/tecnobankCardsActivity" />
+        tools:layout="@layout/cards_fragment">
+
     </fragment>
     <fragment
         android:id="@+id/salesFragment"
-        android:name="com.example.tecnobank.sales.fragments.SalesFragment"
+        android:name="com.example.tecnobank.sales.fragment.SalesFragment"
         android:label="vendas"
         tools:layout="@layout/sales_fragment" />
     <activity
@@ -83,64 +49,4 @@
         android:name="com.example.tecnobank.home.activity.services.PixQrCodeActivity"
         android:label="PixQrCodeActivity"
         tools:layout="@layout/pix_qr_code_fragment" />
-    <activity
-        android:id="@+id/accountDependencyActivity"
-        android:name="com.example.tecnobank.home.activity.services.AccountDependencyActivity"
-        android:label="account_dependency_activity"
-        tools:layout="@layout/account_dependency_activity" />
-    <activity
-        android:id="@+id/notificationActivity"
-        android:name="com.example.tecnobank.home.activity.NotificationActivity"
-        android:label="notification_activity"
-        tools:layout="@layout/notification_activity" />
-    <activity
-        android:id="@+id/qrCodeSafeActivity"
-        android:name="com.example.tecnobank.home.activity.QrCodeSafeActivity"
-        android:label="qr_code_safe_activity"
-        tools:layout="@layout/qr_code_safe_activity" />
-    <activity
-        android:id="@+id/profileActivity"
-        android:name="com.example.tecnobank.home.activity.ProfileActivity"
-        android:label="profile_activity"
-        tools:layout="@layout/profile_activity" />
-    <activity
-        android:id="@+id/requestCardActivity"
-        android:name="com.example.tecnobank.cards.activity.RequestCardActivity"
-        android:label="request_card_activity"
-        tools:layout="@layout/request_card_activity" />
-    <activity
-        android:id="@+id/prepaidCardActivity"
-        android:name="com.example.tecnobank.cards.activity.PrepaidCardActivity"
-        android:label="prepaid_card_activity"
-        tools:layout="@layout/prepaid_card_activity" />
-    <activity
-        android:id="@+id/tecnobankCardsActivity"
-        android:name="com.example.tecnobank.cards.activity.TecnobankCardsActivity"
-        android:label="tecnobank_cards_activity"
-        tools:layout="@layout/tecnobank_cards_activity" />
-    <activity
-        android:id="@+id/payQrCodeActivity"
-        android:name="com.example.tecnobank.home.activity.services.PayQrCodeActivity"
-        android:label="pay_qr_code_activity"
-        tools:layout="@layout/pay_qr_code_activity" />
-    <activity
-        android:id="@+id/shoppingCashbackActivity"
-        android:name="com.example.tecnobank.home.activity.services.ShoppingCashbackActivity"
-        android:label="shopping_cashback_activity"
-        tools:layout="@layout/shopping_cashback_activity" />
-    <activity
-        android:id="@+id/payCheckActivity"
-        android:name="com.example.tecnobank.home.activity.services.PayQrCodeActivity"
-        android:label="pay_check_activity"
-        tools:layout="@layout/pay_check_activity" />
-    <activity
-        android:id="@+id/addMoneyActivity"
-        android:name="com.example.tecnobank.home.activity.services.AddMoneyActivity"
-        android:label="add_money_activity"
-        tools:layout="@layout/add_money_activity" />
-    <activity
-        android:id="@+id/learningInvestmentsActivity"
-        android:name="com.example.tecnobank.home.activity.services.LearningInvestmentsActivity"
-        android:label="learning_investments_activity"
-        tools:layout="@layout/learning_investments_activity" />
 </navigation>

@@ -5,8 +5,6 @@ import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.tecnobank.home.fragments.services.ServicesFragment
 
-const val POSITION_VIEW_PAGER_SERVICES = "position_view_pager_services"
-
 class ViewPagerServicesAdapter(fragment: Fragment) : FragmentStateAdapter(fragment) {
 
     override fun getItemCount(): Int = 3
@@ -18,5 +16,7 @@ class ViewPagerServicesAdapter(fragment: Fragment) : FragmentStateAdapter(fragme
             }
         }
     }
-
+    companion object{
+        const val POSITION_VIEW_PAGER_SERVICES = "position_view_pager_services"
+    }
 }

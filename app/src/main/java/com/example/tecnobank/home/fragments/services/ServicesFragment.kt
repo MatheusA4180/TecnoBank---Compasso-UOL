@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.tecnobank.R
 import com.example.tecnobank.databinding.PageFunctionalitiesBinding
-import com.example.tecnobank.home.adapter.POSITION_VIEW_PAGER_SERVICES
+import com.example.tecnobank.home.adapter.ViewPagerServicesAdapter.Companion.POSITION_VIEW_PAGER_SERVICES
 import com.example.tecnobank.home.recyclerview.ListServicesAdapter
 
 class ServicesFragment : Fragment(), ListServicesAdapter.ClickedServiceListener {
@@ -65,7 +65,7 @@ class ServicesFragment : Fragment(), ListServicesAdapter.ClickedServiceListener 
                 R.drawable.ic_cartoes
             ),
             ListServicesAdapter.ItemService(
-                false, null,
+                true, null,
                 getString(R.string.pay_check_service),
                 R.drawable.ic_pagar_contas
             ),
@@ -75,7 +75,7 @@ class ServicesFragment : Fragment(), ListServicesAdapter.ClickedServiceListener 
                 R.drawable.ic_recarga
             ),
             ListServicesAdapter.ItemService(
-                false, null,
+                true, null,
                 getString(R.string.add_money_service),
                 R.drawable.ic_adicionar_dinheiro
             ),
@@ -130,7 +130,7 @@ class ServicesFragment : Fragment(), ListServicesAdapter.ClickedServiceListener 
                 R.drawable.ic_radar_ofertas
             ),
             ListServicesAdapter.ItemService(
-                false, getString(R.string.title_info_shopping),
+                true, getString(R.string.title_info_shopping),
                 getString(R.string.shopping_service),
                 R.drawable.ic_shopping
             ),
@@ -145,7 +145,7 @@ class ServicesFragment : Fragment(), ListServicesAdapter.ClickedServiceListener 
                 R.drawable.ic_indique_e_ganhe
             ),
             ListServicesAdapter.ItemService(
-                false, null,
+                true, null,
                 getString(R.string.pay_with_qr_code),
                 R.drawable.ic_pagar_com_qrcode
             )
@@ -158,18 +158,6 @@ class ServicesFragment : Fragment(), ListServicesAdapter.ClickedServiceListener 
             findNavController().navigate(R.id.action_homeFragment_to_cardsFragment)
         }else if ((positionRecyclerView == 5) && (positionViewPager == 0)) {
             findNavController().navigate(R.id.action_homeFragment_to_pixQrCodeActivity)
-        }else if((positionRecyclerView == 5) && (positionViewPager == 2)) {
-            findNavController().navigate(R.id.action_homeFragment_to_payQrCodeActivity)
-        }else if((positionRecyclerView== 2) && (positionViewPager == 2)) {
-            findNavController().navigate(R.id.action_homeFragment_to_shoppingCashbackActivity)
-        }else if((positionRecyclerView == 2) && (positionViewPager== 0)) {
-            findNavController().navigate(R.id.action_homeFragment_to_payCheckActivity)
-        }else if((positionRecyclerView == 4) && (positionViewPager == 0)) {
-            findNavController().navigate(R.id.action_homeFragment_to_addMoneyActivity)
-        }else if((positionRecyclerView == 4)&& (positionViewPager == 1)){
-            //findNavController().navigate(R.id.action_homeFragment_to_learningInvestmentsActivity)
         }
-
     }
-
 }

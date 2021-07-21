@@ -36,5 +36,4 @@ class HomeViewModel(private val homeRepository: HomeRepository) : ViewModel() {
             _balanceVisible.postValue(true)
         }
     }
-
 }

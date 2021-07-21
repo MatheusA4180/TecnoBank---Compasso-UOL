@@ -21,8 +21,8 @@ interface EndPoint {
 
     @GET("extract")
     suspend fun extractTransactions(
-        @Query("start") dataFilterStart: String,
-        @Query("end") dataFilterEnd: String,
+        @Query("start") dateFilterStart: String,
+        @Query("end") dateFilterEnd: String,
         @Header("token") token: String
     ): Response<List<ExtractResponse>>
 
