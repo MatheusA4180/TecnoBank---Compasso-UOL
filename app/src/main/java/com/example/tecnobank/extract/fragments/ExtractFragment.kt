@@ -20,9 +20,6 @@ import com.example.tecnobank.viewmodelfactory.ViewModelFactory
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 
 const val REQUEST_CODE: Int = 1
-const val BUTTON_EVERY: String = "bt_every"
-const val BUTTON_INPUTS: String = "bt_inputs"
-const val BUTTON_EXITS: String = "bt_exits"
 
 class ExtractFragment : Fragment() {
 
@@ -49,6 +46,10 @@ class ExtractFragment : Fragment() {
 
         viewModel.requestExtracts()
 
+        viewModel.dataFilter.observe(viewLifecycleOwner, {
+            binding.textFilter.text = it
+        })
+
         viewModel.loading.observe(viewLifecycleOwner, {
             binding.progressCircular.isVisible = false
         })
@@ -59,17 +60,14 @@ class ExtractFragment : Fragment() {
         })
 
         binding.extractToolbar.setOnMenuItemClickListener { menuItem ->
-
             when (menuItem.itemId) {
                 R.id.filtro -> {
                     startActivityForResult(
                         Intent(requireActivity(), FilterActivity::class.java),
                         REQUEST_CODE
                     )
-
                     true
                 }
-
                 else -> false
             }
         }
@@ -110,7 +108,6 @@ class ExtractFragment : Fragment() {
                 data!!.getStringExtra(FILTER)!!
                     .toString().lowercase()
             )
-            binding.textFilter.text = viewModel.valueFilter()
         }
     }
 

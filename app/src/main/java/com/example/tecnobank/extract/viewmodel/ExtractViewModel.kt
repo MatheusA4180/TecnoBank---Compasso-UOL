@@ -6,8 +6,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.tecnobank.data.remote.model.extract.ExtractResponse
 import com.example.tecnobank.extension.HelperFunctions.getDateMonthFormat
-import com.example.tecnobank.extract.fragments.BUTTON_EXITS
-import com.example.tecnobank.extract.fragments.BUTTON_INPUTS
 import com.example.tecnobank.extract.repository.ExtractRepositoty
 import kotlinx.coroutines.launch
 
@@ -20,10 +18,7 @@ class ExtractViewModel(private val extractRepository: ExtractRepositoty) : ViewM
 
     fun onChangeDataFilter(filter: String) {
         this.filter = filter
-    }
-
-    fun valueFilter(): String {
-        return "nos $filter"
+        _dataFilter.postValue("nos $filter")
     }
 
     private val _responseErro = MutableLiveData<String>()
@@ -40,6 +35,9 @@ class ExtractViewModel(private val extractRepository: ExtractRepositoty) : ViewM
 
     private val _responseExitButton = MutableLiveData<List<ExtractItemAdapter>>()
     val responseExitButton: LiveData<List<ExtractItemAdapter>> = _responseExitButton
+
+    private val _dataFilter = MutableLiveData<String>()
+    val dataFilter: LiveData<String> = _dataFilter
 
     fun requestExtracts() {
         viewModelScope.launch {
