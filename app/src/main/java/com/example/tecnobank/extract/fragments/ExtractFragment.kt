@@ -76,18 +76,30 @@ class ExtractFragment : Fragment() {
 
         binding.everyExtracts.setOnClickListener {
             checkSelectedButton(everyButton = true, inputButton = false, exitButton = false)
-            recyclerViewConfig(BUTTON_EVERY)
+            viewModel.buttonPressedEvery()
         }
 
         binding.inputsExtract.setOnClickListener {
             checkSelectedButton(everyButton = false, inputButton = true, exitButton = false)
-            recyclerViewConfig(BUTTON_INPUTS)
+            viewModel.buttonPressedInputs()
         }
 
         binding.exitExtracts.setOnClickListener {
             checkSelectedButton(everyButton = false, inputButton = false, exitButton = true)
-            recyclerViewConfig(BUTTON_EXITS)
+            viewModel.buttonPressedExit()
         }
+
+        viewModel.responseEveryButton.observe(viewLifecycleOwner,{
+            recyclerViewConfig(it)
+        })
+
+        viewModel.responseInputButton.observe(viewLifecycleOwner,{
+            recyclerViewConfig(it)
+        })
+
+        viewModel.responseExitButton.observe(viewLifecycleOwner,{
+            recyclerViewConfig(it)
+        })
 
     }
 
@@ -102,15 +114,12 @@ class ExtractFragment : Fragment() {
         }
     }
 
-    private fun recyclerViewConfig(buttonPressed: String) {
+    private fun recyclerViewConfig(listExtracts: List<ExtractViewModel.ExtractItemAdapter>) {
         binding.imageExtract.isVisible = false
         binding.textExtract.isVisible = false
         binding.textFilter.isVisible = false
         binding.listExtracts.isVisible = true
-        binding.listExtracts.adapter = ListExtractsAdapter(
-            viewModel.returnListForExtractFiltered(buttonPressed)
-        )
-
+        binding.listExtracts.adapter = ListExtractsAdapter(listExtracts)
     }
 
     private fun checkSelectedButton(everyButton:Boolean, inputButton:Boolean, exitButton:Boolean) {
