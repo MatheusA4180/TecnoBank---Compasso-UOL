@@ -1,12 +1,12 @@
 package com.example.tecnobank.home.recyclerview
 
-import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
+import androidx.core.content.ContextCompat.getColor
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tecnobank.R
@@ -32,18 +32,28 @@ class ListServicesAdapter(
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (holder is CardServicesViewHolder) {
             if(listServices[position].incompletService) {
-                holder.cardButton.setCardBackgroundColor(Color.parseColor("#DEDEDE"))
+                holder.cardButton.setCardBackgroundColor(
+                    getColor(
+                        holder.cardButton.context,
+                        R.color.gray_200
+                    )
+                )
                 holder.icon.setImageResource(listServices[position].icon)
-                holder.icon.drawable.setTint(Color.parseColor("#898989"))
+                holder.icon.drawable.setTint(getColor(holder.cardButton.context, R.color.gray_700))
             }else{
                 holder.icon.setImageResource(listServices[position].icon)
             }
             if (!(listServices[position].titleInfo.isNullOrEmpty())){
                 holder.cardDecor.isVisible = true
                 holder.textDecor.text = listServices[position].titleInfo
-            }else{
+            }else {
                 holder.cardDecor.isVisible = false
-                holder.cardDecor.setCardBackgroundColor(Color.parseColor("#CDCDCD"))
+                holder.cardDecor.setCardBackgroundColor(
+                    getColor(
+                        holder.cardButton.context,
+                        R.color.gray_500
+                    )
+                )
             }
             holder.title.text = listServices[position].title
             holder.itemView.setOnClickListener {

@@ -22,4 +22,5 @@ object HelperFunctions {
         SimpleDateFormat("dd MMMM", Locale("pt", "BR")).format(
             parseDateStringToDate(date)
         )
+
 }

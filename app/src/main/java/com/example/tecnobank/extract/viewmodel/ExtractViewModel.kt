@@ -8,17 +8,31 @@ import com.example.tecnobank.data.remote.model.extract.ExtractResponse
 import com.example.tecnobank.extension.HelperFunctions.getDateMonthFormat
 import com.example.tecnobank.extract.repository.ExtractRepositoty
 import kotlinx.coroutines.launch
+import java.text.SimpleDateFormat
+import java.util.*
 
 class ExtractViewModel(private val extractRepository: ExtractRepositoty) : ViewModel() {
 
-    private var dateFilterStart = "07/07/2021"
-    private var dateFilterEnd = "09/07/2021"
-    private var filter = "últimos 7 dias"
+    private lateinit var dateFilterStart: String
+    private lateinit var dateFilterEnd: String
+    private var filterText = "últimos 7 dias"
+    private var filterPosition: Int = 1
+    private var listfilterDays: List<Int> = listOf(3, 7, 30, 60, 120)
     private lateinit var receivedListApi: List<ExtractResponse>
 
-    fun onChangeDataFilter(filter: String) {
-        this.filter = filter
-        _dataFilter.postValue("nos $filter")
+    fun onChangeDataFilter(filterText: String, filterPosition: Int) {
+        this.filterText = filterText
+        this.filterPosition = filterPosition
+        requestExtracts()
+        _dataFilter.postValue("nos $filterText")
+    }
+
+    private fun requestDatesStartAndEnd() {
+        this.dateFilterStart = SimpleDateFormat("dd/MM/yyyy").format(
+            Calendar.getInstance()
+                .apply { add(Calendar.DAY_OF_MONTH, -listfilterDays[filterPosition]) }.time
+        )
+        this.dateFilterEnd = SimpleDateFormat("dd/MM/yyyy").format(Calendar.getInstance().time)
     }
 
     private val _responseErro = MutableLiveData<String>()
@@ -36,6 +50,7 @@ class ExtractViewModel(private val extractRepository: ExtractRepositoty) : ViewM
     fun requestExtracts() {
         viewModelScope.launch {
             try {
+                requestDatesStartAndEnd()
                 _loading.postValue(true)
                 receivedListApi = extractRepository.extractTransactions(
                     dateFilterStart,

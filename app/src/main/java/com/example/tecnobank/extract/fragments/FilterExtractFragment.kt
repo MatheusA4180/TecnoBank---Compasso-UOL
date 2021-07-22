@@ -10,8 +10,9 @@ import com.example.tecnobank.R
 import com.example.tecnobank.databinding.FilterExtractFragmentBinding
 import com.example.tecnobank.extract.recyclerview.ListFilterAdapter
 
-const val RESULT_CODE: Int = 2
-const val FILTER = "filter"
+//const val RESULT_CODE: Int = 2
+//const val FILTER_TEXT = "filter_text"
+//const val FILTER_POSITION = "filter_position"
 
 class FilterExtractFragment : Fragment(), ListFilterAdapter.SelectFilterlistener {
 
@@ -52,7 +53,10 @@ class FilterExtractFragment : Fragment(), ListFilterAdapter.SelectFilterlistener
         binding.applyFilter.setOnClickListener {
             requireActivity().setResult(
                 RESULT_CODE,
-                Intent().putExtra(FILTER, listItemFilter[positionSelected])
+                with(Intent()) {
+                    putExtra(FILTER_TEXT, listItemFilter[positionSelected])
+                    putExtra(FILTER_POSITION, positionSelected)
+                }
             )
             requireActivity().finish()
         }
@@ -61,6 +65,12 @@ class FilterExtractFragment : Fragment(), ListFilterAdapter.SelectFilterlistener
 
     override fun selectedFilterlistener(position: Int) {
         this.positionSelected = position
+    }
+
+    companion object {
+        const val RESULT_CODE: Int = 2
+        const val FILTER_TEXT = "filter_text"
+        const val FILTER_POSITION = "filter_position"
     }
 
 }

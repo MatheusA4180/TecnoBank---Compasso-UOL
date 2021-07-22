@@ -2,24 +2,24 @@ package com.example.tecnobank.extract.fragments
 
 import android.app.AlertDialog
 import android.content.Intent
-import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat.getColor
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.tecnobank.R
-import com.example.tecnobank.data.remote.model.extract.ExtractResponse
 import com.example.tecnobank.databinding.ExtractFragmentBinding
 import com.example.tecnobank.extract.activity.FilterActivity
+import com.example.tecnobank.extract.fragments.FilterExtractFragment.Companion.FILTER_POSITION
+import com.example.tecnobank.extract.fragments.FilterExtractFragment.Companion.FILTER_TEXT
+import com.example.tecnobank.extract.fragments.FilterExtractFragment.Companion.RESULT_CODE
 import com.example.tecnobank.extract.recyclerview.ListExtractsAdapter
 import com.example.tecnobank.extract.viewmodel.ExtractViewModel
 import com.example.tecnobank.viewmodelfactory.ViewModelFactory
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-
-const val REQUEST_CODE: Int = 1
 
 class ExtractFragment : Fragment() {
 
@@ -95,8 +95,9 @@ class ExtractFragment : Fragment() {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == REQUEST_CODE && resultCode == RESULT_CODE) {
             viewModel.onChangeDataFilter(
-                data!!.getStringExtra(FILTER)!!
-                    .toString().lowercase()
+                filterText = data!!.getStringExtra(FILTER_TEXT)!!
+                    .toString().lowercase(),
+                filterPosition = data.getIntExtra(FILTER_POSITION, 1)
             )
         }
     }
@@ -131,16 +132,16 @@ class ExtractFragment : Fragment() {
 
     private fun paintButtonOn(ref: ExtendedFloatingActionButton) {
         with(ref) {
-            setBackgroundResource(R.color.white)
-          //  setTextColor(R.color.greenTecnoBank)
+            setBackgroundColor(getColor(requireContext(), R.color.white))
+            setTextColor(getColor(requireContext(), R.color.greenTecnoBank))
             setStrokeColorResource(R.color.greenTecnoBank)
         }
     }
 
     private fun paintButtonOff(ref: ExtendedFloatingActionButton) {
         with(ref) {
-            setBackgroundResource(R.color.greenTecnoBank)
-          //  setTextColor(R.color.white)
+            setBackgroundColor(getColor(requireContext(), R.color.greenTecnoBank))
+            setTextColor(getColor(requireContext(), R.color.white))
             setStrokeColorResource(R.color.white)
         }
     }
@@ -151,5 +152,9 @@ class ExtractFragment : Fragment() {
             .setTitle(titulo)
             .setMessage("")
             .show()
+    }
+
+    companion object {
+        const val REQUEST_CODE: Int = 1
     }
 }
