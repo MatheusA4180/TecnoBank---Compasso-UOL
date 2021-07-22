@@ -27,14 +27,8 @@ class ExtractViewModel(private val extractRepository: ExtractRepositoty) : ViewM
     private val _loading = MutableLiveData<Boolean>()
     val loading: LiveData<Boolean> = _loading
 
-    private val _responseEveryButton = MutableLiveData<List<ExtractItemAdapter>>()
-    val responseEveryButton: LiveData<List<ExtractItemAdapter>> = _responseEveryButton
-
-    private val _responseInputButton = MutableLiveData<List<ExtractItemAdapter>>()
-    val responseInputButton: LiveData<List<ExtractItemAdapter>> = _responseInputButton
-
-    private val _responseExitButton = MutableLiveData<List<ExtractItemAdapter>>()
-    val responseExitButton: LiveData<List<ExtractItemAdapter>> = _responseExitButton
+    private val _extractList = MutableLiveData<List<ExtractItemAdapter>>()
+    val extractList: LiveData<List<ExtractItemAdapter>> = _extractList
 
     private val _dataFilter = MutableLiveData<String>()
     val dataFilter: LiveData<String> = _dataFilter
@@ -42,16 +36,16 @@ class ExtractViewModel(private val extractRepository: ExtractRepositoty) : ViewM
     fun requestExtracts() {
         viewModelScope.launch {
             try {
+                _loading.postValue(true)
                 receivedListApi = extractRepository.extractTransactions(
                     dateFilterStart,
                     dateFilterEnd
                 )
-
-                _loading.postValue(true)
+                _loading.postValue(false)
 
             } catch (e: Exception) {
                 _responseErro.postValue(e.message)
-                _loading.postValue(true)
+                _loading.postValue(false)
             }
         }
     }
@@ -73,7 +67,7 @@ class ExtractViewModel(private val extractRepository: ExtractRepositoty) : ViewM
 
     fun buttonPressedEvery() {
         val cloneListReturnedApi = receivedListApi
-        _responseEveryButton.postValue(mapItemsForAdapter(cloneListReturnedApi))
+        _extractList.postValue(mapItemsForAdapter(cloneListReturnedApi))
     }
 
     fun buttonPressedInputs() {
@@ -86,7 +80,7 @@ class ExtractViewModel(private val extractRepository: ExtractRepositoty) : ViewM
                 formattedList.add(cloneListReturnedApi[i])
             }
         }
-        _responseInputButton.postValue(mapItemsForAdapter(formattedList))
+        _extractList.postValue(mapItemsForAdapter(formattedList))
     }
 
     fun buttonPressedExit(){
@@ -100,7 +94,7 @@ class ExtractViewModel(private val extractRepository: ExtractRepositoty) : ViewM
                 formattedList.add(cloneListReturnedApi[i])
             }
         }
-        _responseExitButton.postValue(mapItemsForAdapter(formattedList))
+        _extractList.postValue(mapItemsForAdapter(formattedList))
     }
 
     open class ExtractItemAdapter

@@ -11,11 +11,15 @@ object HelperFunctions {
             .format(value)
     }
 
+    private fun parseDateStringToDate(date:String):Date {
+        return SimpleDateFormat(
+            "dd/MM/yyyy",
+            Locale("pt", "BR")
+        ).parse(date)
+    }
+
     fun getDateMonthFormat(date: String): String =
         SimpleDateFormat("dd MMMM", Locale("pt", "BR")).format(
-            SimpleDateFormat(
-                "dd/MM/yyyy",
-                Locale("pt", "BR")
-            ).parse(date)
-        ).substring(0, 6).toUpperCase()
+            parseDateStringToDate(date)
+        )
 }

@@ -25,10 +25,8 @@ class PixQrCodeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.btBack.setOnClickListener {
+        binding.pixQrcodeToobar.setNavigationOnClickListener{
             requireActivity().finish()
         }
-
     }
-
 }

@@ -50,7 +50,7 @@ class ListExtractsAdapter(
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (holder is HeaderViewHolder) {
             val item = listExtracts.get(position) as ExtractViewModel.ExtractItemHeader
-            holder.headerText.text = item.date
+            holder.headerText.text = item.date.substring(0, 6).toUpperCase()
         } else if(holder is ExtractViewHolder) {
             val item = listExtracts.get(position) as ExtractViewModel.ExtractItemBody
             holder.transactionValue.text = item.body.value

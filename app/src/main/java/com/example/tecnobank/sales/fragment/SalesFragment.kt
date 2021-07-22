@@ -9,15 +9,15 @@ import com.example.tecnobank.databinding.SalesFragmentBinding
 
 class SalesFragment : Fragment() {
 
-    private var _binding: SalesFragmentBinding? = null
+    private var binding: SalesFragmentBinding? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = SalesFragmentBinding.inflate(inflater, container, false)
-        return _binding!!.root
+        binding = SalesFragmentBinding.inflate(inflater, container, false)
+        return binding!!.root
     }
 
 }

@@ -26,16 +26,15 @@ class ServicesFragment : Fragment(), ListServicesAdapter.ClickedServiceListener 
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        with(binding.listServices) {
-            adapter =
-                ListServicesAdapter(
-                    getServicesByPage(
-                        requireArguments()
-                            .getInt(POSITION_VIEW_PAGER_SERVICES)
-                    ), this@ServicesFragment,
-                    requireArguments().getInt(POSITION_VIEW_PAGER_SERVICES)
-                )
-        }
+        binding.listServices.adapter =
+            ListServicesAdapter(
+                getServicesByPage(
+                    requireArguments()
+                        .getInt(POSITION_VIEW_PAGER_SERVICES)
+                ), this@ServicesFragment,
+                requireArguments().getInt(POSITION_VIEW_PAGER_SERVICES)
+            )
+
     }
 
     fun getServicesByPage(positionViewPager: Int): List<ListServicesAdapter.ItemService> {
@@ -154,9 +153,9 @@ class ServicesFragment : Fragment(), ListServicesAdapter.ClickedServiceListener 
 
     override fun clickServiceListener(positionRecyclerView: Int, positionViewPager: Int) {
 
-        if((positionRecyclerView == 1) && (positionViewPager == 0)){
+        if ((positionRecyclerView == 1) && (positionViewPager == 0)) {
             findNavController().navigate(R.id.action_homeFragment_to_cardsFragment)
-        }else if ((positionRecyclerView == 5) && (positionViewPager == 0)) {
+        } else if ((positionRecyclerView == 5) && (positionViewPager == 0)) {
             findNavController().navigate(R.id.action_homeFragment_to_pixQrCodeActivity)
         }
     }

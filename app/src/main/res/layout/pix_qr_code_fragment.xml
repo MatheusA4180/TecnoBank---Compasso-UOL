@@ -13,7 +13,8 @@
         android:background="@color/greenTecnoBank"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:navigationIcon="@drawable/ic_voltar"/>
 
     <TextView
         android:id="@+id/textView17"
@@ -29,16 +30,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/bt_back"
-        style="@style/Widget.MaterialComponents.Button.TextButton"
-        android:layout_width="50dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:drawableEnd="@drawable/ic_voltar"
-        app:layout_constraintBottom_toBottomOf="@+id/textView17"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/pix_qrcode_toobar" />
+
 
     <ScrollView
         android:layout_width="0dp"

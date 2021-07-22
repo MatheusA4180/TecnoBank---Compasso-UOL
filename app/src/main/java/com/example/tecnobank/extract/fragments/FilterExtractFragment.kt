@@ -27,8 +27,6 @@ class FilterExtractFragment : Fragment(), ListFilterAdapter.SelectFilterlistener
             getString(R.string.list_filter_item_5)
         )
     }
-
-
     private var positionSelected: Int = 1
 
     override fun onCreateView(
@@ -47,12 +45,9 @@ class FilterExtractFragment : Fragment(), ListFilterAdapter.SelectFilterlistener
             requireActivity().finish()
         }
 
+        binding.listFilters.adapter =
+            ListFilterAdapter(listItemFilter, this@FilterExtractFragment, positionSelected)
 
-
-        with(binding.listFilters) {
-            adapter =
-                ListFilterAdapter(listItemFilter, this@FilterExtractFragment, positionSelected)
-        }
 
         binding.applyFilter.setOnClickListener {
             requireActivity().setResult(

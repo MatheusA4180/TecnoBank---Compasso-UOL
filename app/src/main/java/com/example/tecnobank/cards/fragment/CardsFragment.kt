@@ -11,14 +11,14 @@ import com.example.tecnobank.databinding.CardsFragmentBinding
 
 class CardsFragment : Fragment() {
 
-    private var _binding: CardsFragmentBinding? = null
+    private var binding: CardsFragmentBinding? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = CardsFragmentBinding.inflate(inflater, container, false)
-        return _binding!!.root
+        binding = CardsFragmentBinding.inflate(inflater, container, false)
+        return binding!!.root
     }
 }

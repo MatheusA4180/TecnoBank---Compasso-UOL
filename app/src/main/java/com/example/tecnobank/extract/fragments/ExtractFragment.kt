@@ -51,11 +51,10 @@ class ExtractFragment : Fragment() {
         })
 
         viewModel.loading.observe(viewLifecycleOwner, {
-            binding.progressCircular.isVisible = false
+            binding.progressCircular.isVisible = it
         })
 
         viewModel.responseErro.observe(viewLifecycleOwner, {
-            binding.progressCircular.isVisible = false
             showInfo(it)
         })
 
@@ -87,18 +86,9 @@ class ExtractFragment : Fragment() {
             viewModel.buttonPressedExit()
         }
 
-        viewModel.responseEveryButton.observe(viewLifecycleOwner,{
+        viewModel.extractList.observe(viewLifecycleOwner,{
             recyclerViewConfig(it)
         })
-
-        viewModel.responseInputButton.observe(viewLifecycleOwner,{
-            recyclerViewConfig(it)
-        })
-
-        viewModel.responseExitButton.observe(viewLifecycleOwner,{
-            recyclerViewConfig(it)
-        })
-
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -141,16 +131,16 @@ class ExtractFragment : Fragment() {
 
     private fun paintButtonOn(ref: ExtendedFloatingActionButton) {
         with(ref) {
-            setBackgroundColor(Color.parseColor("#FFFFFF"))
-            setTextColor(Color.parseColor("#5cbd4c"))
+            setBackgroundResource(R.color.white)
+          //  setTextColor(R.color.greenTecnoBank)
             setStrokeColorResource(R.color.greenTecnoBank)
         }
     }
 
     private fun paintButtonOff(ref: ExtendedFloatingActionButton) {
         with(ref) {
-            setBackgroundColor(Color.parseColor("#5cbd4c"))
-            setTextColor(Color.parseColor("#FFFFFF"))
+            setBackgroundResource(R.color.greenTecnoBank)
+          //  setTextColor(R.color.white)
             setStrokeColorResource(R.color.white)
         }
     }
@@ -162,5 +152,4 @@ class ExtractFragment : Fragment() {
             .setMessage("")
             .show()
     }
-
 }
