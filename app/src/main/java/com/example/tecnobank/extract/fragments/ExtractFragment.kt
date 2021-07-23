@@ -52,6 +52,9 @@ class ExtractFragment : Fragment() {
 
         viewModel.loading.observe(viewLifecycleOwner, {
             binding.progressCircular.isVisible = it
+            if (!it){
+                checkSelectedButton(everyButton = true, inputButton = false, exitButton = false)
+            }
         })
 
         viewModel.responseErro.observe(viewLifecycleOwner, {

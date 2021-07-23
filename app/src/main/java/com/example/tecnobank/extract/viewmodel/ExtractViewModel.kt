@@ -57,6 +57,7 @@ class ExtractViewModel(private val extractRepository: ExtractRepositoty) : ViewM
                     dateFilterEnd
                 )
                 _loading.postValue(false)
+                _extractList.postValue(mapItemsForAdapter(receivedListApi))
 
             } catch (e: Exception) {
                 _responseErro.postValue(e.message)
