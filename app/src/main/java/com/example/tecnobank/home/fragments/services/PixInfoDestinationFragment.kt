@@ -26,8 +26,10 @@ class PixInfoDestinationFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val bundle = Bundle().putString("key", "deu certo")
+
         binding.btContinue.setOnClickListener {
-            findNavController().navigate(R.id.action_pixInfoDestinationFragment_to_pixDescriptionFragment)
+            findNavController().navigate(R.id.action_pixInfoDestinationFragment_to_pixDescriptionFragment, bundle)
         }
     }
 

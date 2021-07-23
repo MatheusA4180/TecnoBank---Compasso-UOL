@@ -28,6 +28,10 @@
         android:name="com.example.tecnobank.home.fragments.services.PixInfoDestinationFragment"
         android:label="PixInfoDestinationFragment"
         tools:layout="@layout/pix_info_destination_fragment">
+        <argument
+            android:name="myArg"
+            app:argType="String"
+            android:defaultValue="Run" />
         <action
             android:id="@+id/action_pixInfoDestinationFragment_to_pixDescriptionFragment"
             app:destination="@id/pixDescriptionFragment" />
