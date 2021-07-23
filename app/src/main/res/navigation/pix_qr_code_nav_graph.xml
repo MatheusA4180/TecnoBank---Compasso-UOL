@@ -9,5 +9,14 @@
         android:id="@+id/pixQrCodeFragment"
         android:name="com.example.tecnobank.home.fragments.services.PixQrCodeFragment"
         android:label="PixQrCodeFragment"
-        tools:layout="@layout/pix_qr_code_fragment" />
+        tools:layout="@layout/pix_qr_code_fragment" >
+        <action
+            android:id="@+id/action_pixQrCodeFragment_to_pixTransferModeFragment"
+            app:destination="@id/pixTransferModeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/pixTransferModeFragment"
+        android:name="com.example.tecnobank.home.fragments.services.PixTransferModeFragment"
+        android:label="PixTransferModeFragment"
+        tools:layout="@layout/pix_transfer_mode_fragment"/>
 </navigation>

@@ -7,31 +7,34 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.tecnobank.R
-import com.example.tecnobank.databinding.PixQrCodeFragmentBinding
+import com.example.tecnobank.databinding.PixDescriptionFragmentBinding
 
+class PixDescriptionFragment : Fragment() {
 
-class PixQrCodeFragment : Fragment() {
-
-    private var _binding: PixQrCodeFragmentBinding? = null
-    private val binding: PixQrCodeFragmentBinding get() = _binding!!
+    private var _binding: PixDescriptionFragmentBinding? = null
+    private val binding: PixDescriptionFragmentBinding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = PixQrCodeFragmentBinding.inflate(inflater, container, false)
+        _binding = PixDescriptionFragmentBinding.inflate(inflater, container, false)
         return _binding!!.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        //binding.textView.text = arguments?.getString("Teste")
 
-        binding.pixQrcodeToobar.setNavigationOnClickListener{
-            requireActivity().finish()
+
+        binding.toolbarDescriptionPix.setNavigationOnClickListener {
+
         }
-        binding.pixTransfer.setOnClickListener {
-            findNavController().navigate(R.id.action_pixQrCodeFragment_to_pixTransferModeFragment)
+
+        binding.pixApplyDescription.setOnClickListener {
+        //    findNavController().navigate(R.id.)
         }
+
     }
 }
