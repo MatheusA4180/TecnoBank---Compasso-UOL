@@ -156,7 +156,7 @@ class ServicesFragment : Fragment(), ListServicesAdapter.ClickedServiceListener 
         if ((positionRecyclerView == 1) && (positionViewPager == 0)) {
             findNavController().navigate(R.id.action_homeFragment_to_cardsFragment)
         } else if ((positionRecyclerView == 5) && (positionViewPager == 0)) {
-            findNavController().navigate(R.id.action_homeFragment_to_pixQrCodeActivity)
+            findNavController().navigate(R.id.action_homeFragment_to_pixOnBordingActivity)
         }
     }
 }
