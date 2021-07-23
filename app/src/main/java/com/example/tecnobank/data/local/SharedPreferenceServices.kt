@@ -39,11 +39,20 @@ class SharedPreferenceServices(private val preferences: SharedPreferences) {
 
     fun getSaveTokenAuthentication(): String? = preferences.getString(TOKEN_AUTHENTICATION, "")
 
+    fun passedByPixOnBoarding(): Boolean = preferences.getBoolean(PASS_TO_PIX_ONBOARDING, false)
+
+    fun saveUserPassPixOnboarding() {
+        preferences.edit {
+            putBoolean(PASS_TO_PIX_ONBOARDING, true)
+        }
+    }
+
     companion object {
         private const val PASS_TO_ONBOARDING = "Passou"
         private const val USER = "Username"
         private const val PASSWORD = "Password"
         private const val TOKEN_AUTHENTICATION = "TokenAuthentication"
+        private const val PASS_TO_PIX_ONBOARDING = "pass_to_pix_on_bording"
     }
 
 }
