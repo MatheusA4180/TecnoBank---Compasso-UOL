@@ -33,7 +33,7 @@ class PixDescriptionFragment : Fragment() {
         }
 
         binding.pixApplyDescription.setOnClickListener {
-        //    findNavController().navigate(R.id.)
+            findNavController().navigate(R.id.action_pixDescriptionFragment_to_pixValueRequestFragment)
         }
 
     }
