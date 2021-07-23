@@ -18,5 +18,23 @@
         android:id="@+id/pixTransferModeFragment"
         android:name="com.example.tecnobank.home.fragments.services.PixTransferModeFragment"
         android:label="PixTransferModeFragment"
-        tools:layout="@layout/pix_transfer_mode_fragment"/>
+        tools:layout="@layout/pix_transfer_mode_fragment">
+        <action
+            android:id="@+id/action_pixTransferModeFragment_to_pixInfoDestinationFragment"
+            app:destination="@id/pixInfoDestinationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/pixInfoDestinationFragment"
+        android:name="com.example.tecnobank.home.fragments.services.PixInfoDestinationFragment"
+        android:label="PixInfoDestinationFragment"
+        tools:layout="@layout/pix_info_destination_fragment">
+        <action
+            android:id="@+id/action_pixInfoDestinationFragment_to_pixDescriptionFragment"
+            app:destination="@id/pixDescriptionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/pixDescriptionFragment"
+        android:name="com.example.tecnobank.home.fragments.services.PixDescriptionFragment"
+        android:label="PixDescriptionFragment"
+        tools:layout="@layout/pix_description_fragment"/>
 </navigation>
