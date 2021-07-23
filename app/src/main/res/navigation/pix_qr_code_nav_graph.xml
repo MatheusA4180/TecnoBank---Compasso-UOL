@@ -28,10 +28,7 @@
         android:name="com.example.tecnobank.home.fragments.services.PixInfoDestinationFragment"
         android:label="PixInfoDestinationFragment"
         tools:layout="@layout/pix_info_destination_fragment">
-        <argument
-            android:name="myArg"
-            app:argType="String"
-            android:defaultValue="Run" />
+
         <action
             android:id="@+id/action_pixInfoDestinationFragment_to_pixDescriptionFragment"
             app:destination="@id/pixDescriptionFragment" />
@@ -48,7 +45,8 @@
     <fragment
         android:id="@+id/pixValueRequestFragment"
         android:name="com.example.tecnobank.home.fragments.services.PixValueRequestFragment"
-        android:label="PixValueRequestFragment">
+        android:label="PixValueRequestFragment"
+        tools:layout="@layout/pix_value_request_fragment">
         <action
             android:id="@+id/action_pixValueRequestFragment_to_pixConfirmationFragment"
             app:destination="@id/pixConfirmationFragment" />
@@ -56,5 +54,15 @@
     <fragment
         android:id="@+id/pixConfirmationFragment"
         android:name="com.example.tecnobank.home.fragments.services.PixConfirmationFragment"
-        android:label="PixConfirmationFragment" />
+        android:label="PixConfirmationFragment"
+        tools:layout="@layout/pix_confirmation_fragment">
+        <action
+            android:id="@+id/action_pixConfirmationFragment_to_pixFinishFragment"
+            app:destination="@id/pixFinishFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/pixFinishFragment"
+        android:name="com.example.tecnobank.home.fragments.services.PixFinishFragment"
+        android:label="PixFinishFragment"
+        tools:layout="@layout/pix_finish_fragment"/>
 </navigation>

@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import androidx.navigation.fragment.findNavController
 import com.example.tecnobank.R
 import com.example.tecnobank.databinding.PixDescriptionFragmentBinding
@@ -25,8 +26,8 @@ class PixDescriptionFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.textView.text = arguments?.getString("Teste")
-
+        //binding.textView.text = arguments?.getString("Teste")
+        //val manager: FragmentManager = FragmentManager.get
 
         binding.toolbarDescriptionPix.setNavigationOnClickListener {
 
