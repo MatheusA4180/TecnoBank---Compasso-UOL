@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/pix_on_bording_nav_graph.xml"
+    app:startDestination="@id/pixOnBordingFragment">
+    <fragment
+        android:id="@+id/pixOnBordingFragment"
+        android:name="com.example.tecnobank.home.fragments.services.PixOnBordingFragment"
+        android:label="PixOnBordingFragment"
+        tools:layout="@layout/pix_onboarding_fragment">
+        <action
+            android:id="@+id/action_pixOnBordingFragment_to_pixQrCodeActivity2"
+            app:destination="@id/pixQrCodeActivity2" />
+    </fragment>
+    <activity
+        android:id="@+id/pixQrCodeActivity2"
+        android:name="com.example.tecnobank.home.activity.services.PixQrCodeActivity"
+        android:label="PixQrCodeActivity" />
+</navigation>

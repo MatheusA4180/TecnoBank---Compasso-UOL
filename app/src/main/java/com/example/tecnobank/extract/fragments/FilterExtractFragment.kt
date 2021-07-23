@@ -10,10 +10,6 @@ import com.example.tecnobank.R
 import com.example.tecnobank.databinding.FilterExtractFragmentBinding
 import com.example.tecnobank.extract.recyclerview.ListFilterAdapter
 
-//const val RESULT_CODE: Int = 2
-//const val FILTER_TEXT = "filter_text"
-//const val FILTER_POSITION = "filter_position"
-
 class FilterExtractFragment : Fragment(), ListFilterAdapter.SelectFilterlistener {
 
     private var _binding: FilterExtractFragmentBinding? = null
