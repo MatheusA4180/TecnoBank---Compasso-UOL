@@ -36,5 +36,21 @@
         android:id="@+id/pixDescriptionFragment"
         android:name="com.example.tecnobank.home.fragments.services.PixDescriptionFragment"
         android:label="PixDescriptionFragment"
-        tools:layout="@layout/pix_description_fragment"/>
+        tools:layout="@layout/pix_description_fragment">
+        <action
+            android:id="@+id/action_pixDescriptionFragment_to_pixValueRequestFragment"
+            app:destination="@id/pixValueRequestFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/pixValueRequestFragment"
+        android:name="com.example.tecnobank.home.fragments.services.PixValueRequestFragment"
+        android:label="PixValueRequestFragment">
+        <action
+            android:id="@+id/action_pixValueRequestFragment_to_pixConfirmationFragment"
+            app:destination="@id/pixConfirmationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/pixConfirmationFragment"
+        android:name="com.example.tecnobank.home.fragments.services.PixConfirmationFragment"
+        android:label="PixConfirmationFragment" />
 </navigation>
