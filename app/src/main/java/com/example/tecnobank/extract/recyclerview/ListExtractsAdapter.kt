@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tecnobank.R
+import com.example.tecnobank.data.remote.model.extract.ExtractResponse
 import com.example.tecnobank.extract.viewmodel.ExtractViewModel
 
 class ListExtractsAdapter(
@@ -53,19 +54,27 @@ class ListExtractsAdapter(
             holder.headerText.text = item.date.substring(0, 6).toUpperCase()
         } else if(holder is ExtractViewHolder) {
             val item = listExtracts.get(position) as ExtractViewModel.ExtractItemBody
-            holder.transactionValue.text = item.body.value
-            holder.transactionName.text = item.body.type
-            holder.transactionType.text = item.body.typeDescription
-            if(item.body.type=="Despesa"){
-
-                holder.transactionValue.setTextColor(Color.parseColor("#FF0000"))
-                holder.transactionValue.text = "-${item.body.value}"
-            }
-
-            holder.transactionType.text = item.body.typeDescription
-            holder.transactionTime.text = item.body.time
+            bind(holder, item.body)
         }
 
+    }
+    //Não conseguimos fazer
+     fun bind(
+        holder: ExtractViewHolder,
+        item: ExtractResponse,
+
+        ) {
+        holder.transactionValue.text = item.value
+        holder.transactionName.text = item.type
+        holder.transactionType.text = item.typeDescription
+        if (item.type == EXPENSE) {
+
+            holder.transactionValue.setTextColor(Color.RED)
+            holder.transactionValue.text = "-${item.value}"
+        }
+
+        holder.transactionType.text = item.typeDescription
+        holder.transactionTime.text = item.time
     }
 
     class HeaderViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -83,6 +92,6 @@ class ListExtractsAdapter(
     companion object {
         private const val LIST_DATE_TYPE = 0
         private const val LIST_EXTRACT_TYPE = 1
+        private const val EXPENSE = "despesa"
     }
-
 }

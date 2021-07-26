@@ -31,34 +31,19 @@ class ListServicesAdapter(
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (holder is CardServicesViewHolder) {
-            if(listServices[position].incompletService) {
-                holder.cardButton.setCardBackgroundColor(
-                    getColor(
-                        holder.cardButton.context,
-                        R.color.gray_200
-                    )
-                )
-                holder.icon.setImageResource(listServices[position].icon)
-                holder.icon.drawable.setTint(getColor(holder.cardButton.context, R.color.gray_700))
-            }else{
-                holder.icon.setImageResource(listServices[position].icon)
-            }
-            if (!(listServices[position].titleInfo.isNullOrEmpty())){
-                holder.cardDecor.isVisible = true
-                holder.textDecor.text = listServices[position].titleInfo
-            }else {
-                holder.cardDecor.isVisible = false
-                holder.cardDecor.setCardBackgroundColor(
-                    getColor(
-                        holder.cardButton.context,
-                        R.color.gray_500
-                    )
-                )
-            }
-            holder.title.text = listServices[position].title
-            holder.itemView.setOnClickListener {
-                clickedServiceListener.clickServiceListener(position, positionViewPager)
-            }
+            bind(holder, position)
+        }
+    }
+    //Não conseguimos fazer
+    private fun bind(
+        holder: CardServicesViewHolder,
+        position: Int
+    ) {
+        holder.icon.setImageResource(listServices[position].icon)
+        holder.cardDecor.isVisible = false
+        holder.title.text = listServices[position].title
+        holder.itemView.setOnClickListener {
+            clickedServiceListener.clickServiceListener(position, positionViewPager)
         }
     }
 

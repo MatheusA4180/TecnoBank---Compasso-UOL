@@ -28,17 +28,24 @@ class ListFilterAdapter(
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (holder is FilterItemViewHolder) {
-            holder.description.text = listItemFilter[position]
-            holder.itemView.setOnClickListener {
-                positionSelected = position
-                notifyDataSetChanged()
-                selectFilterlistener.selectedFilterlistener(positionSelected!!)
-            }
-            if (position == positionSelected) {
-                holder.icon.setImageResource(R.drawable.ic_check)
-            } else {
-                holder.icon.setImageResource(0)
-            }
+            bind(holder, position)
+        }
+    }
+    //Não conseguimos fazer
+    private fun bind(
+        holder: FilterItemViewHolder,
+        position: Int
+    ) {
+        holder.description.text = listItemFilter[position]
+        holder.itemView.setOnClickListener {
+            positionSelected = position
+            notifyDataSetChanged()
+            selectFilterlistener.selectedFilterlistener(positionSelected)
+        }
+        if (position == positionSelected) {
+            holder.icon.setImageResource(R.drawable.ic_check)
+        } else {
+            holder.icon.setImageResource(0)
         }
     }
 

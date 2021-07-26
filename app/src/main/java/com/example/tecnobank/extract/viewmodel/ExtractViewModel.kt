@@ -28,12 +28,14 @@ class ExtractViewModel(private val extractRepository: ExtractRepositoty) : ViewM
     }
 
     private fun requestDatesStartAndEnd() {
-        this.dateFilterStart = SimpleDateFormat("dd/MM/yyyy").format(
-            Calendar.getInstance()
-                .apply { add(Calendar.DAY_OF_MONTH, -listfilterDays[filterPosition]) }.time
+        this.dateFilterStart = formatDate(Calendar.getInstance()
+            .apply { add(Calendar.DAY_OF_MONTH, -listfilterDays[filterPosition]) }.time
         )
-        this.dateFilterEnd = SimpleDateFormat("dd/MM/yyyy").format(Calendar.getInstance().time)
+        this.dateFilterEnd = formatDate(Calendar.getInstance().time)
     }
+
+    private fun formatDate(date: Date): String =
+        SimpleDateFormat("dd/MM/yyyy").format(date)
 
     private val _responseErro = MutableLiveData<String>()
     val responseErro: LiveData<String> = _responseErro
@@ -56,13 +58,11 @@ class ExtractViewModel(private val extractRepository: ExtractRepositoty) : ViewM
                     dateFilterStart,
                     dateFilterEnd
                 )
-                _loading.postValue(false)
                 _extractList.postValue(mapItemsForAdapter(receivedListApi))
-
             } catch (e: Exception) {
                 _responseErro.postValue(e.message)
-                _loading.postValue(false)
             }
+            _loading.postValue(false)
         }
     }
 
@@ -72,45 +72,25 @@ class ExtractViewModel(private val extractRepository: ExtractRepositoty) : ViewM
         for (i in 0 until extractList.size) {
             if ((i == 0) || (extractList[i].date != extractList[i - 1].date)) {
                 formattedList.add(ExtractItemHeader(getDateMonthFormat(extractList[i].date)))
-                formattedList.add(ExtractItemBody(extractList[i]))
-            } else {
-                formattedList.add(ExtractItemBody(extractList[i]))
             }
+            formattedList.add(ExtractItemBody(extractList[i]))
         }
 
         return formattedList
     }
 
     fun buttonPressedEvery() {
-        val cloneListReturnedApi = receivedListApi
-        _extractList.postValue(mapItemsForAdapter(cloneListReturnedApi))
+        _extractList.postValue(mapItemsForAdapter(receivedListApi))
     }
 
     fun buttonPressedInputs() {
-        val cloneListReturnedApi = receivedListApi
-        val formattedList: MutableList<ExtractResponse> = mutableListOf()
-        for (i in 0 until cloneListReturnedApi.size) {
-            if ((cloneListReturnedApi[i].type != "Despesa") &&
-                (!cloneListReturnedApi[i].time.contains("CANCELADA"))
-            ) {
-                formattedList.add(cloneListReturnedApi[i])
-            }
-        }
-        _extractList.postValue(mapItemsForAdapter(formattedList))
+        _extractList.postValue(mapItemsForAdapter(receivedListApi.filter{it.type!= "Despesa" &&
+                !it.time.contains("CANCELADA")}.toMutableList()))
     }
 
-    fun buttonPressedExit(){
-        val cloneListReturnedApi = receivedListApi
-        val formattedList: MutableList<ExtractResponse> = mutableListOf()
-
-        for (i in 0 until cloneListReturnedApi.size) {
-            if ((cloneListReturnedApi[i].type == "Despesa") &&
-                (!cloneListReturnedApi[i].time.contains("CANCELADA"))
-            ) {
-                formattedList.add(cloneListReturnedApi[i])
-            }
-        }
-        _extractList.postValue(mapItemsForAdapter(formattedList))
+    fun buttonPressedExit() {
+        _extractList.postValue(mapItemsForAdapter(receivedListApi.filter{it.type == "Despesa" &&
+                !it.time.contains("CANCELADA")}.toMutableList()))
     }
 
     open class ExtractItemAdapter
