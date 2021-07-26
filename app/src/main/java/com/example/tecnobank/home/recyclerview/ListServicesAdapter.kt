@@ -35,7 +35,7 @@ class ListServicesAdapter(
         }
     }
     //Não conseguimos fazer
-    private fun bind(
+    fun bind(
         holder: CardServicesViewHolder,
         position: Int
     ) {

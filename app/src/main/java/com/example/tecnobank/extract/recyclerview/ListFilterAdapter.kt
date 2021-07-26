@@ -32,7 +32,7 @@ class ListFilterAdapter(
         }
     }
     //Não conseguimos fazer
-    private fun bind(
+    fun bind(
         holder: FilterItemViewHolder,
         position: Int
     ) {
