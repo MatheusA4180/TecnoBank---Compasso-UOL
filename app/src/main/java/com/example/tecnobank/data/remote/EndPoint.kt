@@ -5,6 +5,7 @@ import com.example.tecnobank.data.remote.model.home.BalanceBenefitsResponse
 import com.example.tecnobank.data.remote.model.login.LoginPayload
 import com.example.tecnobank.data.remote.model.login.LoginResponse
 import com.example.tecnobank.data.remote.model.pix.PixItensRequest
+import com.example.tecnobank.data.remote.model.pix.PixResponseConfirmation
 import com.example.tecnobank.data.remote.model.pix.PixResponseValidation
 import retrofit2.Response
 import retrofit2.Retrofit
@@ -33,6 +34,12 @@ interface EndPoint {
         @Body pixItensRequest: PixItensRequest,
         @Header("token") token: String
     ): Response<PixResponseValidation>
+
+    @POST("pix/confirmation")
+    suspend fun pixConfirmation(
+        @Header ("token") token: String,
+        @Header ("pix_token") pixToken: String
+    ): Response<PixResponseConfirmation>
 
     companion object {
 
