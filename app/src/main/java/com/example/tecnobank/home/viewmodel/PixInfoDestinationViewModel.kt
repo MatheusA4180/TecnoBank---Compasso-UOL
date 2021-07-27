@@ -3,15 +3,16 @@ package com.example.tecnobank.home.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.tecnobank.data.remote.model.pix.SingleLiveEvent
 
 class PixInfoDestinationViewModel: ViewModel() {
 
     private var pixEmail: String = ""
 
-    private val _goToDescriptionPix = MutableLiveData<String>()
+    private val _goToDescriptionPix = SingleLiveEvent<String>()
     val goToDescriptionPix: LiveData<String> = _goToDescriptionPix
 
-    private val _buttonColor = MutableLiveData<Boolean>()
+    private val _buttonColor = SingleLiveEvent<Boolean>()
     val buttonColor: LiveData<Boolean> = _buttonColor
 
     fun changeDestinationEmailPix(email: String){
