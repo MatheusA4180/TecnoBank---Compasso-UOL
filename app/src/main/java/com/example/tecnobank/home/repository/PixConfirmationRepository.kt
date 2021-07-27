@@ -2,15 +2,18 @@ package com.example.tecnobank.home.repository
 
 import com.example.tecnobank.data.local.SharedPreferenceServices
 import com.example.tecnobank.data.remote.EndPoint
-import com.example.tecnobank.data.remote.model.home.BalanceBenefitsResponse
+import com.example.tecnobank.data.remote.model.pix.PixItensRequest
+import com.example.tecnobank.data.remote.model.pix.PixResponseValidation
 
-class HomeRepository(
+class PixConfirmationRepository(
     private val endPoint: EndPoint,
     private val sharedPreferenceServices: SharedPreferenceServices
 ) {
-    suspend fun BalancesAndBenefits(): BalanceBenefitsResponse {
 
-        val response = endPoint.BalancesAndBenefits(
+    suspend fun pixValidation(pixItensRequest: PixItensRequest): PixResponseValidation {
+
+        val response = endPoint.pixValidation(
+            pixItensRequest,
             sharedPreferenceServices.getSaveTokenAuthentication()!!
         )
 
@@ -21,5 +24,4 @@ class HomeRepository(
             throw Exception("Erro no sistema.")
         }
     }
-    fun saveBalanceValue(balanceValue: String) = sharedPreferenceServices.saveBalanceValue(balanceValue)
 }

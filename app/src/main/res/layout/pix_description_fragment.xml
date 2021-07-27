@@ -4,40 +4,29 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar_description_pix"
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar_pix_description"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme"
+        android:background="@color/greenTecnoBank"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:navigationIcon="@drawable/ic_voltar" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="@+id/toolbar_description_pix"
+    <TextView
+        android:id="@+id/textView17"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Transferir com Pix"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/toolbar_description_pix"
-        app:layout_constraintTop_toTopOf="parent">
-
-            <TextView
-                android:id="@+id/textview_pix_value"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Transferir com Pix"
-                android:textColor="@color/white"
-                android:textSize="20sp"
-
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView"
@@ -45,21 +34,29 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginTop="20dp"
-        android:textSize="16dp"
         android:layout_marginEnd="10dp"
         android:text="Insira a descrição (opcional)"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar_description_pix"/>
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_pix_description" />
 
-    <com.google.android.material.textfield.TextInputEditText
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/editDescription"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
-        android:inputType="text"
-        app:endIconMode="clear_text"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:counterEnabled="true"
+        app:counterMaxLength="72"
+        app:layout_constraintTop_toBottomOf="@+id/textView">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edit_text_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:inputType="textLongMessage"
+            android:maxLength="72" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
         android:id="@+id/pix_apply_description"
@@ -71,6 +68,7 @@
         android:text="Continuar"
         android:textAlignment="center"
         android:textColor="@color/white"
+        android:textStyle="bold"
         app:backgroundTint="#2270E3"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

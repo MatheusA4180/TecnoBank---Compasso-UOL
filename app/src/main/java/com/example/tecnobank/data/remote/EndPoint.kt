@@ -4,6 +4,8 @@ import com.example.tecnobank.data.remote.model.extract.ExtractResponse
 import com.example.tecnobank.data.remote.model.home.BalanceBenefitsResponse
 import com.example.tecnobank.data.remote.model.login.LoginPayload
 import com.example.tecnobank.data.remote.model.login.LoginResponse
+import com.example.tecnobank.data.remote.model.pix.PixItensRequest
+import com.example.tecnobank.data.remote.model.pix.PixResponseValidation
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -26,6 +28,12 @@ interface EndPoint {
         @Header("token") token: String
     ): Response<List<ExtractResponse>>
 
+    @POST("pix/validation")
+    suspend fun pixValidation(
+        @Body pixItensRequest: PixItensRequest,
+        @Header("token") token: String
+    ): Response<PixResponseValidation>
+
     companion object {
 
         fun getEndPointInstance(): EndPoint {
@@ -36,5 +44,4 @@ interface EndPoint {
         }
 
     }
-
 }
