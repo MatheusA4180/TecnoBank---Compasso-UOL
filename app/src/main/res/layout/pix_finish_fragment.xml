@@ -113,7 +113,7 @@
         app:layout_constraintTop_toBottomOf="@+id/value_finish_pix" />
 
     <TextView
-        android:id="@+id/nome_destination"
+        android:id="@+id/name_destination"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -134,7 +134,7 @@
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nome_destination" />
+        app:layout_constraintTop_toBottomOf="@+id/name_destination" />
 
     <TextView
         android:id="@+id/textView53"

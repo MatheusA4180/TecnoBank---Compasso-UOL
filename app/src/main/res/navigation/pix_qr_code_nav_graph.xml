@@ -89,6 +89,14 @@
         android:label="PixFinishFragment"
         tools:layout="@layout/pix_finish_fragment">
         <argument
+            android:name="date"
+            app:argType="string"
+            android:defaultValue=""/>
+        <argument
+            android:name="name"
+            app:argType="string"
+            android:defaultValue=""/>
+        <argument
             android:name="email"
             app:argType="string"
             android:defaultValue=""/>

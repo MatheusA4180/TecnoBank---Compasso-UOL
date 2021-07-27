@@ -12,14 +12,25 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.properties.Delegates
 
 class PixConfirmationViewModel(
     private val pixConfirmationRepository: PixConfirmationRepository
 ): ViewModel() {
 
-    private var pixDate: String = "26/07/2021"
-    private lateinit var response: PixResponseConfirmation
+    private lateinit var pixEmail: String
+    private lateinit var pixDescription: String
+    private var pixValue by Delegates.notNull<Double>()
+    private var pixDate: String = SimpleDateFormat("dd/MM/yyyy").format(Calendar.getInstance().time)
     private lateinit var responseValidation: PixResponseValidation
+    private lateinit var responseConfirm: PixResponseConfirmation
+
+
+    private val _pixValidationSucess = MutableLiveData<PixResponseValidation>()
+    val pixValidationSucess: LiveData<PixResponseValidation> = _pixValidationSucess
+
+    private val _pixValidationError = MutableLiveData<String>()
+    val pixValidationError: LiveData<String> = _pixValidationError
 
     private val _pixConfirmationSucess = MutableLiveData<PixResponseConfirmation>()
     val pixConfirmationSucess: LiveData<PixResponseConfirmation> = _pixConfirmationSucess
@@ -33,34 +44,53 @@ class PixConfirmationViewModel(
     private val _validDatePix = MutableLiveData<String>()
     val validDatePix: LiveData<String> = _validDatePix
 
+
+
     fun validationDatePix(calendar: Calendar){
         val currentDate = Calendar.getInstance()
         if(calendar.get(Calendar.DAY_OF_MONTH) >= currentDate.get(Calendar.DAY_OF_MONTH) &&
             calendar.get(Calendar.MONTH) >= currentDate.get(Calendar.MONTH) &&
             calendar.get(Calendar.YEAR) >= currentDate.get(Calendar.YEAR)){
             pixDate = SimpleDateFormat("dd/MM/yyyy").format(calendar.time)
-            _validDatePix.postValue(pixDate)
+            requestValidationPix()
+        }
+    }
+
+    fun requestValidationPix(){
+        viewModelScope.launch {
+            _loading.postValue(true)
+            try{
+                responseValidation = pixConfirmationRepository.pixValidation(getPixItensRequest())
+                _pixValidationSucess.postValue(responseValidation)
+                _validDatePix.postValue(pixDate)
+            }catch (e:Exception){
+                _pixValidationError.postValue(e.message)
+            }
+            _loading.postValue(false)
         }
     }
 
     fun onClickConfirmationPix() {
         viewModelScope.launch {
+            _loading.postValue(true)
             try{
-                _loading.postValue(true)
-                //responseValidation = pixConfirmationRepository.pixValidation(getPixItensRequest())
-                //delay(2000)
-                response = pixConfirmationRepository.pixValidation(getPixItensRequest())
-                _pixConfirmationSucess.postValue(response)
-                _loading.postValue(false)
+                responseConfirm = pixConfirmationRepository.pixConfirmation(responseValidation.pixToken)
+                _pixConfirmationSucess.postValue(responseConfirm)
             }catch (e:Exception){
                 _pixConfirmationError.postValue(e.message)
-                _loading.postValue(false)
             }
+            _loading.postValue(false)
         }
     }
 
     private fun getPixItensRequest(): PixItensRequest {
-        return PixItensRequest("teste@gmail.com","email","",300.00,pixDate)
+        return PixItensRequest(pixEmail,"email",pixDescription,pixValue,pixDate)
+    }
+
+    fun setPixItensRequest(email: String, description: String, value: Double) {
+        pixEmail = email
+        pixDescription = description
+        pixValue = value
     }
 
 }
