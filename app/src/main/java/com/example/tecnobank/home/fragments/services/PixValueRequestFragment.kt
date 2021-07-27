@@ -2,6 +2,7 @@ package com.example.tecnobank.home.fragments.services
 
 import android.graphics.Color
 import android.os.Bundle
+import android.text.method.PasswordTransformationMethod
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -53,10 +54,6 @@ class PixValueRequestFragment : Fragment() {
             findNavController().navigateUp()
         }
 
-        binding.ocultBalance.setOnClickListener {
-            binding.balanceCard.isVisible = false
-        }
-
         binding.editValue.addTextChangedListener{
             viewModel.changeValuePix(binding.editValue.text.toString())
         }
@@ -83,6 +80,22 @@ class PixValueRequestFragment : Fragment() {
         binding.pixApplyValue.setOnClickListener {
             viewModel.onClickApplyValuePix()
         }
+
+        binding.ocultBalance.setOnClickListener {
+            viewModel.checkVisibleBalances()
+
+        }
+
+        viewModel.balanceVisible.observe(viewLifecycleOwner, {
+            if(it){
+                binding.balanceValue.setTextColor(Color.BLACK)
+                binding.balanceValue.setBackgroundColor(Color.parseColor("#efefef"))
+            }else{
+                binding.balanceValue.setTextColor(Color.parseColor("#ababab"))
+                binding.balanceValue.setBackgroundColor(Color.parseColor("#ababab"))
+            }
+        })
+
 
     }
 
