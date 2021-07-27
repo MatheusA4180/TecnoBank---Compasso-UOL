@@ -103,7 +103,7 @@ class ExtractFragment : Fragment() {
                 filterPosition = data.getIntExtra(FILTER_POSITION, 1)
             )
         }
-        //teste dnv parte 3
+        //teste dnv parte 4
     }
 
     private fun recyclerViewConfig(listExtracts: List<ExtractViewModel.ExtractItemAdapter>) {
