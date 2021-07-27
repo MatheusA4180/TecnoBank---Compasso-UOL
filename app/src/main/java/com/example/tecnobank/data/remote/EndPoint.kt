@@ -35,7 +35,7 @@ interface EndPoint {
         @Header("token") token: String
     ): Response<PixResponseValidation>
 
-    @POST("pix/confirmation")
+    @POST("pix/confirm")
     suspend fun pixConfirmation(
         @Header ("token") token: String,
         @Header ("pix_token") pixToken: String

@@ -43,13 +43,8 @@ class PixConfirmationFragment : Fragment() {
             ViewModelFactory(requireContext())
         ).get(PixConfirmationViewModel::class.java)
 
-        with(binding) {
-            valueConfirmationPix.text = converterToReal(args.value.toDouble())
-            valueConfirmationPix2.text = converterToReal(args.value.toDouble())
-            emailDestinationPix.text = args.email
-            descriptionPix.text = args.description
-            datePix.text = SimpleDateFormat("dd/MM/yyyy").format(Calendar.getInstance().time)
-        }
+        viewModel.setPixItensRequest(args.email,args.description,args.value.toDouble())
+        viewModel.requestValidationPix()
 
         binding.toolbarPixConfirmation.setOnClickListener {
             findNavController().navigateUp()
@@ -66,20 +61,37 @@ class PixConfirmationFragment : Fragment() {
                 }.show(childFragmentManager, DATE_PICKER_PIX)
         }
 
+        viewModel.loading.observe(viewLifecycleOwner, {
+            binding.progressCircular.isVisible = it
+        })
+
+        viewModel.pixValidationSucess.observe(viewLifecycleOwner, {
+            with(binding) {
+                valueConfirmationPix.text = converterToReal(it.pixValue.toDouble())
+                valueConfirmationPix2.text = converterToReal(it.pixValue.toDouble())
+                binding.nameDestination.text = "${it.user.firstName} ${it.user.lastName}"
+                emailDestinationPix.text = it.pix
+                descriptionPix.text = it.description
+                datePix.text = it.date
+            }
+        })
+
         viewModel.validDatePix.observe(viewLifecycleOwner,{
             binding.datePix.text = it
         })
 
-        viewModel.loading.observe(viewLifecycleOwner, {
-            binding.progressCircular.isVisible = it
+        viewModel.pixValidationError.observe(viewLifecycleOwner, {
+            showInfo(it)
         })
 
         viewModel.pixConfirmationSucess.observe(viewLifecycleOwner, {
             findNavController().navigate(
                 PixConfirmationFragmentDirections
                     .actionPixConfirmationFragmentToPixFinishFragment(
-                        args.email,
-                        converterToReal(args.value.toDouble())
+                        it.date,
+                        "${it.user.firstName} ${it.user.lastName}",
+                        it.pix,
+                        converterToReal(it.pixValue.toDouble()),
                     )
             )
         })

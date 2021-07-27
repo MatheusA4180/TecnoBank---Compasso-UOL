@@ -9,5 +9,6 @@ data class PixResponseValidation(
     val description: String,
     val organization: String,
     @SerializedName("pix_value") val pixValue: String,
-    @SerializedName("pix_token") val pixToken: String
+    @SerializedName("pix_token") val pixToken: String,
+    val date: String
 )

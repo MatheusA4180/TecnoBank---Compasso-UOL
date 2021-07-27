@@ -8,5 +8,6 @@ data class PixResponseConfirmation(
     val pix: String,
     val description: String,
     val organization: String,
-    @SerializedName("pix_value") val pixValue: String
+    @SerializedName("pix_value") val pixValue: String,
+    val date: String
 )
