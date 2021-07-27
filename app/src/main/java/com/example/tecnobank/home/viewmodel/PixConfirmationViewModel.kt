@@ -55,7 +55,7 @@ class PixConfirmationViewModel(
     }
 
     private fun getPixItensRequest(): PixItensRequest {
-        return PixItensRequest("teste@gmail.com","email","","300.00",pixDate)
+        return PixItensRequest("teste@gmail.com","email","",300.00,pixDate)
     }
 
 }

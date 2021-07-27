@@ -18,6 +18,9 @@ class PixValueRequestViewModel(private val pixValueRequestRepository:PixValueReq
     private val _buttonColor = MutableLiveData<Boolean>()
     val buttonColor: LiveData<Boolean> = _buttonColor
 
+    private val _balanceVisible = MutableLiveData<Boolean>()
+    val balanceVisible: LiveData<Boolean> = _balanceVisible
+
     fun changeValuePix(value: String){
         pixValue = value
         changeButtonColor(value)
@@ -41,4 +44,11 @@ class PixValueRequestViewModel(private val pixValueRequestRepository:PixValueReq
         _balanceValue.postValue(pixValueRequestRepository.getSaveBalanceValue())
     }
 
+    fun checkVisibleBalances(){
+        if (balanceVisible.value == true) {
+            _balanceVisible.postValue(false)
+        } else {
+            _balanceVisible.postValue(true)
+        }
+    }
 }
