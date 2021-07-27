@@ -31,7 +31,7 @@ class PixQrCodeFragment : Fragment() {
             requireActivity().finish()
         }
         binding.pixTransfer.setOnClickListener {
-            findNavController().navigate(R.id.action_pixQrCodeFragment_to_pixTransferModeFragment)
+            findNavController().navigate(R.id.action_pixQrCodeFragment_to_pixModeTransferFragment)
         }
     }
 }

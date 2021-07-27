@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.example.tecnobank.R
 import com.example.tecnobank.databinding.PixDescriptionFragmentBinding
 
@@ -14,6 +15,7 @@ class PixDescriptionFragment : Fragment() {
 
     private var _binding: PixDescriptionFragmentBinding? = null
     private val binding: PixDescriptionFragmentBinding get() = _binding!!
+    private val args: PixDescriptionFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -26,16 +28,19 @@ class PixDescriptionFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        //binding.textView.text = arguments?.getString("Teste")
-        //val manager: FragmentManager = FragmentManager.get
 
-        binding.toolbarDescriptionPix.setNavigationOnClickListener {
-
+        binding.toolbarPixDescription.setNavigationOnClickListener {
+            findNavController().navigateUp()
         }
 
         binding.pixApplyDescription.setOnClickListener {
-            findNavController().navigate(R.id.action_pixDescriptionFragment_to_pixValueRequestFragment)
+            findNavController().navigate(
+                PixDescriptionFragmentDirections
+                    .actionPixDescriptionFragmentToPixValueRequestFragment(
+                        args.email,
+                        binding.editTextDescription.text.toString()
+                    )
+            )
         }
-
     }
 }

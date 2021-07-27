@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.tecnobank.data.remote.model.home.BalanceBenefitsResponse
+import com.example.tecnobank.extension.HelperFunctions
 import com.example.tecnobank.home.repository.HomeRepository
 import kotlinx.coroutines.launch
 
@@ -22,7 +23,11 @@ class HomeViewModel(private val homeRepository: HomeRepository) : ViewModel() {
     fun onOpenHome() {
         viewModelScope.launch {
             try {
-                _responseSucess.postValue(homeRepository.BalancesAndBenefits())
+                val response = homeRepository.BalancesAndBenefits()
+                _responseSucess.postValue(response)
+                homeRepository.saveBalanceValue(
+                    HelperFunctions
+                    .converterToReal(response.balance.currentValue.toDouble()))
             } catch (e: Exception) {
                 _responseErro.postValue(e.message)
             }

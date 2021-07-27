@@ -27,7 +27,7 @@ class PixTransferModeFragment: Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.btEmailTransfer.setOnClickListener {
-         findNavController().navigate(R.id.action_pixTransferModeFragment_to_pixInfoDestinationFragment)
+         findNavController().navigate(R.id.action_pixModeTransferFragment_to_pixInfoDestinationFragment)
         }
     }
 }
