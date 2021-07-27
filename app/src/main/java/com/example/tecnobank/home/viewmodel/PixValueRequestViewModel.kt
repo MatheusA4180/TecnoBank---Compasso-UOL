@@ -3,16 +3,17 @@ package com.example.tecnobank.home.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.tecnobank.data.remote.model.pix.SingleLiveEvent
 import com.example.tecnobank.home.repository.PixValueRequestRepository
 
 class PixValueRequestViewModel(private val pixValueRequestRepository:PixValueRequestRepository): ViewModel() {
 
     private var pixValue: String = ""
 
-    private val _goToConfirmationPix = MutableLiveData<String>()
+    private val _goToConfirmationPix = SingleLiveEvent<String>()
     val goToConfirmationPix: LiveData<String> = _goToConfirmationPix
 
-    private val _balanceValue = MutableLiveData<String>()
+    private val _balanceValue = SingleLiveEvent<String>()
     val balanceValue: LiveData<String> = _balanceValue
 
     private val _buttonColor = MutableLiveData<Boolean>()
