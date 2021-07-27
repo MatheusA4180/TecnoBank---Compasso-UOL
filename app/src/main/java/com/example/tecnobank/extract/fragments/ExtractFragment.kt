@@ -102,6 +102,7 @@ class ExtractFragment : Fragment() {
                     .toString().lowercase(),
                 filterPosition = data.getIntExtra(FILTER_POSITION, 1)
             )
+
         }
     }
 
