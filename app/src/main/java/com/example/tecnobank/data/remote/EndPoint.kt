@@ -1,5 +1,6 @@
 package com.example.tecnobank.data.remote
 
+import com.example.tecnobank.data.local.SharedPreferenceServices
 import com.example.tecnobank.data.remote.model.extract.ExtractResponse
 import com.example.tecnobank.data.remote.model.home.BalanceBenefitsResponse
 import com.example.tecnobank.data.remote.model.login.LoginPayload
@@ -43,10 +44,10 @@ interface EndPoint {
 
     companion object {
 
-        fun getEndPointInstance(): EndPoint {
+        fun getEndPointInstance(sharedPreference: SharedPreferenceServices): EndPoint {
             return Retrofit.Builder()
                 .baseUrl("https://us-central1-programa-de-bolsas---puc-2021.cloudfunctions.net/api/")
-                .addConverterFactory(GsonConverterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create()).client(AuthInterceptor(sharedPreference))
                 .build().create(EndPoint::class.java)
         }
 
