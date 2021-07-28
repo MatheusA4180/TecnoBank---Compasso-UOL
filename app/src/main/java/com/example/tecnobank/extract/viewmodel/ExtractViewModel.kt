@@ -22,6 +22,18 @@ class ExtractViewModel(private val extractRepository: ExtractRepositoty) : ViewM
     private var listfilterDays: List<Int> = listOf(3, 7, 30, 60, 120)
     private lateinit var receivedListApi: List<ExtractResponse>
 
+    private val _responseErro = MutableLiveData<String>()
+    val responseErro: LiveData<String> = _responseErro
+
+    private val _loading = MutableLiveData<Boolean>()
+    val loading: LiveData<Boolean> = _loading
+
+    private val _extractList = MutableLiveData<List<ExtractItemAdapter>>()
+    val extractList: LiveData<List<ExtractItemAdapter>> = _extractList
+
+    private val _dataFilter = MutableLiveData<String>()
+    val dataFilter: LiveData<String> = _dataFilter
+
     fun onChangeDataFilter(filterText: String, filterPosition: Int) {
         this.filterPosition = filterPosition
         requestExtracts()
@@ -34,18 +46,6 @@ class ExtractViewModel(private val extractRepository: ExtractRepositoty) : ViewM
         )
         this.dateFilterEnd = formatDate(Calendar.getInstance().time)
     }
-
-    private val _responseErro = MutableLiveData<String>()
-    val responseErro: LiveData<String> = _responseErro
-
-    private val _loading = MutableLiveData<Boolean>()
-    val loading: LiveData<Boolean> = _loading
-
-    private val _extractList = MutableLiveData<List<ExtractItemAdapter>>()
-    val extractList: LiveData<List<ExtractItemAdapter>> = _extractList
-
-    private val _dataFilter = MutableLiveData<String>()
-    val dataFilter: LiveData<String> = _dataFilter
 
     fun requestExtracts() {
         viewModelScope.launch {
