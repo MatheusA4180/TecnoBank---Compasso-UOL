@@ -39,8 +39,8 @@ class ListFilterAdapter(
     }
 
     class FilterItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val description: TextView = itemView.findViewById(R.id.description_filter)
-        val icon: ImageView = itemView.findViewById(R.id.image_check)
+        private val description: TextView = itemView.findViewById(R.id.description_filter)
+        private val icon: ImageView = itemView.findViewById(R.id.image_check)
 
         fun bind(listItemFilter: List<String>, positionSelected: Int) {
             description.text = listItemFilter[position]

@@ -60,8 +60,8 @@ class ListExtractsAdapter(
     }
 
 
-    class HeaderViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val headerText: TextView = itemView.findViewById(R.id.header_text)
+    private class HeaderViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        private val headerText: TextView = itemView.findViewById(R.id.header_text)
 
         fun bind(item: ExtractViewModel.ExtractItemHeader) {
             headerText.text = item.date.substring(0, 6).toUpperCase()
@@ -69,10 +69,10 @@ class ListExtractsAdapter(
     }
 
     class ExtractViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val transactionValue: TextView = itemView.findViewById(R.id.extract_value_transaction)
-        val transactionTime: TextView = itemView.findViewById(R.id.extract_time)
-        val transactionName: TextView = itemView.findViewById(R.id.extract_type)
-        val transactionType: TextView = itemView.findViewById(R.id.extract_type_description)
+        private val transactionValue: TextView = itemView.findViewById(R.id.extract_value_transaction)
+        private val transactionTime: TextView = itemView.findViewById(R.id.extract_time)
+        private val transactionName: TextView = itemView.findViewById(R.id.extract_type)
+        private val transactionType: TextView = itemView.findViewById(R.id.extract_type_description)
 
         fun bind(body: ExtractResponse) {
             transactionValue.text = body.value
@@ -91,6 +91,6 @@ class ListExtractsAdapter(
     companion object {
         private const val LIST_DATE_TYPE = 0
         private const val LIST_EXTRACT_TYPE = 1
-        private const val EXPENSE = "despesa"
+        private const val EXPENSE = "Despesa"
     }
 }
