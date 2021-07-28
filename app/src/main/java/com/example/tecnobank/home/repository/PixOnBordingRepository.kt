@@ -6,7 +6,6 @@ class PixOnBordingRepository(
     private val sharedPreferenceServices: SharedPreferenceServices
 ) {
 
-
     fun saveUserPassPixOnboarding() = sharedPreferenceServices.saveUserPassPixOnboarding()
 
     fun passedByPixOnBoarding(): Boolean = sharedPreferenceServices.passedByPixOnBoarding()

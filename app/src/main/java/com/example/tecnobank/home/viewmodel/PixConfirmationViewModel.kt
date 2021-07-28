@@ -7,15 +7,14 @@ import androidx.lifecycle.viewModelScope
 import com.example.tecnobank.data.remote.model.pix.PixItensRequest
 import com.example.tecnobank.data.remote.model.pix.PixResponseConfirmation
 import com.example.tecnobank.data.remote.model.pix.PixResponseValidation
-import com.example.tecnobank.home.repository.PixConfirmationRepository
-import kotlinx.coroutines.delay
+import com.example.tecnobank.home.repository.PixValidationAndConfirmationRepository
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.properties.Delegates
 
 class PixConfirmationViewModel(
-    private val pixConfirmationRepository: PixConfirmationRepository
+    private val pixConfirmationRepository: PixValidationAndConfirmationRepository
 ): ViewModel() {
 
     private lateinit var pixEmail: String

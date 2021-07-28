@@ -6,17 +6,13 @@ import com.example.tecnobank.data.remote.model.pix.PixItensRequest
 import com.example.tecnobank.data.remote.model.pix.PixResponseConfirmation
 import com.example.tecnobank.data.remote.model.pix.PixResponseValidation
 
-class PixConfirmationRepository(
-    private val endPoint: EndPoint,
-    private val sharedPreferenceServices: SharedPreferenceServices
+class PixValidationAndConfirmationRepository(
+    private val endPoint: EndPoint
 ) {
 
     suspend fun pixValidation(pixItensRequest: PixItensRequest): PixResponseValidation {
 
-        val response = endPoint.pixValidation(
-            pixItensRequest,
-            sharedPreferenceServices.getSaveTokenAuthentication()!!
-        )
+        val response = endPoint.pixValidation(pixItensRequest)
 
         if (response.isSuccessful) {
             return response.body()!!
@@ -26,10 +22,7 @@ class PixConfirmationRepository(
     }
 
     suspend fun pixConfirmation(pixToken: String): PixResponseConfirmation{
-        val response = endPoint.pixConfirmation(
-            sharedPreferenceServices.getSaveTokenAuthentication()!!,
-            pixToken
-        )
+        val response = endPoint.pixConfirmation(pixToken)
 
         if (response.isSuccessful) {
             return response.body()!!

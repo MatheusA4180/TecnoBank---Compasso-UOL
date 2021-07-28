@@ -5,8 +5,7 @@ import com.example.tecnobank.data.remote.EndPoint
 import com.example.tecnobank.data.remote.model.extract.ExtractResponse
 
 class ExtractRepositoty(
-    private val endPointHome: EndPoint,
-    private val sharedPreferenceServices: SharedPreferenceServices
+    private val endPointHome: EndPoint
 ) {
 
     suspend fun extractTransactions(
@@ -14,10 +13,7 @@ class ExtractRepositoty(
         dateFilterEnd: String
     ): List<ExtractResponse> {
 
-        val response = endPointHome.extractTransactions(
-            dateFilterStart, dateFilterEnd,
-            sharedPreferenceServices.getSaveTokenAuthentication()!!
-        )
+        val response = endPointHome.extractTransactions(dateFilterStart, dateFilterEnd)
 
         if (response.isSuccessful) {
             return response.body()!!

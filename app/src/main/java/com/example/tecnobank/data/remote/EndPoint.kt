@@ -8,6 +8,7 @@ import com.example.tecnobank.data.remote.model.login.LoginResponse
 import com.example.tecnobank.data.remote.model.pix.PixItensRequest
 import com.example.tecnobank.data.remote.model.pix.PixResponseConfirmation
 import com.example.tecnobank.data.remote.model.pix.PixResponseValidation
+import okhttp3.OkHttpClient
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -19,26 +20,21 @@ interface EndPoint {
     suspend fun login(@Body loginPayload: LoginPayload): Response<LoginResponse>
 
     @GET("home")
-    suspend fun BalancesAndBenefits(
-        @Header("token") token: String
-    ): Response<BalanceBenefitsResponse>
+    suspend fun BalancesAndBenefits(): Response<BalanceBenefitsResponse>
 
     @GET("extract")
     suspend fun extractTransactions(
         @Query("start") dateFilterStart: String,
-        @Query("end") dateFilterEnd: String,
-        @Header("token") token: String
+        @Query("end") dateFilterEnd: String
     ): Response<List<ExtractResponse>>
 
     @POST("pix/validation")
     suspend fun pixValidation(
-        @Body pixItensRequest: PixItensRequest,
-        @Header("token") token: String
+        @Body pixItensRequest: PixItensRequest
     ): Response<PixResponseValidation>
 
     @POST("pix/confirm")
     suspend fun pixConfirmation(
-        @Header ("token") token: String,
         @Header ("pix_token") pixToken: String
     ): Response<PixResponseConfirmation>
 
@@ -47,8 +43,15 @@ interface EndPoint {
         fun getEndPointInstance(sharedPreference: SharedPreferenceServices): EndPoint {
             return Retrofit.Builder()
                 .baseUrl("https://us-central1-programa-de-bolsas---puc-2021.cloudfunctions.net/api/")
-                .addConverterFactory(GsonConverterFactory.create()).client(AuthInterceptor(sharedPreference))
+                .addConverterFactory(GsonConverterFactory.create())
+                .client(provideAuthClient(sharedPreference))
                 .build().create(EndPoint::class.java)
+        }
+
+        private fun provideAuthClient(sharedPreference: SharedPreferenceServices): OkHttpClient {
+            val client = OkHttpClient.Builder()
+            client.addInterceptor(AuthInterceptor(sharedPreference))
+            return client.build()
         }
 
     }

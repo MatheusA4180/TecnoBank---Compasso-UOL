@@ -10,7 +10,7 @@ import com.example.tecnobank.data.remote.EndPoint
 import com.example.tecnobank.extract.repository.ExtractRepositoty
 import com.example.tecnobank.extract.viewmodel.ExtractViewModel
 import com.example.tecnobank.home.repository.HomeRepository
-import com.example.tecnobank.home.repository.PixConfirmationRepository
+import com.example.tecnobank.home.repository.PixValidationAndConfirmationRepository
 import com.example.tecnobank.home.repository.PixOnBordingRepository
 import com.example.tecnobank.home.repository.PixValueRequestRepository
 import com.example.tecnobank.home.viewmodel.HomeViewModel
@@ -104,8 +104,7 @@ class ViewModelFactory(private val context: Context): ViewModelProvider.Factory 
     private fun providerExtractViewModel(): ExtractViewModel {
         return ExtractViewModel(
             ExtractRepositoty(
-                providerEndPointInstance(),
-                providerSharedPreferenceService(providerSharedPreference())
+                providerEndPointInstance()
             )
         )
     }
@@ -122,11 +121,16 @@ class ViewModelFactory(private val context: Context): ViewModelProvider.Factory 
 
     private fun providerPixConfirmationViewModel(): PixConfirmationViewModel {
         return PixConfirmationViewModel(
-            PixConfirmationRepository(
-                providerEndPointInstance(),
-                providerSharedPreferenceService(
-                    providerSharedPreference()
-                )
+            PixValidationAndConfirmationRepository(
+                providerEndPointInstance()
+            )
+        )
+    }
+
+    private fun providerEndPointInstance(): EndPoint {
+        return EndPoint.getEndPointInstance(
+            providerSharedPreferenceService(
+                providerSharedPreference()
             )
         )
     }
@@ -135,10 +139,6 @@ class ViewModelFactory(private val context: Context): ViewModelProvider.Factory 
         preferences: SharedPreferences
     ): SharedPreferenceServices {
         return SharedPreferenceServices(preferences)
-    }
-
-    private fun providerEndPointInstance(): EndPoint {
-        return EndPoint.getEndPointInstance()
     }
 
     private fun providerSharedPreference(): SharedPreferences {
