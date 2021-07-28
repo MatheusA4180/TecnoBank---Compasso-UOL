@@ -25,7 +25,6 @@ class PixConfirmationViewModel(
     private lateinit var responseValidation: PixResponseValidation
     private lateinit var responseConfirm: PixResponseConfirmation
 
-
     private val _pixValidationSucess = MutableLiveData<PixResponseValidation>()
     val pixValidationSucess: LiveData<PixResponseValidation> = _pixValidationSucess
 
@@ -43,8 +42,6 @@ class PixConfirmationViewModel(
 
     private val _validDatePix = MutableLiveData<String>()
     val validDatePix: LiveData<String> = _validDatePix
-
-
 
     fun validationDatePix(calendar: Calendar){
         val currentDate = Calendar.getInstance()

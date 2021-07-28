@@ -83,16 +83,13 @@ class PixValueRequestFragment : Fragment() {
 
         binding.ocultBalance.setOnClickListener {
             viewModel.checkVisibleBalances()
-
         }
 
         viewModel.balanceVisible.observe(viewLifecycleOwner, {
             if(it){
-                binding.balanceValue.setTextColor(Color.BLACK)
-                binding.balanceValue.setBackgroundColor(Color.parseColor("#efefef"))
+                binding.balanceValue.setTransformationMethod(null)
             }else{
-                binding.balanceValue.setTextColor(Color.parseColor("#ababab"))
-                binding.balanceValue.setBackgroundColor(Color.parseColor("#ababab"))
+                binding.balanceValue.setTransformationMethod(PasswordTransformationMethod())
             }
         })
 

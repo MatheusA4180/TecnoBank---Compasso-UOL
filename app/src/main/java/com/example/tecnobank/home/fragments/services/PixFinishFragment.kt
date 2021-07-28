@@ -32,7 +32,7 @@ class PixFinishFragment: Fragment() {
             timeFinishPix.text = args.date
             valueFinishPix.text = args.value
             nameDestination.text = args.name
-            emailFinishPix.text = "${emailFinishPix.text.toString()}  ${args.email}"
+            emailFinishPix.text = "${emailFinishPix.text}  ${args.email}"
         }
 
         binding.backToTranfer.setOnClickListener {
