@@ -51,34 +51,21 @@ class ListExtractsAdapter(
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (holder is HeaderViewHolder) {
             val item = listExtracts.get(position) as ExtractViewModel.ExtractItemHeader
-            holder.headerText.text = item.date.substring(0, 6).toUpperCase()
+            holder.bind(item)
         } else if(holder is ExtractViewHolder) {
             val item = listExtracts.get(position) as ExtractViewModel.ExtractItemBody
-            bind(holder, item.body)
+            holder.bind(item.body)
         }
 
     }
-    //Não conseguimos fazer
-     fun bind(
-        holder: ExtractViewHolder,
-        item: ExtractResponse,
 
-        ) {
-        holder.transactionValue.text = item.value
-        holder.transactionName.text = item.type
-        holder.transactionType.text = item.typeDescription
-        if (item.type == EXPENSE) {
-
-            holder.transactionValue.setTextColor(Color.RED)
-            holder.transactionValue.text = "-${item.value}"
-        }
-
-        holder.transactionType.text = item.typeDescription
-        holder.transactionTime.text = item.time
-    }
 
     class HeaderViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val headerText: TextView = itemView.findViewById(R.id.header_text)
+
+        fun bind(item: ExtractViewModel.ExtractItemHeader) {
+            headerText.text = item.date.substring(0, 6).toUpperCase()
+        }
     }
 
     class ExtractViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -87,6 +74,18 @@ class ListExtractsAdapter(
         val transactionName: TextView = itemView.findViewById(R.id.extract_type)
         val transactionType: TextView = itemView.findViewById(R.id.extract_type_description)
 
+        fun bind(body: ExtractResponse) {
+            transactionValue.text = body.value
+            transactionName.text = body.type
+            transactionType.text = body.typeDescription
+            if (body.type == EXPENSE) {
+
+                transactionValue.setTextColor(Color.RED)
+                transactionValue.text = "-${body.value}"
+            }
+            transactionType.text = body.typeDescription
+            transactionTime.text = body.time
+        }
     }
 
     companion object {

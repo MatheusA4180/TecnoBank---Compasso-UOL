@@ -31,19 +31,10 @@ class ListServicesAdapter(
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (holder is CardServicesViewHolder) {
-            bind(holder, position)
-        }
-    }
-    //Não conseguimos fazer
-    fun bind(
-        holder: CardServicesViewHolder,
-        position: Int
-    ) {
-        holder.icon.setImageResource(listServices[position].icon)
-        holder.cardDecor.isVisible = false
-        holder.title.text = listServices[position].title
-        holder.itemView.setOnClickListener {
-            clickedServiceListener.clickServiceListener(position, positionViewPager)
+            holder.bind(listServices)
+            holder.itemView.setOnClickListener {
+                clickedServiceListener.clickServiceListener(position, positionViewPager)
+            }
         }
     }
 
@@ -52,7 +43,12 @@ class ListServicesAdapter(
         val textDecor: TextView = itemView.findViewById(R.id.text_decor)
         val icon: ImageView = itemView.findViewById(R.id.icon_services)
         val title: TextView = itemView.findViewById(R.id.title_service)
-        val cardButton: CardView = itemView.findViewById(R.id.services_cardview)
+
+        fun bind(listServices: List<ItemService>) {
+            icon.setImageResource(listServices[position].icon)
+            cardDecor.isVisible = false
+            title.text = listServices[position].title
+        }
     }
 
     data class ItemService(val incompletService: Boolean, val titleInfo: String?, val title: String, val icon: Int)

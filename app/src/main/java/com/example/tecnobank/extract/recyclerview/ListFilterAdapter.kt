@@ -28,30 +28,28 @@ class ListFilterAdapter(
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (holder is FilterItemViewHolder) {
-            bind(holder, position)
-        }
-    }
-    //Não conseguimos fazer
-    fun bind(
-        holder: FilterItemViewHolder,
-        position: Int
-    ) {
-        holder.description.text = listItemFilter[position]
-        holder.itemView.setOnClickListener {
-            positionSelected = position
-            notifyDataSetChanged()
-            selectFilterlistener.selectedFilterlistener(positionSelected)
-        }
-        if (position == positionSelected) {
-            holder.icon.setImageResource(R.drawable.ic_check)
-        } else {
-            holder.icon.setImageResource(0)
+            holder.bind(listItemFilter,positionSelected)
+            holder.itemView.setOnClickListener {
+                positionSelected = position
+                notifyDataSetChanged()
+                selectFilterlistener.selectedFilterlistener(positionSelected)
+            }
+
         }
     }
 
     class FilterItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val description: TextView = itemView.findViewById(R.id.description_filter)
         val icon: ImageView = itemView.findViewById(R.id.image_check)
+
+        fun bind(listItemFilter: List<String>, positionSelected: Int) {
+            description.text = listItemFilter[position]
+            if (position == positionSelected) {
+                icon.setImageResource(R.drawable.ic_check)
+            } else {
+                icon.setImageResource(0)
+            }
+        }
     }
 
     interface SelectFilterlistener {
