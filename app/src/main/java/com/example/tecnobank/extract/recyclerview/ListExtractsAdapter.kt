@@ -60,7 +60,7 @@ class ListExtractsAdapter(
     }
 
 
-    private class HeaderViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+     class HeaderViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val headerText: TextView = itemView.findViewById(R.id.header_text)
 
         fun bind(item: ExtractViewModel.ExtractItemHeader) {
@@ -91,6 +91,7 @@ class ListExtractsAdapter(
     companion object {
         private const val LIST_DATE_TYPE = 0
         private const val LIST_EXTRACT_TYPE = 1
-        private const val EXPENSE = "Despesa"
+        const val EXPENSE = "Despesa"
+        const val CANCELED = "CANCELADA"
     }
 }

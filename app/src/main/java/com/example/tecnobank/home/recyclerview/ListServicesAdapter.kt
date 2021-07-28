@@ -39,10 +39,9 @@ class ListServicesAdapter(
     }
 
     class CardServicesViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val cardDecor: CardView = itemView.findViewById(R.id.card_decor)
-        val textDecor: TextView = itemView.findViewById(R.id.text_decor)
-        val icon: ImageView = itemView.findViewById(R.id.icon_services)
-        val title: TextView = itemView.findViewById(R.id.title_service)
+        private val cardDecor: CardView = itemView.findViewById(R.id.card_decor)
+        private val icon: ImageView = itemView.findViewById(R.id.icon_services)
+        private val title: TextView = itemView.findViewById(R.id.title_service)
 
         fun bind(listServices: List<ItemService>) {
             icon.setImageResource(listServices[position].icon)
@@ -51,10 +50,14 @@ class ListServicesAdapter(
         }
     }
 
-    data class ItemService(val incompletService: Boolean, val titleInfo: String?, val title: String, val icon: Int)
+    data class ItemService(
+        val incompletService: Boolean,
+        val titleInfo: String?,
+        val title: String,
+        val icon: Int
+    )
 
     interface ClickedServiceListener {
         fun clickServiceListener(positionRecyclerView: Int, positionViewPager: Int)
     }
-
 }
