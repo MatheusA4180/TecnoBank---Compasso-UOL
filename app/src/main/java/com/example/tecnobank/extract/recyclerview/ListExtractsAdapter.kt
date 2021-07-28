@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tecnobank.R
+import com.example.tecnobank.data.remote.model.extract.ExtractResponse
 import com.example.tecnobank.extract.viewmodel.ExtractViewModel
 
 class ListExtractsAdapter(
@@ -50,39 +51,47 @@ class ListExtractsAdapter(
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (holder is HeaderViewHolder) {
             val item = listExtracts.get(position) as ExtractViewModel.ExtractItemHeader
-            holder.headerText.text = item.date.substring(0, 6).toUpperCase()
+            holder.bind(item)
         } else if(holder is ExtractViewHolder) {
             val item = listExtracts.get(position) as ExtractViewModel.ExtractItemBody
-            holder.transactionValue.text = item.body.value
-            holder.transactionName.text = item.body.type
-            holder.transactionType.text = item.body.typeDescription
-            if(item.body.type=="Despesa"){
-
-                holder.transactionValue.setTextColor(Color.parseColor("#FF0000"))
-                holder.transactionValue.text = "-${item.body.value}"
-            }
-
-            holder.transactionType.text = item.body.typeDescription
-            holder.transactionTime.text = item.body.time
+            holder.bind(item.body)
         }
 
     }
 
-    class HeaderViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val headerText: TextView = itemView.findViewById(R.id.header_text)
+
+     class HeaderViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        private val headerText: TextView = itemView.findViewById(R.id.header_text)
+
+        fun bind(item: ExtractViewModel.ExtractItemHeader) {
+            headerText.text = item.date.substring(0, 6).toUpperCase()
+        }
     }
 
     class ExtractViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val transactionValue: TextView = itemView.findViewById(R.id.extract_value_transaction)
-        val transactionTime: TextView = itemView.findViewById(R.id.extract_time)
-        val transactionName: TextView = itemView.findViewById(R.id.extract_type)
-        val transactionType: TextView = itemView.findViewById(R.id.extract_type_description)
+        private val transactionValue: TextView = itemView.findViewById(R.id.extract_value_transaction)
+        private val transactionTime: TextView = itemView.findViewById(R.id.extract_time)
+        private val transactionName: TextView = itemView.findViewById(R.id.extract_type)
+        private val transactionType: TextView = itemView.findViewById(R.id.extract_type_description)
 
+        fun bind(body: ExtractResponse) {
+            transactionValue.text = body.value
+            transactionName.text = body.type
+            transactionType.text = body.typeDescription
+            if (body.type == EXPENSE) {
+
+                transactionValue.setTextColor(Color.RED)
+                transactionValue.text = "-${body.value}"
+            }
+            transactionType.text = body.typeDescription
+            transactionTime.text = body.time
+        }
     }
 
     companion object {
         private const val LIST_DATE_TYPE = 0
         private const val LIST_EXTRACT_TYPE = 1
+        const val EXPENSE = "Despesa"
+        const val CANCELED = "CANCELADA"
     }
-
 }

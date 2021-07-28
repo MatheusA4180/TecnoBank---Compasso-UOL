@@ -11,7 +11,7 @@ class HomeRepository(
     suspend fun BalancesAndBenefits(): BalanceBenefitsResponse {
 
         val response = endPoint.BalancesAndBenefits(
-            sharedPreferenceServices.getSaveTokenAuthentication()!!
+            sharedPreferenceServices.getSaveTokenAuthentication()
         )
 
         if (response.isSuccessful) {

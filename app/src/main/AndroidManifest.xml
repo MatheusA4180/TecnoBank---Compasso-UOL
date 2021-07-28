@@ -11,45 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_custom_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Tecnobank">
-        <activity android:name=".home.activity.services.PixOnBordingActivity"></activity>
-        <activity
-            android:name=".home.activity.services.LearningInvestmentsActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".home.activity.services.AddMoneyActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".home.activity.services.PayCheckActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".home.activity.services.ShoppingCashbackActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".home.activity.services.PayQrCodeActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".cards.activity.TecnobankCardsActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".cards.activity.PrepaidCardActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".cards.activity.RequestCardActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".home.activity.ProfileActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".home.activity.QrCodeSafeActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".home.activity.NotificationActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".home.activity.services.AccountDependencyActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".home.activity.services.PixQrCodeActivity"
+        <activity android:name=".home.activity.services.PixOnBordingActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".home.activity.services.PixQrCodeActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".extract.activity.FilterActivity"

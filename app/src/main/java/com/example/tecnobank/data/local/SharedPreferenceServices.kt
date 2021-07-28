@@ -27,9 +27,9 @@ class SharedPreferenceServices(private val preferences: SharedPreferences) {
         }
     }
 
-    fun getUserEmail(): String? = preferences.getString(USER, "")
+    fun getUserEmail(): String = preferences.getString(USER, "")!!
 
-    fun getUserPassword(): String? = preferences.getString(PASSWORD, "")
+    fun getUserPassword(): String = preferences.getString(PASSWORD, "")!!
 
     fun saveTokenAuthentication(tokenAuthentication: String) {
         preferences.edit {
@@ -37,7 +37,7 @@ class SharedPreferenceServices(private val preferences: SharedPreferences) {
         }
     }
 
-    fun getSaveTokenAuthentication(): String? = preferences.getString(TOKEN_AUTHENTICATION, "")
+    fun getSaveTokenAuthentication(): String = preferences.getString(TOKEN_AUTHENTICATION, "")!!
 
     fun passedByPixOnBoarding(): Boolean = preferences.getBoolean(PASS_TO_PIX_ONBOARDING, false)
 

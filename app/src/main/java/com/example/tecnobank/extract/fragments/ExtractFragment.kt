@@ -46,6 +46,8 @@ class ExtractFragment : Fragment() {
 
         viewModel.requestExtracts()
 
+        checkSelectedButton(everyButton = true, inputButton = false, exitButton = false)
+
         viewModel.dataFilter.observe(viewLifecycleOwner, {
             binding.textFilter.text = it
         })
@@ -130,16 +132,16 @@ class ExtractFragment : Fragment() {
         }
     }
 
-    private fun paintButtonOn(ref: ExtendedFloatingActionButton) {
-        with(ref) {
+    private fun paintButtonOn(button: ExtendedFloatingActionButton) {
+        with(button) {
             setBackgroundColor(getColor(requireContext(), R.color.white))
             setTextColor(getColor(requireContext(), R.color.greenTecnoBank))
             setStrokeColorResource(R.color.greenTecnoBank)
         }
     }
 
-    private fun paintButtonOff(ref: ExtendedFloatingActionButton) {
-        with(ref) {
+    private fun paintButtonOff(button: ExtendedFloatingActionButton) {
+        with(button) {
             setBackgroundColor(getColor(requireContext(), R.color.greenTecnoBank))
             setTextColor(getColor(requireContext(), R.color.white))
             setStrokeColorResource(R.color.white)
@@ -155,6 +157,6 @@ class ExtractFragment : Fragment() {
     }
 
     companion object {
-        const val REQUEST_CODE: Int = 1
+        private const val REQUEST_CODE: Int = 1
     }
 }

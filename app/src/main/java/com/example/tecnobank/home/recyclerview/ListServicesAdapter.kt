@@ -31,31 +31,7 @@ class ListServicesAdapter(
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (holder is CardServicesViewHolder) {
-            if(listServices[position].incompletService) {
-                holder.cardButton.setCardBackgroundColor(
-                    getColor(
-                        holder.cardButton.context,
-                        R.color.gray_200
-                    )
-                )
-                holder.icon.setImageResource(listServices[position].icon)
-                holder.icon.drawable.setTint(getColor(holder.cardButton.context, R.color.gray_700))
-            }else{
-                holder.icon.setImageResource(listServices[position].icon)
-            }
-            if (!(listServices[position].titleInfo.isNullOrEmpty())){
-                holder.cardDecor.isVisible = true
-                holder.textDecor.text = listServices[position].titleInfo
-            }else {
-                holder.cardDecor.isVisible = false
-                holder.cardDecor.setCardBackgroundColor(
-                    getColor(
-                        holder.cardButton.context,
-                        R.color.gray_500
-                    )
-                )
-            }
-            holder.title.text = listServices[position].title
+            holder.bind(listServices)
             holder.itemView.setOnClickListener {
                 clickedServiceListener.clickServiceListener(position, positionViewPager)
             }
@@ -63,17 +39,25 @@ class ListServicesAdapter(
     }
 
     class CardServicesViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val cardDecor: CardView = itemView.findViewById(R.id.card_decor)
-        val textDecor: TextView = itemView.findViewById(R.id.text_decor)
-        val icon: ImageView = itemView.findViewById(R.id.icon_services)
-        val title: TextView = itemView.findViewById(R.id.title_service)
-        val cardButton: CardView = itemView.findViewById(R.id.services_cardview)
+        private val cardDecor: CardView = itemView.findViewById(R.id.card_decor)
+        private val icon: ImageView = itemView.findViewById(R.id.icon_services)
+        private val title: TextView = itemView.findViewById(R.id.title_service)
+
+        fun bind(listServices: List<ItemService>) {
+            icon.setImageResource(listServices[position].icon)
+            cardDecor.isVisible = false
+            title.text = listServices[position].title
+        }
     }
 
-    data class ItemService(val incompletService: Boolean, val titleInfo: String?, val title: String, val icon: Int)
+    data class ItemService(
+        val incompletService: Boolean,
+        val titleInfo: String?,
+        val title: String,
+        val icon: Int
+    )
 
     interface ClickedServiceListener {
         fun clickServiceListener(positionRecyclerView: Int, positionViewPager: Int)
     }
-
 }
