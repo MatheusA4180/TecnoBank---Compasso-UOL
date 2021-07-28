@@ -6,6 +6,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.tecnobank.R
 import com.example.tecnobank.data.local.SharedPreferenceServices
+import com.example.tecnobank.data.local.database.ExtractDAO
+import com.example.tecnobank.data.local.database.ExtractDatabase
 import com.example.tecnobank.data.remote.EndPoint
 import com.example.tecnobank.extract.repository.ExtractRepositoty
 import com.example.tecnobank.extract.viewmodel.ExtractViewModel
@@ -24,7 +26,7 @@ import com.example.tecnobank.intro.viewmodel.LoginViewModel
 import com.example.tecnobank.intro.viewmodel.OnBoardingViewModel
 import com.example.tecnobank.intro.viewmodel.SplashViewModel
 
-class ViewModelFactory(private val context: Context): ViewModelProvider.Factory {
+class ViewModelFactory(private val context: Context) : ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         if (modelClass == SplashViewModel::class.java) {
             return providerSplashViewModel() as T
@@ -41,7 +43,7 @@ class ViewModelFactory(private val context: Context): ViewModelProvider.Factory 
         if (modelClass == ExtractViewModel::class.java) {
             return providerExtractViewModel() as T
         }
-        if (modelClass == PixOnBordingViewModel::class.java){
+        if (modelClass == PixOnBordingViewModel::class.java) {
             return providerPixOnBordingViewModel() as T
         }
         if (modelClass == PixValueRequestViewModel::class.java) {
@@ -104,9 +106,18 @@ class ViewModelFactory(private val context: Context): ViewModelProvider.Factory 
     private fun providerExtractViewModel(): ExtractViewModel {
         return ExtractViewModel(
             ExtractRepositoty(
-                providerEndPointInstance()
+                providerEndPointInstance(),
+                providerExtractDAO(providerExtractDatabase())
             )
         )
+    }
+
+    private fun providerExtractDAO(extractDatabase: ExtractDatabase): ExtractDAO {
+        return extractDatabase.extractDAO()
+    }
+
+    private fun providerExtractDatabase(): ExtractDatabase {
+        return ExtractDatabase.getInstance(context)
     }
 
     private fun providerPixValueRequestViewModel(): PixValueRequestViewModel {
