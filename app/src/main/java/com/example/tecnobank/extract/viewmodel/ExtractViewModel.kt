@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.tecnobank.data.remote.model.extract.ExtractResponse
+import com.example.tecnobank.extension.HelperFunctions.formatDate
 import com.example.tecnobank.extension.HelperFunctions.getDateMonthFormat
 import com.example.tecnobank.extract.recyclerview.ListExtractsAdapter.Companion.CANCELED
 import com.example.tecnobank.extract.recyclerview.ListExtractsAdapter.Companion.EXPENSE
@@ -33,9 +34,6 @@ class ExtractViewModel(private val extractRepository: ExtractRepositoty) : ViewM
         )
         this.dateFilterEnd = formatDate(Calendar.getInstance().time)
     }
-
-    private fun formatDate(date: Date): String =
-        SimpleDateFormat("dd/MM/yyyy").format(date)
 
     private val _responseErro = MutableLiveData<String>()
     val responseErro: LiveData<String> = _responseErro
