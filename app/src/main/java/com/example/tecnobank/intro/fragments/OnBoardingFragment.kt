@@ -12,7 +12,6 @@ import com.example.tecnobank.databinding.OnboardingFragmentBinding
 import com.example.tecnobank.intro.viewmodel.OnBoardingViewModel
 import com.example.tecnobank.viewmodelfactory.ViewModelFactory
 
-
 class OnBoardingFragment : Fragment() {
 
     private var _binding: OnboardingFragmentBinding? = null
@@ -42,10 +41,12 @@ class OnBoardingFragment : Fragment() {
         viewModel.goToLogin.observe(viewLifecycleOwner, {
             findNavController().navigate(R.id.acao_onbordingfragment_para_loginfragment)
         })
+
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
+
 }

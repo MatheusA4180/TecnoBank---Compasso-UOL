@@ -96,5 +96,4 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
             _rememberUserToogle.postValue(Unit)
         }
     }
-
 }

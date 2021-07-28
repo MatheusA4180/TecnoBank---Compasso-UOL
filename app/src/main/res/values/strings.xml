@@ -38,7 +38,7 @@
     <string name="bt_extract_1">Todos</string>
     <string name="bt_extract_3">Saídas</string>
     <string name="text_extract_1">Você não possui transações</string>
-    <string name="text_extract_2">nos últimos três dias.</string>
+    <string name="text_extract_2">nos últimos 7 dias.</string>
     <string name="title_extract">Extrato de Transações</string>
     <string name="title_filter">Filtros</string>
     <string name="title_filter_1">Selecione o período</string>
@@ -73,13 +73,13 @@
     <string name="free_card_3">GRÁTIS!</string>
     <string name="title_card_4_pix">Pagar com Pix Copia e Cola</string>
     <string name="text_card_4_pix">Cole o código do QR que você copiou para pagar.</string>
-    <string name="title_5_pix">Receber</string>
+    <string name="title_5_pix">Vender</string>
     <string name="free_card_4">GRÁTIS!</string>
     <string name="title_card_5_pix">Receber com QR code</string>
     <string name="text_card_5_pix">Crie um QR Code para receber dinheiro na hora.</string>
     <string name="title_6_pix">Minhas chaves ativas</string>
     <string name="text_6_pix">Você ainda não tem chaves cadastradas</string>
-    <string name="text_7_pix">Cadastre chaves para receber transferências grátis de forma fácil e rápida.</string>
+    <string name="text_7_pix">Compartilhe suas chaves ou seus dados báncarios para receber transferências grátis.</string>
     <string name="title_7_pix">CADASTRAR CHAVES</string>
     <string name="text_8_pix">Encontre as respostas que precisa ou entre em contato com a gente</string>
     <string name="title_info_shopping">TEM CASHBACK</string>
@@ -199,4 +199,9 @@
     <string name="tecnobank_cards_subtitle_12">Cartão Pré-Pago</string>
     <string name="tecnobank_cards_subtitle_13">Controle seus gastos e recarregue quando precisar:</string>
     <string name="tecnobank_cards_subtitle_14">Sem fatura e sem preocupação no final do mês</string>
+    <string name="list_filter_item_1">Últimos 3 dias</string>
+    <string name="list_filter_item_2">Últimos 7 dias</string>
+    <string name="list_filter_item_3">Últimos 30 dias</string>
+    <string name="list_filter_item_4">Últimos 60 dias</string>
+    <string name="list_filter_item_5">Últimos 120 dias</string>
 </resources>

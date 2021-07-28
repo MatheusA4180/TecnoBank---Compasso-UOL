@@ -1,4 +1,4 @@
-package com.example.tecnobank.sales.fragments
+package com.example.tecnobank.sales.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,16 +9,15 @@ import com.example.tecnobank.databinding.SalesFragmentBinding
 
 class SalesFragment : Fragment() {
 
-    private var _binding: SalesFragmentBinding? = null
-    private val binding: SalesFragmentBinding get() = _binding!!
+    private var binding: SalesFragmentBinding? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = SalesFragmentBinding.inflate(inflater, container, false)
-        return _binding!!.root
+        binding = SalesFragmentBinding.inflate(inflater, container, false)
+        return binding!!.root
     }
 
 }

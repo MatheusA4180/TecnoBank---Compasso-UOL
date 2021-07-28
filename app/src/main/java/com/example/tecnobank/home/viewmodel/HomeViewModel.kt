@@ -8,7 +8,7 @@ import com.example.tecnobank.data.remote.model.home.BalanceBenefitsResponse
 import com.example.tecnobank.home.repository.HomeRepository
 import kotlinx.coroutines.launch
 
-class HomeViewModel(private val homeRepository: HomeRepository):ViewModel() {
+class HomeViewModel(private val homeRepository: HomeRepository) : ViewModel() {
 
     private val _balanceVisible = MutableLiveData<Boolean>()
     val balanceVisible: LiveData<Boolean> = _balanceVisible
@@ -22,7 +22,7 @@ class HomeViewModel(private val homeRepository: HomeRepository):ViewModel() {
     fun onOpenHome() {
         viewModelScope.launch {
             try {
-                _responseSucess.postValue(homeRepository.balancesAndBenefits())
+                _responseSucess.postValue(homeRepository.BalancesAndBenefits())
             } catch (e: Exception) {
                 _responseErro.postValue(e.message)
             }

@@ -1,16 +1,18 @@
-package com.example.tecnobank.intro
+package com.example.tecnobank.extract.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.example.tecnobank.databinding.FilterActivityBinding
 import com.example.tecnobank.databinding.IntroActivityBinding
 
+class FilterActivity : AppCompatActivity() {
 
-class IntroActivity : AppCompatActivity() {
-    private lateinit var binding: IntroActivityBinding
+    private lateinit var binding: FilterActivityBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = IntroActivityBinding.inflate(layoutInflater)
+
+        binding = FilterActivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
     }
 }

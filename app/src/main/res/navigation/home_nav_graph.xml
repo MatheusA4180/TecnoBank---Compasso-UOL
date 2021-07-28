@@ -3,26 +3,50 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/home_nav_graph"
-    app:startDestination="@id/inicioFragment">
+    app:startDestination="@id/homeFragment">
 
     <fragment
-        android:id="@+id/inicioFragment"
-        android:name="com.example.tecnobank.home.fragments.homeFragment"
+        android:id="@+id/homeFragment"
+        android:name="com.example.tecnobank.home.fragments.HomeFragment"
         android:label="inicio"
-        tools:layout="@layout/home_fragment" />
+        tools:layout="@layout/home_fragment">
+        <action
+            android:id="@+id/action_homeFragment_to_pixQrCodeActivity"
+            app:destination="@id/pixQrCodeActivity" />
+        <action
+            android:id="@+id/action_homeFragment_to_cardsFragment"
+            app:destination="@id/cardsFragment" />
+
+    </fragment>
     <fragment
-        android:id="@+id/extratoFragment"
+        android:id="@+id/extractFragment"
         android:name="com.example.tecnobank.extract.fragments.ExtractFragment"
         android:label="extrato"
-        tools:layout="@layout/extract_fragment" />
+        tools:layout="@layout/extract_fragment">
+        <action
+            android:id="@+id/action_extratoFragment_to_filterActivity"
+            app:destination="@id/filterActivity" />
+    </fragment>
     <fragment
-        android:id="@+id/cartoesFragment"
-        android:name="com.example.tecnobank.cards.fragments.CardsFragment"
+        android:id="@+id/cardsFragment"
+        android:name="com.example.tecnobank.cards.fragment.CardsFragment"
         android:label="cartoes"
-        tools:layout="@layout/sales_fragment" />
+        tools:layout="@layout/cards_fragment">
+
+    </fragment>
     <fragment
-        android:id="@+id/vendasFragment"
-        android:name="com.example.tecnobank.sales.fragments.SalesFragment"
+        android:id="@+id/salesFragment"
+        android:name="com.example.tecnobank.sales.fragment.SalesFragment"
         android:label="vendas"
-        tools:layout="@layout/cards_fragment" />
+        tools:layout="@layout/sales_fragment" />
+    <activity
+        android:id="@+id/filterActivity"
+        android:name="com.example.tecnobank.extract.activity.FilterActivity"
+        android:label="complement_activity"
+        tools:layout="@layout/filter_activity" />
+    <activity
+        android:id="@+id/pixQrCodeActivity"
+        android:name="com.example.tecnobank.home.activity.services.PixQrCodeActivity"
+        android:label="PixQrCodeActivity"
+        tools:layout="@layout/pix_qr_code_fragment" />
 </navigation>

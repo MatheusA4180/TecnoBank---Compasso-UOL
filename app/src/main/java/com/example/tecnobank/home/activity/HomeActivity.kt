@@ -1,4 +1,4 @@
-package com.example.tecnobank.home
+package com.example.tecnobank.home.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -25,4 +25,5 @@ class HomeActivity : AppCompatActivity() {
         )
 
     }
+
 }

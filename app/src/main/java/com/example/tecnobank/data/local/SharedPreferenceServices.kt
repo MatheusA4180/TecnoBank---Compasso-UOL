@@ -27,9 +27,9 @@ class SharedPreferenceServices(private val preferences: SharedPreferences) {
         }
     }
 
-    fun getUserEmail(): String? = preferences.getString(USER, "")
+    fun getUserEmail(): String = preferences.getString(USER, "")!!
 
-    fun getUserPassword(): String? = preferences.getString(PASSWORD, "")
+    fun getUserPassword(): String = preferences.getString(PASSWORD, "")!!
 
     fun saveTokenAuthentication(tokenAuthentication: String) {
         preferences.edit {
@@ -37,8 +37,7 @@ class SharedPreferenceServices(private val preferences: SharedPreferences) {
         }
     }
 
-    fun getSaveTokenAuthentication(): String? =
-        preferences.getString(TOKEN_AUTHENTICATION, "")
+    fun getSaveTokenAuthentication(): String = preferences.getString(TOKEN_AUTHENTICATION, "")!!
 
     companion object {
         private const val PASS_TO_ONBOARDING = "Passou"
@@ -46,4 +45,5 @@ class SharedPreferenceServices(private val preferences: SharedPreferences) {
         private const val PASSWORD = "Password"
         private const val TOKEN_AUTHENTICATION = "TokenAuthentication"
     }
+
 }

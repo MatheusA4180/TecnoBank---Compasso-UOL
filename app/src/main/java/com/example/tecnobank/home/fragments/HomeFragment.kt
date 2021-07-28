@@ -10,20 +10,21 @@ import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tecnobank.R
 import com.example.tecnobank.data.remote.model.home.BalanceBenefitsResponse
 import com.example.tecnobank.databinding.HomeFragmentBinding
 import com.example.tecnobank.extension.HelperFunctions.converterToReal
-import com.example.tecnobank.home.adapter.ViewPagerAdapter
+import com.example.tecnobank.home.adapter.ViewPagerServicesAdapter
 import com.example.tecnobank.home.recyclerview.ListBenefitsAdapter
 import com.example.tecnobank.home.recyclerview.PagerDecoratorDots
 import com.example.tecnobank.home.viewmodel.HomeViewModel
 import com.example.tecnobank.viewmodelfactory.ViewModelFactory
 import com.google.android.material.tabs.TabLayoutMediator
 
+class HomeFragment : Fragment() {
 
-class homeFragment : Fragment() {
     private var _binding: HomeFragmentBinding? = null
     private val binding: HomeFragmentBinding get() = _binding!!
     private lateinit var viewModel: HomeViewModel
@@ -47,7 +48,7 @@ class homeFragment : Fragment() {
         viewModel.onOpenHome()
 
         viewModel.responseSucess.observe(viewLifecycleOwner, {
-            binding.cardBenefitsAndHelp.isVisible = true
+            binding.listBenefits.isVisible = true
             binding.currentValue.text = converterToReal(it.balance.currentValue.toDouble())
             binding.receivables.text = converterToReal(it.balance.receivables.toDouble())
             recyclerViewConfig(it.benefits)
@@ -59,10 +60,6 @@ class homeFragment : Fragment() {
 
         binding.btVisibleBalance.setOnClickListener {
             viewModel.checkVisibleBalances()
-        }
-
-        binding.incompletSingUp.setOnClickListener {
-            binding.funcionalidadesFaltaPoucoBanner.isVisible = false
         }
 
         viewModel.balanceVisible.observe(viewLifecycleOwner, {
@@ -79,7 +76,7 @@ class homeFragment : Fragment() {
     }
 
     private fun viewPagerAndTabLayoutConfig() {
-        binding.pagerFunctionalities.adapter = ViewPagerAdapter(this)
+        binding.pagerFunctionalities.adapter = ViewPagerServicesAdapter(this)
         tabLayoutConfig()
     }
 
@@ -104,7 +101,6 @@ class homeFragment : Fragment() {
 
     private fun recyclerViewConfig(listBenefitsResponse: List<BalanceBenefitsResponse.Benefits>) {
         with(binding.listBenefits) {
-            isVisible = true
             adapter = ListBenefitsAdapter(listBenefitsResponse)
             dotsConfig()
         }
@@ -143,4 +139,3 @@ class homeFragment : Fragment() {
     }
 
 }
-

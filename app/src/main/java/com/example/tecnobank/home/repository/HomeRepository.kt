@@ -1,17 +1,18 @@
 package com.example.tecnobank.home.repository
 
-import com.example.tecnobank.data.remote.model.home.BalanceBenefitsResponse
 import com.example.tecnobank.data.local.SharedPreferenceServices
 import com.example.tecnobank.data.remote.EndPoint
+import com.example.tecnobank.data.remote.model.home.BalanceBenefitsResponse
 
 class HomeRepository(
-    private val endPointHome: EndPoint,
+    private val endPoint: EndPoint,
     private val sharedPreferenceServices: SharedPreferenceServices
 ) {
-    suspend fun balancesAndBenefits(): BalanceBenefitsResponse {
+    suspend fun BalancesAndBenefits(): BalanceBenefitsResponse {
 
-        val response = endPointHome.BalancesAndBenefits(
-            sharedPreferenceServices.getSaveTokenAuthentication()!!)
+        val response = endPoint.BalancesAndBenefits(
+            sharedPreferenceServices.getSaveTokenAuthentication()
+        )
 
         if (response.isSuccessful) {
             return response.body()!!

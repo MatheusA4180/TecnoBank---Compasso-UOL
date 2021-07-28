@@ -5,11 +5,16 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.cardview.widget.CardView
+import androidx.core.content.ContextCompat.getColor
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tecnobank.R
 
 class ListServicesAdapter(
     private val listServices: List<ItemService>,
+    private val clickedServiceListener: ClickedServiceListener,
+    private val positionViewPager: Int
 ) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
@@ -26,16 +31,33 @@ class ListServicesAdapter(
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (holder is CardServicesViewHolder) {
-            holder.icon.setImageResource(listServices[position].icon)
-            holder.title.text = listServices[position].title
+            holder.bind(listServices)
+            holder.itemView.setOnClickListener {
+                clickedServiceListener.clickServiceListener(position, positionViewPager)
+            }
         }
     }
 
     class CardServicesViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val icon: ImageView = itemView.findViewById(R.id.icon_services)
-        val title: TextView = itemView.findViewById(R.id.title_service)
+        private val cardDecor: CardView = itemView.findViewById(R.id.card_decor)
+        private val icon: ImageView = itemView.findViewById(R.id.icon_services)
+        private val title: TextView = itemView.findViewById(R.id.title_service)
+
+        fun bind(listServices: List<ItemService>) {
+            icon.setImageResource(listServices[position].icon)
+            cardDecor.isVisible = false
+            title.text = listServices[position].title
+        }
     }
 
-    data class ItemService(val title: String, val icon: Int)
+    data class ItemService(
+        val incompletService: Boolean,
+        val titleInfo: String?,
+        val title: String,
+        val icon: Int
+    )
 
+    interface ClickedServiceListener {
+        fun clickServiceListener(positionRecyclerView: Int, positionViewPager: Int)
+    }
 }
