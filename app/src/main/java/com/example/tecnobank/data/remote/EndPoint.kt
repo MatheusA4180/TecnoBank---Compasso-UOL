@@ -50,12 +50,10 @@ interface EndPoint {
         }
 
         private fun provideAuthClient(sharedPreference: SharedPreferenceServices): OkHttpClient {
-            val interceptor = HttpLoggingInterceptor()
-            interceptor.level = HttpLoggingInterceptor.Level.BODY
-            val client = OkHttpClient.Builder()
-            client.addInterceptor(AuthInterceptor(sharedPreference))
-            client.addInterceptor(interceptor)
-            return client.build()
+            return OkHttpClient.Builder().apply {
+                addInterceptor(HttpLoggingInterceptor().apply { level = HttpLoggingInterceptor.Level.BODY })
+                addInterceptor(AuthInterceptor(sharedPreference))
+            }.build()
         }
 
     }

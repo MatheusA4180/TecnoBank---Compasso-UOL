@@ -6,11 +6,11 @@ import okhttp3.Response
 
 class AuthInterceptor(private val sharedPreferences: SharedPreferenceServices):Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response {
-        val builder = chain.request().newBuilder()
-        if(sharedPreferences.getSaveTokenAuthentication() != "")
-        {
-            builder.addHeader("token",sharedPreferences.getSaveTokenAuthentication())
+        if(sharedPreferences.getSaveTokenAuthentication().isNotEmpty()){
+            return chain.proceed(chain.request().newBuilder().addHeader("token",
+                sharedPreferences.getSaveTokenAuthentication()).build())
+        }else{
+           return chain.proceed(chain.request().newBuilder().build())
         }
-        return chain.proceed(builder.build())
     }
 }
