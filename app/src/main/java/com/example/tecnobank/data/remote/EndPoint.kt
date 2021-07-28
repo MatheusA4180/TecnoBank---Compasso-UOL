@@ -9,6 +9,7 @@ import com.example.tecnobank.data.remote.model.pix.PixItensRequest
 import com.example.tecnobank.data.remote.model.pix.PixResponseConfirmation
 import com.example.tecnobank.data.remote.model.pix.PixResponseValidation
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -49,8 +50,11 @@ interface EndPoint {
         }
 
         private fun provideAuthClient(sharedPreference: SharedPreferenceServices): OkHttpClient {
+            val interceptor = HttpLoggingInterceptor()
+            interceptor.level = HttpLoggingInterceptor.Level.BODY
             val client = OkHttpClient.Builder()
             client.addInterceptor(AuthInterceptor(sharedPreference))
+            client.addInterceptor(interceptor)
             return client.build()
         }
 
