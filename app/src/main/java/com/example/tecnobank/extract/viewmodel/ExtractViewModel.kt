@@ -6,6 +6,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.tecnobank.data.remote.model.extract.ExtractResponse
 import com.example.tecnobank.extension.HelperFunctions.getDateMonthFormat
+import com.example.tecnobank.extract.recyclerview.ListExtractsAdapter.Companion.CANCELED
+import com.example.tecnobank.extract.recyclerview.ListExtractsAdapter.Companion.EXPENSE
 import com.example.tecnobank.extract.repository.ExtractRepositoty
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
@@ -15,13 +17,11 @@ class ExtractViewModel(private val extractRepository: ExtractRepositoty) : ViewM
 
     private lateinit var dateFilterStart: String
     private lateinit var dateFilterEnd: String
-    private var filterText = "últimos 7 dias"
     private var filterPosition: Int = 1
     private var listfilterDays: List<Int> = listOf(3, 7, 30, 60, 120)
     private lateinit var receivedListApi: List<ExtractResponse>
 
     fun onChangeDataFilter(filterText: String, filterPosition: Int) {
-        this.filterText = filterText
         this.filterPosition = filterPosition
         requestExtracts()
         _dataFilter.postValue("nos $filterText")
@@ -84,13 +84,13 @@ class ExtractViewModel(private val extractRepository: ExtractRepositoty) : ViewM
     }
 
     fun buttonPressedInputs() {
-        _extractList.postValue(mapItemsForAdapter(receivedListApi.filter{it.type!= "Despesa" &&
-                !it.time.contains("CANCELADA")}.toMutableList()))
+        _extractList.postValue(mapItemsForAdapter(receivedListApi.filter{it.type!= EXPENSE &&
+                !it.time.contains(CANCELED)}.toMutableList()))
     }
 
     fun buttonPressedExit() {
-        _extractList.postValue(mapItemsForAdapter(receivedListApi.filter{it.type == "Despesa" &&
-                !it.time.contains("CANCELADA")}.toMutableList()))
+        _extractList.postValue(mapItemsForAdapter(receivedListApi.filter{it.type == EXPENSE &&
+                !it.time.contains(CANCELED)}.toMutableList()))
     }
 
     open class ExtractItemAdapter
