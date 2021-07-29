@@ -11,10 +11,8 @@ class PixViewModel(private val pixRepository: PixRepository): ViewModel() {
     val servicesToPixOnBoarding: LiveData<Unit> = _servicesToPixOnBoarding
     private val _servicesToPix = MutableLiveData<Unit>()
     val servicesToPix: LiveData<Unit> = _servicesToPix
-    private val _goToPix = MutableLiveData<Unit>()
-    val goToPix: LiveData<Unit> = _goToPix
 
-    fun onClickPixService(){
+    fun passedOrNoPassedForPixOnbording(){
         if (pixRepository.passedByPixOnBoarding()) {
             _servicesToPix.postValue(Unit)
         } else {
@@ -22,8 +20,4 @@ class PixViewModel(private val pixRepository: PixRepository): ViewModel() {
         }
     }
 
-    fun onClickStartPix(){
-        pixRepository.saveUserPassPixOnboarding()
-        _goToPix.postValue(Unit)
-    }
 }

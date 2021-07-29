@@ -5,10 +5,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.tecnobank.R
 import com.example.tecnobank.databinding.PixOnboardingFragmentBinding
+import com.example.tecnobank.home.viewmodel.PixOnBoardingViewModel
 import com.example.tecnobank.home.viewmodel.PixViewModel
 import com.example.tecnobank.viewmodelfactory.ViewModelFactory
 
@@ -16,7 +19,7 @@ class PixOnBordingFragment : Fragment() {
 
     private var _binding: PixOnboardingFragmentBinding? = null
     private val binding: PixOnboardingFragmentBinding get() = _binding!!
-    private lateinit var viewModel: PixViewModel
+    private lateinit var viewModel: PixOnBoardingViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -33,16 +36,18 @@ class PixOnBordingFragment : Fragment() {
         viewModel = ViewModelProvider(
             this,
             ViewModelFactory(requireContext())
-        ).get(PixViewModel::class.java)
+        ).get(PixOnBoardingViewModel::class.java)
 
         binding.closeOnBording.setOnClickListener {
             requireActivity().finish()
         }
 
+        viewModel.goToPix.observe(viewLifecycleOwner,{
+            findNavController().navigate(R.id.action_pixOnBordingFragment_to_pixQrCodeFragment)
+        })
+
         binding.btContinue.setOnClickListener {
             viewModel.onClickStartPix()
-            findNavController().navigate(R.id.action_pixOnBordingFragment_to_pixQrCodeActivity2)
-            requireActivity().finish()
         }
     }
 

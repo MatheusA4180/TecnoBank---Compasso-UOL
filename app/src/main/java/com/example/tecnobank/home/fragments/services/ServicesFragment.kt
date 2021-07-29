@@ -31,20 +31,6 @@ class ServicesFragment : Fragment(), ListServicesAdapter.ClickedServiceListener 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
-        viewModel = ViewModelProvider(
-            this,
-            ViewModelFactory(requireContext())
-        ).get(PixViewModel::class.java)
-
-
-        viewModel.servicesToPixOnBoarding.observe(viewLifecycleOwner, {
-            findNavController().navigate(R.id.action_homeFragment_to_pixOnBordingActivity)
-        })
-
-        viewModel.servicesToPix.observe(viewLifecycleOwner, {
-            findNavController().navigate(R.id.action_homeFragment_to_pixQrCodeActivity)
-        })
-
         binding.listServices.adapter =
             ListServicesAdapter(
                 getServicesByPage(
@@ -175,7 +161,7 @@ class ServicesFragment : Fragment(), ListServicesAdapter.ClickedServiceListener 
         if ((positionViewPager == MAIN_SERVICES) && (positionRecyclerView == CARDS_FEATURE)) {
             findNavController().navigate(R.id.action_homeFragment_to_cardsFragment)
         } else if ((positionViewPager == MAIN_SERVICES) && (positionRecyclerView == PIX_FEATURE)) {
-            viewModel.onClickPixService()
+            findNavController().navigate(R.id.action_homeFragment_to_pixQrCodeActivity)
         }
     }
 

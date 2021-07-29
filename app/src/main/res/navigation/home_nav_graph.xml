@@ -16,10 +16,6 @@
         <action
             android:id="@+id/action_homeFragment_to_cardsFragment"
             app:destination="@id/cardsFragment" />
-        <action
-            android:id="@+id/action_homeFragment_to_pixOnBordingActivity"
-            app:destination="@id/pixOnBordingActivity" />
-
     </fragment>
     <fragment
         android:id="@+id/extractFragment"

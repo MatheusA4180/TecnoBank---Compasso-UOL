@@ -21,7 +21,7 @@ class HomeActivity : AppCompatActivity() {
 
         binding.bottomNavigation.setupWithNavController(
             (supportFragmentManager
-                .findFragmentById(R.id.navHostFragment) as NavHostFragment).navController
+                .findFragmentById(R.id.navHostFragmentPix) as NavHostFragment).navController
         )
 
     }
