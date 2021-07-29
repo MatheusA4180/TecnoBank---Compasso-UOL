@@ -13,7 +13,6 @@ import com.example.tecnobank.home.repository.HomeRepository
 import com.example.tecnobank.home.repository.PixRepository
 import com.example.tecnobank.home.viewmodel.HomeViewModel
 import com.example.tecnobank.home.viewmodel.PixOnBoardingViewModel
-import com.example.tecnobank.home.viewmodel.PixViewModel
 import com.example.tecnobank.intro.repository.LoginRepository
 import com.example.tecnobank.intro.repository.OnBoardingRepository
 import com.example.tecnobank.intro.repository.SplashRepository
@@ -40,9 +39,6 @@ class ViewModelFactory(private val context: Context): ViewModelProvider.Factory 
         }
         if (modelClass == PixOnBoardingViewModel::class.java) {
             return providerPixOnBordingViewModel() as T
-        }
-        if (modelClass == PixViewModel::class.java) {
-            return providerPixViewModel() as T
         }
         throw Exception("ViewModel não encotrado")
     }
@@ -81,16 +77,6 @@ class ViewModelFactory(private val context: Context): ViewModelProvider.Factory 
             HomeRepository(
                 providerEndPointInstance(),
                 providerSharedPreferenceService(providerSharedPreference())
-            )
-        )
-    }
-
-    private fun providerPixViewModel(): PixViewModel {
-        return PixViewModel(
-            PixRepository(
-                providerSharedPreferenceService(
-                    providerSharedPreference()
-                )
             )
         )
     }

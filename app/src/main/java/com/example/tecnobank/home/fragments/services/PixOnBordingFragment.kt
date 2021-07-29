@@ -5,14 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.tecnobank.R
 import com.example.tecnobank.databinding.PixOnboardingFragmentBinding
 import com.example.tecnobank.home.viewmodel.PixOnBoardingViewModel
-import com.example.tecnobank.home.viewmodel.PixViewModel
 import com.example.tecnobank.viewmodelfactory.ViewModelFactory
 
 class PixOnBordingFragment : Fragment() {
