@@ -3,9 +3,9 @@ package com.example.tecnobank.home.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.tecnobank.home.repository.PixOnBordingRepository
+import com.example.tecnobank.home.repository.PixRepository
 
-class PixOnBordingViewModel(private val pixOnBordingRepository: PixOnBordingRepository): ViewModel() {
+class PixViewModel(private val pixRepository: PixRepository): ViewModel() {
 
     private val _servicesToPixOnBoarding = MutableLiveData<Unit>()
     val servicesToPixOnBoarding: LiveData<Unit> = _servicesToPixOnBoarding
@@ -15,7 +15,7 @@ class PixOnBordingViewModel(private val pixOnBordingRepository: PixOnBordingRepo
     val goToPix: LiveData<Unit> = _goToPix
 
     fun onClickPixService(){
-        if (pixOnBordingRepository.passedByPixOnBoarding()) {
+        if (pixRepository.passedByPixOnBoarding()) {
             _servicesToPix.postValue(Unit)
         } else {
             _servicesToPixOnBoarding.postValue(Unit)
@@ -23,7 +23,7 @@ class PixOnBordingViewModel(private val pixOnBordingRepository: PixOnBordingRepo
     }
 
     fun onClickStartPix(){
-        pixOnBordingRepository.saveUserPassPixOnboarding()
+        pixRepository.saveUserPassPixOnboarding()
         _goToPix.postValue(Unit)
     }
 }

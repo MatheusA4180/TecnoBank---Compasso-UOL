@@ -9,15 +9,14 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.tecnobank.R
 import com.example.tecnobank.databinding.PixOnboardingFragmentBinding
-import com.example.tecnobank.databinding.PixQrCodeFragmentBinding
-import com.example.tecnobank.home.viewmodel.PixOnBordingViewModel
+import com.example.tecnobank.home.viewmodel.PixViewModel
 import com.example.tecnobank.viewmodelfactory.ViewModelFactory
 
 class PixOnBordingFragment : Fragment() {
 
     private var _binding: PixOnboardingFragmentBinding? = null
     private val binding: PixOnboardingFragmentBinding get() = _binding!!
-    private lateinit var viewModel: PixOnBordingViewModel
+    private lateinit var viewModel: PixViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -34,7 +33,7 @@ class PixOnBordingFragment : Fragment() {
         viewModel = ViewModelProvider(
             this,
             ViewModelFactory(requireContext())
-        ).get(PixOnBordingViewModel::class.java)
+        ).get(PixViewModel::class.java)
 
         binding.closeOnBording.setOnClickListener {
             requireActivity().finish()
@@ -45,5 +44,10 @@ class PixOnBordingFragment : Fragment() {
             findNavController().navigate(R.id.action_pixOnBordingFragment_to_pixQrCodeActivity2)
             requireActivity().finish()
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

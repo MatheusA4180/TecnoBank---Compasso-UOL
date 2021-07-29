@@ -10,9 +10,9 @@ import com.example.tecnobank.data.remote.EndPoint
 import com.example.tecnobank.extract.repository.ExtractRepositoty
 import com.example.tecnobank.extract.viewmodel.ExtractViewModel
 import com.example.tecnobank.home.repository.HomeRepository
-import com.example.tecnobank.home.repository.PixOnBordingRepository
+import com.example.tecnobank.home.repository.PixRepository
 import com.example.tecnobank.home.viewmodel.HomeViewModel
-import com.example.tecnobank.home.viewmodel.PixOnBordingViewModel
+import com.example.tecnobank.home.viewmodel.PixViewModel
 import com.example.tecnobank.intro.repository.LoginRepository
 import com.example.tecnobank.intro.repository.OnBoardingRepository
 import com.example.tecnobank.intro.repository.SplashRepository
@@ -37,7 +37,7 @@ class ViewModelFactory(private val context: Context): ViewModelProvider.Factory 
         if (modelClass == ExtractViewModel::class.java) {
             return providerExtractViewModel() as T
         }
-        if (modelClass == PixOnBordingViewModel::class.java){
+        if (modelClass == PixViewModel::class.java){
             return providerPixOnBordingViewModel() as T
         }
         throw Exception("ViewModel não encotrado")
@@ -81,9 +81,9 @@ class ViewModelFactory(private val context: Context): ViewModelProvider.Factory 
         )
     }
 
-    private fun providerPixOnBordingViewModel(): PixOnBordingViewModel {
-        return PixOnBordingViewModel(
-            PixOnBordingRepository(
+    private fun providerPixOnBordingViewModel(): PixViewModel {
+        return PixViewModel(
+            PixRepository(
                 providerSharedPreferenceService(
                     providerSharedPreference()
                 )

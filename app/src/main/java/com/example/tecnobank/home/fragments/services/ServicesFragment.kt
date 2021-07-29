@@ -11,14 +11,14 @@ import com.example.tecnobank.R
 import com.example.tecnobank.databinding.PageFunctionalitiesBinding
 import com.example.tecnobank.home.adapter.ViewPagerServicesAdapter.Companion.POSITION_VIEW_PAGER_SERVICES
 import com.example.tecnobank.home.recyclerview.ListServicesAdapter
-import com.example.tecnobank.home.viewmodel.PixOnBordingViewModel
+import com.example.tecnobank.home.viewmodel.PixViewModel
 import com.example.tecnobank.viewmodelfactory.ViewModelFactory
 
 class ServicesFragment : Fragment(), ListServicesAdapter.ClickedServiceListener {
 
     private var _binding: PageFunctionalitiesBinding? = null
     private val binding: PageFunctionalitiesBinding get() = _binding!!
-    private lateinit var viewModel: PixOnBordingViewModel
+    private lateinit var viewModel: PixViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -34,7 +34,7 @@ class ServicesFragment : Fragment(), ListServicesAdapter.ClickedServiceListener 
         viewModel = ViewModelProvider(
             this,
             ViewModelFactory(requireContext())
-        ).get(PixOnBordingViewModel::class.java)
+        ).get(PixViewModel::class.java)
 
 
         viewModel.servicesToPixOnBoarding.observe(viewLifecycleOwner, {
@@ -172,10 +172,16 @@ class ServicesFragment : Fragment(), ListServicesAdapter.ClickedServiceListener 
 
     override fun clickServiceListener(positionRecyclerView: Int, positionViewPager: Int) {
 
-        if ((positionRecyclerView == 1) && (positionViewPager == 0)) {
+        if ((positionViewPager == MAIN_SERVICES) && (positionRecyclerView == CARDS_FEATURE)) {
             findNavController().navigate(R.id.action_homeFragment_to_cardsFragment)
-        } else if ((positionRecyclerView == 5) && (positionViewPager == 0)) {
+        } else if ((positionViewPager == MAIN_SERVICES) && (positionRecyclerView == PIX_FEATURE)) {
             viewModel.onClickPixService()
         }
+    }
+
+    companion object {
+        private const val MAIN_SERVICES = 0
+        private const val PIX_FEATURE = 5
+        private const val CARDS_FEATURE = 1
     }
 }
