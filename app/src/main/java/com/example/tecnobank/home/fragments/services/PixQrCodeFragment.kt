@@ -29,4 +29,9 @@ class PixQrCodeFragment : Fragment() {
             requireActivity().finish()
         }
     }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 }

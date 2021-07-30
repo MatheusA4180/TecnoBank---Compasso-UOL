@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.tecnobank">
-    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -10,14 +11,18 @@
         android:roundIcon="@mipmap/ic_launcher_custom_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Tecnobank">
-
+        <activity android:name=".home.activity.services.PixOnBordingActivity"
+            android:screenOrientation="portrait"/>
         <activity android:name=".home.activity.services.PixQrCodeActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".extract.activity.FilterActivity"
+        <activity
+            android:name=".extract.activity.FilterActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".home.activity.HomeActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".intro.activity.IntroActivity"
+        <activity
+            android:name=".home.activity.HomeActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".intro.activity.IntroActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

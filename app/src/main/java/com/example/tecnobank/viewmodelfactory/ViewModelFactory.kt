@@ -10,7 +10,9 @@ import com.example.tecnobank.data.remote.EndPoint
 import com.example.tecnobank.extract.repository.ExtractRepositoty
 import com.example.tecnobank.extract.viewmodel.ExtractViewModel
 import com.example.tecnobank.home.repository.HomeRepository
+import com.example.tecnobank.home.repository.PixRepository
 import com.example.tecnobank.home.viewmodel.HomeViewModel
+import com.example.tecnobank.home.viewmodel.PixOnBoardingViewModel
 import com.example.tecnobank.intro.repository.LoginRepository
 import com.example.tecnobank.intro.repository.OnBoardingRepository
 import com.example.tecnobank.intro.repository.SplashRepository
@@ -34,6 +36,9 @@ class ViewModelFactory(private val context: Context): ViewModelProvider.Factory 
         }
         if (modelClass == ExtractViewModel::class.java) {
             return providerExtractViewModel() as T
+        }
+        if (modelClass == PixOnBoardingViewModel::class.java) {
+            return providerPixOnBordingViewModel() as T
         }
         throw Exception("ViewModel não encotrado")
     }
@@ -76,6 +81,16 @@ class ViewModelFactory(private val context: Context): ViewModelProvider.Factory 
         )
     }
 
+    private fun providerPixOnBordingViewModel(): PixOnBoardingViewModel {
+        return PixOnBoardingViewModel(
+            PixRepository(
+                providerSharedPreferenceService(
+                    providerSharedPreference()
+                )
+            )
+        )
+    }
+
     private fun providerExtractViewModel(): ExtractViewModel {
         return ExtractViewModel(
             ExtractRepositoty(
@@ -100,5 +115,4 @@ class ViewModelFactory(private val context: Context): ViewModelProvider.Factory 
             R.string.preference_file_key.toString(), Context.MODE_PRIVATE
         )
     }
-
 }
