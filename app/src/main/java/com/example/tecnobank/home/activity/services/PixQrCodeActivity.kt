@@ -18,24 +18,16 @@ class PixQrCodeActivity : AppCompatActivity() {
         binding = PixQrCodeActivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-//        (supportFragmentManager.findFragmentById(R.id.navHostFragmentPix) as NavHostFragment)
-//            .navController.graph.startDestination = if (args.passedToPixOnbording) {
-//            R.id.pixQrCodeFragment
-//        } else {
-//            R.id.pixOnBordingFragment
-//        }
-
-        val navHostFragment = (supportFragmentManager.findFragmentById(R.id.navHostFragmentPix) as NavHostFragment)
+        val navHostFragment = (supportFragmentManager
+            .findFragmentById(R.id.navHostFragmentPix) as NavHostFragment)
         val inflater = navHostFragment.navController.navInflater
         val graph = inflater.inflate(R.navigation.pix_qr_code_nav_graph)
-
-        if(args.passedToPixOnbording){
-            graph.startDestination = R.id.pixQrCodeFragment
-
-        }else{
-            graph.startDestination = R.id.pixOnBordingFragment
+        graph.startDestination = if (args.passedToPixOnbording) {
+            R.id.pixQrCodeFragment
+        } else {
+            R.id.pixOnBordingFragment
         }
-
         navHostFragment.navController.graph = graph
+
     }
 }
