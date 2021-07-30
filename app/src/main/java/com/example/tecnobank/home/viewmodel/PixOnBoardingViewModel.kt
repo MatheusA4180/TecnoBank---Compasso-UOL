@@ -14,5 +14,4 @@ class PixOnBoardingViewModel(private val pixRepository: PixRepository): ViewMode
         pixRepository.saveUserPassPixOnboarding()
         _goToPix.postValue(Unit)
     }
-
 }
