@@ -35,10 +35,6 @@ class PixFinishFragment: Fragment() {
             emailFinishPix.text = "${emailFinishPix.text}  ${args.email}"
         }
 
-        binding.backToTranfer.setOnClickListener {
-            findNavController().navigate(R.id.action_pixFinishFragment_to_pixModeTransferFragment)
-        }
-
         binding.backToHome.setOnClickListener {
             requireActivity().finish()
         }
