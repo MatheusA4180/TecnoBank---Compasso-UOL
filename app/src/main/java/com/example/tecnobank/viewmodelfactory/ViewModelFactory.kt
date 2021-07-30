@@ -11,11 +11,9 @@ import com.example.tecnobank.extract.repository.ExtractRepositoty
 import com.example.tecnobank.extract.viewmodel.ExtractViewModel
 import com.example.tecnobank.home.repository.HomeRepository
 import com.example.tecnobank.home.repository.PixConfirmationRepository
-import com.example.tecnobank.home.repository.PixOnBordingRepository
 import com.example.tecnobank.home.repository.PixValueRequestRepository
 import com.example.tecnobank.home.viewmodel.HomeViewModel
 import com.example.tecnobank.home.viewmodel.PixConfirmationViewModel
-import com.example.tecnobank.home.viewmodel.PixOnBordingViewModel
 import com.example.tecnobank.home.viewmodel.PixValueRequestViewModel
 import com.example.tecnobank.intro.repository.LoginRepository
 import com.example.tecnobank.intro.repository.OnBoardingRepository
@@ -40,9 +38,6 @@ class ViewModelFactory(private val context: Context): ViewModelProvider.Factory 
         }
         if (modelClass == ExtractViewModel::class.java) {
             return providerExtractViewModel() as T
-        }
-        if (modelClass == PixOnBordingViewModel::class.java){
-            return providerPixOnBordingViewModel() as T
         }
         if (modelClass == PixValueRequestViewModel::class.java) {
             return providerPixValueRequestViewModel() as T
@@ -87,16 +82,6 @@ class ViewModelFactory(private val context: Context): ViewModelProvider.Factory 
             HomeRepository(
                 providerEndPointInstance(),
                 providerSharedPreferenceService(providerSharedPreference())
-            )
-        )
-    }
-
-    private fun providerPixOnBordingViewModel(): PixOnBordingViewModel {
-        return PixOnBordingViewModel(
-            PixOnBordingRepository(
-                providerSharedPreferenceService(
-                    providerSharedPreference()
-                )
             )
         )
     }
