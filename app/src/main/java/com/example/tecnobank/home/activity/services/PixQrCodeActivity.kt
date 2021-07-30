@@ -18,11 +18,8 @@ class PixQrCodeActivity : AppCompatActivity() {
         binding = PixQrCodeActivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-         var showFragment =
-            (supportFragmentManager.findFragmentById(R.id.navHostFragmentPix) as NavHostFragment)
-                .navController.graph.startDestination
-
-        showFragment = if (args.passedToPixOnbording) {
+        (supportFragmentManager.findFragmentById(R.id.navHostFragmentPix) as NavHostFragment)
+            .navController.graph.startDestination = if (args.passedToPixOnbording) {
             R.id.pixQrCodeFragment
         } else {
             R.id.pixOnBordingFragment
