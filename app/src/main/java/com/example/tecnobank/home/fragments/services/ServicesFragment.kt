@@ -1,24 +1,24 @@
 package com.example.tecnobank.home.fragments.services
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.tecnobank.R
+import com.example.tecnobank.data.local.SharedPreferenceServices
 import com.example.tecnobank.databinding.PageFunctionalitiesBinding
 import com.example.tecnobank.home.adapter.ViewPagerServicesAdapter.Companion.POSITION_VIEW_PAGER_SERVICES
+import com.example.tecnobank.home.fragments.HomeFragmentDirections
 import com.example.tecnobank.home.recyclerview.ListServicesAdapter
-import com.example.tecnobank.home.viewmodel.PixOnBordingViewModel
-import com.example.tecnobank.viewmodelfactory.ViewModelFactory
 
 class ServicesFragment : Fragment(), ListServicesAdapter.ClickedServiceListener {
 
     private var _binding: PageFunctionalitiesBinding? = null
     private val binding: PageFunctionalitiesBinding get() = _binding!!
-    private lateinit var viewModel: PixOnBordingViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -30,20 +30,6 @@ class ServicesFragment : Fragment(), ListServicesAdapter.ClickedServiceListener 
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-
-        viewModel = ViewModelProvider(
-            this,
-            ViewModelFactory(requireContext())
-        ).get(PixOnBordingViewModel::class.java)
-
-
-        viewModel.servicesToPixOnBoarding.observe(viewLifecycleOwner, {
-            findNavController().navigate(R.id.action_homeFragment_to_pixOnBordingActivity)
-        })
-
-        viewModel.servicesToPix.observe(viewLifecycleOwner, {
-            findNavController().navigate(R.id.action_homeFragment_to_pixQrCodeActivity)
-        })
 
         binding.listServices.adapter =
             ListServicesAdapter(
@@ -172,10 +158,32 @@ class ServicesFragment : Fragment(), ListServicesAdapter.ClickedServiceListener 
 
     override fun clickServiceListener(positionRecyclerView: Int, positionViewPager: Int) {
 
-        if ((positionRecyclerView == 1) && (positionViewPager == 0)) {
+        if ((positionViewPager == MAIN_SERVICES) && (positionRecyclerView == CARDS_FEATURE)) {
             findNavController().navigate(R.id.action_homeFragment_to_cardsFragment)
-        } else if ((positionRecyclerView == 5) && (positionViewPager == 0)) {
-            viewModel.onClickPixService()
+        } else if ((positionViewPager == MAIN_SERVICES) && (positionRecyclerView == PIX_FEATURE)) {
+            findNavController().navigate(HomeFragmentDirections
+                .actionHomeFragmentToPixQrCodeActivity(
+                    providerSharedPreferenceService(providerSharedPreference()).passedByPixOnBoarding()
+                )
+            )
         }
+    }
+
+    private fun providerSharedPreferenceService(
+        preferences: SharedPreferences
+    ): SharedPreferenceServices {
+        return SharedPreferenceServices(preferences)
+    }
+
+    private fun providerSharedPreference(): SharedPreferences {
+        return requireContext().getSharedPreferences(
+            R.string.preference_file_key.toString(), Context.MODE_PRIVATE
+        )
+    }
+
+    companion object {
+        private const val MAIN_SERVICES = 0
+        private const val PIX_FEATURE = 5
+        private const val CARDS_FEATURE = 1
     }
 }
