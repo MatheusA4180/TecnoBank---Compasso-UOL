@@ -11,8 +11,6 @@
         android:roundIcon="@mipmap/ic_launcher_custom_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Tecnobank">
-        <activity android:name=".home.activity.services.PixOnBordingActivity"
-            android:screenOrientation="portrait"/>
         <activity android:name=".home.activity.services.PixQrCodeActivity"
             android:screenOrientation="portrait" />
         <activity
