@@ -49,7 +49,7 @@ class FilterExtractFragment : Fragment(), ListFilterAdapter.SelectFilterlistener
         binding.applyFilter.setOnClickListener {
             requireActivity().setResult(
                 RESULT_CODE,
-                with(Intent()) {
+                Intent().apply {
                     putExtra(FILTER_TEXT, listItemFilter[positionSelected])
                     putExtra(FILTER_POSITION, positionSelected)
                 }

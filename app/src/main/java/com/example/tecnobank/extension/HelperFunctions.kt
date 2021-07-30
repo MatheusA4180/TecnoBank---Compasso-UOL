@@ -23,4 +23,7 @@ object HelperFunctions {
             parseDateStringToDate(date)
         )
 
+    fun formatDate(date: Date): String =
+        SimpleDateFormat("dd/MM/yyyy").format(date)
+
 }
