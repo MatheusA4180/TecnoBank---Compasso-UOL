@@ -14,6 +14,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.tecnobank.R
 import com.example.tecnobank.databinding.PixValueRequestFragmentBinding
+import com.example.tecnobank.extension.MoneyTextWatcherPixFragment
 import com.example.tecnobank.home.viewmodel.PixValueRequestViewModel
 import com.example.tecnobank.viewmodelfactory.ViewModelFactory
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
@@ -58,6 +59,10 @@ class PixValueRequestFragment : Fragment() {
             viewModel.changeValuePix(binding.editValue.text.toString())
         }
 
+//        binding.editValue.addTextChangedListener {
+//            MoneyTextWatcherPixFragment(binding.editValue)
+//        }
+
         viewModel.buttonColor.observe(viewLifecycleOwner,{
             if(it){
                 paintButtonOn(binding.pixApplyValue)
@@ -87,8 +92,10 @@ class PixValueRequestFragment : Fragment() {
 
         viewModel.balanceVisible.observe(viewLifecycleOwner, {
             if(it){
+                binding.ocultBalance.text = "Ocultar"
                 binding.balanceValue.setTransformationMethod(null)
             }else{
+                binding.ocultBalance.text = "Visualizar"
                 binding.balanceValue.setTransformationMethod(PasswordTransformationMethod())
             }
         })

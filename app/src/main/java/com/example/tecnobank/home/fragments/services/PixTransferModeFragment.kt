@@ -26,11 +26,11 @@ class PixTransferModeFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.toolbarTranferPix.setNavigationOnClickListener {
+        binding.toolbarPixChoice.setNavigationOnClickListener {
             findNavController().navigateUp()
         }
 
-        binding.btEmailTransfer.setOnClickListener {
+        binding.btPixEmail.setOnClickListener {
          findNavController().navigate(R.id.action_pixModeTransferFragment_to_pixInfoDestinationFragment)
         }
     }
