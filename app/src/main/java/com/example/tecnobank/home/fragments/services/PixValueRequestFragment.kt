@@ -6,6 +6,7 @@ import android.text.method.PasswordTransformationMethod
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat.getColor
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -100,16 +101,16 @@ class PixValueRequestFragment : Fragment() {
 
     private fun paintButtonOn(button: ExtendedFloatingActionButton) {
         with(button) {
-            setBackgroundColor(Color.parseColor("#2270E3"))
-            setTextColor(Color.parseColor("#FFFFFF"))
+            setBackgroundColor(getColor(requireContext(),R.color.blueTecnoBank))
+            setTextColor(Color.WHITE)
             setStrokeColorResource(R.color.white)
         }
     }
 
     private fun paintButtonOff(button: ExtendedFloatingActionButton) {
         with(button) {
-            setBackgroundColor(Color.parseColor("#ABABAB"))
-            setTextColor(Color.parseColor("#676767"))
+            setBackgroundColor(getColor(requireContext(),R.color.gray_200))
+            setTextColor(getColor(requireContext(),R.color.gray_backgroud_invalid))
             setStrokeColorResource(R.color.white)
         }
     }

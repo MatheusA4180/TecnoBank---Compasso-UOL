@@ -15,22 +15,27 @@ class PixInfoDestinationViewModel: ViewModel() {
     private val _buttonColor = SingleLiveEvent<Boolean>()
     val buttonColor: LiveData<Boolean> = _buttonColor
 
+    private val _emailErro = SingleLiveEvent<String>()
+    val emailErro: LiveData<String> = _emailErro
+
     fun changeDestinationEmailPix(email: String){
         pixEmail = email
         changeButtonColor(email)
     }
 
     private fun changeButtonColor(text: String){
-        if(text.isEmpty()){
-            _buttonColor.postValue(false)
-        }else{
+        if(text.isNotEmpty() && android.util.Patterns.EMAIL_ADDRESS.matcher(pixEmail).matches()){
             _buttonColor.postValue(true)
+        }else{
+            _buttonColor.postValue(false)
         }
     }
 
     fun onClickApplyInfoDestinationPix(){
-        if(pixEmail.isNotEmpty()){
+        if(pixEmail.isNotEmpty() && android.util.Patterns.EMAIL_ADDRESS.matcher(pixEmail).matches()){
             _goToDescriptionPix.postValue(pixEmail)
+        }else{
+            _emailErro.postValue("O email digitado é invalido")
         }
     }
 }

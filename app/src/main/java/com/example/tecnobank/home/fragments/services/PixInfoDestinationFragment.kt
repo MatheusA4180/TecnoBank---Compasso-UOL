@@ -1,10 +1,13 @@
 package com.example.tecnobank.home.fragments.services
 
+import android.app.AlertDialog
 import android.graphics.Color
 import android.os.Bundle
+import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -27,10 +30,6 @@ class PixInfoDestinationFragment: Fragment() {
     ): View? {
         _binding = PixInfoDestinationFragmentBinding.inflate(inflater, container, false)
         return _binding!!.root
-    }
-
-    override fun onStart() {
-        super.onStart()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -63,6 +62,10 @@ class PixInfoDestinationFragment: Fragment() {
             )
         })
 
+        viewModel.emailErro.observe(viewLifecycleOwner,{
+            AlertDialog.Builder(requireContext()).setTitle(it).setMessage("").show()
+        })
+
         binding.pixApplyEmail.setOnClickListener {
             viewModel.onClickApplyInfoDestinationPix()
         }
@@ -71,16 +74,16 @@ class PixInfoDestinationFragment: Fragment() {
 
     private fun paintButtonOn(button: ExtendedFloatingActionButton) {
         with(button) {
-            setBackgroundColor(Color.parseColor("#2270E3"))
-            setTextColor(Color.parseColor("#FFFFFF"))
+            setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.blueTecnoBank))
+            setTextColor(Color.WHITE)
             setStrokeColorResource(R.color.white)
         }
     }
 
     private fun paintButtonOff(button: ExtendedFloatingActionButton) {
         with(button) {
-            setBackgroundColor(Color.parseColor("#ABABAB"))
-            setTextColor(Color.parseColor("#676767"))
+            setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.gray_200))
+            setTextColor(ContextCompat.getColor(requireContext(), R.color.gray_backgroud_invalid))
             setStrokeColorResource(R.color.white)
         }
     }

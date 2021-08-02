@@ -15,4 +15,5 @@
     <color name="red_Transaction">#F84343</color>
     <color name="green_Transaction">#458A3D</color>
     <color name="gray_Transaction">#9E9E9E</color>
+    <color name="gray_backgroud_invalid">#676767</color>
 </resources>
