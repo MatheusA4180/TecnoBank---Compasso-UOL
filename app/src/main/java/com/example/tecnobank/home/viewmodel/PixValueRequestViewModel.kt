@@ -23,7 +23,7 @@ class PixValueRequestViewModel(private val pixValueRequestRepository:PixValueReq
     val balanceVisible: LiveData<Boolean> = _balanceVisible
 
     fun changeValuePix(value: String){
-        pixValue = value.replace(".","").replace(",",".")
+        pixValue = value
         changeButtonColor(value)
     }
 
@@ -37,7 +37,7 @@ class PixValueRequestViewModel(private val pixValueRequestRepository:PixValueReq
 
     fun onClickApplyValuePix(){
         if(pixValue.isNotEmpty()) {
-            _goToConfirmationPix.postValue(pixValue)
+            _goToConfirmationPix.postValue(pixValue.replace(".","").replace(",",".").substring(3))
         }
     }
 

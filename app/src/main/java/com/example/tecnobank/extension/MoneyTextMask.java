@@ -37,11 +37,11 @@ public class MoneyTextMask implements TextWatcher {
         BigDecimal parsed = parseToBigDecimal(editable.toString());
         String formatted = NumberFormat.getCurrencyInstance(locale).format(parsed);
         //Remove o símbolo da moeda e espaçamento pra evitar bug
-        String replaceable = String.format("[%s\\s]", getCurrencySymbol());
-        String cleanString = formatted.replaceAll(replaceable, "");
+//        String replaceable = String.format("[%s\\s]", getCurrencySymbol());
+//        String cleanString = formatted.replaceAll(replaceable, "");
 
-        editText.setText(cleanString);
-        editText.setSelection(cleanString.length());
+        editText.setText(formatted);
+        editText.setSelection(formatted.length());
         editText.addTextChangedListener(this);
     }
 
@@ -88,7 +88,7 @@ public class MoneyTextMask implements TextWatcher {
         String cleanString = price.replaceAll(replaceable, "");
         StringBuilder stringBuilder = new StringBuilder(cleanString.replaceAll(" ", ""));
 
-        return String.valueOf(stringBuilder.insert(cleanString.length() - 2, '.').insert(0,"R$"));
+        return String.valueOf(stringBuilder.insert(cleanString.length() - 2, '.'));
 
     }
 
