@@ -88,7 +88,7 @@ public class MoneyTextMask implements TextWatcher {
         String cleanString = price.replaceAll(replaceable, "");
         StringBuilder stringBuilder = new StringBuilder(cleanString.replaceAll(" ", ""));
 
-        return String.valueOf(stringBuilder.insert(cleanString.length() - 2, '.'));
+        return String.valueOf(stringBuilder.insert(cleanString.length() - 2, '.').insert(0,"R$"));
 
     }
 
