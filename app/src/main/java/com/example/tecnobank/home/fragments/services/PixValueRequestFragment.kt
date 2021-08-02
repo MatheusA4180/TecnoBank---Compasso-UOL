@@ -6,7 +6,6 @@ import android.text.method.PasswordTransformationMethod
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.isVisible
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -14,7 +13,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.tecnobank.R
 import com.example.tecnobank.databinding.PixValueRequestFragmentBinding
-import com.example.tecnobank.extension.MoneyTextWatcherPixFragment
+import com.example.tecnobank.extension.MoneyTextMask
 import com.example.tecnobank.home.viewmodel.PixValueRequestViewModel
 import com.example.tecnobank.viewmodelfactory.ViewModelFactory
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
@@ -46,6 +45,8 @@ class PixValueRequestFragment : Fragment() {
         ).get(PixValueRequestViewModel::class.java)
 
         viewModel.getSaveBalanceValue()
+
+        binding.editValue.addTextChangedListener(MoneyTextMask(binding.editValue));
 
         viewModel.balanceValue.observe(viewLifecycleOwner,{
             binding.balanceValue.text = it
