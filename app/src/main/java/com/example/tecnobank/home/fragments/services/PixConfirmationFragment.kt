@@ -44,6 +44,7 @@ class PixConfirmationFragment : Fragment() {
         ).get(PixConfirmationViewModel::class.java)
 
         viewModel.setPixItensRequest(args.email,args.description,args.value.toDouble())
+
         viewModel.requestValidationPix()
 
         binding.toolbarPixConfirmation.setOnClickListener {

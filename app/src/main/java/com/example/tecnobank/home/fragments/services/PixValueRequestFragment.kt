@@ -34,8 +34,6 @@ class PixValueRequestFragment : Fragment() {
         return _binding!!.root
     }
 
-
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -59,10 +57,6 @@ class PixValueRequestFragment : Fragment() {
         binding.editValue.addTextChangedListener{
             viewModel.changeValuePix(binding.editValue.text.toString())
         }
-
-//        binding.editValue.addTextChangedListener {
-//            MoneyTextWatcherPixFragment(binding.editValue)
-//        }
 
         viewModel.buttonColor.observe(viewLifecycleOwner,{
             if(it){
