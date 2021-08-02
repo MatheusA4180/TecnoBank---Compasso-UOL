@@ -1,5 +1,6 @@
 package com.example.tecnobank.home.viewmodel
 
+import android.util.Patterns
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -24,7 +25,7 @@ class PixInfoDestinationViewModel: ViewModel() {
     }
 
     private fun changeButtonColor(text: String){
-        if(text.isNotEmpty() && android.util.Patterns.EMAIL_ADDRESS.matcher(pixEmail).matches()){
+        if(isValidEmail()){
             _buttonColor.postValue(true)
         }else{
             _buttonColor.postValue(false)
@@ -32,10 +33,13 @@ class PixInfoDestinationViewModel: ViewModel() {
     }
 
     fun onClickApplyInfoDestinationPix(){
-        if(pixEmail.isNotEmpty() && android.util.Patterns.EMAIL_ADDRESS.matcher(pixEmail).matches()){
+        if(isValidEmail()){
             _goToDescriptionPix.postValue(pixEmail)
         }else{
             _emailErro.postValue("O email digitado é invalido")
         }
     }
+
+    private fun isValidEmail() =
+        pixEmail.isNotEmpty() && Patterns.EMAIL_ADDRESS.matcher(pixEmail).matches()
 }
