@@ -63,7 +63,7 @@ class PixInfoDestinationFragment: Fragment() {
         })
 
         viewModel.emailErro.observe(viewLifecycleOwner,{
-            AlertDialog.Builder(requireContext()).setTitle(it).setMessage("").show()
+            binding.editEmail.error = it
         })
 
         binding.pixApplyEmail.setOnClickListener {
