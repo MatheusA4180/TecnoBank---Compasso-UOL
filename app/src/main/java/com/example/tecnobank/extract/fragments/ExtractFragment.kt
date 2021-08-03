@@ -96,13 +96,13 @@ class ExtractFragment : Fragment() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == REQUEST_CODE && resultCode == RESULT_CODE) {
+            checkSelectedButton(everyButton = true, inputButton = false, exitButton = false)
             viewModel.onChangeDataFilter(
                 filterText = data!!.getStringExtra(FILTER_TEXT)!!
                     .toString().lowercase(),
                 filterPosition = data.getIntExtra(FILTER_POSITION, 1)
             )
         }
-        //teste dnv parte 4
     }
 
     private fun recyclerViewConfig(listExtracts: List<ExtractViewModel.ExtractItemAdapter>) {

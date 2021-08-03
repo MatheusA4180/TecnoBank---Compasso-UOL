@@ -6,11 +6,19 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.tecnobank.R
 import com.example.tecnobank.data.local.SharedPreferenceServices
+import com.example.tecnobank.data.local.database.ExtractDAO
+import com.example.tecnobank.data.local.database.ExtractDatabase
 import com.example.tecnobank.data.remote.EndPoint
 import com.example.tecnobank.extract.repository.ExtractRepositoty
 import com.example.tecnobank.extract.viewmodel.ExtractViewModel
 import com.example.tecnobank.home.repository.HomeRepository
+import com.example.tecnobank.home.repository.PixConfirmationRepository
+import com.example.tecnobank.home.repository.PixRepository
+import com.example.tecnobank.home.repository.PixValueRequestRepository
 import com.example.tecnobank.home.viewmodel.HomeViewModel
+import com.example.tecnobank.home.viewmodel.PixConfirmationViewModel
+import com.example.tecnobank.home.viewmodel.PixOnBoardingViewModel
+import com.example.tecnobank.home.viewmodel.PixValueRequestViewModel
 import com.example.tecnobank.intro.repository.LoginRepository
 import com.example.tecnobank.intro.repository.OnBoardingRepository
 import com.example.tecnobank.intro.repository.SplashRepository
@@ -45,16 +53,6 @@ class ViewModelFactory(private val context: Context): ViewModelProvider.Factory 
             return providerPixConfirmationViewModel() as T
         }
         throw Exception("ViewModel não encotrado")
-    }
-
-    private fun providerPixOnBordingViewModel(): PixOnBoardingViewModel {
-        return PixOnBoardingViewModel(
-            PixRepository(
-                providerSharedPreferenceService(
-                    providerSharedPreference()
-                )
-            )
-        )
     }
 
     private fun providerSplashViewModel(): SplashViewModel {
@@ -95,16 +93,6 @@ class ViewModelFactory(private val context: Context): ViewModelProvider.Factory 
         )
     }
 
-    private fun providerPixOnBordingViewModel(): PixOnBordingViewModel {
-        return PixOnBordingViewModel(
-            PixOnBordingRepository(
-                providerSharedPreferenceService(
-                    providerSharedPreference()
-                )
-            )
-        )
-    }
-
     private fun providerExtractViewModel(): ExtractViewModel {
         return ExtractViewModel(
             ExtractRepositoty(
@@ -114,36 +102,12 @@ class ViewModelFactory(private val context: Context): ViewModelProvider.Factory 
         )
     }
 
-    private fun providerExtractDAO(extractDatabase: ExtractDatabase): ExtractDAO {
-        return extractDatabase.extractDAO()
-    }
-
-    private fun providerExtractDatabase(): ExtractDatabase {
-        return ExtractDatabase.getInstance(context)
-    }
-
-    private fun providerPixValueRequestViewModel(): PixValueRequestViewModel {
-        return PixValueRequestViewModel(
-            PixValueRequestRepository(
+    private fun providerPixOnBordingViewModel(): PixOnBoardingViewModel {
+        return PixOnBoardingViewModel(
+            PixRepository(
                 providerSharedPreferenceService(
                     providerSharedPreference()
                 )
-            )
-        )
-    }
-
-    private fun providerPixConfirmationViewModel(): PixConfirmationViewModel {
-        return PixConfirmationViewModel(
-            PixValidationAndConfirmationRepository(
-                providerEndPointInstance()
-            )
-        )
-    }
-
-    private fun providerEndPointInstance(): EndPoint {
-        return EndPoint.getEndPointInstance(
-            providerSharedPreferenceService(
-                providerSharedPreference()
             )
         )
     }
@@ -169,14 +133,26 @@ class ViewModelFactory(private val context: Context): ViewModelProvider.Factory 
         )
     }
 
+    private fun providerExtractDAO(extractDatabase: ExtractDatabase): ExtractDAO {
+        return extractDatabase.extractDAO()
+    }
+
+    private fun providerExtractDatabase(): ExtractDatabase {
+        return ExtractDatabase.getInstance(context)
+    }
+
+    private fun providerEndPointInstance(): EndPoint {
+        return EndPoint.getEndPointInstance(
+            providerSharedPreferenceService(
+                providerSharedPreference()
+            )
+        )
+    }
+
     private fun providerSharedPreferenceService(
         preferences: SharedPreferences
     ): SharedPreferenceServices {
         return SharedPreferenceServices(preferences)
-    }
-
-    private fun providerEndPointInstance(): EndPoint {
-        return EndPoint.getEndPointInstance()
     }
 
     private fun providerSharedPreference(): SharedPreferences {
