@@ -25,7 +25,7 @@ class PixValueRequestFragment : Fragment() {
     private val binding: PixValueRequestFragmentBinding get() = _binding!!
     private lateinit var viewModel: PixValueRequestViewModel
     private val args: PixValueRequestFragmentArgs by navArgs()
-
+    //binding.editValue.error = "Valor inválido!" - Código erro saldo.
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
