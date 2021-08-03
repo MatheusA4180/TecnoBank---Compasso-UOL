@@ -37,7 +37,12 @@ class PixValueRequestViewModel(private val pixValueRequestRepository:PixValueReq
 
     fun onClickApplyValuePix(){
         if(pixValue.isNotEmpty()) {
-            _goToConfirmationPix.postValue(pixValue.replace(".","").replace(",",".").substring(3))
+
+            _goToConfirmationPix.postValue(pixValue
+                .replace(".","")
+                .replace(",",".")
+                .substring(3)
+            )
         }
     }
 

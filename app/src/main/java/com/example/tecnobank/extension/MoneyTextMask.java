@@ -12,7 +12,7 @@ import java.util.Locale;
 
 public class MoneyTextMask implements TextWatcher {
     private final WeakReference<EditText> editTextWeakReference;
-    private final Locale locale = Locale.getDefault();
+    private final Locale locale = new Locale("pt","BR");
 
     public MoneyTextMask(EditText editText) {
         this.editTextWeakReference = new WeakReference<>(editText);
@@ -37,8 +37,8 @@ public class MoneyTextMask implements TextWatcher {
         BigDecimal parsed = parseToBigDecimal(editable.toString());
         String formatted = NumberFormat.getCurrencyInstance(locale).format(parsed);
         //Remove o símbolo da moeda e espaçamento pra evitar bug
-//        String replaceable = String.format("[%s\\s]", getCurrencySymbol());
-//        String cleanString = formatted.replaceAll(replaceable, "");
+        String replaceable = String.format("[%s\\s]", getCurrencySymbol(locale));
+        String cleanString = formatted.replaceAll(replaceable, "");
 
         editText.setText(formatted);
         editText.setSelection(formatted.length());
@@ -46,7 +46,7 @@ public class MoneyTextMask implements TextWatcher {
     }
 
     private BigDecimal parseToBigDecimal(String value) {
-        String replaceable = String.format("[%s,.\\s]", getCurrencySymbol());
+        String replaceable = String.format("[%s,.\\s]", getCurrencySymbol(locale));
 
         String cleanString = value.replaceAll(replaceable, "");
 
@@ -61,39 +61,10 @@ public class MoneyTextMask implements TextWatcher {
         }
     }
 
-    public static String formatPrice(String price) {
-        //Ex - price = 2222
-        //retorno = 2222.00
-        DecimalFormat df = new DecimalFormat("0.00");
-        return String.valueOf(df.format(Double.valueOf(price)));
 
-    }
+    public static String getCurrencySymbol(Locale locale) {
 
-    public static String formatTextPrice(String price) {
-        //Ex - price = 3333.30
-        //retorna formato monetário em Br = 3.333,30
-        //retorna formato monetário EUA: 3,333.30
-        //retornar formato monetário de alguns países europeu: 3 333,30
-        BigDecimal bD = new BigDecimal(formatPriceSave(formatPrice(price)));
-        String newFormat = String.valueOf(NumberFormat.getCurrencyInstance(Locale.getDefault()).format(bD));
-        String replaceable = String.format("[%s]", getCurrencySymbol());
-        return newFormat.replaceAll(replaceable, "");
-
-    }
-
-    static String formatPriceSave(String price) {
-        //Ex - price = $ 5555555
-        //return = 55555.55 para salvar no banco de dados
-        String replaceable = String.format("[%s,.\\s]", getCurrencySymbol());
-        String cleanString = price.replaceAll(replaceable, "");
-        StringBuilder stringBuilder = new StringBuilder(cleanString.replaceAll(" ", ""));
-
-        return String.valueOf(stringBuilder.insert(cleanString.length() - 2, '.'));
-
-    }
-
-    public static String getCurrencySymbol() {
-        return NumberFormat.getCurrencyInstance(Locale.getDefault()).getCurrency().getSymbol();
+        return NumberFormat.getCurrencyInstance(locale).getCurrency().getSymbol();
 
     }
 }
