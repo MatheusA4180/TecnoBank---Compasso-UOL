@@ -44,13 +44,8 @@ class PixConfirmationViewModel(
     val validDatePix: LiveData<String> = _validDatePix
 
     fun validationDatePix(calendar: Calendar){
-        val currentDate = Calendar.getInstance()
-        if(calendar.get(Calendar.DAY_OF_MONTH) >= currentDate.get(Calendar.DAY_OF_MONTH) &&
-            calendar.get(Calendar.MONTH) >= currentDate.get(Calendar.MONTH) &&
-            calendar.get(Calendar.YEAR) >= currentDate.get(Calendar.YEAR)){
-            pixDate = SimpleDateFormat("dd/MM/yyyy").format(calendar.time)
-            requestValidationPix()
-        }
+        pixDate = SimpleDateFormat("dd/MM/yyyy").format(calendar.time)
+        requestValidationPix()
     }
 
     fun requestValidationPix(){

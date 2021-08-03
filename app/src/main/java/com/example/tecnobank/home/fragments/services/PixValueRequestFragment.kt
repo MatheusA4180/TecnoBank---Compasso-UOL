@@ -96,6 +96,9 @@ class PixValueRequestFragment : Fragment() {
             }
         })
 
+        viewModel.invalidValueError.observe(viewLifecycleOwner,{
+            binding.editLayoutValue.error = it
+        })
 
     }
 

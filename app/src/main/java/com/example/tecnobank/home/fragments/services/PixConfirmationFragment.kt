@@ -15,6 +15,8 @@ import com.example.tecnobank.databinding.PixConfirmationFragmentBinding
 import com.example.tecnobank.extension.HelperFunctions.converterToReal
 import com.example.tecnobank.home.viewmodel.PixConfirmationViewModel
 import com.example.tecnobank.viewmodelfactory.ViewModelFactory
+import com.google.android.material.datepicker.CalendarConstraints
+import com.google.android.material.datepicker.DateValidatorPointForward
 import com.google.android.material.datepicker.MaterialDatePicker
 import java.text.SimpleDateFormat
 import java.util.*
@@ -53,6 +55,8 @@ class PixConfirmationFragment : Fragment() {
 
         binding.datePix.setOnClickListener {
             MaterialDatePicker.Builder.datePicker().setTitleText("Selecione a data")
+                .setCalendarConstraints(CalendarConstraints.Builder()
+                    .setValidator(DateValidatorPointForward.now()).build())
                 .build().apply {
                     addOnPositiveButtonClickListener {
                         val calendar = Calendar.getInstance()

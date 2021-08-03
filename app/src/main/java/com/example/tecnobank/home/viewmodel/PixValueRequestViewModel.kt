@@ -22,8 +22,11 @@ class PixValueRequestViewModel(private val pixValueRequestRepository:PixValueReq
     private val _balanceVisible = MutableLiveData<Boolean>()
     val balanceVisible: LiveData<Boolean> = _balanceVisible
 
+    private val _invalidValueError = SingleLiveEvent<String>()
+    val invalidValueError: SingleLiveEvent<String> = _invalidValueError
+
     fun changeValuePix(value: String){
-        pixValue = value
+        pixValue = parseRealForString(value)
         changeButtonColor(value)
     }
 
@@ -36,10 +39,19 @@ class PixValueRequestViewModel(private val pixValueRequestRepository:PixValueReq
     }
 
     fun onClickApplyValuePix(){
-        if(pixValue.isNotEmpty()) {
-            _goToConfirmationPix.postValue(pixValue.replace(".","").replace(",",".").substring(3))
+        if(pixValue.isNotEmpty() &&
+            (pixValue.toDouble() > 0 && pixValue.toDouble() < parseRealForString(pixValueRequestRepository
+                .getSaveBalanceValue()!!).toDouble())) {
+            _goToConfirmationPix.postValue(pixValue)
+        }else{
+            _invalidValueError.postValue("Valor inválido!")
         }
     }
+
+    private fun parseRealForString(real: String):String = real
+        .replace(".", "")
+        .replace(",", ".")
+        .substring(3)
 
     fun getSaveBalanceValue(){
         _balanceValue.postValue(pixValueRequestRepository.getSaveBalanceValue())
