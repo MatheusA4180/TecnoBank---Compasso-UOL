@@ -7,14 +7,15 @@ import androidx.lifecycle.viewModelScope
 import com.example.tecnobank.data.remote.model.pix.PixItensRequest
 import com.example.tecnobank.data.remote.model.pix.PixResponseConfirmation
 import com.example.tecnobank.data.remote.model.pix.PixResponseValidation
-import com.example.tecnobank.home.repository.PixValidationAndConfirmationRepository
+import com.example.tecnobank.home.repository.PixConfirmationRepository
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.properties.Delegates
 
 class PixConfirmationViewModel(
-    private val pixConfirmationRepository: PixValidationAndConfirmationRepository
+    private val pixConfirmationRepository: PixConfirmationRepository
 ): ViewModel() {
 
     private lateinit var pixEmail: String
@@ -23,7 +24,6 @@ class PixConfirmationViewModel(
     private var pixDate: String = SimpleDateFormat("dd/MM/yyyy").format(Calendar.getInstance().time)
     private lateinit var responseValidation: PixResponseValidation
     private lateinit var responseConfirm: PixResponseConfirmation
-
 
     private val _pixValidationSucess = MutableLiveData<PixResponseValidation>()
     val pixValidationSucess: LiveData<PixResponseValidation> = _pixValidationSucess
@@ -42,8 +42,6 @@ class PixConfirmationViewModel(
 
     private val _validDatePix = MutableLiveData<String>()
     val validDatePix: LiveData<String> = _validDatePix
-
-
 
     fun validationDatePix(calendar: Calendar){
         val currentDate = Calendar.getInstance()

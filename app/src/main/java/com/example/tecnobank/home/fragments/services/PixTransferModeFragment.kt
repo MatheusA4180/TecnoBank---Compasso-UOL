@@ -1,9 +1,11 @@
 package com.example.tecnobank.home.fragments.services
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.tecnobank.R
@@ -26,12 +28,37 @@ class PixTransferModeFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.toolbarTranferPix.setNavigationOnClickListener {
+        binding.toolbarPixChoice.setNavigationOnClickListener {
             findNavController().navigateUp()
         }
 
-        binding.btEmailTransfer.setOnClickListener {
+        binding.btPixEmail.setOnClickListener {
          findNavController().navigate(R.id.action_pixModeTransferFragment_to_pixInfoDestinationFragment)
         }
+
+        binding.btPhone.setOnClickListener {
+            callMessagePix()
+        }
+
+        binding.btCpf.setOnClickListener {
+            callMessagePix()
+        }
+
+        binding.btManualKey.setOnClickListener {
+            callMessagePix()
+        }
+
+        binding.btRandomKey.setOnClickListener {
+            callMessagePix()
+        }
+
     }
+
+    private fun callMessagePix() {
+        AlertDialog.Builder(requireContext()).setTitle("Manutenção")
+            .setMessage("Favor, utilizar opção de e-mail para envio do pix. Estamos trabalhando para implementar novas funcionalidades")
+            .show()
+    }
+
+
 }

@@ -16,9 +16,6 @@
         <action
             android:id="@+id/action_homeFragment_to_cardsFragment"
             app:destination="@id/cardsFragment" />
-        <action
-            android:id="@+id/action_homeFragment_to_pixOnBordingActivity"
-            app:destination="@id/pixOnBordingActivity" />
 
     </fragment>
     <fragment
@@ -51,10 +48,10 @@
         android:id="@+id/pixQrCodeActivity"
         android:name="com.example.tecnobank.home.activity.services.PixQrCodeActivity"
         android:label="PixQrCodeActivity"
-        tools:layout="@layout/pix_qr_code_fragment" />
-    <activity
-        android:id="@+id/pixOnBordingActivity"
-        android:name="com.example.tecnobank.home.activity.services.PixOnBordingActivity"
-        android:label="pix_on_bording_activity"
-        tools:layout="@layout/pix_on_bording_activity" />
+        tools:layout="@layout/pix_qr_code_fragment" >
+        <argument
+            android:name="passedToPixOnbording"
+            app:argType="boolean"
+            android:defaultValue="false"/>
+    </activity>
 </navigation>

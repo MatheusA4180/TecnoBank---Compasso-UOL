@@ -34,4 +34,9 @@ class PixQrCodeFragment : Fragment() {
             findNavController().navigate(R.id.action_pixQrCodeFragment_to_pixModeTransferFragment)
         }
     }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 }

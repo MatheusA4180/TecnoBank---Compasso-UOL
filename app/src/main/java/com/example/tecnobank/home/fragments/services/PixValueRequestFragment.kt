@@ -6,7 +6,7 @@ import android.text.method.PasswordTransformationMethod
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.isVisible
+import androidx.core.content.ContextCompat.getColor
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -14,6 +14,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.tecnobank.R
 import com.example.tecnobank.databinding.PixValueRequestFragmentBinding
+import com.example.tecnobank.extension.MoneyTextMask
 import com.example.tecnobank.home.viewmodel.PixValueRequestViewModel
 import com.example.tecnobank.viewmodelfactory.ViewModelFactory
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
@@ -34,8 +35,6 @@ class PixValueRequestFragment : Fragment() {
         return _binding!!.root
     }
 
-
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -45,6 +44,8 @@ class PixValueRequestFragment : Fragment() {
         ).get(PixValueRequestViewModel::class.java)
 
         viewModel.getSaveBalanceValue()
+
+        binding.editValue.addTextChangedListener(MoneyTextMask(binding.editValue));
 
         viewModel.balanceValue.observe(viewLifecycleOwner,{
             binding.balanceValue.text = it
@@ -83,16 +84,15 @@ class PixValueRequestFragment : Fragment() {
 
         binding.ocultBalance.setOnClickListener {
             viewModel.checkVisibleBalances()
-
         }
 
         viewModel.balanceVisible.observe(viewLifecycleOwner, {
             if(it){
-                binding.balanceValue.setTextColor(Color.BLACK)
-                binding.balanceValue.setBackgroundColor(Color.parseColor("#efefef"))
+                binding.ocultBalance.text = "Ocultar"
+                binding.balanceValue.setTransformationMethod(null)
             }else{
-                binding.balanceValue.setTextColor(Color.parseColor("#ababab"))
-                binding.balanceValue.setBackgroundColor(Color.parseColor("#ababab"))
+                binding.ocultBalance.text = "Visualizar"
+                binding.balanceValue.setTransformationMethod(PasswordTransformationMethod())
             }
         })
 
@@ -101,16 +101,16 @@ class PixValueRequestFragment : Fragment() {
 
     private fun paintButtonOn(button: ExtendedFloatingActionButton) {
         with(button) {
-            setBackgroundColor(Color.parseColor("#2270E3"))
-            setTextColor(Color.parseColor("#FFFFFF"))
+            setBackgroundColor(getColor(requireContext(),R.color.blueTecnoBank))
+            setTextColor(Color.WHITE)
             setStrokeColorResource(R.color.white)
         }
     }
 
     private fun paintButtonOff(button: ExtendedFloatingActionButton) {
         with(button) {
-            setBackgroundColor(Color.parseColor("#ABABAB"))
-            setTextColor(Color.parseColor("#676767"))
+            setBackgroundColor(getColor(requireContext(),R.color.gray_200))
+            setTextColor(getColor(requireContext(),R.color.gray_backgroud_invalid))
             setStrokeColorResource(R.color.white)
         }
     }

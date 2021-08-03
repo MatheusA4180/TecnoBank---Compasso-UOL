@@ -32,11 +32,7 @@ class PixFinishFragment: Fragment() {
             timeFinishPix.text = args.date
             valueFinishPix.text = args.value
             nameDestination.text = args.name
-            emailFinishPix.text = "${emailFinishPix.text.toString()}  ${args.email}"
-        }
-
-        binding.backToTranfer.setOnClickListener {
-            findNavController().navigate(R.id.action_pixFinishFragment_to_pixModeTransferFragment)
+            emailFinishPix.text = "${emailFinishPix.text}  ${args.email}"
         }
 
         binding.backToHome.setOnClickListener {
