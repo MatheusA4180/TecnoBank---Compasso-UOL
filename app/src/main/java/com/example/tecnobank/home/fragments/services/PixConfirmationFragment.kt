@@ -10,7 +10,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.example.tecnobank.R
 import com.example.tecnobank.databinding.PixConfirmationFragmentBinding
 import com.example.tecnobank.extension.HelperFunctions.converterToReal
 import com.example.tecnobank.home.viewmodel.PixConfirmationViewModel
@@ -18,7 +17,6 @@ import com.example.tecnobank.viewmodelfactory.ViewModelFactory
 import com.google.android.material.datepicker.CalendarConstraints
 import com.google.android.material.datepicker.DateValidatorPointForward
 import com.google.android.material.datepicker.MaterialDatePicker
-import java.text.SimpleDateFormat
 import java.util.*
 
 class PixConfirmationFragment : Fragment() {
@@ -121,6 +119,11 @@ class PixConfirmationFragment : Fragment() {
             .setTitle(titulo)
             .setMessage("")
             .show()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
     companion object {

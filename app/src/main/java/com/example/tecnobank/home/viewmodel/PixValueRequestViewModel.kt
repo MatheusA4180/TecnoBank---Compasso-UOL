@@ -27,11 +27,11 @@ class PixValueRequestViewModel(private val pixValueRequestRepository:PixValueReq
 
     fun changeValuePix(value: String){
         pixValue = parseRealForString(value)
-        changeButtonColor(value)
+        changeButtonColor()
     }
 
-    private fun changeButtonColor(text: String){
-        if(text.isEmpty()){
+    private fun changeButtonColor(){
+        if(pixValue.isEmpty()){
             _buttonColor.postValue(false)
         }else{
             _buttonColor.postValue(true)
@@ -39,11 +39,11 @@ class PixValueRequestViewModel(private val pixValueRequestRepository:PixValueReq
     }
 
     fun onClickApplyValuePix(){
-        if(pixValue.isNotEmpty() &&
-            (pixValue.toDouble() > 0 && pixValue.toDouble() < parseRealForString(pixValueRequestRepository
-                .getSaveBalanceValue()!!).toDouble())) {
+        if (pixValue.isNotEmpty() && (pixValue.toDouble() > 0 && pixValue.toDouble() < parseRealForString(
+                pixValueRequestRepository.getSaveBalanceValue()!!).toDouble())
+        ) {
             _goToConfirmationPix.postValue(pixValue)
-        }else{
+        } else {
             _invalidValueError.postValue("Valor inválido!")
         }
     }

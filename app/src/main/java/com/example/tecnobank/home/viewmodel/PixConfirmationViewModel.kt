@@ -16,12 +16,13 @@ import kotlin.properties.Delegates
 
 class PixConfirmationViewModel(
     private val pixConfirmationRepository: PixConfirmationRepository
-): ViewModel() {
+    ): ViewModel() {
 
     private lateinit var pixEmail: String
     private lateinit var pixDescription: String
     private var pixValue by Delegates.notNull<Double>()
-    private var pixDate: String = SimpleDateFormat("dd/MM/yyyy").format(Calendar.getInstance().time)
+    private var pixDate: String = SimpleDateFormat("dd/MM/yyyy")
+        .format(Calendar.getInstance().time)
     private lateinit var responseValidation: PixResponseValidation
     private lateinit var responseConfirm: PixResponseConfirmation
 

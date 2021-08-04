@@ -117,4 +117,9 @@ class PixValueRequestFragment : Fragment() {
             setStrokeColorResource(R.color.white)
         }
     }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 }

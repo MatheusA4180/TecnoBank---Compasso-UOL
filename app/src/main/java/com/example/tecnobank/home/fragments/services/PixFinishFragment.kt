@@ -39,4 +39,9 @@ class PixFinishFragment: Fragment() {
             requireActivity().finish()
         }
     }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 }

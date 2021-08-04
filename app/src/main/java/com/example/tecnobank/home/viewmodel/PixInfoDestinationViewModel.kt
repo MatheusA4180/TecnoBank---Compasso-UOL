@@ -8,7 +8,7 @@ import com.example.tecnobank.data.remote.model.pix.SingleLiveEvent
 
 class PixInfoDestinationViewModel: ViewModel() {
 
-    private var pixEmail: String = ""
+    private lateinit var pixEmail: String
 
     private val _goToDescriptionPix = SingleLiveEvent<String>()
     val goToDescriptionPix: LiveData<String> = _goToDescriptionPix
@@ -21,10 +21,10 @@ class PixInfoDestinationViewModel: ViewModel() {
 
     fun changeDestinationEmailPix(email: String){
         pixEmail = email
-        changeButtonColor(email)
+        changeButtonColor()
     }
 
-    private fun changeButtonColor(text: String){
+    private fun changeButtonColor(){
         if(isValidEmail()){
             _buttonColor.postValue(true)
         }else{

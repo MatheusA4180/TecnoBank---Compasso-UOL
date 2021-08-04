@@ -1,9 +1,7 @@
 package com.example.tecnobank.home.fragments.services
 
-import android.app.AlertDialog
 import android.graphics.Color
 import android.os.Bundle
-import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -86,5 +84,10 @@ class PixInfoDestinationFragment: Fragment() {
             setTextColor(ContextCompat.getColor(requireContext(), R.color.gray_backgroud_invalid))
             setStrokeColorResource(R.color.white)
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

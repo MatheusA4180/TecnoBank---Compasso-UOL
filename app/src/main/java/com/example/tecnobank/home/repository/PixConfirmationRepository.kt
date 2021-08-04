@@ -15,7 +15,7 @@ class PixConfirmationRepository(
 
         val response = endPoint.pixValidation(
             pixItensRequest,
-            sharedPreferenceServices.getSaveTokenAuthentication()!!
+            sharedPreferenceServices.getSaveTokenAuthentication()
         )
 
         if (response.isSuccessful) {
@@ -27,7 +27,7 @@ class PixConfirmationRepository(
 
     suspend fun pixConfirmation(pixToken: String): PixResponseConfirmation{
         val response = endPoint.pixConfirmation(
-            sharedPreferenceServices.getSaveTokenAuthentication()!!,
+            sharedPreferenceServices.getSaveTokenAuthentication(),
             pixToken
         )
 
