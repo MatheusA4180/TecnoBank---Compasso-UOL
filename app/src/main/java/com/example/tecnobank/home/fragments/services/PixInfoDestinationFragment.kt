@@ -44,6 +44,7 @@ class PixInfoDestinationFragment: Fragment() {
         }
 
         viewModel.confirmationButtonEnabled.observe(viewLifecycleOwner,{
+            //binding.pixApplyEmail.isEnabled = it
             if(it){
                 paintButtonOn(binding.pixApplyEmail)
             }else{

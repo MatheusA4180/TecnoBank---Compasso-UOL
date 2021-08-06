@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.tecnobank.R
+import com.example.tecnobank.data.remote.model.pix.PixItemsRequest
 import com.example.tecnobank.databinding.PixConfirmationFragmentBinding
 import com.example.tecnobank.extension.HelperFunctions.converterToReal
 import com.example.tecnobank.home.viewmodel.PixConfirmationViewModel
@@ -41,10 +42,14 @@ class PixConfirmationFragment : Fragment() {
 
         viewModel = ViewModelProvider(
             this,
-            ViewModelFactory(requireContext())
+            ViewModelFactory(requireContext(), PixItemsRequest(
+                type = "email",
+                email = args.email,
+                description = args.description,
+                value = args.value.toDouble(),
+                date = null
+            ))
         ).get(PixConfirmationViewModel::class.java)
-
-        viewModel.setPixItensRequest(args.email,args.description,args.value.toDouble())
 
         viewModel.requestValidationPix()
 

@@ -21,5 +21,5 @@ class HomeRepository(
             throw Exception("Erro no sistema.")
         }
     }
-    fun saveBalanceValue(balanceValue: String) = sharedPreferenceServices.saveBalanceValue(balanceValue)
+
 }

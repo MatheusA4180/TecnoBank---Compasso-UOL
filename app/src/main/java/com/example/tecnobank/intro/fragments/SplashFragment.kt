@@ -30,7 +30,7 @@ class SplashFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
-        viewModel = ViewModelProvider(this, ViewModelFactory(requireContext())).get(
+        viewModel = ViewModelProvider(this, ViewModelFactory(requireContext(),null)).get(
             SplashViewModel::class.java
         )
 

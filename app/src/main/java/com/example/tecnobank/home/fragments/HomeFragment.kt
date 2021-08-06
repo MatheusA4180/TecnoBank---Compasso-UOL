@@ -42,7 +42,7 @@ class HomeFragment : Fragment() {
 
         viewModel = ViewModelProvider(
             this,
-            ViewModelFactory(requireContext())
+            ViewModelFactory(requireContext(),null)
         ).get(HomeViewModel::class.java)
 
         viewModel.onOpenHome()

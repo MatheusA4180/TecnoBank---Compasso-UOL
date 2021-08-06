@@ -1,5 +1,6 @@
 package com.example.tecnobank.home.fragments.services
 
+import android.app.AlertDialog
 import android.graphics.Color
 import android.os.Bundle
 import android.text.method.PasswordTransformationMethod
@@ -7,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat.getColor
+import androidx.core.view.isVisible
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -40,15 +42,23 @@ class PixValueRequestFragment : Fragment() {
 
         viewModel = ViewModelProvider(
             this,
-            ViewModelFactory(requireContext())
+            ViewModelFactory(requireContext(),null)
         ).get(PixValueRequestViewModel::class.java)
 
         viewModel.getSaveBalanceValue()
 
         binding.editValue.addTextChangedListener(MoneyTextMask(binding.editValue));
 
+        viewModel.loading.observe(viewLifecycleOwner,{
+            binding.progressCircular.isVisible = it
+        })
+
         viewModel.balanceValue.observe(viewLifecycleOwner,{
             binding.balanceValue.text = it
+        })
+
+        viewModel.responseErro.observe(viewLifecycleOwner, {
+            showInfo(it)
         })
 
         binding.toolbarPixValue.setNavigationOnClickListener {
@@ -100,6 +110,14 @@ class PixValueRequestFragment : Fragment() {
             binding.editLayoutValue.error = it
         })
 
+    }
+
+    fun showInfo(titulo: String?) {
+        AlertDialog.Builder(requireContext())
+            .setCancelable(true)
+            .setTitle(titulo)
+            .setMessage("")
+            .show()
     }
 
     private fun paintButtonOn(button: ExtendedFloatingActionButton) {

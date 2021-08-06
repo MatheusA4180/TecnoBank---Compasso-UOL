@@ -25,9 +25,6 @@ class HomeViewModel(private val homeRepository: HomeRepository) : ViewModel() {
             try {
                 val response = homeRepository.BalancesAndBenefits()
                 _responseSucess.postValue(response)
-                homeRepository.saveBalanceValue(
-                    HelperFunctions
-                    .converterToReal(response.balance.currentValue.toDouble()))
             } catch (e: Exception) {
                 _responseErro.postValue(e.message)
             }

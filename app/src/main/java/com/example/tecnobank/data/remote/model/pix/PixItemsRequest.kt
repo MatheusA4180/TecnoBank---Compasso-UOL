@@ -5,5 +5,5 @@ data class PixItemsRequest(
     val type: String,
     val description: String,
     val value: Double,
-    val date: String
+    val date: String?
 )

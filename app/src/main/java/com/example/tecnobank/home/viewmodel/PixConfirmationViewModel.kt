@@ -14,12 +14,14 @@ import java.util.*
 import kotlin.properties.Delegates
 
 class PixConfirmationViewModel(
-    private val pixConfirmationRepository: PixConfirmationRepository
-    ): ViewModel() {
+    private val pixConfirmationRepository: PixConfirmationRepository,
+    private val args: PixItemsRequest?
+): ViewModel() {
 
-    private lateinit var pixEmail: String
-    private lateinit var pixDescription: String
-    private var pixValue by Delegates.notNull<Double>()
+    private var pixType: String = args!!.type
+    private var pixEmail: String = args!!.email
+    private var pixDescription: String = args!!.description
+    private var pixValue = args!!.value
     private var pixDate: String = SimpleDateFormat("dd/MM/yyyy")
         .format(Calendar.getInstance().time)
     private lateinit var responseValidation: PixResponseValidation
@@ -52,7 +54,15 @@ class PixConfirmationViewModel(
         viewModelScope.launch {
             _loading.postValue(true)
             try{
-                responseValidation = pixConfirmationRepository.pixValidation(getPixItensRequest())
+                responseValidation = pixConfirmationRepository.pixValidation(
+                    PixItemsRequest(
+                        pixEmail,
+                        pixType,
+                        pixDescription,
+                        pixValue,
+                        pixDate
+                    )
+                )
                 _pixValidationSucess.postValue(responseValidation)
                 _validDatePix.postValue(pixDate)
             }catch (e:Exception){
@@ -73,16 +83,6 @@ class PixConfirmationViewModel(
             }
             _loading.postValue(false)
         }
-    }
-
-    private fun getPixItensRequest(): PixItemsRequest {
-        return PixItemsRequest(pixEmail,"email",pixDescription,pixValue,pixDate)
-    }
-
-    fun setPixItensRequest(email: String, description: String, value: Double) {
-        pixEmail = email
-        pixDescription = description
-        pixValue = value
     }
 
 }

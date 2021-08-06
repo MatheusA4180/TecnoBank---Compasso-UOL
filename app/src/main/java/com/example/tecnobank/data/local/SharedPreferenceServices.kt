@@ -47,20 +47,11 @@ class SharedPreferenceServices(private val preferences: SharedPreferences) {
         }
     }
 
-    fun saveBalanceValue(balanceValue: String){
-        preferences.edit {
-            putString(BALANCE_VALUE, balanceValue)
-        }
-    }
-
-    fun getSaveBalanceValue(): String? = preferences.getString(BALANCE_VALUE,"")
-
     companion object {
         private const val PASS_TO_ONBOARDING = "Passou"
         private const val USER = "Username"
         private const val PASSWORD = "Password"
         private const val TOKEN_AUTHENTICATION = "TokenAuthentication"
         private const val PASS_TO_PIX_ONBOARDING = "pass_to_pix_on_bording"
-        private const val BALANCE_VALUE = "balance value"
     }
 }
