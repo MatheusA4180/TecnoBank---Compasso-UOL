@@ -15,7 +15,7 @@ import com.example.tecnobank.databinding.PixInfoDestinationFragmentBinding
 import com.example.tecnobank.home.viewmodel.PixInfoDestinationViewModel
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 
-class PixInfoDestinationFragment: Fragment() {
+class PixInfoDestinationFragment : Fragment() {
 
     private var _binding: PixInfoDestinationFragmentBinding? = null
     private val binding: PixInfoDestinationFragmentBinding get() = _binding!!
@@ -43,16 +43,16 @@ class PixInfoDestinationFragment: Fragment() {
             viewModel.changeDestinationEmailPix(it.toString())
         }
 
-        viewModel.confirmationButtonEnabled.observe(viewLifecycleOwner,{
-            //binding.pixApplyEmail.isEnabled = it
-            if(it){
-                paintButtonOn(binding.pixApplyEmail)
-            }else{
-                paintButtonOff(binding.pixApplyEmail)
-            }
+        viewModel.confirmationButtonEnabled.observe(viewLifecycleOwner, {
+            binding.pixApplyEmail.isEnabled = it
+//            if(it){
+//                paintButtonOn(binding.pixApplyEmail)
+//            }else{
+//                paintButtonOff(binding.pixApplyEmail)
+//            }
         })
 
-        viewModel.goToDescriptionPix.observe(viewLifecycleOwner,{
+        viewModel.goToDescriptionPix.observe(viewLifecycleOwner, {
             findNavController().navigate(
                 PixInfoDestinationFragmentDirections
                     .actionPixInfoDestinationFragmentToPixDescriptionFragment(
@@ -61,7 +61,7 @@ class PixInfoDestinationFragment: Fragment() {
             )
         })
 
-        viewModel.emailErro.observe(viewLifecycleOwner,{
+        viewModel.emailErro.observe(viewLifecycleOwner, {
             binding.editEmail.error = it
         })
 

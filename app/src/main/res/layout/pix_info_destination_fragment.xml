@@ -81,13 +81,15 @@
                 android:layout_marginBottom="32dp"
                 android:text="Continuar"
                 android:textAlignment="center"
-                android:textColor="#676767"
+                android:textColor="@color/white"
+                android:enabled="false"
                 android:textStyle="bold"
-                app:backgroundTint="#DEDEDE"
+                app:backgroundTint="@drawable/buttom_enable"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent" />
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
