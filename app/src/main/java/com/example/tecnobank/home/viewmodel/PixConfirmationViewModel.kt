@@ -4,11 +4,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.tecnobank.data.remote.model.pix.PixItensRequest
+import com.example.tecnobank.data.remote.model.pix.PixItemsRequest
 import com.example.tecnobank.data.remote.model.pix.PixResponseConfirmation
 import com.example.tecnobank.data.remote.model.pix.PixResponseValidation
 import com.example.tecnobank.home.repository.PixConfirmationRepository
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.*
@@ -76,8 +75,8 @@ class PixConfirmationViewModel(
         }
     }
 
-    private fun getPixItensRequest(): PixItensRequest {
-        return PixItensRequest(pixEmail,"email",pixDescription,pixValue,pixDate)
+    private fun getPixItensRequest(): PixItemsRequest {
+        return PixItemsRequest(pixEmail,"email",pixDescription,pixValue,pixDate)
     }
 
     fun setPixItensRequest(email: String, description: String, value: Double) {

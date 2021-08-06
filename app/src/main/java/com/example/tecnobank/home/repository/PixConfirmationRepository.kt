@@ -2,7 +2,7 @@ package com.example.tecnobank.home.repository
 
 import com.example.tecnobank.data.local.SharedPreferenceServices
 import com.example.tecnobank.data.remote.EndPoint
-import com.example.tecnobank.data.remote.model.pix.PixItensRequest
+import com.example.tecnobank.data.remote.model.pix.PixItemsRequest
 import com.example.tecnobank.data.remote.model.pix.PixResponseConfirmation
 import com.example.tecnobank.data.remote.model.pix.PixResponseValidation
 
@@ -11,7 +11,7 @@ class PixConfirmationRepository(
     private val sharedPreferenceServices: SharedPreferenceServices
 ) {
 
-    suspend fun pixValidation(pixItensRequest: PixItensRequest): PixResponseValidation {
+    suspend fun pixValidation(pixItensRequest: PixItemsRequest): PixResponseValidation {
 
         val response = endPoint.pixValidation(
             pixItensRequest,

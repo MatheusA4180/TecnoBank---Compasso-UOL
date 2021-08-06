@@ -13,11 +13,11 @@ class PixValueRequestViewModel(private val pixValueRequestRepository:PixValueReq
     private val _goToConfirmationPix = SingleLiveEvent<String>()
     val goToConfirmationPix: LiveData<String> = _goToConfirmationPix
 
-    private val _balanceValue = SingleLiveEvent<String>()
+    private val _balanceValue = MutableLiveData<String>()
     val balanceValue: LiveData<String> = _balanceValue
 
-    private val _buttonColor = MutableLiveData<Boolean>()
-    val buttonColor: LiveData<Boolean> = _buttonColor
+    private val _confirmationButtonEnabled = MutableLiveData<Boolean>()
+    val confirmationButtonEnabled: LiveData<Boolean> = _confirmationButtonEnabled
 
     private val _balanceVisible = MutableLiveData<Boolean>()
     val balanceVisible: LiveData<Boolean> = _balanceVisible
@@ -31,11 +31,7 @@ class PixValueRequestViewModel(private val pixValueRequestRepository:PixValueReq
     }
 
     private fun changeButtonColor(){
-        if(pixValue.isEmpty()){
-            _buttonColor.postValue(false)
-        }else{
-            _buttonColor.postValue(true)
-        }
+        _confirmationButtonEnabled.postValue(pixValue.isNotEmpty())
     }
 
     fun onClickApplyValuePix(){
@@ -57,11 +53,7 @@ class PixValueRequestViewModel(private val pixValueRequestRepository:PixValueReq
         _balanceValue.postValue(pixValueRequestRepository.getSaveBalanceValue())
     }
 
-    fun checkVisibleBalances(){
-        if (balanceVisible.value == true) {
-            _balanceVisible.postValue(false)
-        } else {
-            _balanceVisible.postValue(true)
-        }
+    fun onOcultBalanceClicked(){
+        _balanceVisible.postValue(!(balanceVisible.value == true))
     }
 }

@@ -13,10 +13,10 @@ class PixInfoDestinationViewModel: ViewModel() {
     private val _goToDescriptionPix = SingleLiveEvent<String>()
     val goToDescriptionPix: LiveData<String> = _goToDescriptionPix
 
-    private val _buttonColor = SingleLiveEvent<Boolean>()
-    val buttonColor: LiveData<Boolean> = _buttonColor
+    private val _confirmationButtonEnabled = MutableLiveData<Boolean>()
+    val confirmationButtonEnabled: LiveData<Boolean> = _confirmationButtonEnabled
 
-    private val _emailErro = SingleLiveEvent<String>()
+    private val _emailErro = MutableLiveData<String>()
     val emailErro: LiveData<String> = _emailErro
 
     fun changeDestinationEmailPix(email: String){
@@ -25,11 +25,7 @@ class PixInfoDestinationViewModel: ViewModel() {
     }
 
     private fun changeButtonColor(){
-        if(isValidEmail()){
-            _buttonColor.postValue(true)
-        }else{
-            _buttonColor.postValue(false)
-        }
+        _confirmationButtonEnabled.postValue(isValidEmail())
     }
 
     fun onClickApplyInfoDestinationPix(){
@@ -40,6 +36,5 @@ class PixInfoDestinationViewModel: ViewModel() {
         }
     }
 
-    private fun isValidEmail() =
-        pixEmail.isNotEmpty() && Patterns.EMAIL_ADDRESS.matcher(pixEmail).matches()
+    private fun isValidEmail() = Patterns.EMAIL_ADDRESS.matcher(pixEmail).matches()
 }

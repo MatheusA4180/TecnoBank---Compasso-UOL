@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.example.tecnobank.R
 import com.example.tecnobank.databinding.PixConfirmationFragmentBinding
 import com.example.tecnobank.extension.HelperFunctions.converterToReal
 import com.example.tecnobank.home.viewmodel.PixConfirmationViewModel
@@ -47,12 +48,12 @@ class PixConfirmationFragment : Fragment() {
 
         viewModel.requestValidationPix()
 
-        binding.toolbarPixConfirmation.setOnClickListener {
+        binding.toolbarPixConfirmation.setNavigationOnClickListener {
             findNavController().navigateUp()
         }
 
         binding.datePix.setOnClickListener {
-            MaterialDatePicker.Builder.datePicker().setTitleText("Selecione a data")
+            MaterialDatePicker.Builder.datePicker().setTitleText(getString(R.string.title_date_picker))
                 .setCalendarConstraints(CalendarConstraints.Builder()
                     .setValidator(DateValidatorPointForward.now()).build())
                 .build().apply {
@@ -61,7 +62,7 @@ class PixConfirmationFragment : Fragment() {
                         calendar.time = Date(it)
                         viewModel.validationDatePix(calendar)
                     }
-                }.show(childFragmentManager, DATE_PICKER_PIX)
+                }.show(childFragmentManager, null)
         }
 
         viewModel.loading.observe(viewLifecycleOwner, {
@@ -126,7 +127,4 @@ class PixConfirmationFragment : Fragment() {
         _binding = null
     }
 
-    companion object {
-        const val DATE_PICKER_PIX = "datePicker"
-    }
 }

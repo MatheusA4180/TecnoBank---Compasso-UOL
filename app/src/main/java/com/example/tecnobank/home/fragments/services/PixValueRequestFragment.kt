@@ -51,15 +51,15 @@ class PixValueRequestFragment : Fragment() {
             binding.balanceValue.text = it
         })
 
-        binding.toolbarPixValue.setOnClickListener {
+        binding.toolbarPixValue.setNavigationOnClickListener {
             findNavController().navigateUp()
         }
 
         binding.editValue.addTextChangedListener{
-            viewModel.changeValuePix(binding.editValue.text.toString())
+            viewModel.changeValuePix(it.toString())
         }
 
-        viewModel.buttonColor.observe(viewLifecycleOwner,{
+        viewModel.confirmationButtonEnabled.observe(viewLifecycleOwner,{
             if(it){
                 paintButtonOn(binding.pixApplyValue)
             }else{
@@ -83,15 +83,15 @@ class PixValueRequestFragment : Fragment() {
         }
 
         binding.ocultBalance.setOnClickListener {
-            viewModel.checkVisibleBalances()
+            viewModel.onOcultBalanceClicked()
         }
 
         viewModel.balanceVisible.observe(viewLifecycleOwner, {
             if(it){
-                binding.ocultBalance.text = "Ocultar"
+                binding.ocultBalance.text = getString(R.string.title_ocult)
                 binding.balanceValue.setTransformationMethod(null)
             }else{
-                binding.ocultBalance.text = "Visualizar"
+                binding.ocultBalance.text = getString(R.string.title_visible)
                 binding.balanceValue.setTransformationMethod(PasswordTransformationMethod())
             }
         })

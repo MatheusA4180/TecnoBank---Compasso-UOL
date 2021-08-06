@@ -1,6 +1,6 @@
 package com.example.tecnobank.data.remote.model.pix
 
-data class PixItensRequest(
+data class PixItemsRequest(
     val email: String,
     val type: String,
     val description: String,

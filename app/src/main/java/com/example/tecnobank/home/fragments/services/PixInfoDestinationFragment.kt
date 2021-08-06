@@ -40,10 +40,10 @@ class PixInfoDestinationFragment: Fragment() {
         }
 
         binding.defaultEditText.addTextChangedListener {
-            viewModel.changeDestinationEmailPix(binding.defaultEditText.text.toString())
+            viewModel.changeDestinationEmailPix(it.toString())
         }
 
-        viewModel.buttonColor.observe(viewLifecycleOwner,{
+        viewModel.confirmationButtonEnabled.observe(viewLifecycleOwner,{
             if(it){
                 paintButtonOn(binding.pixApplyEmail)
             }else{
