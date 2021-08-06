@@ -45,11 +45,6 @@ class PixInfoDestinationFragment : Fragment() {
 
         viewModel.confirmationButtonEnabled.observe(viewLifecycleOwner, {
             binding.pixApplyEmail.isEnabled = it
-//            if(it){
-//                paintButtonOn(binding.pixApplyEmail)
-//            }else{
-//                paintButtonOff(binding.pixApplyEmail)
-//            }
         })
 
         viewModel.goToDescriptionPix.observe(viewLifecycleOwner, {
@@ -69,22 +64,6 @@ class PixInfoDestinationFragment : Fragment() {
             viewModel.onClickApplyInfoDestinationPix()
         }
 
-    }
-
-    private fun paintButtonOn(button: ExtendedFloatingActionButton) {
-        with(button) {
-            setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.blueTecnoBank))
-            setTextColor(Color.WHITE)
-            setStrokeColorResource(R.color.white)
-        }
-    }
-
-    private fun paintButtonOff(button: ExtendedFloatingActionButton) {
-        with(button) {
-            setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.gray_200))
-            setTextColor(ContextCompat.getColor(requireContext(), R.color.gray_backgroud_invalid))
-            setStrokeColorResource(R.color.white)
-        }
     }
 
     override fun onDestroyView() {

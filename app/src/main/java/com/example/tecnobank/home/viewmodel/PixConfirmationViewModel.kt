@@ -45,6 +45,9 @@ class PixConfirmationViewModel(
     private val _validDatePix = MutableLiveData<String>()
     val validDatePix: LiveData<String> = _validDatePix
 
+    private val _confirmationButtonEnabled = MutableLiveData<Boolean>()
+    val confirmationButtonEnabled: LiveData<Boolean> = _confirmationButtonEnabled
+
     fun validationDatePix(calendar: Calendar){
         pixDate = SimpleDateFormat("dd/MM/yyyy").format(calendar.time)
         requestValidationPix()
@@ -53,6 +56,7 @@ class PixConfirmationViewModel(
     fun requestValidationPix(){
         viewModelScope.launch {
             _loading.postValue(true)
+            _confirmationButtonEnabled.postValue(false)
             try{
                 responseValidation = pixConfirmationRepository.pixValidation(
                     PixItemsRequest(
@@ -65,8 +69,10 @@ class PixConfirmationViewModel(
                 )
                 _pixValidationSucess.postValue(responseValidation)
                 _validDatePix.postValue(pixDate)
+                _confirmationButtonEnabled.postValue(true)
             }catch (e:Exception){
                 _pixValidationError.postValue(e.message)
+                _confirmationButtonEnabled.postValue(false)
             }
             _loading.postValue(false)
         }

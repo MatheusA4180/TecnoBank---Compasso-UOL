@@ -70,11 +70,7 @@ class PixValueRequestFragment : Fragment() {
         }
 
         viewModel.confirmationButtonEnabled.observe(viewLifecycleOwner,{
-            if(it){
-                paintButtonOn(binding.pixApplyValue)
-            }else{
-                paintButtonOff(binding.pixApplyValue)
-            }
+            binding.pixApplyValue.isEnabled = it
         })
 
         viewModel.goToConfirmationPix.observe(viewLifecycleOwner,{
@@ -118,22 +114,6 @@ class PixValueRequestFragment : Fragment() {
             .setTitle(titulo)
             .setMessage("")
             .show()
-    }
-
-    private fun paintButtonOn(button: ExtendedFloatingActionButton) {
-        with(button) {
-            setBackgroundColor(getColor(requireContext(),R.color.blueTecnoBank))
-            setTextColor(Color.WHITE)
-            setStrokeColorResource(R.color.white)
-        }
-    }
-
-    private fun paintButtonOff(button: ExtendedFloatingActionButton) {
-        with(button) {
-            setBackgroundColor(getColor(requireContext(),R.color.gray_200))
-            setTextColor(getColor(requireContext(),R.color.gray_backgroud_invalid))
-            setStrokeColorResource(R.color.white)
-        }
     }
 
     override fun onDestroyView() {

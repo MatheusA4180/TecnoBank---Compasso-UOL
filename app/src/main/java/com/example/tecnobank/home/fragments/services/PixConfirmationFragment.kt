@@ -109,6 +109,10 @@ class PixConfirmationFragment : Fragment() {
             showInfo(it)
         })
 
+        viewModel.confirmationButtonEnabled.observe(viewLifecycleOwner,{
+            binding.pixConfirmationTransaction.isEnabled = it
+        })
+
         binding.pixConfirmationTransaction.setOnClickListener {
             viewModel.onClickConfirmationPix()
         }

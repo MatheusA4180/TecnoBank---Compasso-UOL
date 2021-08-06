@@ -81,7 +81,7 @@
                 android:layout_marginBottom="32dp"
                 android:text="Continuar"
                 android:textAlignment="center"
-                android:textColor="@color/white"
+                android:textColor="@drawable/text_color_buttom_enable"
                 android:enabled="false"
                 android:textStyle="bold"
                 app:backgroundTint="@drawable/buttom_enable"
