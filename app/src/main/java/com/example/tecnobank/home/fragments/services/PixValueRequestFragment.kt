@@ -1,5 +1,6 @@
 package com.example.tecnobank.home.fragments.services
 
+import android.app.AlertDialog
 import android.graphics.Color
 import android.os.Bundle
 import android.text.method.PasswordTransformationMethod
@@ -7,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat.getColor
+import androidx.core.view.isVisible
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -40,31 +42,35 @@ class PixValueRequestFragment : Fragment() {
 
         viewModel = ViewModelProvider(
             this,
-            ViewModelFactory(requireContext())
+            ViewModelFactory(requireContext(),null)
         ).get(PixValueRequestViewModel::class.java)
 
         viewModel.getSaveBalanceValue()
 
         binding.editValue.addTextChangedListener(MoneyTextMask(binding.editValue));
 
+        viewModel.loading.observe(viewLifecycleOwner,{
+            binding.progressCircular.isVisible = it
+        })
+
         viewModel.balanceValue.observe(viewLifecycleOwner,{
             binding.balanceValue.text = it
         })
 
-        binding.toolbarPixValue.setOnClickListener {
+        viewModel.responseErro.observe(viewLifecycleOwner, {
+            showInfo(it)
+        })
+
+        binding.toolbarPixValue.setNavigationOnClickListener {
             findNavController().navigateUp()
         }
 
         binding.editValue.addTextChangedListener{
-            viewModel.changeValuePix(binding.editValue.text.toString())
+            viewModel.changeValuePix(it.toString())
         }
 
-        viewModel.buttonColor.observe(viewLifecycleOwner,{
-            if(it){
-                paintButtonOn(binding.pixApplyValue)
-            }else{
-                paintButtonOff(binding.pixApplyValue)
-            }
+        viewModel.confirmationButtonEnabled.observe(viewLifecycleOwner,{
+            binding.pixApplyValue.isEnabled = it
         })
 
         viewModel.goToConfirmationPix.observe(viewLifecycleOwner,{
@@ -83,15 +89,15 @@ class PixValueRequestFragment : Fragment() {
         }
 
         binding.ocultBalance.setOnClickListener {
-            viewModel.checkVisibleBalances()
+            viewModel.onOcultBalanceClicked()
         }
 
         viewModel.balanceVisible.observe(viewLifecycleOwner, {
             if(it){
-                binding.ocultBalance.text = "Ocultar"
+                binding.ocultBalance.text = getString(R.string.title_ocult)
                 binding.balanceValue.setTransformationMethod(null)
             }else{
-                binding.ocultBalance.text = "Visualizar"
+                binding.ocultBalance.text = getString(R.string.title_visible)
                 binding.balanceValue.setTransformationMethod(PasswordTransformationMethod())
             }
         })
@@ -102,19 +108,16 @@ class PixValueRequestFragment : Fragment() {
 
     }
 
-    private fun paintButtonOn(button: ExtendedFloatingActionButton) {
-        with(button) {
-            setBackgroundColor(getColor(requireContext(),R.color.blueTecnoBank))
-            setTextColor(Color.WHITE)
-            setStrokeColorResource(R.color.white)
-        }
+    fun showInfo(titulo: String?) {
+        AlertDialog.Builder(requireContext())
+            .setCancelable(true)
+            .setTitle(titulo)
+            .setMessage("")
+            .show()
     }
 
-    private fun paintButtonOff(button: ExtendedFloatingActionButton) {
-        with(button) {
-            setBackgroundColor(getColor(requireContext(),R.color.gray_200))
-            setTextColor(getColor(requireContext(),R.color.gray_backgroud_invalid))
-            setStrokeColorResource(R.color.white)
-        }
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

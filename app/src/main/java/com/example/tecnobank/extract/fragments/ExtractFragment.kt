@@ -41,7 +41,7 @@ class ExtractFragment : Fragment() {
 
         viewModel = ViewModelProvider(
             this,
-            ViewModelFactory(requireContext())
+            ViewModelFactory(requireContext(),null)
         ).get(ExtractViewModel::class.java)
 
         viewModel.requestExtracts()

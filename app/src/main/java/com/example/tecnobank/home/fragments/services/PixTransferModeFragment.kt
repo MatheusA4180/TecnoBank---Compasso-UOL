@@ -55,8 +55,8 @@ class PixTransferModeFragment: Fragment() {
     }
 
     private fun callMessagePix() {
-        AlertDialog.Builder(requireContext()).setTitle("Manutenção")
-            .setMessage("Favor, utilizar opção de e-mail para envio do pix. Estamos trabalhando para implementar novas funcionalidades")
+        AlertDialog.Builder(requireContext()).setTitle(getString(R.string.title_tranfer_dialog))
+            .setMessage(getString(R.string.text_tranfer_dialog))
             .show()
     }
 

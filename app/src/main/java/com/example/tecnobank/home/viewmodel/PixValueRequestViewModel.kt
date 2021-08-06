@@ -3,21 +3,25 @@ package com.example.tecnobank.home.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.tecnobank.data.remote.model.pix.SingleLiveEvent
-import com.example.tecnobank.home.repository.PixValueRequestRepository
+import com.example.tecnobank.extension.HelperFunctions.converterToReal
+import com.example.tecnobank.home.repository.HomeRepository
+import kotlinx.coroutines.launch
 
-class PixValueRequestViewModel(private val pixValueRequestRepository:PixValueRequestRepository): ViewModel() {
+class PixValueRequestViewModel(private val homeRepository:HomeRepository): ViewModel() {
 
-    private var pixValue: String = ""
+    private var pixValue: String = "0.00"
+    private lateinit var balanceValueCurrent: String
 
     private val _goToConfirmationPix = SingleLiveEvent<String>()
     val goToConfirmationPix: LiveData<String> = _goToConfirmationPix
 
-    private val _balanceValue = SingleLiveEvent<String>()
+    private val _balanceValue = MutableLiveData<String>()
     val balanceValue: LiveData<String> = _balanceValue
 
-    private val _buttonColor = MutableLiveData<Boolean>()
-    val buttonColor: LiveData<Boolean> = _buttonColor
+    private val _confirmationButtonEnabled = MutableLiveData<Boolean>()
+    val confirmationButtonEnabled: LiveData<Boolean> = _confirmationButtonEnabled
 
     private val _balanceVisible = MutableLiveData<Boolean>()
     val balanceVisible: LiveData<Boolean> = _balanceVisible
@@ -25,25 +29,25 @@ class PixValueRequestViewModel(private val pixValueRequestRepository:PixValueReq
     private val _invalidValueError = SingleLiveEvent<String>()
     val invalidValueError: SingleLiveEvent<String> = _invalidValueError
 
+    private val _loading = MutableLiveData<Boolean>()
+    val loading: LiveData<Boolean> = _loading
+
+    private val _responseErro = MutableLiveData<String>()
+    val responseErro: LiveData<String> = _responseErro
+
     fun changeValuePix(value: String){
         pixValue = parseRealForString(value)
-        changeButtonColor(value)
+        changeButtonColor()
     }
 
-    private fun changeButtonColor(text: String){
-        if(text.isEmpty()){
-            _buttonColor.postValue(false)
-        }else{
-            _buttonColor.postValue(true)
-        }
+    private fun changeButtonColor(){
+        _confirmationButtonEnabled.postValue(pixValue.isNotEmpty())
     }
 
     fun onClickApplyValuePix(){
-        if(pixValue.isNotEmpty() &&
-            (pixValue.toDouble() > 0 && pixValue.toDouble() < parseRealForString(pixValueRequestRepository
-                .getSaveBalanceValue()!!).toDouble())) {
+        if (pixValue.toDouble() > 0 && pixValue.toDouble() < balanceValueCurrent.toDouble()){
             _goToConfirmationPix.postValue(pixValue)
-        }else{
+        } else {
             _invalidValueError.postValue("Valor inválido!")
         }
     }
@@ -54,14 +58,19 @@ class PixValueRequestViewModel(private val pixValueRequestRepository:PixValueReq
         .substring(3)
 
     fun getSaveBalanceValue(){
-        _balanceValue.postValue(pixValueRequestRepository.getSaveBalanceValue())
+        viewModelScope.launch {
+            _loading.postValue(true)
+            try {
+                balanceValueCurrent = homeRepository.BalancesAndBenefits().balance.currentValue
+                _balanceValue.postValue(converterToReal(balanceValueCurrent.toDouble()))
+            } catch (e: Exception) {
+                _responseErro.postValue(e.message)
+            }
+            _loading.postValue(false)
+        }
     }
 
-    fun checkVisibleBalances(){
-        if (balanceVisible.value == true) {
-            _balanceVisible.postValue(false)
-        } else {
-            _balanceVisible.postValue(true)
-        }
+    fun onOcultBalanceClicked(){
+        _balanceVisible.postValue(!(balanceVisible.value == true))
     }
 }

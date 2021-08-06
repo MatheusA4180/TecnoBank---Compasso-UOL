@@ -4,24 +4,26 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.tecnobank.data.remote.model.pix.PixItensRequest
+import com.example.tecnobank.data.remote.model.pix.PixItemsRequest
 import com.example.tecnobank.data.remote.model.pix.PixResponseConfirmation
 import com.example.tecnobank.data.remote.model.pix.PixResponseValidation
 import com.example.tecnobank.home.repository.PixConfirmationRepository
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.properties.Delegates
 
 class PixConfirmationViewModel(
-    private val pixConfirmationRepository: PixConfirmationRepository
+    private val pixConfirmationRepository: PixConfirmationRepository,
+    private val args: PixItemsRequest?
 ): ViewModel() {
 
-    private lateinit var pixEmail: String
-    private lateinit var pixDescription: String
-    private var pixValue by Delegates.notNull<Double>()
-    private var pixDate: String = SimpleDateFormat("dd/MM/yyyy").format(Calendar.getInstance().time)
+    private var pixType: String = args!!.type
+    private var pixEmail: String = args!!.email
+    private var pixDescription: String = args!!.description
+    private var pixValue = args!!.value
+    private var pixDate: String = SimpleDateFormat("dd/MM/yyyy")
+        .format(Calendar.getInstance().time)
     private lateinit var responseValidation: PixResponseValidation
     private lateinit var responseConfirm: PixResponseConfirmation
 
@@ -43,6 +45,9 @@ class PixConfirmationViewModel(
     private val _validDatePix = MutableLiveData<String>()
     val validDatePix: LiveData<String> = _validDatePix
 
+    private val _confirmationButtonEnabled = MutableLiveData<Boolean>()
+    val confirmationButtonEnabled: LiveData<Boolean> = _confirmationButtonEnabled
+
     fun validationDatePix(calendar: Calendar){
         pixDate = SimpleDateFormat("dd/MM/yyyy").format(calendar.time)
         requestValidationPix()
@@ -51,12 +56,23 @@ class PixConfirmationViewModel(
     fun requestValidationPix(){
         viewModelScope.launch {
             _loading.postValue(true)
+            _confirmationButtonEnabled.postValue(false)
             try{
-                responseValidation = pixConfirmationRepository.pixValidation(getPixItensRequest())
+                responseValidation = pixConfirmationRepository.pixValidation(
+                    PixItemsRequest(
+                        pixEmail,
+                        pixType,
+                        pixDescription,
+                        pixValue,
+                        pixDate
+                    )
+                )
                 _pixValidationSucess.postValue(responseValidation)
                 _validDatePix.postValue(pixDate)
+                _confirmationButtonEnabled.postValue(true)
             }catch (e:Exception){
                 _pixValidationError.postValue(e.message)
+                _confirmationButtonEnabled.postValue(false)
             }
             _loading.postValue(false)
         }
@@ -73,16 +89,6 @@ class PixConfirmationViewModel(
             }
             _loading.postValue(false)
         }
-    }
-
-    private fun getPixItensRequest(): PixItensRequest {
-        return PixItensRequest(pixEmail,"email",pixDescription,pixValue,pixDate)
-    }
-
-    fun setPixItensRequest(email: String, description: String, value: Double) {
-        pixEmail = email
-        pixDescription = description
-        pixValue = value
     }
 
 }

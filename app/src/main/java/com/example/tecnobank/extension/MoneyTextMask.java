@@ -61,7 +61,6 @@ public class MoneyTextMask implements TextWatcher {
         }
     }
 
-
     public static String getCurrencySymbol(Locale locale) {
 
         return NumberFormat.getCurrencyInstance(locale).getCurrency().getSymbol();

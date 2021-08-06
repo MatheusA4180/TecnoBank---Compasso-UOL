@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.tecnobank.R
+import com.example.tecnobank.data.remote.model.pix.PixItemsRequest
 import com.example.tecnobank.databinding.PixConfirmationFragmentBinding
 import com.example.tecnobank.extension.HelperFunctions.converterToReal
 import com.example.tecnobank.home.viewmodel.PixConfirmationViewModel
@@ -18,7 +19,6 @@ import com.example.tecnobank.viewmodelfactory.ViewModelFactory
 import com.google.android.material.datepicker.CalendarConstraints
 import com.google.android.material.datepicker.DateValidatorPointForward
 import com.google.android.material.datepicker.MaterialDatePicker
-import java.text.SimpleDateFormat
 import java.util.*
 
 class PixConfirmationFragment : Fragment() {
@@ -42,19 +42,23 @@ class PixConfirmationFragment : Fragment() {
 
         viewModel = ViewModelProvider(
             this,
-            ViewModelFactory(requireContext())
+            ViewModelFactory(requireContext(), PixItemsRequest(
+                type = "email",
+                email = args.email,
+                description = args.description,
+                value = args.value.toDouble(),
+                date = null
+            ))
         ).get(PixConfirmationViewModel::class.java)
-
-        viewModel.setPixItensRequest(args.email,args.description,args.value.toDouble())
 
         viewModel.requestValidationPix()
 
-        binding.toolbarPixConfirmation.setOnClickListener {
+        binding.toolbarPixConfirmation.setNavigationOnClickListener {
             findNavController().navigateUp()
         }
 
         binding.datePix.setOnClickListener {
-            MaterialDatePicker.Builder.datePicker().setTitleText("Selecione a data")
+            MaterialDatePicker.Builder.datePicker().setTitleText(getString(R.string.title_date_picker))
                 .setCalendarConstraints(CalendarConstraints.Builder()
                     .setValidator(DateValidatorPointForward.now()).build())
                 .build().apply {
@@ -63,7 +67,7 @@ class PixConfirmationFragment : Fragment() {
                         calendar.time = Date(it)
                         viewModel.validationDatePix(calendar)
                     }
-                }.show(childFragmentManager, DATE_PICKER_PIX)
+                }.show(childFragmentManager, null)
         }
 
         viewModel.loading.observe(viewLifecycleOwner, {
@@ -105,6 +109,10 @@ class PixConfirmationFragment : Fragment() {
             showInfo(it)
         })
 
+        viewModel.confirmationButtonEnabled.observe(viewLifecycleOwner,{
+            binding.pixConfirmationTransaction.isEnabled = it
+        })
+
         binding.pixConfirmationTransaction.setOnClickListener {
             viewModel.onClickConfirmationPix()
         }
@@ -123,7 +131,9 @@ class PixConfirmationFragment : Fragment() {
             .show()
     }
 
-    companion object {
-        const val DATE_PICKER_PIX = "datePicker"
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
+
 }

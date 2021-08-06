@@ -32,7 +32,7 @@ class ListServicesAdapter(
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (holder is CardServicesViewHolder) {
             holder.bind(listServices)
-            holder.itemView.setOnClickListener {
+            holder.cardServices.setOnClickListener {
                 clickedServiceListener.clickServiceListener(position, positionViewPager)
             }
         }
@@ -42,6 +42,7 @@ class ListServicesAdapter(
         private val cardDecor: CardView = itemView.findViewById(R.id.card_decor)
         private val icon: ImageView = itemView.findViewById(R.id.icon_services)
         private val title: TextView = itemView.findViewById(R.id.title_service)
+        val cardServices: CardView = itemView.findViewById(R.id.services_cardview)
 
         fun bind(listServices: List<ItemService>) {
             icon.setImageResource(listServices[position].icon)

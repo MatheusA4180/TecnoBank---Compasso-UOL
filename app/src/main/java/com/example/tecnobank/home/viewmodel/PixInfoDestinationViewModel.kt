@@ -8,28 +8,24 @@ import com.example.tecnobank.data.remote.model.pix.SingleLiveEvent
 
 class PixInfoDestinationViewModel: ViewModel() {
 
-    private var pixEmail: String = ""
+    private lateinit var pixEmail: String
 
     private val _goToDescriptionPix = SingleLiveEvent<String>()
     val goToDescriptionPix: LiveData<String> = _goToDescriptionPix
 
-    private val _buttonColor = SingleLiveEvent<Boolean>()
-    val buttonColor: LiveData<Boolean> = _buttonColor
+    private val _confirmationButtonEnabled = MutableLiveData<Boolean>()
+    val confirmationButtonEnabled: LiveData<Boolean> = _confirmationButtonEnabled
 
-    private val _emailErro = SingleLiveEvent<String>()
+    private val _emailErro = MutableLiveData<String>()
     val emailErro: LiveData<String> = _emailErro
 
     fun changeDestinationEmailPix(email: String){
         pixEmail = email
-        changeButtonColor(email)
+        changeButtonColor()
     }
 
-    private fun changeButtonColor(text: String){
-        if(isValidEmail()){
-            _buttonColor.postValue(true)
-        }else{
-            _buttonColor.postValue(false)
-        }
+    private fun changeButtonColor(){
+        _confirmationButtonEnabled.postValue(isValidEmail())
     }
 
     fun onClickApplyInfoDestinationPix(){
@@ -40,6 +36,5 @@ class PixInfoDestinationViewModel: ViewModel() {
         }
     }
 
-    private fun isValidEmail() =
-        pixEmail.isNotEmpty() && Patterns.EMAIL_ADDRESS.matcher(pixEmail).matches()
+    private fun isValidEmail() = Patterns.EMAIL_ADDRESS.matcher(pixEmail).matches()
 }

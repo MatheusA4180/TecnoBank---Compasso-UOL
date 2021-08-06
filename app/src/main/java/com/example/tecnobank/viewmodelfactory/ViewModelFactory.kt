@@ -9,12 +9,12 @@ import com.example.tecnobank.data.local.SharedPreferenceServices
 import com.example.tecnobank.data.local.database.ExtractDAO
 import com.example.tecnobank.data.local.database.ExtractDatabase
 import com.example.tecnobank.data.remote.EndPoint
+import com.example.tecnobank.data.remote.model.pix.PixItemsRequest
 import com.example.tecnobank.extract.repository.ExtractRepositoty
 import com.example.tecnobank.extract.viewmodel.ExtractViewModel
 import com.example.tecnobank.home.repository.HomeRepository
 import com.example.tecnobank.home.repository.PixConfirmationRepository
 import com.example.tecnobank.home.repository.PixRepository
-import com.example.tecnobank.home.repository.PixValueRequestRepository
 import com.example.tecnobank.home.viewmodel.HomeViewModel
 import com.example.tecnobank.home.viewmodel.PixConfirmationViewModel
 import com.example.tecnobank.home.viewmodel.PixOnBoardingViewModel
@@ -26,7 +26,7 @@ import com.example.tecnobank.intro.viewmodel.LoginViewModel
 import com.example.tecnobank.intro.viewmodel.OnBoardingViewModel
 import com.example.tecnobank.intro.viewmodel.SplashViewModel
 
-class ViewModelFactory(private val context: Context): ViewModelProvider.Factory {
+class ViewModelFactory(private val context: Context, private val args: PixItemsRequest?): ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         if (modelClass == SplashViewModel::class.java) {
             return providerSplashViewModel() as T
@@ -114,10 +114,9 @@ class ViewModelFactory(private val context: Context): ViewModelProvider.Factory 
 
     private fun providerPixValueRequestViewModel(): PixValueRequestViewModel {
         return PixValueRequestViewModel(
-            PixValueRequestRepository(
-                providerSharedPreferenceService(
-                    providerSharedPreference()
-                )
+            HomeRepository(
+                providerEndPointInstance(),
+                providerSharedPreferenceService(providerSharedPreference())
             )
         )
     }
@@ -129,7 +128,8 @@ class ViewModelFactory(private val context: Context): ViewModelProvider.Factory 
                 providerSharedPreferenceService(
                     providerSharedPreference()
                 )
-            )
+            ),
+            args
         )
     }
 
