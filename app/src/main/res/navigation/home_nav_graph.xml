@@ -16,6 +16,18 @@
         <action
             android:id="@+id/action_homeFragment_to_cardsFragment"
             app:destination="@id/cardsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_accountDependencyActivity"
+            app:destination="@id/accountDependencyActivity" />
+        <action
+            android:id="@+id/action_homeFragment_to_notificationActivity"
+            app:destination="@id/notificationActivity" />
+        <action
+            android:id="@+id/action_homeFragment_to_qrCodeSafeActivity"
+            app:destination="@id/qrCodeSafeActivity" />
+        <action
+            android:id="@+id/action_homeFragment_to_payQrCodeActivity"
+            app:destination="@id/payQrCodeActivity" />
 
     </fragment>
     <fragment
@@ -54,4 +66,23 @@
             app:argType="boolean"
             android:defaultValue="false"/>
     </activity>
+    <activity
+        android:id="@+id/accountDependencyActivity"
+        android:name="com.example.tecnobank.home.activity.AccountDependencyActivity"
+        android:label="AccountDependencyActivity" />
+    <activity
+        android:id="@+id/notificationActivity"
+        android:name="com.example.tecnobank.home.activity.NotificationActivity"
+        android:label="notification_activity"
+        tools:layout="@layout/notification_activity" />
+    <activity
+        android:id="@+id/qrCodeSafeActivity"
+        android:name="com.example.tecnobank.home.activity.QrCodeSafeActivity"
+        android:label="qr_code_safe_activity"
+        tools:layout="@layout/qr_code_safe_activity" />
+    <activity
+        android:id="@+id/payQrCodeActivity"
+        android:name="com.example.tecnobank.home.activity.services.PayQrCodeActivity"
+        android:label="pay_qr_code_activity"
+        tools:layout="@layout/pay_qr_code_activity" />
 </navigation>

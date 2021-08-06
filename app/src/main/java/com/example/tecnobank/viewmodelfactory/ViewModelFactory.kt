@@ -15,10 +15,8 @@ import com.example.tecnobank.extract.viewmodel.ExtractViewModel
 import com.example.tecnobank.home.repository.HomeRepository
 import com.example.tecnobank.home.repository.PixConfirmationRepository
 import com.example.tecnobank.home.repository.PixRepository
-import com.example.tecnobank.home.viewmodel.HomeViewModel
-import com.example.tecnobank.home.viewmodel.PixConfirmationViewModel
-import com.example.tecnobank.home.viewmodel.PixOnBoardingViewModel
-import com.example.tecnobank.home.viewmodel.PixValueRequestViewModel
+import com.example.tecnobank.home.repository.ProfileRepository
+import com.example.tecnobank.home.viewmodel.*
 import com.example.tecnobank.intro.repository.LoginRepository
 import com.example.tecnobank.intro.repository.OnBoardingRepository
 import com.example.tecnobank.intro.repository.SplashRepository
@@ -39,6 +37,9 @@ class ViewModelFactory(private val context: Context, private val args: PixItemsR
         }
         if (modelClass == HomeViewModel::class.java) {
             return providerHomeViewModel() as T
+        }
+        if (modelClass == ProfileViewModel::class.java) {
+            return providerProfileViewModel() as T
         }
         if (modelClass == ExtractViewModel::class.java) {
             return providerExtractViewModel() as T
@@ -89,6 +90,16 @@ class ViewModelFactory(private val context: Context, private val args: PixItemsR
             HomeRepository(
                 providerEndPointInstance(),
                 providerSharedPreferenceService(providerSharedPreference())
+            )
+        )
+    }
+
+    private fun providerProfileViewModel(): ProfileViewModel {
+        return ProfileViewModel(
+            ProfileRepository(
+                providerSharedPreferenceService(
+                    providerSharedPreference()
+                )
             )
         )
     }

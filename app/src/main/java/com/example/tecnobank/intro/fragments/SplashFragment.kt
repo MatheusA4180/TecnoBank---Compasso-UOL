@@ -5,6 +5,7 @@ import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -17,6 +18,7 @@ class SplashFragment : Fragment() {
 
     private val SPLASH_DELAY: Long = 3000
     private var _binding: SplashFragmentBinding? = null
+    private val binding: SplashFragmentBinding get() = _binding!!
     private lateinit var viewModel: SplashViewModel
 
     override fun onCreateView(
@@ -34,7 +36,9 @@ class SplashFragment : Fragment() {
             SplashViewModel::class.java
         )
 
-        Handler().postDelayed(Runnable {
+        binding.splashLogo.animation = AnimationUtils.loadAnimation(requireContext(),R.anim.top_animation)
+
+        Handler().postDelayed({
             viewModel.initSplash()
         }, SPLASH_DELAY)
 

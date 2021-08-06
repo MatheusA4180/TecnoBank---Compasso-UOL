@@ -20,14 +20,19 @@ class HomeViewModel(private val homeRepository: HomeRepository) : ViewModel() {
     private val _responseErro = MutableLiveData<String>()
     val responseErro: LiveData<String> = _responseErro
 
+    private val _loading = MutableLiveData<Boolean>()
+    val loading: LiveData<Boolean> = _loading
+
     fun onOpenHome() {
         viewModelScope.launch {
             try {
+                _loading.postValue(true)
                 val response = homeRepository.BalancesAndBenefits()
                 _responseSucess.postValue(response)
             } catch (e: Exception) {
                 _responseErro.postValue(e.message)
             }
+            _loading.postValue(false)
         }
     }
 

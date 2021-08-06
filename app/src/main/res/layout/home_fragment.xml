@@ -7,21 +7,22 @@
     android:background="#DCDCDC">
 
     <com.google.android.material.appbar.MaterialToolbar
-        android:id="@+id/inicio_toolbar"
+        android:id="@+id/toolbar_home"
         android:layout_width="0dp"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/greenTecnoBank"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:menu="@menu/home_fragment_menu"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="@+id/inicio_toolbar"
-        app:layout_constraintEnd_toEndOf="@+id/inicio_toolbar"
-        app:layout_constraintStart_toStartOf="@+id/inicio_toolbar"
-        app:layout_constraintTop_toTopOf="@id/inicio_toolbar" />
+        app:layout_constraintBottom_toBottomOf="@+id/toolbar_home"
+        app:layout_constraintEnd_toEndOf="@+id/toolbar_home"
+        app:layout_constraintStart_toStartOf="@+id/toolbar_home"
+        app:layout_constraintTop_toTopOf="@id/toolbar_home" />
 
     <ImageView
         android:id="@+id/logo_toolbar"
@@ -30,9 +31,9 @@
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
         android:src="@drawable/logo_onboarding"
-        app:layout_constraintBottom_toBottomOf="@+id/inicio_toolbar"
-        app:layout_constraintStart_toStartOf="@+id/inicio_toolbar"
-        app:layout_constraintTop_toTopOf="@id/inicio_toolbar" />
+        app:layout_constraintBottom_toBottomOf="@+id/toolbar_home"
+        app:layout_constraintStart_toStartOf="@+id/toolbar_home"
+        app:layout_constraintTop_toTopOf="@id/toolbar_home" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -42,40 +43,9 @@
         android:textColor="@color/white"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/inicio_toolbar"
-        app:layout_constraintStart_toStartOf="@+id/inicio_toolbar"
-        app:layout_constraintTop_toTopOf="@id/inicio_toolbar" />
-
-    <Button
-        android:id="@+id/bt_login"
-        style="@style/Widget.MaterialComponents.Button.TextButton"
-        android:layout_width="50dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="12dp"
-        android:drawableEnd="@drawable/ic_login"
-        app:layout_constraintBottom_toBottomOf="@+id/inicio_toolbar"
-        app:layout_constraintEnd_toEndOf="@+id/inicio_toolbar"
-        app:layout_constraintTop_toTopOf="@id/inicio_toolbar" />
-
-    <Button
-        android:id="@+id/bt_notification"
-        style="@style/Widget.MaterialComponents.Button.TextButton"
-        android:layout_width="50dp"
-        android:layout_height="wrap_content"
-        android:drawableEnd="@drawable/ic_notificacao"
-        app:layout_constraintBottom_toBottomOf="@+id/inicio_toolbar"
-        app:layout_constraintEnd_toStartOf="@+id/bt_login"
-        app:layout_constraintTop_toTopOf="@id/inicio_toolbar" />
-
-    <Button
-        android:id="@+id/bt_qrcode"
-        style="@style/Widget.MaterialComponents.Button.TextButton"
-        android:layout_width="50dp"
-        android:layout_height="wrap_content"
-        android:drawableEnd="@drawable/ic_qrcode"
-        app:layout_constraintBottom_toBottomOf="@+id/inicio_toolbar"
-        app:layout_constraintEnd_toStartOf="@+id/bt_notification"
-        app:layout_constraintTop_toTopOf="@id/inicio_toolbar" />
+        app:layout_constraintBottom_toBottomOf="@+id/toolbar_home"
+        app:layout_constraintStart_toStartOf="@+id/toolbar_home"
+        app:layout_constraintTop_toTopOf="@id/toolbar_home" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -83,7 +53,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/inicio_toolbar">
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_home">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -151,22 +121,24 @@
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_marginTop="8dp"
+                                        android:layout_marginBottom="8dp"
                                         android:text="@string/home_balance_subtitle_1"
                                         android:textColor="@color/white"
                                         android:textSize="28sp"
                                         android:textStyle="bold"
+                                        app:layout_constraintBottom_toBottomOf="parent"
                                         app:layout_constraintStart_toStartOf="@+id/textView5"
                                         app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
-                                    <Button
+                                    <ImageView
                                         android:id="@+id/bt_visible_balance"
-                                        style="@style/Widget.MaterialComponents.Button.TextButton"
-                                        android:layout_width="50dp"
+                                        android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:layout_marginEnd="20dp"
-                                        android:drawableEnd="@drawable/ic_visivel"
+                                        android:layout_marginEnd="32dp"
+                                        app:layout_constraintBottom_toBottomOf="@+id/current_value"
                                         app:layout_constraintEnd_toEndOf="parent"
-                                        app:layout_constraintTop_toTopOf="@+id/current_value" />
+                                        app:layout_constraintTop_toTopOf="@+id/current_value"
+                                        app:srcCompat="@drawable/ic_visibility_on" />
 
                                 </androidx.constraintlayout.widget.ConstraintLayout>
                             </androidx.cardview.widget.CardView>
@@ -174,7 +146,7 @@
                             <androidx.cardview.widget.CardView
                                 android:id="@+id/cardView2"
                                 android:layout_width="0dp"
-                                android:layout_height="2dp"
+                                android:layout_height="1dp"
                                 app:cardBackgroundColor="#000000"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
@@ -266,13 +238,12 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="#2270E3">
+                    android:background="@color/blueTecnoBank">
 
                     <androidx.cardview.widget.CardView
                         android:id="@+id/funcionalidades_view_pager_e_tab_layout"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        app:background="@drawable/card_custon_border"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -286,11 +257,12 @@
                                 android:id="@+id/tab_layout_functionalities"
                                 android:layout_width="0dp"
                                 android:layout_height="60dp"
-                                android:textAlignment="center"
+                                app:tabTextColor="@color/blueTecnoBank"
+                                app:tabIndicatorColor="@color/blueTecnoBank"
+                                android:background="@drawable/layers_card_top_rounded"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent"
-                                app:tabGravity="center" />
+                                app:layout_constraintTop_toTopOf="parent" />
 
                             <androidx.viewpager2.widget.ViewPager2
                                 android:id="@+id/pager_functionalities"
@@ -351,6 +323,9 @@
                                 android:id="@+id/incomplet_sing_up"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:clickable="true"
+                                android:focusable="true"
+                                android:foreground="?selectableItemBackground"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintHorizontal_bias="0.92"
@@ -479,4 +454,16 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
+
+    <ProgressBar
+        android:id="@+id/progressCircular"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/black"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

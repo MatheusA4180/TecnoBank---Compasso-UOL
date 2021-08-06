@@ -159,7 +159,7 @@
     <string name="profile_title_1">Olá,</string>
     <string name="profile_subtitle_1">compassouol@pbpuc.com</string>
     <string name="profile_subtitle_2">Banco</string>
-    <string name="profile_subtitle_3">290 - Tecnobank Internet S.A</string>
+    <string name="profile_subtitle_3">290 - Tecnobank S.A</string>
     <string name="profile_subtitle_4">Conta</string>
     <string name="profile_subtitle_5">00000000-0</string>
     <string name="profile_subtitle_6">Agência</string>
@@ -209,4 +209,14 @@
     <string name="text_tranfer_dialog">Favor, utilizar opção de e-mail para envio do pix. Estamos trabalhando para implementar novas funcionalidades</string>
     <string name="title_ocult">Ocultar</string>
     <string name="title_visible">Visualizar</string>
+    <string name="my_profile">Meu Perfil</string>
+    <string name="income_tax">Imposto de Renda</string>
+    <string name="benefits_and_tecnobank">Benefícios e TecnoBank</string>
+    <string name="nominate_and_win">Indique e ganhe</string>
+    <string name="offer">Ofertas</string>
+    <string name="limits_pix">Limites Pix</string>
+    <string name="help_center">Central de Ajuda</string>
+    <string name="security">Segurança</string>
+    <string name="close_account">Encerrar conta</string>
+    <string name="exit">sair</string>
 </resources>

@@ -11,12 +11,15 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tecnobank.R
 import com.example.tecnobank.data.remote.model.home.BalanceBenefitsResponse
 import com.example.tecnobank.databinding.HomeFragmentBinding
 import com.example.tecnobank.extension.HelperFunctions.converterToReal
 import com.example.tecnobank.home.adapter.ViewPagerServicesAdapter
+import com.example.tecnobank.home.dialog.ProfileDialog
+import com.example.tecnobank.home.recyclerview.DotsDecoration
 import com.example.tecnobank.home.recyclerview.ListBenefitsAdapter
 import com.example.tecnobank.home.recyclerview.PagerDecoratorDots
 import com.example.tecnobank.home.viewmodel.HomeViewModel
@@ -47,6 +50,10 @@ class HomeFragment : Fragment() {
 
         viewModel.onOpenHome()
 
+        viewModel.loading.observe(viewLifecycleOwner, {
+            binding.progressCircular.isVisible = it
+        })
+
         viewModel.responseSucess.observe(viewLifecycleOwner, {
             binding.listBenefits.isVisible = true
             binding.currentValue.text = converterToReal(it.balance.currentValue.toDouble())
@@ -62,13 +69,36 @@ class HomeFragment : Fragment() {
             viewModel.checkVisibleBalances()
         }
 
+        binding.incompletSingUp.setOnClickListener {
+            findNavController().navigate(R.id.action_homeFragment_to_accountDependencyActivity)
+        }
+
+        binding.toolbarHome.setOnMenuItemClickListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.scannerqrcode -> {
+                    findNavController().navigate(R.id.action_homeFragment_to_qrCodeSafeActivity)
+                    true
+                }
+                R.id.notification -> {
+                    findNavController().navigate(R.id.action_homeFragment_to_notificationActivity)
+                    true
+                }
+                else ->{
+                    ProfileDialog().show(childFragmentManager, "dialog_profile")
+                    false
+                }
+            }
+        }
+
         viewModel.balanceVisible.observe(viewLifecycleOwner, {
-            if(it){
-                binding.currentValue.setTransformationMethod(null)
-                binding.receivables.setTransformationMethod(null)
-            }else{
-                binding.currentValue.setTransformationMethod(PasswordTransformationMethod())
-                binding.receivables.setTransformationMethod(PasswordTransformationMethod())
+            if(it) {
+                binding.currentValue.transformationMethod = null
+                binding.receivables.transformationMethod = null
+                binding.btVisibleBalance.setImageResource(R.drawable.ic_visibility_on)
+            }else {
+                binding.currentValue.transformationMethod = PasswordTransformationMethod()
+                binding.receivables.transformationMethod = PasswordTransformationMethod()
+                binding.btVisibleBalance.setImageResource(R.drawable.ic_visibility_off)
             }
         })
 
@@ -102,27 +132,9 @@ class HomeFragment : Fragment() {
     private fun recyclerViewConfig(listBenefitsResponse: List<BalanceBenefitsResponse.Benefits>) {
         with(binding.listBenefits) {
             adapter = ListBenefitsAdapter(listBenefitsResponse)
-            dotsConfig()
+            addItemDecoration(DotsDecoration(requireContext()))
+            PagerSnapHelper().attachToRecyclerView(this)
         }
-    }
-
-    private fun RecyclerView.dotsConfig() {
-        val decor = PagerDecoratorDots()
-        addItemDecoration(decor)
-        addOnItemTouchListener(object : RecyclerView.OnItemTouchListener {
-            override fun onTouchEvent(rv: RecyclerView, e: MotionEvent) {
-            }
-
-            override fun onInterceptTouchEvent(
-                rv: RecyclerView,
-                motionEvent: MotionEvent
-            ): Boolean {
-                return decor.isIndicatorPressing(motionEvent, rv)
-            }
-
-            override fun onRequestDisallowInterceptTouchEvent(disallowIntercept: Boolean) {
-            }
-        })
     }
 
     fun showInfo(titulo: String?) {

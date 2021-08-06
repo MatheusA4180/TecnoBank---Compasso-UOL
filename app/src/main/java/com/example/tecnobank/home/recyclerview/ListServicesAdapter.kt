@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
+import androidx.core.content.ContextCompat
 import androidx.core.content.ContextCompat.getColor
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
@@ -31,24 +32,48 @@ class ListServicesAdapter(
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (holder is CardServicesViewHolder) {
-            holder.bind(listServices)
-            holder.cardServices.setOnClickListener {
+            if(listServices[position].incompletService) {
+                holder.cardButton.setCardBackgroundColor(
+                    getColor(
+                        holder.cardButton.context,
+                        R.color.gray_200
+                    )
+                )
+                holder.icon.setImageResource(listServices[position].icon)
+                holder.icon.drawable.setTint(
+                    getColor(
+                        holder.cardButton.context,
+                        R.color.gray_700
+                    )
+                )
+            } else {
+                holder.icon.setImageResource(listServices[position].icon)
+            }
+            if (!(listServices[position].titleInfo.isNullOrEmpty())) {
+                holder.cardDecor.isVisible = true
+                holder.textDecor.text = listServices[position].titleInfo
+            } else {
+                holder.cardDecor.isVisible = false
+                holder.cardDecor.setCardBackgroundColor(
+                    getColor(
+                        holder.cardButton.context,
+                        R.color.gray_500
+                    )
+                )
+            }
+            holder.title.text = listServices[position].title
+            holder.cardButton.setOnClickListener {
                 clickedServiceListener.clickServiceListener(position, positionViewPager)
             }
         }
     }
 
     class CardServicesViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val cardDecor: CardView = itemView.findViewById(R.id.card_decor)
-        private val icon: ImageView = itemView.findViewById(R.id.icon_services)
-        private val title: TextView = itemView.findViewById(R.id.title_service)
-        val cardServices: CardView = itemView.findViewById(R.id.services_cardview)
-
-        fun bind(listServices: List<ItemService>) {
-            icon.setImageResource(listServices[position].icon)
-            cardDecor.isVisible = false
-            title.text = listServices[position].title
-        }
+        val cardDecor: CardView = itemView.findViewById(R.id.card_decor)
+        val textDecor: TextView = itemView.findViewById(R.id.text_decor)
+        val icon: ImageView = itemView.findViewById(R.id.icon_services)
+        val title: TextView = itemView.findViewById(R.id.title_service)
+        val cardButton: CardView = itemView.findViewById(R.id.services_cardview)
     }
 
     data class ItemService(

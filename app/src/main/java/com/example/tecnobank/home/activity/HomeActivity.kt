@@ -2,6 +2,7 @@ package com.example.tecnobank.home.activity
 
 import android.os.Bundle
 import android.util.Log
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
@@ -35,6 +36,16 @@ class HomeActivity : AppCompatActivity() {
             Log.i("Funcionou", task.result!!)
         })
 
+    }
+
+    override fun onBackPressed() {
+        AlertDialog.Builder(this)
+            .setTitle("Deseja sair do aplicativo?")
+            .setMessage("")
+            .setNegativeButton("Não") { _, _ -> }
+            .setPositiveButton("Sim") { _, _ -> finish() }
+            .create()
+            .show()
     }
 
 }

@@ -1,42 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_margin="24dp">
+    android:layout_height="match_parent">
 
-    <EditText
-        android:id="@+id/login_email"
-        android:layout_width="340dp"
-        android:layout_height="47dp"
-        android:hint="@string/login_e_mail_title_1"
-        android:importantForAutofill="no"
-        android:inputType="textCapWords"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/login_username_layout"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="24dp"
+        android:hint="E-mail"
+        android:selectAllOnFocus="true"
+        app:errorEnabled="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.39" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView">
 
-    <EditText
-        android:id="@+id/login_password"
-        android:layout_width="340dp"
-        android:layout_height="47dp"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/login_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/white"
+            android:inputType="textEmailAddress" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/login_input_layout"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="20dp"
-        android:hint="@string/login_password_subtitle_1"
-        android:importantForAutofill="no"
-        android:inputType="textPassword"
+        android:layout_marginEnd="24dp"
+        android:hint="Senha"
+        android:imeActionLabel="Senha D"
+        android:imeOptions="actionDone"
+        android:selectAllOnFocus="true"
+        app:endIconMode="password_toggle"
+        app:errorEnabled="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/login_email" />
+        app:layout_constraintTop_toBottomOf="@+id/login_username_layout">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/login_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/white"
+            android:inputType="textPassword" />
+
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Switch
         android:id="@+id/remeber_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        app:layout_constraintEnd_toEndOf="@+id/login_password"
-        app:layout_constraintTop_toBottomOf="@+id/login_password" />
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="@+id/login_input_layout"
+        app:layout_constraintTop_toBottomOf="@+id/login_input_layout" />
 
     <TextView
         android:id="@+id/textView"
@@ -44,7 +69,7 @@
         android:layout_height="wrap_content"
         android:text="@string/login_remember_my_account_subtitle_2"
         android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="@+id/login_password"
+        app:layout_constraintStart_toStartOf="@+id/login_input_layout"
         app:layout_constraintTop_toTopOf="@+id/remeber_login" />
 
     <TextView
@@ -111,21 +136,17 @@
     <androidx.cardview.widget.CardView
         android:layout_width="0dp"
         android:layout_height="10dp"
-        android:layout_marginStart="140dp"
-        android:layout_marginTop="140dp"
-        android:layout_marginEnd="10dp"
+        android:layout_marginStart="130dp"
+        android:layout_marginBottom="12dp"
         app:cardBackgroundColor="@color/greenTecnoBank"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintBottom_toBottomOf="@+id/imageView"
+        app:layout_constraintEnd_toEndOf="@+id/imageView"
+        app:layout_constraintStart_toStartOf="@+id/imageView" />
 
     <ProgressBar
         android:id="@+id/progressCircular"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/black"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

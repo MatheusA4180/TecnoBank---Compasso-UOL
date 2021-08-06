@@ -36,4 +36,7 @@ class LoginRepository(
 
     fun saveTokenAuthentication(tokenAuthentication: String) = sharedPreferenceServices
         .saveTokenAuthentication(tokenAuthentication)
+
+    fun saveUserName(firstName: String, lastName: String) = sharedPreferenceServices
+        .saveUserName(firstName, lastName)
 }

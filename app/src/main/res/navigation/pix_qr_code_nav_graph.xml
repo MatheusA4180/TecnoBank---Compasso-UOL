@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_pixQrCodeFragment_to_pixModeTransferFragment"
             app:destination="@id/pixModeTransferFragment" />
+        <action
+            android:id="@+id/action_pixQrCodeFragment_to_payQrCodeActivity2"
+            app:destination="@id/payQrCodeActivity2" />
     </fragment>
     <fragment
         android:id="@+id/pixModeTransferFragment"
@@ -114,4 +117,9 @@
             android:id="@+id/action_pixOnBordingFragment_to_pixQrCodeFragment"
             app:destination="@id/pixQrCodeFragment" />
     </fragment>
+    <activity
+        android:id="@+id/payQrCodeActivity2"
+        android:name="com.example.tecnobank.home.activity.services.PayQrCodeActivity"
+        android:label="pay_qr_code_activity"
+        tools:layout="@layout/pay_qr_code_activity" />
 </navigation>

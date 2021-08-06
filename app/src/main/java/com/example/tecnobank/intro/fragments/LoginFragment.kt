@@ -1,6 +1,8 @@
 package com.example.tecnobank.intro.fragments
 
 import android.app.AlertDialog
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,8 +14,10 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.tecnobank.R
 import com.example.tecnobank.databinding.LoginFragmentBinding
+import com.example.tecnobank.databinding.ModalBottomSheetDialogBinding
 import com.example.tecnobank.intro.viewmodel.LoginViewModel
 import com.example.tecnobank.viewmodelfactory.ViewModelFactory
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 class LoginFragment : Fragment() {
 
@@ -56,11 +60,11 @@ class LoginFragment : Fragment() {
         })
 
         viewModel.emailErro.observe(viewLifecycleOwner, {
-            binding.loginEmail.error = "CPF, CNPJ ou Email não preenchido!";
+            binding.loginUsernameLayout.error = "CPF, CNPJ ou Email não preenchido!"
         })
 
         viewModel.passwordErro.observe(viewLifecycleOwner, {
-            binding.loginPassword.error = "Senha não preenchida!";
+            binding.loginInputLayout.error = "Senha não preenchida!"
         })
 
         viewModel.goToHome.observe(viewLifecycleOwner, {
@@ -69,7 +73,7 @@ class LoginFragment : Fragment() {
         })
 
         viewModel.showErro.observe(viewLifecycleOwner, {
-            showInfo(it)
+            ModalBottomSheet(it).show(childFragmentManager, null)
         })
 
         binding.remeberLogin.setOnCheckedChangeListener { _, isChecked ->
@@ -86,17 +90,41 @@ class LoginFragment : Fragment() {
 
     }
 
-    fun showInfo(title: String?) {
-        AlertDialog.Builder(requireContext())
-            .setCancelable(true)
-            .setTitle(title)
-            .setMessage("")
-            .show()
-    }
-
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+}
+
+class ModalBottomSheet(private val message: String): BottomSheetDialogFragment() {
+
+    private var _binding: ModalBottomSheetDialogBinding? = null
+    private val binding: ModalBottomSheetDialogBinding get() = _binding!!
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        _binding = ModalBottomSheetDialogBinding.inflate(inflater, container, false)
+        return _binding!!.root
+    }
+
+    override fun onStart() {
+        super.onStart()
+        dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding.messageError.text = message
+
+        binding.reponseOk.setOnClickListener {
+            requireActivity().onBackPressed()
+        }
+
     }
 
 }

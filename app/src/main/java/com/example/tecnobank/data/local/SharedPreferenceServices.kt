@@ -47,11 +47,30 @@ class SharedPreferenceServices(private val preferences: SharedPreferences) {
         }
     }
 
+    fun saveUserName(firstName: String, lastName: String) {
+        preferences.edit {
+            putString(USERNAME, "$firstName $lastName")
+        }
+    }
+
+    fun getSaveUserName(): String? = preferences.getString(USERNAME, "")
+
+
+    fun saveItemFilterSelected(positionFilter: Int) {
+        preferences.edit {
+            putInt(POSITION_FILTER, (positionFilter))
+        }
+    }
+
+    fun getSaveItemFilterSelected(): Int = preferences.getInt(POSITION_FILTER, 1)
+
     companion object {
         private const val PASS_TO_ONBOARDING = "Passou"
         private const val USER = "Username"
         private const val PASSWORD = "Password"
         private const val TOKEN_AUTHENTICATION = "TokenAuthentication"
         private const val PASS_TO_PIX_ONBOARDING = "pass_to_pix_on_bording"
+        private const val USERNAME = "UserName"
+        private const val POSITION_FILTER = "PositionFilter"
     }
 }
