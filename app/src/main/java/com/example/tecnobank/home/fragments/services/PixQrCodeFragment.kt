@@ -30,8 +30,13 @@ class PixQrCodeFragment : Fragment() {
         binding.pixQrcodeToobar.setNavigationOnClickListener{
             requireActivity().finish()
         }
+
         binding.pixTransfer.setOnClickListener {
             findNavController().navigate(R.id.action_pixQrCodeFragment_to_pixModeTransferFragment)
+        }
+
+        binding.payQrCode.setOnClickListener {
+            findNavController().navigate(R.id.action_pixQrCodeFragment_to_payQrCodeActivity2)
         }
     }
 
