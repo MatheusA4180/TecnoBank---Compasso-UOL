@@ -15,4 +15,8 @@ interface ExtractDAO {
 
     @Query("SELECT * FROM ExtractEntity")
     fun returnCache(): List<ExtractResponse>
+
+    @Query("DELETE FROM ExtractEntity")
+    fun deleteCache()
+
 }

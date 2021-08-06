@@ -20,7 +20,6 @@ abstract class ExtractDatabase : RoomDatabase() {
         fun getInstance(context: Context?): ExtractDatabase {
             return Room
                 .databaseBuilder(context!!, ExtractDatabase::class.java, NAME_DB)
-                .allowMainThreadQueries()
                 .build()
         }
 

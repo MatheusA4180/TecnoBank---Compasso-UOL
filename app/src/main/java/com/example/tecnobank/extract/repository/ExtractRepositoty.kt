@@ -22,20 +22,17 @@ class ExtractRepositoty(
 
         if (response.isSuccessful) {
             if (default == 7) {
+                //extractDAO.deleteCache()
                 //saveResponseInDatabase(response.body()!!)
             }
             return response.body()!!
         } else if (response.code() == 304) {
-            //return responseCache()
+            //return extractDAO.returnCache()
             throw Exception("Codigo 304")
         } else {
             throw Exception("Erro no sistema.")
         }
 
-    }
-
-    private fun responseCache(): List<ExtractResponse> {
-        return extractDAO.returnCache()
     }
 
     fun saveResponseInDatabase(listExtracts: List<ExtractResponse>) {
