@@ -27,15 +27,13 @@ class HomeActivity : AppCompatActivity() {
                 .findFragmentById(R.id.navHostFragmentPix) as NavHostFragment).navController
         )
 
-        //id('com.google.gms.google-services')
-
-//        FirebaseMessaging.getInstance().token.addOnCompleteListener(OnCompleteListener { task ->
-//            if (!task.isSuccessful) {
-//                Log.i("W", "Fetching FCM registration token failed", task.exception)
-//                return@OnCompleteListener
-//            }
-//            Log.i("Funcionou", task.result!!)
-//        })
+        FirebaseMessaging.getInstance().token.addOnCompleteListener(OnCompleteListener { task ->
+            if (!task.isSuccessful) {
+                Log.i("W", "Fetching FCM registration token failed", task.exception)
+                return@OnCompleteListener
+            }
+            Log.i("Funcionou", task.result!!)
+        })
 
     }
 
