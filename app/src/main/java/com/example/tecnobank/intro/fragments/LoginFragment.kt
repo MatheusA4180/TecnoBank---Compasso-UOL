@@ -60,11 +60,11 @@ class LoginFragment : Fragment() {
         })
 
         viewModel.emailErro.observe(viewLifecycleOwner, {
-            binding.loginUsernameLayout.error = "CPF, CNPJ ou Email não preenchido!"
+            binding.loginUsernameLayout.error = it
         })
 
         viewModel.passwordErro.observe(viewLifecycleOwner, {
-            binding.loginInputLayout.error = "Senha não preenchida!"
+            binding.loginInputLayout.error = it
         })
 
         viewModel.goToHome.observe(viewLifecycleOwner, {

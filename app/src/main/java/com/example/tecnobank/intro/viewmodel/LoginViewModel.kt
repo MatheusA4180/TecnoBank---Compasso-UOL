@@ -19,11 +19,11 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
     private val _showErro = MutableLiveData<String>()
     val showErro: LiveData<String> = _showErro
 
-    private val _emailErro = MutableLiveData<Unit>()
-    val emailErro: LiveData<Unit> = _emailErro
+    private val _emailErro = MutableLiveData<String>()
+    val emailErro: LiveData<String> = _emailErro
 
-    private val _passwordErro = MutableLiveData<Unit>()
-    val passwordErro: LiveData<Unit> = _passwordErro
+    private val _passwordErro = MutableLiveData<String>()
+    val passwordErro: LiveData<String> = _passwordErro
 
     private val _rememberUserToogle = MutableLiveData<Unit>()
     val rememberUserToogle: LiveData<Unit> = _rememberUserToogle
@@ -45,9 +45,9 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
 
     fun onLoginClicked() {
         if (email.isNullOrBlank()) {
-            _emailErro.postValue(Unit)
+            _emailErro.postValue("CPF, CNPJ ou Email não preenchido!")
         } else if (password.isNullOrBlank()) {
-            _passwordErro.postValue(Unit)
+            _passwordErro.postValue("Senha não preenchida!")
         } else {
             login()
         }

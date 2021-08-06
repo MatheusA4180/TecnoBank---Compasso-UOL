@@ -7,51 +7,44 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/login_username_layout"
-        android:layout_width="0dp"
-        android:layout_height="60dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="24dp"
+        android:inputType="textEmailAddress"
         android:hint="E-mail"
-        android:selectAllOnFocus="true"
-        app:errorEnabled="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:boxStrokeColor="@color/greenTecnoBank"
         app:layout_constraintTop_toBottomOf="@+id/imageView">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/login_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/white"
+            android:background="@color/white"
             android:inputType="textEmailAddress" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
-
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/login_input_layout"
-        android:layout_width="0dp"
-        android:layout_height="60dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="24dp"
+        android:inputType="textEmailAddress"
         android:hint="Senha"
-        android:imeActionLabel="Senha D"
-        android:imeOptions="actionDone"
-        android:selectAllOnFocus="true"
         app:endIconMode="password_toggle"
-        app:errorEnabled="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:boxStrokeColor="@color/greenTecnoBank"
         app:layout_constraintTop_toBottomOf="@+id/login_username_layout">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/login_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/white"
-            android:inputType="textPassword" />
+            android:background="@color/white"
+            android:inputType="textPassword"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 

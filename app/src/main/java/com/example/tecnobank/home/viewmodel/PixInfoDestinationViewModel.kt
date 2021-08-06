@@ -25,7 +25,7 @@ class PixInfoDestinationViewModel: ViewModel() {
     }
 
     private fun changeButtonColor(){
-        _confirmationButtonEnabled.postValue(isValidEmail())
+        _confirmationButtonEnabled.postValue(!(pixEmail.isNullOrEmpty()))
     }
 
     fun onClickApplyInfoDestinationPix(){
