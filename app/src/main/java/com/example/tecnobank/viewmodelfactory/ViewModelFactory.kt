@@ -124,10 +124,7 @@ class ViewModelFactory(private val context: Context, private val args: PixItemsR
     private fun providerPixConfirmationViewModel(): PixConfirmationViewModel {
         return PixConfirmationViewModel(
             PixConfirmationRepository(
-                providerEndPointInstance(),
-                providerSharedPreferenceService(
-                    providerSharedPreference()
-                )
+                providerEndPointInstance()
             ),
             args
         )

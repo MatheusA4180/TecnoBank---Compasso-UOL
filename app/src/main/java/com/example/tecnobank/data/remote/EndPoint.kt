@@ -5,7 +5,7 @@ import com.example.tecnobank.data.remote.model.extract.ExtractResponse
 import com.example.tecnobank.data.remote.model.home.BalanceBenefitsResponse
 import com.example.tecnobank.data.remote.model.login.LoginPayload
 import com.example.tecnobank.data.remote.model.login.LoginResponse
-import com.example.tecnobank.data.remote.model.pix.PixItensRequest
+import com.example.tecnobank.data.remote.model.pix.PixItemsRequest
 import com.example.tecnobank.data.remote.model.pix.PixResponseConfirmation
 import com.example.tecnobank.data.remote.model.pix.PixResponseValidation
 import okhttp3.OkHttpClient
@@ -31,7 +31,7 @@ interface EndPoint {
 
     @POST("pix/validation")
     suspend fun pixValidation(
-        @Body pixItensRequest: PixItensRequest
+        @Body pixItensRequest: PixItemsRequest
     ): Response<PixResponseValidation>
 
     @POST("pix/confirm")
