@@ -9,7 +9,7 @@ plugins {
 android {
     signingConfigs {
         debug {
-            storeFile file('C:\\Users\\clube\\OneDrive\\Documentos\\Repositorio de projetos\\android-pagbank-tecnodroid\\app\\key.jks')
+            storeFile file('key.jks')
             storePassword 'Teste@123'
             keyPassword 'Teste@123'
             keyAlias 'pbpuc'
