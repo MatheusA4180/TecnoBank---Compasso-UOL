@@ -1,6 +1,8 @@
 package com.example.tecnobank.home.fragments
 
 import android.app.AlertDialog
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.text.method.PasswordTransformationMethod
 import android.view.LayoutInflater
@@ -102,6 +104,10 @@ class HomeFragment : Fragment() {
             }
         })
 
+        binding.cardHelp.setOnClickListener {
+            openWebPage("https://chat.blip.ai/?appKey=YXNzaXN0ZW50ZXZpcnR1YWx0ZWNub2Jhbms6MjEyNDY4M2QtYmMzMS00ZmUyLTlkMDQtYWRmODhmMDU4YWMx")
+        }
+
         viewPagerAndTabLayoutConfig()
     }
 
@@ -143,6 +149,10 @@ class HomeFragment : Fragment() {
             .setTitle(titulo)
             .setMessage("")
             .show()
+    }
+
+    fun openWebPage(url: String) {
+        startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(url)))
     }
 
     override fun onDestroyView() {
