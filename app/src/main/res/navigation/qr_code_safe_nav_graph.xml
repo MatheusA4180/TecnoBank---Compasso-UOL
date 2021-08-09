@@ -10,12 +10,5 @@
         android:name="com.example.tecnobank.home.fragments.QrCodeSafeFragment"
         android:label="QrCodeSafeFragment"
         tools:layout="@layout/qr_code_safe_fragment">
-        <action
-            android:id="@+id/action_qrCodeSafeFragment_to_qrCodeScannerFragment"
-            app:destination="@id/qrCodeScannerFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/qrCodeScannerFragment"
-        android:name="com.example.tecnobank.home.fragments.QrCodeScannerFragment"
-        android:label="QrCodeScannerFragment" />
 </navigation>
