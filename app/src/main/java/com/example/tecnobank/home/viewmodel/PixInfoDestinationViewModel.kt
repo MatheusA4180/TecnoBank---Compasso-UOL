@@ -21,10 +21,10 @@ class PixInfoDestinationViewModel: ViewModel() {
 
     fun changeDestinationEmailPix(email: String){
         pixEmail = email
-        changeButtonColor()
+        enableButtonConfirmation()
     }
 
-    private fun changeButtonColor(){
+    private fun enableButtonConfirmation(){
         _confirmationButtonEnabled.postValue(isValidEmail())
     }
 
