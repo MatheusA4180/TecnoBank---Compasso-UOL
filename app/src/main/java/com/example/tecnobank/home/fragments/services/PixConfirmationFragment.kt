@@ -43,7 +43,7 @@ class PixConfirmationFragment : Fragment() {
         viewModel = ViewModelProvider(
             this,
             ViewModelFactory(requireContext(), PixItemsRequest(
-                type = "email",
+                type = TYPE_EMAIL,
                 email = args.email,
                 description = args.description,
                 value = args.value.toDouble(),
@@ -134,6 +134,10 @@ class PixConfirmationFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    companion object{
+        private const val TYPE_EMAIL = "email"
     }
 
 }

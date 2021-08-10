@@ -37,10 +37,10 @@ class PixValueRequestViewModel(private val homeRepository:HomeRepository): ViewM
 
     fun changeValuePix(value: String){
         pixValue = parseRealForString(value)
-        changeButtonColor()
+        enableButtonConfirmation()
     }
 
-    private fun changeButtonColor(){
+    private fun enableButtonConfirmation(){
         _confirmationButtonEnabled.postValue(pixValue.isNotEmpty())
     }
 
