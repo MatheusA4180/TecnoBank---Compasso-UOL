@@ -26,4 +26,7 @@ object HelperFunctions {
     fun formatDate(date: Date): String =
         SimpleDateFormat("dd/MM/yyyy").format(date)
 
+    fun dateApiFormatted(calendar: Calendar) = SimpleDateFormat("dd/MM/yyyy")
+        .format(calendar.time)
+
 }

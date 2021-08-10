@@ -32,7 +32,7 @@ class PixOnBordingFragment : Fragment() {
 
         viewModel = ViewModelProvider(
             this,
-            ViewModelFactory(requireContext(),null)
+            ViewModelFactory(requireContext())
         ).get(PixOnBoardingViewModel::class.java)
 
         binding.closeOnBording.setOnClickListener {

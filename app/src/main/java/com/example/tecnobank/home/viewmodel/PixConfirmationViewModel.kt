@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.tecnobank.data.remote.model.pix.PixItemsRequest
 import com.example.tecnobank.data.remote.model.pix.PixResponseConfirmation
 import com.example.tecnobank.data.remote.model.pix.PixResponseValidation
+import com.example.tecnobank.extension.HelperFunctions.dateApiFormatted
 import com.example.tecnobank.home.repository.PixConfirmationRepository
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
@@ -15,15 +16,15 @@ import kotlin.properties.Delegates
 
 class PixConfirmationViewModel(
     private val pixConfirmationRepository: PixConfirmationRepository,
-    private val args: PixItemsRequest?
+    private val args: PixItemsRequest
 ): ViewModel() {
 
-    private var pixType: String = args!!.type
-    private var pixEmail: String = args!!.email
-    private var pixDescription: String = args!!.description
-    private var pixValue = args!!.value
-    private var pixDate: String = SimpleDateFormat("dd/MM/yyyy")
-        .format(Calendar.getInstance().time)
+    private var pixType: String = args.type
+    private var pixEmail: String = args.email
+    private var pixDescription: String = args.description
+    private var pixValue = args.value
+    private var pixDate: String = dateApiFormatted(Calendar.getInstance())
+
     private lateinit var responseValidation: PixResponseValidation
     private lateinit var responseConfirm: PixResponseConfirmation
 
@@ -49,7 +50,7 @@ class PixConfirmationViewModel(
     val confirmationButtonEnabled: LiveData<Boolean> = _confirmationButtonEnabled
 
     fun validationDatePix(calendar: Calendar){
-        pixDate = SimpleDateFormat("dd/MM/yyyy").format(calendar.time)
+        pixDate = dateApiFormatted(calendar)
         requestValidationPix()
     }
 

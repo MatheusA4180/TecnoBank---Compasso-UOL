@@ -24,7 +24,10 @@ import com.example.tecnobank.intro.viewmodel.LoginViewModel
 import com.example.tecnobank.intro.viewmodel.OnBoardingViewModel
 import com.example.tecnobank.intro.viewmodel.SplashViewModel
 
-class ViewModelFactory(private val context: Context, private val args: PixItemsRequest?): ViewModelProvider.Factory {
+class ViewModelFactory(
+    private val context: Context,
+    private val args: Any? = null
+): ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         if (modelClass == SplashViewModel::class.java) {
             return providerSplashViewModel() as T
@@ -127,7 +130,7 @@ class ViewModelFactory(private val context: Context, private val args: PixItemsR
                     providerSharedPreference()
                 )
             ),
-            args
+            args as PixItemsRequest
         )
     }
 

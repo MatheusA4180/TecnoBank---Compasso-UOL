@@ -42,7 +42,7 @@ class PixValueRequestFragment : Fragment() {
 
         viewModel = ViewModelProvider(
             this,
-            ViewModelFactory(requireContext(),null)
+            ViewModelFactory(requireContext())
         ).get(PixValueRequestViewModel::class.java)
 
         viewModel.getSaveBalanceValue()
