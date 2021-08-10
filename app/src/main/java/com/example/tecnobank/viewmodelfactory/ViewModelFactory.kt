@@ -7,12 +7,16 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.tecnobank.R
 import com.example.tecnobank.data.local.SharedPreferenceServices
 import com.example.tecnobank.data.remote.EndPoint
+import com.example.tecnobank.data.remote.model.pix.PixItemsRequest
 import com.example.tecnobank.extract.repository.ExtractRepositoty
 import com.example.tecnobank.extract.viewmodel.ExtractViewModel
 import com.example.tecnobank.home.repository.HomeRepository
+import com.example.tecnobank.home.repository.PixConfirmationRepository
 import com.example.tecnobank.home.repository.PixRepository
 import com.example.tecnobank.home.viewmodel.HomeViewModel
+import com.example.tecnobank.home.viewmodel.PixConfirmationViewModel
 import com.example.tecnobank.home.viewmodel.PixOnBoardingViewModel
+import com.example.tecnobank.home.viewmodel.PixValueRequestViewModel
 import com.example.tecnobank.intro.repository.LoginRepository
 import com.example.tecnobank.intro.repository.OnBoardingRepository
 import com.example.tecnobank.intro.repository.SplashRepository
@@ -20,7 +24,10 @@ import com.example.tecnobank.intro.viewmodel.LoginViewModel
 import com.example.tecnobank.intro.viewmodel.OnBoardingViewModel
 import com.example.tecnobank.intro.viewmodel.SplashViewModel
 
-class ViewModelFactory(private val context: Context): ViewModelProvider.Factory {
+class ViewModelFactory(
+    private val context: Context,
+    private val args: Any? = null
+): ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         if (modelClass == SplashViewModel::class.java) {
             return providerSplashViewModel() as T
@@ -40,7 +47,23 @@ class ViewModelFactory(private val context: Context): ViewModelProvider.Factory 
         if (modelClass == PixOnBoardingViewModel::class.java) {
             return providerPixOnBordingViewModel() as T
         }
+        if (modelClass == PixValueRequestViewModel::class.java) {
+            return providerPixValueRequestViewModel() as T
+        }
+        if (modelClass == PixConfirmationViewModel::class.java) {
+            return providerPixConfirmationViewModel() as T
+        }
         throw Exception("ViewModel não encotrado")
+    }
+
+    private fun providerPixOnBordingViewModel(): PixOnBoardingViewModel {
+        return PixOnBoardingViewModel(
+            PixRepository(
+                providerSharedPreferenceService(
+                    providerSharedPreference()
+                )
+            )
+        )
     }
 
     private fun providerSplashViewModel(): SplashViewModel {
@@ -81,22 +104,33 @@ class ViewModelFactory(private val context: Context): ViewModelProvider.Factory 
         )
     }
 
-    private fun providerPixOnBordingViewModel(): PixOnBoardingViewModel {
-        return PixOnBoardingViewModel(
-            PixRepository(
-                providerSharedPreferenceService(
-                    providerSharedPreference()
-                )
-            )
-        )
-    }
-
     private fun providerExtractViewModel(): ExtractViewModel {
         return ExtractViewModel(
             ExtractRepositoty(
                 providerEndPointInstance(),
                 providerSharedPreferenceService(providerSharedPreference())
             )
+        )
+    }
+
+    private fun providerPixValueRequestViewModel(): PixValueRequestViewModel {
+        return PixValueRequestViewModel(
+            HomeRepository(
+                providerEndPointInstance(),
+                providerSharedPreferenceService(providerSharedPreference())
+            )
+        )
+    }
+
+    private fun providerPixConfirmationViewModel(): PixConfirmationViewModel {
+        return PixConfirmationViewModel(
+            PixConfirmationRepository(
+                providerEndPointInstance(),
+                providerSharedPreferenceService(
+                    providerSharedPreference()
+                )
+            ),
+            args as PixItemsRequest
         )
     }
 

@@ -5,6 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import com.example.tecnobank.R
 import com.example.tecnobank.databinding.PixQrCodeFragmentBinding
 
 
@@ -27,6 +29,9 @@ class PixQrCodeFragment : Fragment() {
 
         binding.pixQrcodeToobar.setNavigationOnClickListener{
             requireActivity().finish()
+        }
+        binding.pixTransfer.setOnClickListener {
+            findNavController().navigate(R.id.action_pixQrCodeFragment_to_pixModeTransferFragment)
         }
     }
 

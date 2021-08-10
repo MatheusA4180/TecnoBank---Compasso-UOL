@@ -28,6 +28,5 @@ class PixQrCodeActivity : AppCompatActivity() {
             R.id.pixOnBordingFragment
         }
         navHostFragment.navController.graph = graph
-
     }
 }

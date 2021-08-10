@@ -54,5 +54,4 @@ class SharedPreferenceServices(private val preferences: SharedPreferences) {
         private const val TOKEN_AUTHENTICATION = "TokenAuthentication"
         private const val PASS_TO_PIX_ONBOARDING = "pass_to_pix_on_bording"
     }
-
 }

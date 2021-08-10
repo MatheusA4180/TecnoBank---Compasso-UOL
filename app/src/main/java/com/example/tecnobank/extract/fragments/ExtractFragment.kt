@@ -102,6 +102,7 @@ class ExtractFragment : Fragment() {
                 filterPosition = data.getIntExtra(FILTER_POSITION, 1)
             )
         }
+
     }
 
     private fun recyclerViewConfig(listExtracts: List<ExtractViewModel.ExtractItemAdapter>) {

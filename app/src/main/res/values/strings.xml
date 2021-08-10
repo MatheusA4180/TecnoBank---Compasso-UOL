@@ -204,4 +204,9 @@
     <string name="list_filter_item_3">Últimos 30 dias</string>
     <string name="list_filter_item_4">Últimos 60 dias</string>
     <string name="list_filter_item_5">Últimos 120 dias</string>
+    <string name="title_date_picker">Selecione a data</string>
+    <string name="title_tranfer_dialog">Não implementado</string>
+    <string name="text_tranfer_dialog">Favor, utilizar opção de e-mail para envio do pix. Estamos trabalhando para implementar novas funcionalidades</string>
+    <string name="title_ocult">Ocultar</string>
+    <string name="title_visible">Visualizar</string>
 </resources>
