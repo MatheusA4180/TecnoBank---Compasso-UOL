@@ -102,7 +102,7 @@ class ExtractViewModel(private val extractRepository: ExtractRepository) : ViewM
 
     fun onChangeSaveDataFilter() {
         _dataFilter
-            .postValue("nos ${listItemFilter[extractRepository.getSaveItemFilterSelected()]}")
+            .postValue("nos ${listItemFilter[extractRepository.getSaveItemFilterSelected()].toLowerCase()}")
     }
 
     open class ExtractItemAdapter
