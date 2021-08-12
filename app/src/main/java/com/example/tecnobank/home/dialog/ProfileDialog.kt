@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.ViewModelProvider
@@ -94,6 +95,10 @@ class ProfileDialog : DialogFragment(), ListOptionsProfileAdapter.ClickedProfile
         binding.nameUser.text = viewModel.getSaveUserName()
 
         binding.emailUser.text = viewModel.getUserEmail()
+
+        binding.btCopy.setOnClickListener {
+            Toast.makeText(requireContext(),"Copiado para a área de transfêrencia",Toast.LENGTH_LONG).show()
+        }
 
         binding.listOptionsProfile.adapter =
             ListOptionsProfileAdapter(listOptionsProfile, this@ProfileDialog)

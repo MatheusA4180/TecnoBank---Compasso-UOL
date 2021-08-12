@@ -80,7 +80,7 @@ class ListNotificationFragment : Fragment(), ListNotificationAdapter.ClickedNoti
                     ListNotificationAdapter
                         .NotificationItem(
                             "25/07/2021",
-                            "Maquininhas PagSeguro",
+                            "Maquininhas TecnoBank",
                             "Saiba mais sobre as vantagens de se usar as melhores maquininhas do mercado ",
                             "Peça já!"
                         )

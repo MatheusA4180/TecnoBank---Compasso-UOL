@@ -42,6 +42,10 @@ class QrCodeSafeFragment: Fragment() {
             requestCamera()
         }
 
+        binding.btCancelQrCode.setOnClickListener {
+            requireActivity().finish()
+        }
+
     }
 
     private fun requestCamera() {

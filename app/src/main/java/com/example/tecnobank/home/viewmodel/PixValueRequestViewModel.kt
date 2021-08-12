@@ -45,7 +45,7 @@ class PixValueRequestViewModel(private val homeRepository:HomeRepository): ViewM
     }
 
     fun onClickApplyValuePix(){
-        if (pixValue.toDouble() > 0 && pixValue.toDouble() < balanceValueCurrent.toDouble()){
+        if (pixValue.toDouble() > 0 && pixValue.toDouble() <= balanceValueCurrent.toDouble()){
             _goToConfirmationPix.postValue(pixValue)
         } else {
             _invalidValueError.postValue("Valor inválido!")

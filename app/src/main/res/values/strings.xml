@@ -24,7 +24,7 @@
     <string name="title_account_dependency">Liberação de serviços</string>
     <string name="title_card_1_account_dependency">Falta pouco</string>
     <string name="text_card_1_account_dependency">Complete as etapas e libere todos os serviços gratuitos</string>
-    <string name="title_card_2_account_dependency">habilite seu dispositivo</string>
+    <string name="title_card_2_account_dependency">Habilite seu dispositivo</string>
     <string name="text_card_2_account_dependency">Essa ação garante mais segurança no uso da sua conta</string>
     <string name="title_cards">Cartão da Conta</string>
     <string name="title_2_cards">Use o saldo direto no seu cartão.</string>
@@ -167,7 +167,7 @@
     <string name="profile_subtitle_8">Copiar</string>
     <string name="qr_code_safe_title_1">Habilitação de segurança necessária para continuar</string>
     <string name="qr_code_subtitle_1">Começar habilitação</string>
-    <string name="qr_code_subtitle_2">Para garantir a sedurança da sua conta é fundamental que realize a habilitação</string>
+    <string name="qr_code_subtitle_2">Para garantir a segurança da sua conta é fundamental que realize a habilitação</string>
     <string name="qr_code_subtitle_3">Confirme seu número de celular</string>
     <string name="qr_code_subtitle_4">Foto do seu documento e selfie</string>
     <string name="qr_code_subtitle_5">Fazer isso depois</string>
