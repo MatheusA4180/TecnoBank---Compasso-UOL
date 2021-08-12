@@ -91,7 +91,9 @@ class ProfileDialog : DialogFragment(), ListOptionsProfileAdapter.ClickedProfile
             ProfileViewModel::class.java
         )
 
-        binding.nameUser.text = viewModel.getSaveUserName()
+//        binding.nameUser.text = viewModel.getSaveUserName()
+//
+//        binding.emailUser.text = viewModel.getUserEmail()
 
         binding.listOptionsProfile.adapter =
             ListOptionsProfileAdapter(listOptionsProfile, this@ProfileDialog)

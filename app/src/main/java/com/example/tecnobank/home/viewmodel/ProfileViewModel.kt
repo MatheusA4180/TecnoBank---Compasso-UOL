@@ -7,4 +7,6 @@ class ProfileViewModel(private val profileRepository: ProfileRepository):ViewMod
 
     fun getSaveUserName(): String? = profileRepository.getSaveUserName()
 
+    fun getUserEmail():String? = profileRepository.getSaveUserEmail()
+
 }

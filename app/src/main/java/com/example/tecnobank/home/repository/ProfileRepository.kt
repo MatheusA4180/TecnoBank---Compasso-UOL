@@ -9,4 +9,7 @@ class ProfileRepository(
     fun getSaveUserName():String? = sharedPreferenceServices
         .getSaveUserName()
 
+    fun getSaveUserEmail():String = sharedPreferenceServices
+        .getUserEmail()
+
 }
