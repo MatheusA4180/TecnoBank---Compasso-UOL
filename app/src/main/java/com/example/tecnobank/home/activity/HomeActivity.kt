@@ -7,7 +7,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.example.tecnobank.R
+import com.example.tecnobank.data.remote.model.home.TokenFirebase
 import com.example.tecnobank.databinding.HomeActivityBinding
+import com.example.tecnobank.home.viewmodel.HomeActivityViewModel
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.FirebaseApp
 import com.google.firebase.messaging.FirebaseMessaging
@@ -16,6 +18,7 @@ class HomeActivity : AppCompatActivity() {
 
     private var _binding: HomeActivityBinding? = null
     private val binding: HomeActivityBinding get() = _binding!!
+    private lateinit var viewModel: HomeActivityViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,10 +33,9 @@ class HomeActivity : AppCompatActivity() {
 
         FirebaseMessaging.getInstance().token.addOnCompleteListener(OnCompleteListener { task ->
             if (!task.isSuccessful) {
-                Log.i("W", "Fetching FCM registration token failed", task.exception)
                 return@OnCompleteListener
             }
-            Log.i("Funcionou", task.result!!)
+            viewModel.sendToken(TokenFirebase(task.result!!))
         })
 
     }

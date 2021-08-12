@@ -12,10 +12,7 @@ import com.example.tecnobank.data.remote.EndPoint
 import com.example.tecnobank.data.remote.model.pix.PixItemsRequest
 import com.example.tecnobank.extract.repository.ExtractRepositoty
 import com.example.tecnobank.extract.viewmodel.ExtractViewModel
-import com.example.tecnobank.home.repository.HomeRepository
-import com.example.tecnobank.home.repository.PixConfirmationRepository
-import com.example.tecnobank.home.repository.PixRepository
-import com.example.tecnobank.home.repository.ProfileRepository
+import com.example.tecnobank.home.repository.*
 import com.example.tecnobank.home.viewmodel.*
 import com.example.tecnobank.intro.repository.LoginRepository
 import com.example.tecnobank.intro.repository.OnBoardingRepository
@@ -52,6 +49,9 @@ class ViewModelFactory(private val context: Context, private val args: PixItemsR
         }
         if (modelClass == PixConfirmationViewModel::class.java) {
             return providerPixConfirmationViewModel() as T
+        }
+        if (modelClass == HomeActivityViewModel::class.java) {
+            return providerHomeActivityViewModel() as T
         }
         throw Exception("ViewModel não encotrado")
     }
@@ -138,6 +138,14 @@ class ViewModelFactory(private val context: Context, private val args: PixItemsR
                 providerEndPointInstance()
             ),
             args
+        )
+    }
+
+    private fun providerHomeActivityViewModel(): HomeActivityViewModel {
+        return HomeActivityViewModel(
+            HomeActivityRepository(
+                providerEndPointInstance()
+            )
         )
     }
 
