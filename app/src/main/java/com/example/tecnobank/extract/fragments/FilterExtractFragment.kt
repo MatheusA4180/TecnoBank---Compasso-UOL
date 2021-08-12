@@ -6,14 +6,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import com.example.tecnobank.R
 import com.example.tecnobank.databinding.FilterExtractFragmentBinding
 import com.example.tecnobank.extract.recyclerview.ListFilterAdapter
+import com.example.tecnobank.extract.viewmodel.ExtractViewModel
+import com.example.tecnobank.extract.viewmodel.FilterExtractViewModel
+import com.example.tecnobank.viewmodelfactory.ViewModelFactory
 
 class FilterExtractFragment : Fragment(), ListFilterAdapter.SelectFilterlistener {
 
     private var _binding: FilterExtractFragmentBinding? = null
     private val binding: FilterExtractFragmentBinding get() = _binding!!
+    private lateinit var viewModel: FilterExtractViewModel
 
     private val listItemFilter: List<String> by lazy {
         listOf(
@@ -38,13 +43,24 @@ class FilterExtractFragment : Fragment(), ListFilterAdapter.SelectFilterlistener
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        viewModel = ViewModelProvider(
+            this,
+            ViewModelFactory(requireContext(),null)
+        ).get(FilterExtractViewModel::class.java)
+
         binding.filterToolbar.setNavigationOnClickListener {
             requireActivity().finish()
         }
 
-        binding.listFilters.adapter =
-            ListFilterAdapter(listItemFilter, this@FilterExtractFragment, positionSelected)
+        viewModel.getSaveItemFilterSelected()
 
+        viewModel.itemFilterPosition.observe(viewLifecycleOwner, {
+            binding.listFilters.adapter = ListFilterAdapter(
+                listItemFilter,
+                this@FilterExtractFragment,
+                it
+            )
+        })
 
         binding.applyFilter.setOnClickListener {
             requireActivity().setResult(
@@ -61,6 +77,7 @@ class FilterExtractFragment : Fragment(), ListFilterAdapter.SelectFilterlistener
 
     override fun selectedFilterlistener(position: Int) {
         this.positionSelected = position
+        viewModel.saveItemFilterSelected(position)
     }
 
     companion object {

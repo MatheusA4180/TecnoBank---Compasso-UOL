@@ -10,8 +10,9 @@ import com.example.tecnobank.data.local.database.ExtractDAO
 import com.example.tecnobank.data.local.database.ExtractDatabase
 import com.example.tecnobank.data.remote.EndPoint
 import com.example.tecnobank.data.remote.model.pix.PixItemsRequest
-import com.example.tecnobank.extract.repository.ExtractRepositoty
+import com.example.tecnobank.extract.repository.ExtractRepository
 import com.example.tecnobank.extract.viewmodel.ExtractViewModel
+import com.example.tecnobank.extract.viewmodel.FilterExtractViewModel
 import com.example.tecnobank.home.repository.*
 import com.example.tecnobank.home.viewmodel.*
 import com.example.tecnobank.intro.repository.LoginRepository
@@ -40,6 +41,9 @@ class ViewModelFactory(private val context: Context, private val args: PixItemsR
         }
         if (modelClass == ExtractViewModel::class.java) {
             return providerExtractViewModel() as T
+        }
+        if (modelClass == FilterExtractViewModel::class.java) {
+            return providerFilterExtractViewModel() as T
         }
         if (modelClass == PixOnBoardingViewModel::class.java) {
             return providerPixOnBordingViewModel() as T
@@ -106,9 +110,20 @@ class ViewModelFactory(private val context: Context, private val args: PixItemsR
 
     private fun providerExtractViewModel(): ExtractViewModel {
         return ExtractViewModel(
-            ExtractRepositoty(
+            ExtractRepository(
                 providerEndPointInstance(),
-                providerExtractDAO(providerExtractDatabase())
+                providerExtractDAO(providerExtractDatabase()),
+                providerSharedPreferenceService(providerSharedPreference())
+            )
+        )
+    }
+
+    private fun providerFilterExtractViewModel(): FilterExtractViewModel {
+        return FilterExtractViewModel(
+            ExtractRepository(
+                providerEndPointInstance(),
+                providerExtractDAO(providerExtractDatabase()),
+                providerSharedPreferenceService(providerSharedPreference())
             )
         )
     }

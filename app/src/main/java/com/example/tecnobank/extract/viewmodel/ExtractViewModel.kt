@@ -4,23 +4,31 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.tecnobank.R
 import com.example.tecnobank.data.remote.model.extract.ExtractResponse
 import com.example.tecnobank.extension.HelperFunctions.formatDate
 import com.example.tecnobank.extension.HelperFunctions.getDateMonthFormat
 import com.example.tecnobank.extract.recyclerview.ListExtractsAdapter.Companion.CANCELED
 import com.example.tecnobank.extract.recyclerview.ListExtractsAdapter.Companion.EXPENSE
-import com.example.tecnobank.extract.repository.ExtractRepositoty
+import com.example.tecnobank.extract.repository.ExtractRepository
 import kotlinx.coroutines.launch
-import java.text.SimpleDateFormat
 import java.util.*
 
-class ExtractViewModel(private val extractRepository: ExtractRepositoty) : ViewModel() {
+class ExtractViewModel(private val extractRepository: ExtractRepository) : ViewModel() {
 
     private lateinit var dateFilterStart: String
     private lateinit var dateFilterEnd: String
     private var filterPosition: Int = 1
     private var listfilterDays: List<Int> = listOf(3, 7, 30, 60, 120)
     private lateinit var receivedListApi: List<ExtractResponse>
+    private val listItemFilter: List<String> =
+        listOf(
+            "Últimos 3 dias",
+            "Últimos 7 dias",
+            "Últimos 30 dias",
+            "Últimos 60 dias",
+            "Últimos 120 dias",
+        )
 
     private val _responseErro = MutableLiveData<String>()
     val responseErro: LiveData<String> = _responseErro
@@ -90,6 +98,11 @@ class ExtractViewModel(private val extractRepository: ExtractRepositoty) : ViewM
     fun buttonPressedExit() {
         _extractList.postValue(mapItemsForAdapter(receivedListApi.filter{it.type == EXPENSE &&
                 !it.time.contains(CANCELED)}.toMutableList()))
+    }
+
+    fun onChangeSaveDataFilter() {
+        _dataFilter
+            .postValue("nos ${listItemFilter[extractRepository.getSaveItemFilterSelected()]}")
     }
 
     open class ExtractItemAdapter

@@ -46,6 +46,8 @@ class ExtractFragment : Fragment() {
 
         viewModel.requestExtracts()
 
+        viewModel.onChangeSaveDataFilter()
+
         checkSelectedButton(everyButton = true, inputButton = false, exitButton = false)
 
         viewModel.dataFilter.observe(viewLifecycleOwner, {
@@ -106,11 +108,18 @@ class ExtractFragment : Fragment() {
     }
 
     private fun recyclerViewConfig(listExtracts: List<ExtractViewModel.ExtractItemAdapter>) {
-        binding.imageExtract.isVisible = false
-        binding.textExtract.isVisible = false
-        binding.textFilter.isVisible = false
-        binding.listExtracts.isVisible = true
-        binding.listExtracts.adapter = ListExtractsAdapter(listExtracts)
+        if(listExtracts.isNotEmpty()) {
+            binding.imageExtract.isVisible = false
+            binding.textExtract.isVisible = false
+            binding.textFilter.isVisible = false
+            binding.listExtracts.isVisible = true
+            binding.listExtracts.adapter = ListExtractsAdapter(listExtracts, requireContext())
+        }else{
+            binding.imageExtract.isVisible = true
+            binding.textExtract.isVisible = true
+            binding.textFilter.isVisible = true
+            binding.listExtracts.isVisible = false
+        }
     }
 
     private fun checkSelectedButton(everyButton:Boolean, inputButton:Boolean, exitButton:Boolean) {

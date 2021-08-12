@@ -11,7 +11,6 @@ import com.example.tecnobank.home.repository.PixConfirmationRepository
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.*
-import kotlin.properties.Delegates
 
 class PixConfirmationViewModel(
     private val pixConfirmationRepository: PixConfirmationRepository,
@@ -81,10 +80,11 @@ class PixConfirmationViewModel(
     fun onClickConfirmationPix() {
         viewModelScope.launch {
             _loading.postValue(true)
-            try{
-                responseConfirm = pixConfirmationRepository.pixConfirmation(responseValidation.pixToken)
+            try {
+                responseConfirm =
+                    pixConfirmationRepository.pixConfirmation(responseValidation.pixToken)
                 _pixConfirmationSucess.postValue(responseConfirm)
-            }catch (e:Exception){
+            } catch (e: Exception) {
                 _pixConfirmationError.postValue(e.message)
             }
             _loading.postValue(false)

@@ -1,13 +1,15 @@
 package com.example.tecnobank.extract.repository
 
+import com.example.tecnobank.data.local.SharedPreferenceServices
 import com.example.tecnobank.data.local.database.ExtractDAO
 import com.example.tecnobank.data.remote.EndPoint
 import com.example.tecnobank.data.remote.model.extract.ExtractResponse
 import com.example.tecnobank.data.remote.model.pix.ExtractEntity
 
-class ExtractRepositoty(
+class ExtractRepository(
     private val endPoint: EndPoint,
-    private val extractDAO: ExtractDAO
+    private val extractDAO: ExtractDAO,
+    private val sharedPreferenceServices: SharedPreferenceServices
 ) {
 
     suspend fun extractTransactions(
@@ -49,4 +51,9 @@ class ExtractRepositoty(
             )
         }
     }
+
+    fun saveItemFilterSelected(positionFilter: Int) =
+        sharedPreferenceServices.saveItemFilterSelected(positionFilter)
+
+    fun getSaveItemFilterSelected(): Int = sharedPreferenceServices.getSaveItemFilterSelected()
 }
