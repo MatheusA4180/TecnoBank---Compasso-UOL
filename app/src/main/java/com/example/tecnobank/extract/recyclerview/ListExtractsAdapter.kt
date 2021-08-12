@@ -81,7 +81,7 @@ class ListExtractsAdapter(
             if (body.type == EXPENSE) {
 
                 transactionValue.setTextColor(Color.RED)
-                transactionValue.text = "-${body.value}"
+                transactionValue.text = "R$ -${body.value}"
             }
             transactionType.text = body.typeDescription
             transactionTime.text = body.time
