@@ -29,7 +29,6 @@ class PixFinishFragment: Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         with(binding){
-            timeFinishPix.text = args.date
             valueFinishPix.text = args.value
             nameDestination.text = args.name
             emailFinishPix.text = "E-mail: ${args.email}"
