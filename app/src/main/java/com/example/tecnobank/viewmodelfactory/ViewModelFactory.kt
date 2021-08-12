@@ -12,13 +12,11 @@ import com.example.tecnobank.data.remote.EndPoint
 import com.example.tecnobank.data.remote.model.pix.PixItemsRequest
 import com.example.tecnobank.extract.repository.ExtractRepositoty
 import com.example.tecnobank.extract.viewmodel.ExtractViewModel
+import com.example.tecnobank.home.repository.HomeActivityRepository
 import com.example.tecnobank.home.repository.HomeRepository
 import com.example.tecnobank.home.repository.PixConfirmationRepository
 import com.example.tecnobank.home.repository.PixRepository
-import com.example.tecnobank.home.viewmodel.HomeViewModel
-import com.example.tecnobank.home.viewmodel.PixConfirmationViewModel
-import com.example.tecnobank.home.viewmodel.PixOnBoardingViewModel
-import com.example.tecnobank.home.viewmodel.PixValueRequestViewModel
+import com.example.tecnobank.home.viewmodel.*
 import com.example.tecnobank.intro.repository.LoginRepository
 import com.example.tecnobank.intro.repository.OnBoardingRepository
 import com.example.tecnobank.intro.repository.SplashRepository
@@ -55,6 +53,9 @@ class ViewModelFactory(
         if (modelClass == PixConfirmationViewModel::class.java) {
             return providerPixConfirmationViewModel() as T
         }
+        if (modelClass == HomeActivityViewModel::class.java) {
+            return providerHomeActivityViewModel() as T
+        }
         throw Exception("ViewModel não encotrado")
     }
 
@@ -90,8 +91,7 @@ class ViewModelFactory(
     private fun providerHomeViewModel(): HomeViewModel {
         return HomeViewModel(
             HomeRepository(
-                providerEndPointInstance(),
-                providerSharedPreferenceService(providerSharedPreference())
+                providerEndPointInstance()
             )
         )
     }
@@ -118,8 +118,7 @@ class ViewModelFactory(
     private fun providerPixValueRequestViewModel(): PixValueRequestViewModel {
         return PixValueRequestViewModel(
             HomeRepository(
-                providerEndPointInstance(),
-                providerSharedPreferenceService(providerSharedPreference())
+                providerEndPointInstance()
             )
         )
     }
@@ -130,6 +129,14 @@ class ViewModelFactory(
                 providerEndPointInstance()
             ),
             args as PixItemsRequest
+        )
+    }
+
+    private fun providerHomeActivityViewModel(): HomeActivityViewModel {
+        return HomeActivityViewModel(
+            HomeActivityRepository(
+                providerEndPointInstance()
+            )
         )
     }
 

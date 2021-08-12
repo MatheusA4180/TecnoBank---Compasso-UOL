@@ -3,6 +3,7 @@ package com.example.tecnobank.data.remote
 import com.example.tecnobank.data.local.SharedPreferenceServices
 import com.example.tecnobank.data.remote.model.extract.ExtractResponse
 import com.example.tecnobank.data.remote.model.home.BalanceBenefitsResponse
+import com.example.tecnobank.data.remote.model.home.TokenFirebase
 import com.example.tecnobank.data.remote.model.login.LoginPayload
 import com.example.tecnobank.data.remote.model.login.LoginResponse
 import com.example.tecnobank.data.remote.model.pix.PixItemsRequest
@@ -38,6 +39,11 @@ interface EndPoint {
     suspend fun pixConfirmation(
         @Header ("pix_token") pixToken: String
     ): Response<PixResponseConfirmation>
+
+    @POST("home/sendfcm")
+    suspend fun sendToken(
+        @Body tokenFirebase: TokenFirebase
+    ): Response<Void>
 
     companion object {
 
