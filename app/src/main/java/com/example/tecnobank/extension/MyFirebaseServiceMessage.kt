@@ -15,6 +15,7 @@ import kotlin.random.Random
 
 
 class MyFirebaseServiceMessage : FirebaseMessagingService() {
+
     override fun onMessageReceived(remoteMessage: RemoteMessage) {
         super.onMessageReceived(remoteMessage)
         val title = remoteMessage.notification?.title
@@ -22,8 +23,8 @@ class MyFirebaseServiceMessage : FirebaseMessagingService() {
         notificatioReceived(applicationContext, title, body)
     }
 
-    override fun onNewToken(remoteMessage: String) {
-        super.onNewToken(remoteMessage)
+    override fun onNewToken(p0: String) {
+        super.onNewToken(p0)
     }
 
     fun notificatioReceived(context: Context, title: String?, message: String?) {
