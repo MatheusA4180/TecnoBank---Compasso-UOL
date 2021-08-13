@@ -2,6 +2,7 @@ package com.example.tecnobank.intro.fragments
 
 import android.os.Bundle
 import android.os.Handler
+import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -38,7 +39,7 @@ class SplashFragment : Fragment() {
 
         binding.splashLogo.animation = AnimationUtils.loadAnimation(requireContext(),R.anim.top_animation)
 
-        Handler().postDelayed({
+        Handler(Looper.getMainLooper()).postDelayed({
             viewModel.initSplash()
         }, SPLASH_DELAY)
 

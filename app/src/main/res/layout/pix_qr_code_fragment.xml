@@ -370,7 +370,8 @@
                         android:layout_marginTop="12dp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/ic_portabilidade_salario" />
+                        app:srcCompat="@drawable/ic_sell_pix"
+                        app:tint="@color/blueTecnoBank"/>
 
                     <androidx.cardview.widget.CardView
                         android:id="@+id/cardView9"

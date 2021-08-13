@@ -6,7 +6,9 @@ import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.os.Build
+import android.os.LocaleList
 import androidx.core.app.NotificationCompat
+import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.example.tecnobank.R
 import com.example.tecnobank.intro.activity.IntroActivity
 import com.google.firebase.messaging.FirebaseMessagingService
@@ -21,6 +23,10 @@ class MyFirebaseServiceMessage : FirebaseMessagingService() {
         val title = remoteMessage.notification?.title
         val body = remoteMessage.notification?.body
         notificatioReceived(applicationContext, title, body)
+        if(body?.contains("pix",true)==true) {
+            val broadcast = LocalBroadcastManager.getInstance(applicationContext)
+            broadcast.sendBroadcast(Intent("UPDATE_BALANCE"))
+        }
     }
 
     override fun onNewToken(p0: String) {

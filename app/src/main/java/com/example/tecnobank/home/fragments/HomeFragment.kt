@@ -1,7 +1,10 @@
 package com.example.tecnobank.home.fragments
 
 import android.app.AlertDialog
+import android.content.BroadcastReceiver
+import android.content.Context
 import android.content.Intent
+import android.content.IntentFilter
 import android.net.Uri
 import android.os.Bundle
 import android.text.method.PasswordTransformationMethod
@@ -9,9 +12,11 @@ import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
@@ -33,6 +38,18 @@ class HomeFragment : Fragment() {
     private var _binding: HomeFragmentBinding? = null
     private val binding: HomeFragmentBinding get() = _binding!!
     private lateinit var viewModel: HomeViewModel
+    private val onUpdateBalanceReceiver:BroadcastReceiver = object:BroadcastReceiver(){
+        override fun onReceive(context: Context?, intent: Intent?) {
+            viewModel.onOpenHome()
+        }
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        val broadcast = LocalBroadcastManager.getInstance(requireContext())
+        broadcast.registerReceiver(onUpdateBalanceReceiver, IntentFilter("UPDATE_BALANCE"))
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -54,6 +71,9 @@ class HomeFragment : Fragment() {
 
         viewModel.loading.observe(viewLifecycleOwner, {
             binding.progressCircular.isVisible = it
+            binding.shimmerViewContainer.showShimmer(it)
+            binding.shimmerViewContainer.isVisible = it
+            binding.currentValue.isInvisible = it
         })
 
         viewModel.responseSucess.observe(viewLifecycleOwner, {
@@ -139,6 +159,7 @@ class HomeFragment : Fragment() {
         with(binding.listBenefits) {
             adapter = ListBenefitsAdapter(listBenefitsResponse)
             addItemDecoration(DotsDecoration(requireContext()))
+            onFlingListener=null
             PagerSnapHelper().attachToRecyclerView(this)
         }
     }
@@ -158,6 +179,11 @@ class HomeFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        LocalBroadcastManager.getInstance(requireContext()).unregisterReceiver(onUpdateBalanceReceiver)
     }
 
 }
