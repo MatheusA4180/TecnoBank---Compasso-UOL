@@ -10,13 +10,16 @@ import androidx.navigation.fragment.findNavController
 import com.example.tecnobank.R
 import com.example.tecnobank.databinding.PixOnboardingFragmentBinding
 import com.example.tecnobank.home.viewmodel.PixOnBoardingViewModel
+import com.example.tecnobank.intro.viewmodel.SplashViewModel
 import com.example.tecnobank.viewmodelfactory.ViewModelFactory
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class PixOnBordingFragment : Fragment() {
 
     private var _binding: PixOnboardingFragmentBinding? = null
     private val binding: PixOnboardingFragmentBinding get() = _binding!!
-    private lateinit var viewModel: PixOnBoardingViewModel
+    //private lateinit var viewModel: PixOnBoardingViewModel
+    private val viewModel: PixOnBoardingViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -30,10 +33,10 @@ class PixOnBordingFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel = ViewModelProvider(
-            this,
-            ViewModelFactory(requireContext(),null)
-        ).get(PixOnBoardingViewModel::class.java)
+//        viewModel = ViewModelProvider(
+//            this,
+//            ViewModelFactory(requireContext(),null)
+//        ).get(PixOnBoardingViewModel::class.java)
 
         binding.closeOnBording.setOnClickListener {
             requireActivity().finish()

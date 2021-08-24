@@ -10,13 +10,16 @@ import androidx.navigation.fragment.findNavController
 import com.example.tecnobank.R
 import com.example.tecnobank.databinding.OnboardingFragmentBinding
 import com.example.tecnobank.intro.viewmodel.OnBoardingViewModel
+import com.example.tecnobank.intro.viewmodel.SplashViewModel
 import com.example.tecnobank.viewmodelfactory.ViewModelFactory
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class OnBoardingFragment : Fragment() {
 
     private var _binding: OnboardingFragmentBinding? = null
     private val binding: OnboardingFragmentBinding get() = _binding!!
-    private lateinit var viewModel: OnBoardingViewModel
+    //private lateinit var viewModel: OnBoardingViewModel
+    private val viewModel: OnBoardingViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -30,9 +33,9 @@ class OnBoardingFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel = ViewModelProvider(this, ViewModelFactory(requireContext(),null)).get(
-            OnBoardingViewModel::class.java
-        )
+//        viewModel = ViewModelProvider(this, ViewModelFactory(requireContext(),null)).get(
+//            OnBoardingViewModel::class.java
+//        )
 
         binding.loginStart.setOnClickListener {
             viewModel.onClickedLoginStart()

@@ -15,18 +15,32 @@ import com.example.tecnobank.data.remote.model.pix.PixItemsRequest
 import com.example.tecnobank.databinding.PixConfirmationFragmentBinding
 import com.example.tecnobank.extension.HelperFunctions.converterToReal
 import com.example.tecnobank.home.viewmodel.PixConfirmationViewModel
+import com.example.tecnobank.intro.viewmodel.SplashViewModel
 import com.example.tecnobank.viewmodelfactory.ViewModelFactory
 import com.google.android.material.datepicker.CalendarConstraints
 import com.google.android.material.datepicker.DateValidatorPointForward
 import com.google.android.material.datepicker.MaterialDatePicker
+import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.core.parameter.parametersOf
 import java.util.*
 
 class PixConfirmationFragment : Fragment() {
 
     private var _binding: PixConfirmationFragmentBinding? = null
     private val binding: PixConfirmationFragmentBinding get() = _binding!!
-    private lateinit var viewModel: PixConfirmationViewModel
+    //private lateinit var viewModel: PixConfirmationViewModel
     private val args: PixConfirmationFragmentArgs by navArgs()
+    private val viewModel: PixConfirmationViewModel by viewModel{
+        parametersOf(
+            PixItemsRequest(
+                type = "email",
+                email = args.email,
+                description = args.description,
+                value = args.value.toDouble(),
+                date = null
+            )
+        )
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -40,16 +54,16 @@ class PixConfirmationFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel = ViewModelProvider(
-            this,
-            ViewModelFactory(requireContext(), PixItemsRequest(
-                type = "email",
-                email = args.email,
-                description = args.description,
-                value = args.value.toDouble(),
-                date = null
-            ))
-        ).get(PixConfirmationViewModel::class.java)
+//        viewModel = ViewModelProvider(
+//            this,
+//            ViewModelFactory(requireContext(), PixItemsRequest(
+//                type = "email",
+//                email = args.email,
+//                description = args.description,
+//                value = args.value.toDouble(),
+//                date = null
+//            ))
+//        ).get(PixConfirmationViewModel::class.java)
 
         viewModel.requestValidationPix()
 

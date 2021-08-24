@@ -18,14 +18,17 @@ import com.example.tecnobank.R
 import com.example.tecnobank.databinding.PixValueRequestFragmentBinding
 import com.example.tecnobank.extension.MoneyTextMask
 import com.example.tecnobank.home.viewmodel.PixValueRequestViewModel
+import com.example.tecnobank.intro.viewmodel.SplashViewModel
 import com.example.tecnobank.viewmodelfactory.ViewModelFactory
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class PixValueRequestFragment : Fragment() {
 
     private var _binding: PixValueRequestFragmentBinding? = null
     private val binding: PixValueRequestFragmentBinding get() = _binding!!
-    private lateinit var viewModel: PixValueRequestViewModel
+    //private lateinit var viewModel: PixValueRequestViewModel
+    private val viewModel: PixValueRequestViewModel by viewModel()
     private val args: PixValueRequestFragmentArgs by navArgs()
 
     override fun onCreateView(
@@ -40,10 +43,10 @@ class PixValueRequestFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel = ViewModelProvider(
-            this,
-            ViewModelFactory(requireContext(),null)
-        ).get(PixValueRequestViewModel::class.java)
+//        viewModel = ViewModelProvider(
+//            this,
+//            ViewModelFactory(requireContext(),null)
+//        ).get(PixValueRequestViewModel::class.java)
 
         viewModel.getSaveBalanceValue()
 

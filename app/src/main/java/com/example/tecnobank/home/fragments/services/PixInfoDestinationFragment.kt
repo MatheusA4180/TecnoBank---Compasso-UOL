@@ -13,13 +13,16 @@ import androidx.navigation.fragment.findNavController
 import com.example.tecnobank.R
 import com.example.tecnobank.databinding.PixInfoDestinationFragmentBinding
 import com.example.tecnobank.home.viewmodel.PixInfoDestinationViewModel
+import com.example.tecnobank.intro.viewmodel.SplashViewModel
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class PixInfoDestinationFragment : Fragment() {
 
     private var _binding: PixInfoDestinationFragmentBinding? = null
     private val binding: PixInfoDestinationFragmentBinding get() = _binding!!
-    private lateinit var viewModel: PixInfoDestinationViewModel
+    //private lateinit var viewModel: PixInfoDestinationViewModel
+    private val viewModel: PixInfoDestinationViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -33,7 +36,7 @@ class PixInfoDestinationFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel = ViewModelProvider(this).get(PixInfoDestinationViewModel::class.java)
+        //viewModel = ViewModelProvider(this).get(PixInfoDestinationViewModel::class.java)
 
         binding.toolbarPixInsertEmail.setNavigationOnClickListener {
             findNavController().navigateUp()

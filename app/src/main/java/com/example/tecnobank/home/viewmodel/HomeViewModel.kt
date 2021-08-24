@@ -8,6 +8,8 @@ import com.example.tecnobank.data.remote.model.home.BalanceBenefitsResponse
 import com.example.tecnobank.extension.HelperFunctions
 import com.example.tecnobank.home.repository.HomeRepository
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.launch
 
 class HomeViewModel(private val homeRepository: HomeRepository) : ViewModel() {
@@ -28,7 +30,7 @@ class HomeViewModel(private val homeRepository: HomeRepository) : ViewModel() {
         viewModelScope.launch {
             try {
                 _loading.postValue(true)
-                delay(3000)
+                delay(2000)
                 val response = homeRepository.BalancesAndBenefits()
                 _responseSucess.postValue(response)
             } catch (e: Exception) {

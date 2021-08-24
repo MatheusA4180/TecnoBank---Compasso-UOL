@@ -16,14 +16,18 @@ import com.example.tecnobank.R
 import com.example.tecnobank.databinding.LoginFragmentBinding
 import com.example.tecnobank.databinding.ModalBottomSheetDialogBinding
 import com.example.tecnobank.intro.viewmodel.LoginViewModel
+import com.example.tecnobank.intro.viewmodel.SplashViewModel
 import com.example.tecnobank.viewmodelfactory.ViewModelFactory
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class LoginFragment : Fragment() {
 
     private var _binding: LoginFragmentBinding? = null
     private val binding: LoginFragmentBinding get() = _binding!!
-    private lateinit var viewModel: LoginViewModel
+    //private lateinit var viewModel: LoginViewModel
+    private val viewModel: LoginViewModel by viewModel()
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -38,9 +42,9 @@ class LoginFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel = ViewModelProvider(this, ViewModelFactory(requireContext(),null)).get(
-            LoginViewModel::class.java
-        )
+//        viewModel = ViewModelProvider(this, ViewModelFactory(requireContext(),null)).get(
+//            LoginViewModel::class.java
+//        )
 
         binding.loginEmail.addTextChangedListener {
             viewModel.onEmailChange(it.toString())

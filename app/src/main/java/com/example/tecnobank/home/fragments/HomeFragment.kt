@@ -30,14 +30,17 @@ import com.example.tecnobank.home.recyclerview.DotsDecoration
 import com.example.tecnobank.home.recyclerview.ListBenefitsAdapter
 import com.example.tecnobank.home.recyclerview.PagerDecoratorDots
 import com.example.tecnobank.home.viewmodel.HomeViewModel
+import com.example.tecnobank.intro.viewmodel.SplashViewModel
 import com.example.tecnobank.viewmodelfactory.ViewModelFactory
 import com.google.android.material.tabs.TabLayoutMediator
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeFragment : Fragment() {
 
     private var _binding: HomeFragmentBinding? = null
     private val binding: HomeFragmentBinding get() = _binding!!
-    private lateinit var viewModel: HomeViewModel
+    //private lateinit var viewModel: HomeViewModel
+    private val viewModel: HomeViewModel by viewModel()
     private val onUpdateBalanceReceiver:BroadcastReceiver = object:BroadcastReceiver(){
         override fun onReceive(context: Context?, intent: Intent?) {
             viewModel.onOpenHome()
@@ -62,10 +65,10 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
-        viewModel = ViewModelProvider(
-            this,
-            ViewModelFactory(requireContext(),null)
-        ).get(HomeViewModel::class.java)
+//        viewModel = ViewModelProvider(
+//            this,
+//            ViewModelFactory(requireContext(),null)
+//        ).get(HomeViewModel::class.java)
 
         viewModel.onOpenHome()
 

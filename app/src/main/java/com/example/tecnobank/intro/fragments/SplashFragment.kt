@@ -14,13 +14,15 @@ import com.example.tecnobank.R
 import com.example.tecnobank.databinding.SplashFragmentBinding
 import com.example.tecnobank.intro.viewmodel.SplashViewModel
 import com.example.tecnobank.viewmodelfactory.ViewModelFactory
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SplashFragment : Fragment() {
 
     private val SPLASH_DELAY: Long = 3000
     private var _binding: SplashFragmentBinding? = null
     private val binding: SplashFragmentBinding get() = _binding!!
-    private lateinit var viewModel: SplashViewModel
+    //private lateinit var viewModel: SplashViewModel
+    private val viewModel: SplashViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -33,9 +35,9 @@ class SplashFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
-        viewModel = ViewModelProvider(this, ViewModelFactory(requireContext(),null)).get(
-            SplashViewModel::class.java
-        )
+//        viewModel = ViewModelProvider(this, ViewModelFactory(requireContext(),null)).get(
+//            SplashViewModel::class.java
+//        )
 
         binding.splashLogo.animation = AnimationUtils.loadAnimation(requireContext(),R.anim.top_animation)
 

@@ -12,13 +12,16 @@ import com.example.tecnobank.databinding.FilterExtractFragmentBinding
 import com.example.tecnobank.extract.recyclerview.ListFilterAdapter
 import com.example.tecnobank.extract.viewmodel.ExtractViewModel
 import com.example.tecnobank.extract.viewmodel.FilterExtractViewModel
+import com.example.tecnobank.intro.viewmodel.SplashViewModel
 import com.example.tecnobank.viewmodelfactory.ViewModelFactory
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class FilterExtractFragment : Fragment(), ListFilterAdapter.SelectFilterlistener {
 
     private var _binding: FilterExtractFragmentBinding? = null
     private val binding: FilterExtractFragmentBinding get() = _binding!!
-    private lateinit var viewModel: FilterExtractViewModel
+    //private lateinit var viewModel: FilterExtractViewModel
+    private val viewModel: FilterExtractViewModel by viewModel()
 
     private val listItemFilter: List<String> by lazy {
         listOf(
@@ -43,10 +46,10 @@ class FilterExtractFragment : Fragment(), ListFilterAdapter.SelectFilterlistener
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel = ViewModelProvider(
-            this,
-            ViewModelFactory(requireContext(),null)
-        ).get(FilterExtractViewModel::class.java)
+//        viewModel = ViewModelProvider(
+//            this,
+//            ViewModelFactory(requireContext(),null)
+//        ).get(FilterExtractViewModel::class.java)
 
         binding.filterToolbar.setNavigationOnClickListener {
             requireActivity().finish()

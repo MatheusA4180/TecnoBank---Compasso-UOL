@@ -18,14 +18,17 @@ import com.example.tecnobank.extract.fragments.FilterExtractFragment.Companion.F
 import com.example.tecnobank.extract.fragments.FilterExtractFragment.Companion.RESULT_CODE
 import com.example.tecnobank.extract.recyclerview.ListExtractsAdapter
 import com.example.tecnobank.extract.viewmodel.ExtractViewModel
+import com.example.tecnobank.intro.viewmodel.SplashViewModel
 import com.example.tecnobank.viewmodelfactory.ViewModelFactory
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ExtractFragment : Fragment() {
 
     private var _binding: ExtractFragmentBinding? = null
     private val binding: ExtractFragmentBinding get() = _binding!!
-    private lateinit var viewModel: ExtractViewModel
+    //private lateinit var viewModel: ExtractViewModel
+    private val viewModel: ExtractViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -39,10 +42,10 @@ class ExtractFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel = ViewModelProvider(
-            this,
-            ViewModelFactory(requireContext(),null)
-        ).get(ExtractViewModel::class.java)
+//        viewModel = ViewModelProvider(
+//            this,
+//            ViewModelFactory(requireContext(),null)
+//        ).get(ExtractViewModel::class.java)
 
         viewModel.requestExtracts()
 
