@@ -2,7 +2,7 @@
 
 
 
-### Seja bem-vindo(a)! :smile:
+## Seja bem-vindo(a)! :smile:
 
 
 
@@ -10,7 +10,7 @@ Esse repositório contém um projeto mobile desenvolvido pelo squad TecnoDroid d
 
 
 
-#### Recursos utilizados
+## Recursos utilizados
 
 - Arquitetura MVVM
 - Activities e fragments
@@ -28,16 +28,16 @@ Esse repositório contém um projeto mobile desenvolvido pelo squad TecnoDroid d
 
 
 
-#### Desenvolvimento
+## Desenvolvimento
 
-- Splash e onbording
+### Splash e onbording
 
 <div style = "display: grid;">
 <img width=“500” height="500" src="https://user-images.githubusercontent.com/85000007/131191698-027739aa-36fa-4019-8bad-56ceb4e782cf.jpg">
 <img width=“500” height="500" src="https://user-images.githubusercontent.com/85000007/131191747-0445b63d-3725-493d-9ba5-902229470adf.jpg">
 </div>
   
-- Login
+### Login
   
 <div style = "display: grid;">
 <img width=“500” height="500" src="https://user-images.githubusercontent.com/85000007/131191805-b39a0a45-dc62-4d9b-9c32-f1657471d610.jpg">
@@ -45,7 +45,7 @@ Esse repositório contém um projeto mobile desenvolvido pelo squad TecnoDroid d
 <img width=“500” height="500" src="https://user-images.githubusercontent.com/85000007/131191820-6eb4058b-9514-4f45-bdcf-a78f76eea64b.jpg">
 </div>
 
-- Home
+### Home
   
 <div style = "display: grid;">
 <img width=“500” height="500" src="https://user-images.githubusercontent.com/85000007/131191945-698660f7-beb6-45ba-8427-670abcd6422d.jpg">
@@ -53,13 +53,13 @@ Esse repositório contém um projeto mobile desenvolvido pelo squad TecnoDroid d
 <img width=“500” height="500" src="https://user-images.githubusercontent.com/85000007/131191956-a9341c75-342d-4e7a-9152-ae5de93a8a52.jpg">
 </div>
 
-- Chatbot
+### Chatbot
   
 <div style = "display: grid;">
 <img width=“500” height="500" src="https://user-images.githubusercontent.com/85000007/131192013-d5b57044-072d-48de-88da-a91e0fb4a4ad.jpg">
 </div>
 
-- Segurança, notificações e profile
+### Segurança, notificações e profile
 
 <div style = "display: grid;">
 <img width=“500” height="500" src="https://user-images.githubusercontent.com/85000007/131192072-a2d87246-be18-454c-84d1-ba6b78dfd64a.jpg">
@@ -70,7 +70,7 @@ Esse repositório contém um projeto mobile desenvolvido pelo squad TecnoDroid d
 <img width=“500” height="500" src="https://user-images.githubusercontent.com/85000007/131192122-42c767b3-bbe7-400f-8703-b24569cc9467.jpg">
 </div>
 
-- Habilitação de uso, cartões e vendas
+### Habilitação de uso, cartões e vendas
 
  <div style = "display: grid;">
 <img width=“500” height="500" src="https://user-images.githubusercontent.com/85000007/131192297-4c12039c-2470-444d-aec5-a80be30b58dd.jpg">
@@ -78,7 +78,7 @@ Esse repositório contém um projeto mobile desenvolvido pelo squad TecnoDroid d
 <img width=“500” height="500" src="https://user-images.githubusercontent.com/85000007/131192312-259b8fa4-00ff-4bd3-a149-3d3ed4578218.jpg">
 </div>
 
-- Pix
+### Pix
 
  <div style = "display: grid;">
 <img width=“500” height="500" src="https://user-images.githubusercontent.com/85000007/131192357-7c41067c-8498-4385-8d6f-24eb540f26f1.jpg">
@@ -95,7 +95,7 @@ Esse repositório contém um projeto mobile desenvolvido pelo squad TecnoDroid d
 <img width=“500” height="500" src="https://user-images.githubusercontent.com/85000007/131192398-ffdcc4db-272d-42f3-9e55-fafa0d3cf4e4.jpg">
 </div>
 
-- Tela de extrato
+### Tela de extrato
 
  <div style = "display: grid;">
 <img width=“500” height="500" src="https://user-images.githubusercontent.com/85000007/131192652-ddbf2a07-4ea1-45da-a060-82d56dd454fd.jpg">
