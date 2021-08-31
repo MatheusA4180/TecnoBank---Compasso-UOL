@@ -43,7 +43,7 @@ interface EndPoint {
     @POST("home/sendfcm")
     suspend fun sendToken(
         @Body tokenFirebase: TokenFirebase
-    )//: Response<Void>
+    ): Response<Void>
 
     companion object {
 
@@ -59,7 +59,7 @@ interface EndPoint {
             return OkHttpClient.Builder().apply {
                 addInterceptor(HttpLoggingInterceptor().apply { level = HttpLoggingInterceptor.Level.BODY })
                 addInterceptor(AuthInterceptor(sharedPreference))
-                addInterceptor(MockInterceptor())
+                //addInterceptor(MockInterceptor())
             }.build()
         }
 
